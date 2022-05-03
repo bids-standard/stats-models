@@ -21,7 +21,7 @@ jobs:
         pip install --upgrade pip
         pip install -r specification/requirements.txt
     - name: Build
-      run: jb build specification
+      run: jb build -W specification
     - uses: peaceiris/actions-gh-pages@v3
       if: ${{ github.ref == 'refs/heads/main' }}
       with:
