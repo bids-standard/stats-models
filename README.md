@@ -1,1 +1,1 @@
-# stats-models
+# BIDS Stats Models Specification
