@@ -239,9 +239,17 @@ const thebe_selector_output = ".output, .cell_output"
 <dl class="py class pydantic_model">
 <dt class="sig sig-object py" id="bsmschema.models.BIDSStatsModel">
 <em class="property"><span class="pre">pydantic</span> <span class="pre">model</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bsmschema.models.</span></span><span class="sig-name descname"><span class="pre">BIDSStatsModel</span></span><a class="headerlink" href="#bsmschema.models.BIDSStatsModel" title="Permalink to this definition">¶</a></dt>
-<dd><p><details  class="autodoc_pydantic_collapsable_json">
+<dd><p>A BIDS Stats Model is a JSON file that defines one or more hierarchical models
+on brain imaging data.</p>
+<p>A hierarchical model is a sequence of estimator <strong>nodes</strong>. These nodes are connected
+via <strong>edges</strong> to form a directed, acyclic graph. The graph contains a single “root”
+node, which only has outgoing edges, and may have many “leaf” nodes that only have
+incoming edges. Each path from the root to a leaf may be thought of as a single
+hierarchical model.</p>
+<p><details  class="autodoc_pydantic_collapsable_json">
 <summary>Show JSON schema</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BIDSStatsModel&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A BIDS Stats Model is a JSON file that defines one or more hierarchical models\non brain imaging data.\n\nA hierarchical model is a sequence of estimator **nodes**. These nodes are connected\nvia **edges** to form a directed, acyclic graph. The graph contains a single \&quot;root\&quot;\nnode, which only has outgoing edges, and may have many \&quot;leaf\&quot; nodes that only have\nincoming edges. Each path from the root to a leaf may be thought of as a single\nhierarchical model.&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">   </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -573,6 +581,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="w">      </span><span class="p">},</span><span class="w"></span>
 <span class="w">      </span><span class="nt">&quot;Edge&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">         </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Edge&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An ``Edge`` connects two ``Node``\\s, indicating the outputs (contrasts) of the ``Source`` node are to be made available as inputs to the ``Destination`` node.\n\nContrasts may be filtered by any metadata field, including entities. Each contrast has an additional entity ``\&quot;contrast\&quot;`` that may be used to filter contrasts by name.&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">         </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">         </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;Source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -640,13 +649,13 @@ const thebe_selector_output = ".output, .cell_output"
 <dl class="py attribute pydantic_field">
 <dt class="sig sig-object py" id="bsmschema.models.BIDSStatsModel.Nodes">
 <em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Nodes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bsmschema.models.Node" title="bsmschema.models.Node"><span class="pre">bsmschema.models.Node</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#bsmschema.models.BIDSStatsModel.Nodes" title="Permalink to this definition">¶</a></dt>
-<dd><p>A concise verbal description of the model.</p>
+<dd><p>A list of analysis nodes. The ordering of this list is significant if Edges is absent.</p>
 </dd></dl>
 
 <dl class="py attribute pydantic_field">
 <dt class="sig sig-object py" id="bsmschema.models.BIDSStatsModel.Edges">
 <em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Edges</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bsmschema.models.Edge" title="bsmschema.models.Edge"><span class="pre">bsmschema.models.Edge</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PydanticUndefined</span></em><a class="headerlink" href="#bsmschema.models.BIDSStatsModel.Edges" title="Permalink to this definition">¶</a></dt>
-<dd><p>A concise verbal description of the model.</p>
+<dd><p>A list of edges between analysis nodes. If absent, the nodes are connected in the sequence presented in Nodes.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1008,9 +1017,12 @@ parameter weights (betas) and construct contrasts.</p>
 <dl class="py class pydantic_model">
 <dt class="sig sig-object py" id="bsmschema.models.Edge">
 <em class="property"><span class="pre">pydantic</span> <span class="pre">model</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bsmschema.models.</span></span><span class="sig-name descname"><span class="pre">Edge</span></span><a class="headerlink" href="#bsmschema.models.Edge" title="Permalink to this definition">¶</a></dt>
-<dd><p><details  class="autodoc_pydantic_collapsable_json">
+<dd><p>An <code class="docutils literal notranslate"><span class="pre">Edge</span></code> connects two <code class="docutils literal notranslate"><span class="pre">Node</span></code>s, indicating the outputs (contrasts) of the <code class="docutils literal notranslate"><span class="pre">Source</span></code> node are to be made available as inputs to the <code class="docutils literal notranslate"><span class="pre">Destination</span></code> node.</p>
+<p>Contrasts may be filtered by any metadata field, including entities. Each contrast has an additional entity <code class="docutils literal notranslate"><span class="pre">&quot;contrast&quot;</span></code> that may be used to filter contrasts by name.</p>
+<p><details  class="autodoc_pydantic_collapsable_json">
 <summary>Show JSON schema</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Edge&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An ``Edge`` connects two ``Node``\\s, indicating the outputs (contrasts) of the ``Source`` node are to be made available as inputs to the ``Destination`` node.\n\nContrasts may be filtered by any metadata field, including entities. Each contrast has an additional entity ``\&quot;contrast\&quot;`` that may be used to filter contrasts by name.&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">   </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="nt">&quot;Source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -1671,7 +1683,7 @@ parameter weights (betas) and construct contrasts.</p>
     
       By The BIDS Community<br/>
     
-        &copy; Copyright 2021.<br/>
+        &copy; Copyright 2022.<br/>
   </p>
 </footer>
 </main>
