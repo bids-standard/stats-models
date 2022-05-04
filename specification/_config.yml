@@ -3,6 +3,7 @@
 
 title: BIDS Stats Models Specification
 author: The BIDS Community
+copyright: "2022"
 logo: bids_black.png
 
 # Force re-execution of notebooks on each build.
