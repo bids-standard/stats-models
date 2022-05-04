@@ -216,15 +216,6 @@
           "title": "Weights",
           "anyOf": [
             {
-              "type": "integer"
-            },
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            },
-            {
               "type": "array",
               "items": {
                 "anyOf": [
@@ -238,6 +229,25 @@
                     "type": "string"
                   }
                 ]
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                }
               }
             }
           ]
