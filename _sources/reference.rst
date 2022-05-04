@@ -1,6 +1,7 @@
-# BIDS Stats Models Object Reference
+==================================
+BIDS Stats Models Object Reference
+==================================
 
-```{eval-rst}
 .. autopydantic_model:: bsmschema.models.BIDSStatsModel
    :members:
 
@@ -27,5 +28,3 @@
 
 .. autopydantic_model:: bsmschema.models.DummyContrasts
    :members:
-
-```
