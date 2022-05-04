@@ -1,0 +1,361 @@
+{
+  "title": "BIDSStatsModel",
+  "description": "A BIDS Stats Model is a JSON file that defines one or more hierarchical models\non brain imaging data.\n\nA hierarchical model is a sequence of estimator **nodes**. These nodes are connected\nvia **edges** to form a directed, acyclic graph. The graph contains a single \"root\"\nnode, which only has outgoing edges, and may have many \"leaf\" nodes that only have\nincoming edges. Each path from the root to a leaf may be thought of as a single\nhierarchical model.",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "BIDSModelVersion": {
+      "title": "Bidsmodelversion",
+      "type": "string"
+    },
+    "Description": {
+      "title": "Description",
+      "type": "string"
+    },
+    "Input": {
+      "title": "Input",
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {}
+      }
+    },
+    "Nodes": {
+      "title": "Nodes",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Node"
+      }
+    },
+    "Edges": {
+      "title": "Edges",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Edge"
+      }
+    }
+  },
+  "required": [
+    "Name",
+    "BIDSModelVersion",
+    "Nodes"
+  ],
+  "definitions": {
+    "Transformations": {
+      "title": "Transformations",
+      "type": "object",
+      "properties": {
+        "Transformer": {
+          "title": "Transformer",
+          "enum": [
+            "pybids-transforms-v1"
+          ],
+          "type": "string"
+        },
+        "Instructions": {
+          "title": "Instructions",
+          "type": "array",
+          "items": {}
+        }
+      },
+      "required": [
+        "Transformer",
+        "Instructions"
+      ]
+    },
+    "HRF": {
+      "title": "HRF",
+      "type": "object",
+      "properties": {
+        "Variables": {
+          "title": "Variables",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Model": {
+          "title": "Model",
+          "enum": [
+            "DoubleGamma",
+            "Gamma",
+            "FiniteImpulseResponse"
+          ],
+          "type": "string"
+        },
+        "Parameters": {
+          "title": "Parameters",
+          "type": "object"
+        }
+      },
+      "required": [
+        "Variables",
+        "Model"
+      ]
+    },
+    "Options": {
+      "title": "Options",
+      "type": "object",
+      "properties": {
+        "HighPassFilterCutoffHz": {
+          "title": "Highpassfiltercutoffhz",
+          "type": "number"
+        },
+        "LowPassFilterCutoffHz": {
+          "title": "Lowpassfiltercutoffhz",
+          "type": "number"
+        },
+        "ReplaceVariables": {
+          "title": "Replacevariables",
+          "type": "object"
+        },
+        "Mask": {
+          "title": "Mask",
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {}
+          }
+        },
+        "Aggregate": {
+          "title": "Aggregate",
+          "enum": [
+            "none",
+            "mean",
+            "pca"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Model": {
+      "title": "Model",
+      "type": "object",
+      "properties": {
+        "Type": {
+          "title": "Type",
+          "enum": [
+            "glm",
+            "meta"
+          ],
+          "type": "string"
+        },
+        "X": {
+          "title": "X",
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "enum": [
+                  1
+                ],
+                "type": "integer"
+              }
+            ]
+          }
+        },
+        "Formula": {
+          "title": "Formula",
+          "type": "string"
+        },
+        "HRF": {
+          "$ref": "#/definitions/HRF"
+        },
+        "VarianceComponents": {
+          "title": "Variancecomponents",
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "ErrorDistribution": {
+          "title": "Errordistribution",
+          "type": "object"
+        },
+        "Options": {
+          "$ref": "#/definitions/Options"
+        },
+        "Software": {
+          "title": "Software",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        }
+      },
+      "required": [
+        "Type",
+        "X"
+      ]
+    },
+    "Contrast": {
+      "title": "Contrast",
+      "type": "object",
+      "properties": {
+        "Name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "ConditionList": {
+          "title": "Conditionlist",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Weights": {
+          "title": "Weights",
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "Test": {
+          "title": "Test",
+          "enum": [
+            "t",
+            "F"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "Name",
+        "ConditionList"
+      ]
+    },
+    "DummyContrasts": {
+      "title": "DummyContrasts",
+      "type": "object",
+      "properties": {
+        "Contrasts": {
+          "title": "Contrasts",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Test": {
+          "title": "Test",
+          "enum": [
+            "t",
+            "F"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "Contrasts"
+      ]
+    },
+    "Node": {
+      "title": "Node",
+      "description": "A node represents an estimator that applies to a given level of analysis.\nIt contains sufficient information to construct a design matrix, estimate\nparameter weights (betas) and construct contrasts.",
+      "type": "object",
+      "properties": {
+        "Level": {
+          "title": "Level",
+          "enum": [
+            "Run",
+            "Session",
+            "Subject",
+            "Dataset"
+          ],
+          "type": "string"
+        },
+        "Name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "GroupBy": {
+          "title": "Groupby",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Transformations": {
+          "$ref": "#/definitions/Transformations"
+        },
+        "Model": {
+          "$ref": "#/definitions/Model"
+        },
+        "Contrasts": {
+          "title": "Contrasts",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Contrast"
+          }
+        },
+        "DummyContrasts": {
+          "$ref": "#/definitions/DummyContrasts"
+        }
+      },
+      "required": [
+        "Level",
+        "Name",
+        "GroupBy",
+        "Model"
+      ]
+    },
+    "Edge": {
+      "title": "Edge",
+      "description": "An ``Edge`` connects two ``Node``\\s, indicating the outputs (contrasts) of the ``Source`` node are to be made available as inputs to the ``Destination`` node.\n\nContrasts may be filtered by any metadata field, including entities. Each contrast has an additional entity ``\"contrast\"`` that may be used to filter contrasts by name.",
+      "type": "object",
+      "properties": {
+        "Source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "Destination": {
+          "title": "Destination",
+          "type": "string"
+        },
+        "Filter": {
+          "title": "Filter",
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {}
+          }
+        }
+      },
+      "required": [
+        "Source",
+        "Destination"
+      ]
+    }
+  }
+}

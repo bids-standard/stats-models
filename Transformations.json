@@ -1,0 +1,22 @@
+{
+  "title": "Transformations",
+  "type": "object",
+  "properties": {
+    "Transformer": {
+      "title": "Transformer",
+      "enum": [
+        "pybids-transforms-v1"
+      ],
+      "type": "string"
+    },
+    "Instructions": {
+      "title": "Instructions",
+      "type": "array",
+      "items": {}
+    }
+  },
+  "required": [
+    "Transformer",
+    "Instructions"
+  ]
+}

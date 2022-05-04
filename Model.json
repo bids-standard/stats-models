@@ -1,0 +1,133 @@
+{
+  "title": "Model",
+  "type": "object",
+  "properties": {
+    "Type": {
+      "title": "Type",
+      "enum": [
+        "glm",
+        "meta"
+      ],
+      "type": "string"
+    },
+    "X": {
+      "title": "X",
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "enum": [
+              1
+            ],
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    "Formula": {
+      "title": "Formula",
+      "type": "string"
+    },
+    "HRF": {
+      "$ref": "#/definitions/HRF"
+    },
+    "VarianceComponents": {
+      "title": "Variancecomponents",
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "ErrorDistribution": {
+      "title": "Errordistribution",
+      "type": "object"
+    },
+    "Options": {
+      "$ref": "#/definitions/Options"
+    },
+    "Software": {
+      "title": "Software",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "required": [
+    "Type",
+    "X"
+  ],
+  "definitions": {
+    "HRF": {
+      "title": "HRF",
+      "type": "object",
+      "properties": {
+        "Variables": {
+          "title": "Variables",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Model": {
+          "title": "Model",
+          "enum": [
+            "DoubleGamma",
+            "Gamma",
+            "FiniteImpulseResponse"
+          ],
+          "type": "string"
+        },
+        "Parameters": {
+          "title": "Parameters",
+          "type": "object"
+        }
+      },
+      "required": [
+        "Variables",
+        "Model"
+      ]
+    },
+    "Options": {
+      "title": "Options",
+      "type": "object",
+      "properties": {
+        "HighPassFilterCutoffHz": {
+          "title": "Highpassfiltercutoffhz",
+          "type": "number"
+        },
+        "LowPassFilterCutoffHz": {
+          "title": "Lowpassfiltercutoffhz",
+          "type": "number"
+        },
+        "ReplaceVariables": {
+          "title": "Replacevariables",
+          "type": "object"
+        },
+        "Mask": {
+          "title": "Mask",
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {}
+          }
+        },
+        "Aggregate": {
+          "title": "Aggregate",
+          "enum": [
+            "none",
+            "mean",
+            "pca"
+          ],
+          "type": "string"
+        }
+      }
+    }
+  }
+}

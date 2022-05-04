@@ -1,0 +1,24 @@
+{
+  "title": "DummyContrasts",
+  "type": "object",
+  "properties": {
+    "Contrasts": {
+      "title": "Contrasts",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "Test": {
+      "title": "Test",
+      "enum": [
+        "t",
+        "F"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "Contrasts"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "title": "Contrast",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "ConditionList": {
+      "title": "Conditionlist",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "Weights": {
+      "title": "Weights",
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Test": {
+      "title": "Test",
+      "enum": [
+        "t",
+        "F"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "Name",
+    "ConditionList"
+  ]
+}

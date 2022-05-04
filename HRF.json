@@ -1,0 +1,30 @@
+{
+  "title": "HRF",
+  "type": "object",
+  "properties": {
+    "Variables": {
+      "title": "Variables",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "Model": {
+      "title": "Model",
+      "enum": [
+        "DoubleGamma",
+        "Gamma",
+        "FiniteImpulseResponse"
+      ],
+      "type": "string"
+    },
+    "Parameters": {
+      "title": "Parameters",
+      "type": "object"
+    }
+  },
+  "required": [
+    "Variables",
+    "Model"
+  ]
+}

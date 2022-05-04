@@ -1,0 +1,35 @@
+{
+  "title": "Options",
+  "type": "object",
+  "properties": {
+    "HighPassFilterCutoffHz": {
+      "title": "Highpassfiltercutoffhz",
+      "type": "number"
+    },
+    "LowPassFilterCutoffHz": {
+      "title": "Lowpassfiltercutoffhz",
+      "type": "number"
+    },
+    "ReplaceVariables": {
+      "title": "Replacevariables",
+      "type": "object"
+    },
+    "Mask": {
+      "title": "Mask",
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {}
+      }
+    },
+    "Aggregate": {
+      "title": "Aggregate",
+      "enum": [
+        "none",
+        "mean",
+        "pca"
+      ],
+      "type": "string"
+    }
+  }
+}
