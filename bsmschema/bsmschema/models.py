@@ -50,6 +50,10 @@ Weights = Union[int, float, str]
 
 
 class Edge(BaseModel):
+    r"""An ``Edge`` connects two ``Node``\s, indicating the outputs (contrasts) of the ``Source`` node are to be made available as inputs to the ``Destination`` node.
+
+    Contrasts may be filtered by any metadata field, including entities. Each contrast has an additional entity ``"contrast"`` that may be used to filter contrasts by name.
+    """
     Source: str
     """Name of node. The outputs of this node are passed to Destination."""
     Destination: str
@@ -146,6 +150,15 @@ class Node(BaseModel):
 
 
 class BIDSStatsModel(BaseModel):
+    """A BIDS Stats Model is a JSON file that defines one or more hierarchical models
+    on brain imaging data.
+
+    A hierarchical model is a sequence of estimator **nodes**. These nodes are connected
+    via **edges** to form a directed, acyclic graph. The graph contains a single "root"
+    node, which only has outgoing edges, and may have many "leaf" nodes that only have
+    incoming edges. Each path from the root to a leaf may be thought of as a single
+    hierarchical model.
+    """
     Name: str
     """A name identifying the model, ideally short. While no hard constraints are imposed on the specific format of the name, each model’s name should be unique for any given BIDS project (i.e., if a single BIDS project contains multiple model specifications in different files and/or folders, care should be taken to ensure that each model has a unique name)."""
 
@@ -159,8 +172,7 @@ class BIDSStatsModel(BaseModel):
     """Dictionary specification of input images"""
 
     Nodes: List[Node]
-    """A concise verbal description of the model."""
+    """A list of analysis nodes. The ordering of this list is significant if Edges is absent."""
 
     Edges: Optional[List[Edge]]
-    """A concise verbal description of the model."""
-
+    """A list of edges between analysis nodes. If absent, the nodes are connected in the sequence presented in Nodes."""
