@@ -43,3 +43,5 @@ sphinx:
     autodoc_pydantic_model_member_order: bysource
     autodoc_pydantic_model_signature_prefix: object
     autosummary_generate: true
+    html_extra_path:
+      - schema

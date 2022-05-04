@@ -20,6 +20,8 @@ jobs:
       run: |
         pip install --upgrade pip
         pip install -r requirements.txt
+    - name: Generate schemas
+      run: python -m bsmschema specification/schema/
     - name: Build
       run: jb build -W specification
     - uses: peaceiris/actions-gh-pages@v3
