@@ -34,7 +34,12 @@ html:
 
 sphinx:
   extra_extensions:
+   - sphinx.ext.autodoc
+   - sphinx.ext.autosummary
    - sphinxcontrib.autodoc_pydantic
   config:
+    autodoc_member_order: 'bysource'
     autodoc_pydantic_model_summary_list_order: bysource
     autodoc_pydantic_model_member_order: bysource
+    autodoc_pydantic_model_signature_prefix: object
+    autosummary_generate: true

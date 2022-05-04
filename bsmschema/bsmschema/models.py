@@ -2,6 +2,18 @@ from enum import Enum
 from typing import List, Optional, Dict, Literal, Any, Union
 from pydantic import BaseModel
 
+__all__ = [
+    'BIDSStatsModel',
+    'Node',
+    'Edge',
+    'Transformations',
+    'Model',
+    'HRF',
+    'Options',
+    'Contrast',
+    'DummyContrasts',
+]
+
 # Notes
 # HRF model parameters are unclear how to specify
 # Transformation instructions should be doable (if tedious), but unclear
