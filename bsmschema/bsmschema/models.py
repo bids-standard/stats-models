@@ -57,7 +57,7 @@ StatisticalTest = Literal[
 
 # Aliases
 Filter = Dict[str, List[Any]]
-Weights = Union[int, float, str]
+Weights = List[Union[int, float, str]]
 
 
 
