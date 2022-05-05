@@ -81,12 +81,29 @@ class Transformations(BaseModel):
     """Sequence of instructions to pass to an implementation of Transformer. The format of these instructions is determined by the Transformer."""
 
 
+class Parameters(BaseModel):
+    PeakDelay: float
+    """Delay, in seconds, from onset to peak response. Applies to models: Gamma, DoubleGamma."""
+    PeakDispersion: float
+    """Width of peak. Applies to models: Gamma, DoubleGamma."""
+    UndershootDelay: float
+    """Delay, in seconds, from onset to undershoot response. Applies to model: DoubleGamma."""
+    UndershootDispersion: float
+    """Width of undershoot. Applies to model: DoubleGamma."""
+    PeakUndershootRatio: float
+    """Peak-to-undershoot ratio. Applies to model: DoubleGamma."""
+    Derivatives: int
+    """Order of derivatives to include. 1 indicates the first derivative, while 2 indicates the first and second derivative. Applies to models: Gamma, DoubleGamma."""
+    Delays: List[int]
+    """List of delays, in scans, for impulse responses. Applies to model: FiniteImpulseResponse."""
+
+
 class HRF(BaseModel):
     Variables: List[str]
     """Name of the variables to be convolved."""
     Model: HRFModel
     """Name of a hemodynamic model."""
-    Parameters: Optional[Dict[str, Any]]
+    Parameters: Optional[Parameters]
     """Parameters to the hemodynamic model."""
 
 
