@@ -92,19 +92,19 @@ class Transformations(BaseModel):
 
 
 class Parameters(BaseModel):
-    PeakDelay: float
+    PeakDelay: Optional[float]
     """Delay, in seconds, from onset to peak response. Applies to models: Gamma, DoubleGamma."""
-    PeakDispersion: float
+    PeakDispersion: Optional[float]
     """Width of peak. Applies to models: Gamma, DoubleGamma."""
-    UndershootDelay: float
+    UndershootDelay: Optional[float]
     """Delay, in seconds, from onset to undershoot response. Applies to model: DoubleGamma."""
-    UndershootDispersion: float
+    UndershootDispersion: Optional[float]
     """Width of undershoot. Applies to model: DoubleGamma."""
-    PeakUndershootRatio: float
+    PeakUndershootRatio: Optional[float]
     """Peak-to-undershoot ratio. Applies to model: DoubleGamma."""
-    Derivatives: int
+    Derivatives: Optional[int]
     """Order of derivatives to include. 1 indicates the first derivative, while 2 indicates the first and second derivative. Applies to models: Gamma, DoubleGamma."""
-    Delays: List[int]
+    Delays: Optional[List[int]]
     """List of delays, in scans, for impulse responses. Applies to model: FiniteImpulseResponse."""
 
 
