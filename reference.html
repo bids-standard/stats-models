@@ -238,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span id="bids-stats-models-object-reference"></span><h1>BIDS Stats Models Object Reference<a class="headerlink" href="#module-bsmschema.models" title="Permalink to this headline">¶</a></h1>
 <dl class="py class pydantic_model">
 <dt class="sig sig-object py" id="bsmschema.models.BIDSStatsModel">
-<em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bsmschema.models.</span></span><span class="sig-name descname"><span class="pre">BIDSStatsModel</span></span><a class="headerlink" href="#bsmschema.models.BIDSStatsModel" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BIDSStatsModel</span></span><a class="headerlink" href="#bsmschema.models.BIDSStatsModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>A BIDS Stats Model is a JSON file that defines one or more hierarchical models
 on brain imaging data.</p>
 <p>A hierarchical model is a sequence of estimator <strong>nodes</strong>. These nodes are connected
@@ -415,17 +415,6 @@ hierarchical model.</p>
 <span class="w">            </span><span class="p">},</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;HRF&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">               </span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#/definitions/HRF&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;VarianceComponents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">               </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Variancecomponents&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">               </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">               </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="w"></span>
-<span class="w">               </span><span class="p">}</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;ErrorDistribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">               </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Errordistribution&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">               </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="w"></span>
 <span class="w">            </span><span class="p">},</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;Options&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">               </span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#/definitions/Options&quot;</span><span class="w"></span>
@@ -672,7 +661,7 @@ hierarchical model.</p>
 
 <dl class="py class pydantic_model">
 <dt class="sig sig-object py" id="bsmschema.models.Node">
-<em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bsmschema.models.</span></span><span class="sig-name descname"><span class="pre">Node</span></span><a class="headerlink" href="#bsmschema.models.Node" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Node</span></span><a class="headerlink" href="#bsmschema.models.Node" title="Permalink to this definition">¶</a></dt>
 <dd><p>A node represents an estimator that applies to a given level of analysis.
 It contains sufficient information to construct a design matrix, estimate
 parameter weights (betas) and construct contrasts.</p>
@@ -850,17 +839,6 @@ parameter weights (betas) and construct contrasts.</p>
 <span class="w">            </span><span class="nt">&quot;HRF&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">               </span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#/definitions/HRF&quot;</span><span class="w"></span>
 <span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;VarianceComponents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">               </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Variancecomponents&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">               </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">               </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="w"></span>
-<span class="w">               </span><span class="p">}</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;ErrorDistribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">               </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Errordistribution&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">               </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;Options&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">               </span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#/definitions/Options&quot;</span><span class="w"></span>
 <span class="w">            </span><span class="p">},</span><span class="w"></span>
@@ -1036,7 +1014,7 @@ parameter weights (betas) and construct contrasts.</p>
 
 <dl class="py class pydantic_model">
 <dt class="sig sig-object py" id="bsmschema.models.Edge">
-<em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bsmschema.models.</span></span><span class="sig-name descname"><span class="pre">Edge</span></span><a class="headerlink" href="#bsmschema.models.Edge" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Edge</span></span><a class="headerlink" href="#bsmschema.models.Edge" title="Permalink to this definition">¶</a></dt>
 <dd><p>An <code class="docutils literal notranslate"><span class="pre">Edge</span></code> connects two <code class="docutils literal notranslate"><span class="pre">Node</span></code>s, indicating the outputs (contrasts) of the <code class="docutils literal notranslate"><span class="pre">Source</span></code> node are to be made available as inputs to the <code class="docutils literal notranslate"><span class="pre">Destination</span></code> node.</p>
 <p>Contrasts may be filtered by any metadata field, including entities. Each contrast has an additional entity <code class="docutils literal notranslate"><span class="pre">&quot;contrast&quot;</span></code> that may be used to filter contrasts by name.</p>
 <p><details  class="autodoc_pydantic_collapsable_json">
@@ -1100,7 +1078,7 @@ parameter weights (betas) and construct contrasts.</p>
 
 <dl class="py class pydantic_model">
 <dt class="sig sig-object py" id="bsmschema.models.Transformations">
-<em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bsmschema.models.</span></span><span class="sig-name descname"><span class="pre">Transformations</span></span><a class="headerlink" href="#bsmschema.models.Transformations" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Transformations</span></span><a class="headerlink" href="#bsmschema.models.Transformations" title="Permalink to this definition">¶</a></dt>
 <dd><p><details  class="autodoc_pydantic_collapsable_json">
 <summary>Show JSON schema</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Transformations&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1150,7 +1128,7 @@ parameter weights (betas) and construct contrasts.</p>
 
 <dl class="py class pydantic_model">
 <dt class="sig sig-object py" id="bsmschema.models.Model">
-<em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bsmschema.models.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><a class="headerlink" href="#bsmschema.models.Model" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Model</span></span><a class="headerlink" href="#bsmschema.models.Model" title="Permalink to this definition">¶</a></dt>
 <dd><p><details  class="autodoc_pydantic_collapsable_json">
 <summary>Show JSON schema</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Model&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1187,17 +1165,6 @@ parameter weights (betas) and construct contrasts.</p>
 <span class="w">      </span><span class="p">},</span><span class="w"></span>
 <span class="w">      </span><span class="nt">&quot;HRF&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">         </span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#/definitions/HRF&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;VarianceComponents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">         </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Variancecomponents&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">         </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">         </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="w"></span>
-<span class="w">         </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;ErrorDistribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">         </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Errordistribution&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">         </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="w"></span>
 <span class="w">      </span><span class="p">},</span><span class="w"></span>
 <span class="w">      </span><span class="nt">&quot;Options&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">         </span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#/definitions/Options&quot;</span><span class="w"></span>
@@ -1294,8 +1261,6 @@ parameter weights (betas) and construct contrasts.</p>
 <li><p><a class="reference internal" href="#bsmschema.models.Model.X" title="bsmschema.models.Model.X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">X</span> <span class="pre">(List[Union[str,</span> <span class="pre">Literal[1]]])</span></code></a></p></li>
 <li><p><a class="reference internal" href="#bsmschema.models.Model.Formula" title="bsmschema.models.Model.Formula"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Formula</span> <span class="pre">(Optional[str])</span></code></a></p></li>
 <li><p><a class="reference internal" href="#bsmschema.models.Model.HRF" title="bsmschema.models.Model.HRF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HRF</span> <span class="pre">(Optional[bsmschema.models.HRF])</span></code></a></p></li>
-<li><p><a class="reference internal" href="#bsmschema.models.Model.VarianceComponents" title="bsmschema.models.Model.VarianceComponents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VarianceComponents</span> <span class="pre">(Optional[List[Dict[str,</span> <span class="pre">Any]]])</span></code></a></p></li>
-<li><p><a class="reference internal" href="#bsmschema.models.Model.ErrorDistribution" title="bsmschema.models.Model.ErrorDistribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ErrorDistribution</span> <span class="pre">(Optional[Dict[str,</span> <span class="pre">Any]])</span></code></a></p></li>
 <li><p><a class="reference internal" href="#bsmschema.models.Model.Options" title="bsmschema.models.Model.Options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Options</span> <span class="pre">(Optional[bsmschema.models.Options])</span></code></a></p></li>
 <li><p><a class="reference internal" href="#bsmschema.models.Model.Software" title="bsmschema.models.Model.Software"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Software</span> <span class="pre">(Optional[List[Dict[str,</span> <span class="pre">Dict[str,</span> <span class="pre">Any]]]])</span></code></a></p></li>
 </ul>
@@ -1326,18 +1291,6 @@ parameter weights (betas) and construct contrasts.</p>
 </dd></dl>
 
 <dl class="py attribute pydantic_field">
-<dt class="sig sig-object py" id="bsmschema.models.Model.VarianceComponents">
-<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VarianceComponents</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PydanticUndefined</span></em><a class="headerlink" href="#bsmschema.models.Model.VarianceComponents" title="Permalink to this definition">¶</a></dt>
-<dd><p>A specification of the variance components to include in the model.</p>
-</dd></dl>
-
-<dl class="py attribute pydantic_field">
-<dt class="sig sig-object py" id="bsmschema.models.Model.ErrorDistribution">
-<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ErrorDistribution</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PydanticUndefined</span></em><a class="headerlink" href="#bsmschema.models.Model.ErrorDistribution" title="Permalink to this definition">¶</a></dt>
-<dd><p>Specifies how to model the error.</p>
-</dd></dl>
-
-<dl class="py attribute pydantic_field">
 <dt class="sig sig-object py" id="bsmschema.models.Model.Options">
 <em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Options</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bsmschema.models.Options" title="bsmschema.models.Options"><span class="pre">bsmschema.models.Options</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PydanticUndefined</span></em><a class="headerlink" href="#bsmschema.models.Model.Options" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimation options that are common to multiple estimation packages.</p>
@@ -1353,7 +1306,7 @@ parameter weights (betas) and construct contrasts.</p>
 
 <dl class="py class pydantic_model">
 <dt class="sig sig-object py" id="bsmschema.models.HRF">
-<em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bsmschema.models.</span></span><span class="sig-name descname"><span class="pre">HRF</span></span><a class="headerlink" href="#bsmschema.models.HRF" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">HRF</span></span><a class="headerlink" href="#bsmschema.models.HRF" title="Permalink to this definition">¶</a></dt>
 <dd><p><details  class="autodoc_pydantic_collapsable_json">
 <summary>Show JSON schema</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HRF&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1418,7 +1371,7 @@ parameter weights (betas) and construct contrasts.</p>
 
 <dl class="py class pydantic_model">
 <dt class="sig sig-object py" id="bsmschema.models.Options">
-<em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bsmschema.models.</span></span><span class="sig-name descname"><span class="pre">Options</span></span><a class="headerlink" href="#bsmschema.models.Options" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Options</span></span><a class="headerlink" href="#bsmschema.models.Options" title="Permalink to this definition">¶</a></dt>
 <dd><p><details  class="autodoc_pydantic_collapsable_json">
 <summary>Show JSON schema</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Options&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1502,7 +1455,7 @@ parameter weights (betas) and construct contrasts.</p>
 
 <dl class="py class pydantic_model">
 <dt class="sig sig-object py" id="bsmschema.models.Contrast">
-<em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bsmschema.models.</span></span><span class="sig-name descname"><span class="pre">Contrast</span></span><a class="headerlink" href="#bsmschema.models.Contrast" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Contrast</span></span><a class="headerlink" href="#bsmschema.models.Contrast" title="Permalink to this definition">¶</a></dt>
 <dd><p><details  class="autodoc_pydantic_collapsable_json">
 <summary>Show JSON schema</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Contrast&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1613,7 +1566,7 @@ parameter weights (betas) and construct contrasts.</p>
 
 <dl class="py class pydantic_model">
 <dt class="sig sig-object py" id="bsmschema.models.DummyContrasts">
-<em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bsmschema.models.</span></span><span class="sig-name descname"><span class="pre">DummyContrasts</span></span><a class="headerlink" href="#bsmschema.models.DummyContrasts" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DummyContrasts</span></span><a class="headerlink" href="#bsmschema.models.DummyContrasts" title="Permalink to this definition">¶</a></dt>
 <dd><p><details  class="autodoc_pydantic_collapsable_json">
 <summary>Show JSON schema</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DummyContrasts&quot;</span><span class="p">,</span><span class="w"></span>

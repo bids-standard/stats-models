@@ -171,17 +171,6 @@
         "HRF": {
           "$ref": "#/definitions/HRF"
         },
-        "VarianceComponents": {
-          "title": "Variancecomponents",
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "ErrorDistribution": {
-          "title": "Errordistribution",
-          "type": "object"
-        },
         "Options": {
           "$ref": "#/definitions/Options"
         },
