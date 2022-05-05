@@ -130,10 +130,11 @@ class Model(BaseModel):
     """Wilkinson notation specification of a Transformation of the design matrix X. A 1 or 0 term MUST be present to explicitly include or exclude, respectively, an intercept variable, to ensure consistent handling across formula interpreters."""
     HRF: Optional[HRF]
     """A specification of the hemodynamic response function (HRF) that should be applied to variables by implementing software."""
-    VarianceComponents: Optional[List[Dict[str, Any]]]
-    """A specification of the variance components to include in the model."""
-    ErrorDistribution: Optional[Dict[str, Any]]
-    """Specifies how to model the error."""
+    ## These are very likely getting pulled out.
+    # VarianceComponents: Optional[List[Dict[str, Any]]]
+    # """A specification of the variance components to include in the model."""
+    # ErrorDistribution: Optional[Dict[str, Any]]
+    # """Specifies how to model the error."""
     Options: Optional[Options]
     """Estimation options that are common to multiple estimation packages."""
     Software: Optional[List[Dict[str, Dict[str, Any]]]]
