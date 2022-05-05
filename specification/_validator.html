@@ -1,74 +1,48 @@
 <div class="App">
   <style>
+    .section {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+    }
+
     .App {
+      display: flex;
+      flex-direction: row;
       height: 100%;
-      background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
-    }
-
-    #root {
-      height: 100%;
-    }
-
-    .header {
-      padding: 10px 0 0 0;
-    }
-
-    .body {
-        background-color:#f2bbf1;
-        height: 100%;
-        padding-left: 30px;
-        border:2px solid #fff;
-        box-shadow:0px 2px 7px #000;
-        -moz-box-shadow: 0px 2px 7px #000;
-        -webkit-box-shadow: 0px 2px 7px #000;
-        border-radius:30px;
-        -moz-border-radius:30px;
-        -webkit-border-radius:30px;
-    }
-
-    html, body {
-        height: 100%;
-    }
-
-    .App-link {
-      color: #61dafb;
+      flex-grow: 1;
     }
 
     .left {
-      height: 100%;
-      width: 50%;
-      float: left;
+      width: 100%;
     }
 
     .right {
-      margin-left: 50%;
-      /* Change this to whatever the width of your left column is*/
+      width: 100%;
+      margin-left: 30px;
     }
     .clear {
       clear: both;
     }
 
     textarea {
-      height: 75%;
+      height: 100%;
       width: 100%;
     }
   </style>
-  <div class="header">
-    <h1>BIDS Schema Validator</h1>
+  <div class="left">
+    Models go here:
+    <textarea id="jsonInput">
+    </textarea>
   </div>
-  <div class="body">
-    <div class="left">
-      <textarea id="jsonInput">
-      </textarea>
-    </div>
-    <div class="right">
-      <div id="isValidContainer">
-      </div>
+  <div class="right">
+    Validator Output:<br />
+    <div id="isValidContainer">
     </div>
   </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/6.12.2/ajv.min.js"></script>
 <script async>
-  const url = "BIDSStatsModel.json"
+  const url = "./BIDSStatsModel.json"
   let validate
   let ajv
   (async function() {
