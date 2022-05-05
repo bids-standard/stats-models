@@ -1,3 +1,12 @@
+"""
+==================================
+BIDS Stats Models Object Reference
+==================================
+
+This document defines the valid keys and values in a BIDS Stats Model.
+A BIDS Stats Model is defined in a `JSON <https://www.json.org/json-en.html>`_ document.
+
+"""
 from enum import Enum
 from typing import List, Optional, Dict, Literal, Any, Union
 from pydantic import BaseModel
