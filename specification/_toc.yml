@@ -10,6 +10,7 @@ parts:
 - caption: Reference
   chapters:
   - file: reference
+  - file: validator
 - caption: Model Zoo
   chapters:
   - file: model-zoo
