@@ -70,8 +70,13 @@ VariableList = List[Union[str, Literal[1]]]
 Weights = List[Union[int, float, str]]
 
 
+class _Commentable(BaseModel):
+    # Docstring missing to avoid polluting every object description with this field
+    # This permits users to write comments on objects.
+    Description: Optional[str]
 
-class Edge(BaseModel):
+
+class Edge(_Commentable):
     """An ``Edge`` connects two ``Node``\s, indicating the outputs (contrasts) of the ``Source`` node 
     are to be made available as inputs to the ``Destination`` node.
 
@@ -88,7 +93,7 @@ class Edge(BaseModel):
     If multiple grouping variables are passed, the result is the conjunction of filters."""
 
 
-class Transformations(BaseModel):
+class Transformations(_Commentable):
     Transformer: TransformerID
     """Name of the specification of an instruction set."""
     Instructions: List[Any]
@@ -96,7 +101,7 @@ class Transformations(BaseModel):
     The format of these instructions is determined by the Transformer."""
 
 
-class Parameters(BaseModel):
+class Parameters(_Commentable):
     PeakDelay: Optional[float]
     """Delay, in seconds, from onset to peak response. 
     Applies to models: Gamma, DoubleGamma."""
@@ -121,7 +126,7 @@ class Parameters(BaseModel):
     Applies to model: FiniteImpulseResponse."""
 
 
-class HRF(BaseModel):
+class HRF(_Commentable):
     Variables: List[str]
     """Name of the variables to be convolved."""
     Model: HRFModel
@@ -130,7 +135,7 @@ class HRF(BaseModel):
     """Parameters to the hemodynamic model."""
 
 
-class Options(BaseModel):
+class Options(_Commentable):
     HighPassFilterCutoffHz: Optional[float]
     """The cutoff frequency, in Hz, for a high-pass filter."""
     LowPassFilterCutoffHz: Optional[float]
@@ -155,7 +160,7 @@ class Options(BaseModel):
     "pca" returns the first principal component of all voxels within each discrete non-zero value found in the image."""
 
 
-class Contrast(BaseModel):
+class Contrast(_Commentable):
     Name: str
     """The name of the contrast. Must be unique."""
     ConditionList: VariableList
@@ -180,7 +185,7 @@ class Contrast(BaseModel):
     without conducting single-subject statistical tests)."""
 
 
-class DummyContrasts(BaseModel):
+class DummyContrasts(_Commentable):
     Contrasts: VariableList
     """A list of variables used to compute the contrast. 
     Must be a strict subset of the list of X available in the namespace 
@@ -189,7 +194,7 @@ class DummyContrasts(BaseModel):
     """Indicates the contrast type that will be applied for each dummy contrast in the section."""
 
 
-class Model(BaseModel):
+class Model(_Commentable):
     Type: ModelType
     """The type of analysis to run. 
     The following values are currently defined: 
@@ -229,7 +234,7 @@ class Model(BaseModel):
     we expect that the developers of each package will, over time, fill in these specifications."""
 
 
-class Node(BaseModel):
+class Node(_Commentable):
     """A node represents an estimator that applies to a given level of analysis.
     It contains sufficient information to construct a design matrix, estimate
     parameter weights (betas) and construct contrasts.
@@ -257,7 +262,7 @@ class Node(BaseModel):
     for either all variables in the design matrix, or all named variables."""
 
 
-class BIDSStatsModel(BaseModel):
+class BIDSStatsModel(_Commentable):
     """A BIDS Stats Model is a JSON file that defines one or more hierarchical models
     on brain imaging data.
 
