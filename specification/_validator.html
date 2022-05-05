@@ -52,7 +52,7 @@
   let validate
   let ajv
   (async function() {
-    ajv = new Ajv()
+    ajv = new Ajv({allErrors: true})
     validate = await fetch(url).then(resp => resp.json()).then(schema => ajv.compile(schema))
   })()
 
