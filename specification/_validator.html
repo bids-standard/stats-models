@@ -4,6 +4,7 @@
       min-height: 85vh;
       display: flex;
       flex-direction: column;
+      width: 100%;
     }
 
     .App {
@@ -13,6 +14,7 @@
       flex-grow: 1;
     }
 
+    .app > * { flex: 1; }
     .left {
       width: 100%;
     }
@@ -28,6 +30,10 @@
     textarea {
       height: 100%;
       width: 100%;
+    }
+    .col-md-9 {
+      max-width: 100%;
+      flex: 0 0 100%;
     }
   </style>
   <div class="left">
@@ -46,7 +52,7 @@
   let validate
   let ajv
   (async function() {
-    ajv = new Ajv()
+    ajv = new Ajv({allErrors: true})
     validate = await fetch(url).then(resp => resp.json()).then(schema => ajv.compile(schema))
   })()
 
