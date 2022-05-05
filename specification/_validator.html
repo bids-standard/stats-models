@@ -1,0 +1,112 @@
+<div class="App">
+  <style>
+    .App {
+      height: 100%;
+      background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+    }
+
+    #root {
+      height: 100%;
+    }
+
+    .header {
+      padding: 10px 0 0 0;
+    }
+
+    .body {
+        background-color:#f2bbf1;
+        height: 100%;
+        padding-left: 30px;
+        border:2px solid #fff;
+        box-shadow:0px 2px 7px #000;
+        -moz-box-shadow: 0px 2px 7px #000;
+        -webkit-box-shadow: 0px 2px 7px #000;
+        border-radius:30px;
+        -moz-border-radius:30px;
+        -webkit-border-radius:30px;
+    }
+
+    html, body {
+        height: 100%;
+    }
+
+    .App-link {
+      color: #61dafb;
+    }
+
+    .left {
+      height: 100%;
+      width: 50%;
+      float: left;
+    }
+
+    .right {
+      margin-left: 50%;
+      /* Change this to whatever the width of your left column is*/
+    }
+    .clear {
+      clear: both;
+    }
+
+    textarea {
+      height: 75%;
+      width: 100%;
+    }
+  </style>
+  <div class="header">
+    <h1>BIDS Schema Validator</h1>
+  </div>
+  <div class="body">
+    <div class="left">
+      <textarea id="jsonInput">
+      </textarea>
+    </div>
+    <div class="right">
+      <div id="isValidContainer">
+      </div>
+    </div>
+  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/6.12.2/ajv.min.js"></script>
+<script async>
+  const url = "https://raw.githubusercontent.com/bids-standard/stats-models/gh-pages/BIDSStatsModel.json"
+  let validate
+  let ajv
+  (async function() {
+    ajv = new Ajv()
+    validate = await fetch(url).then(resp => resp.json()).then(schema => ajv.compile(schema))
+  })()
+
+  function renderValid(valid) {
+    let display = [];
+    valid.map((x, i) => {
+      display.push(`<li key={i}><pre>${JSON.stringify(x, null, 2)}</pre></li>`);
+      return x;
+    });
+    return `<div><ul>${display.join('')}</ul></div>`
+  }
+
+  function handleChange(e){
+    console.log(e.target.value)
+    let newVal = e.target.value;
+    e.preventDefault();
+    try {
+      newVal = JSON.parse(newVal);
+    } catch(e) {
+       console.log(e);
+    }
+
+    //Validation Rule
+    let valid = validate(newVal);
+    if (valid) {
+        valid = ['Valid!'];
+    } else {
+        console.log(validate.errors);
+        valid = validate.errors;
+    }
+    document.getElementById('isValidContainer').innerHTML = renderValid(valid)
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('jsonInput').addEventListener('change', handleChange)
+  }, false);
+</script
+</div>
