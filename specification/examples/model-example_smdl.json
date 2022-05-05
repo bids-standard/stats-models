@@ -3,7 +3,7 @@
   "BIDSModelVersion": "1.0.0",
   "Description": "My first BIDS model: a simple 2-condition contrast.",
   "Input": {
-    "task": "stroop"
+    "task": ["stroop"]
   },
   "Nodes": [
     {
