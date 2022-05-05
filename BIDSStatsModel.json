@@ -101,16 +101,7 @@
             "type": "integer"
           }
         }
-      },
-      "required": [
-        "PeakDelay",
-        "PeakDispersion",
-        "UndershootDelay",
-        "UndershootDispersion",
-        "PeakUndershootRatio",
-        "Derivatives",
-        "Delays"
-      ]
+      }
     },
     "HRF": {
       "title": "HRF",
