@@ -126,7 +126,7 @@ class Options(BaseModel):
     Mask: Optional[Filter]
     """BIDS entities specifying a mask file from the input dataset. For example, {"desc": "brain", "suffix": "mask"}."""
     Aggregate: Optional[Aggregate]
-    """Method of combining time series within each value in the Mask. The following values are valid: “none”, “mean”, “pca”. “none” (the default) indicates no dimensionality reduction; a separate timecourse is returned for each voxel that contains at least one non-zero value in its timecourse. “mean” returns the average of all voxels within each discrete non-zero value found in the image. “pca” returns the first principal component of all voxels within each discrete non-zero value found in the image."""
+    """Method of combining time series within each value in the Mask. The following values are valid: "none", "mean", "pca". "none" (the default) indicates no dimensionality reduction; a separate timecourse is returned for each voxel that contains at least one non-zero value in its timecourse. "mean" returns the average of all voxels within each discrete non-zero value found in the image. "pca" returns the first principal component of all voxels within each discrete non-zero value found in the image."""
 
 
 class Contrast(BaseModel):
@@ -151,7 +151,7 @@ class Model(BaseModel):
     Type: ModelType
     """The type of analysis to run. The following values are currently defined: "glm" for general linear model, "meta" for meta-analysis."""
     X: List[Union[str, Literal[1]]]
-    """A list of predictors to include in the model. At present, the BIDS-Model specification only handles traditional GLM analyses, so the assumption is always that brain activation is being predicted from one or more predictors. All variables listed in the X field will be included as columns in the design matrix. Each variable name specified in X must exactly match one of the variables available in the namespace. Any available variables that are not explicitly named in X will be omitted from the model. Partial matching is supported and can be specified using wildcard characters; for example, use “aroma_motion_*” to specify all of the aroma components found in the confounds file. Following standard Unix-style glob rules, “*” is interpreted to match 0 or more alphanumeric characters, and “?” is interpreted to match exactly one alphanumeric character."""
+    """A list of predictors to include in the model. At present, the BIDS-Model specification only handles traditional GLM analyses, so the assumption is always that brain activation is being predicted from one or more predictors. All variables listed in the X field will be included as columns in the design matrix. Each variable name specified in X must exactly match one of the variables available in the namespace. Any available variables that are not explicitly named in X will be omitted from the model. Partial matching is supported and can be specified using wildcard characters; for example, use "aroma_motion_*" to specify all of the aroma components found in the confounds file. Following standard Unix-style glob rules, "*" is interpreted to match 0 or more alphanumeric characters, and "?" is interpreted to match exactly one alphanumeric character."""
     Formula: Optional[str]
     """Wilkinson notation specification of a Transformation of the design matrix X. A 1 or 0 term MUST be present to explicitly include or exclude, respectively, an intercept variable, to ensure consistent handling across formula interpreters."""
     HRF: Optional[HRF]
