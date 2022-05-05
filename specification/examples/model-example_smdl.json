@@ -1,0 +1,51 @@
+{
+  "Name": "my_first_model",
+  "BIDSModelVersion": "1.0.0",
+  "Description": "My first BIDS model: a simple 2-condition contrast.",
+  "Input": {
+    "task": "stroop"
+  },
+  "Nodes": [
+    {
+      "Level": "Run",
+      "Name": "run",
+      "GroupBy": ["run", "subject"],
+      "Model": {
+        "X": ["congruent", "incongruent", "nuissance1", "nuissance2", 1],
+        "Type": "glm"
+      },
+      "Contrasts": [
+        {
+          "Name": "incongruent_vs_congruent",
+          "ConditionList": ["incongruent", "congruent"],
+          "Weights": [1, -1],
+          "Test": "t"
+        }
+      ]
+    },
+    {
+      "Level": "Subject",
+      "Name": "subject",
+      "GroupBy": ["contrast", "subject"],
+      "Model": {
+        "X": [1],
+        "Type": "meta"
+      },
+      "DummyContrasts": {"Test": "t"}
+    },
+    {
+      "Level": "Dataset",
+      "Name": "dataset",
+      "GroupBy": ["contrast"],
+      "Model": {
+        "X": [1],
+        "Type": "glm"
+      },
+      "DummyContrasts": {"Test": "t"}
+    }
+  ],
+  "Edges": [
+    {"Source": "run", "Destination": "subject"},
+    {"Source": "subject", "Destination": "dataset"}
+  ]
+}
