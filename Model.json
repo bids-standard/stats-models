@@ -53,6 +53,52 @@
     "X"
   ],
   "definitions": {
+    "Parameters": {
+      "title": "Parameters",
+      "type": "object",
+      "properties": {
+        "PeakDelay": {
+          "title": "Peakdelay",
+          "type": "number"
+        },
+        "PeakDispersion": {
+          "title": "Peakdispersion",
+          "type": "number"
+        },
+        "UndershootDelay": {
+          "title": "Undershootdelay",
+          "type": "number"
+        },
+        "UndershootDispersion": {
+          "title": "Undershootdispersion",
+          "type": "number"
+        },
+        "PeakUndershootRatio": {
+          "title": "Peakundershootratio",
+          "type": "number"
+        },
+        "Derivatives": {
+          "title": "Derivatives",
+          "type": "integer"
+        },
+        "Delays": {
+          "title": "Delays",
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      },
+      "required": [
+        "PeakDelay",
+        "PeakDispersion",
+        "UndershootDelay",
+        "UndershootDispersion",
+        "PeakUndershootRatio",
+        "Derivatives",
+        "Delays"
+      ]
+    },
     "HRF": {
       "title": "HRF",
       "type": "object",
@@ -74,8 +120,7 @@
           "type": "string"
         },
         "Parameters": {
-          "title": "Parameters",
-          "type": "object"
+          "$ref": "#/definitions/Parameters"
         }
       },
       "required": [
