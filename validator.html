@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Python Module Index &#8212; BIDS Stats Models Specification</title>
+    <title>BIDS Stats Model Validator &#8212; BIDS Stats Models Specification</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,15 +54,14 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-
+    <link rel="next" title="Model Zoo" href="model-zoo.html" />
+    <link rel="prev" title="BIDS Stats Models Object Reference" href="reference.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
     
-
-
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
@@ -117,14 +116,14 @@ const thebe_selector_output = ".output, .cell_output"
   Reference
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="reference.html">
    BIDS Stats Models Object Reference
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="validator.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    BIDS Stats Model Validator
   </a>
  </li>
@@ -173,6 +172,23 @@ const thebe_selector_output = ".output, .cell_output"
             </button>
             
             
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/validator.rst"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
             <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
@@ -184,7 +200,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/bids-standard/stats-models/issues/new?title=Issue%20on%20page%20%2Fpy-modindex.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/bids-standard/stats-models/issues/new?title=Issue%20on%20page%20%2Fvalidator.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -212,7 +228,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1></h1>
+                <h1>BIDS Stats Model Validator</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -223,36 +239,135 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
+  <div class="section" id="bids-stats-model-validator">
+<h1>BIDS Stats Model Validator<a class="headerlink" href="#bids-stats-model-validator" title="Permalink to this headline">¶</a></h1>
+<div class="App">
+  <style>
+    .section {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-   <h1>Python Module Index</h1>
+    .App {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      flex-grow: 1;
+    }
 
-   <div class="modindex-jumpbox">
-   <a href="#cap-b"><strong>b</strong></a>
-   </div>
+    .left {
+      width: 100%;
+    }
 
-   <table class="indextable modindextable">
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-b"><td></td><td>
-       <strong>b</strong></td><td></td></tr>
-     <tr>
-       <td><img src="_static/minus.png" class="toggler"
-              id="toggle-1" style="display: none" alt="-" /></td>
-       <td>
-       <code class="xref">bsmschema</code></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="reference.html#module-bsmschema.models"><code class="xref">bsmschema.models</code></a></td><td>
-       <em></em></td></tr>
-   </table>
+    .right {
+      width: 100%;
+      margin-left: 30px;
+    }
+    .clear {
+      clear: both;
+    }
 
+    textarea {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  <div class="left">
+    Models go here:
+    <textarea id="jsonInput">
+    </textarea>
+  </div>
+  <div class="right">
+    Validator Output:<br />
+    <div id="isValidContainer">
+    </div>
+  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/6.12.2/ajv.min.js"></script>
+<script async>
+  const url = "./BIDSStatsModel.json"
+  let validate
+  let ajv
+  (async function() {
+    ajv = new Ajv()
+    validate = await fetch(url).then(resp => resp.json()).then(schema => ajv.compile(schema))
+  })()
+
+  function renderValid(valid) {
+    let display = [];
+    valid.map((x, i) => {
+      display.push(`<li key={i}><pre>${JSON.stringify(x, null, 2)}</pre></li>`);
+      return x;
+    });
+    return `<div><ul>${display.join('')}</ul></div>`
+  }
+
+  function handleChange(e){
+    console.log(e.target.value)
+    let newVal = e.target.value;
+    e.preventDefault();
+    try {
+      newVal = JSON.parse(newVal);
+    } catch(e) {
+       console.log(e);
+    }
+
+    //Validation Rule
+    let valid = validate(newVal);
+    if (valid) {
+        valid = ['Valid!'];
+    } else {
+        console.log(validate.errors);
+        valid = validate.errors;
+    }
+    document.getElementById('isValidContainer').innerHTML = renderValid(valid)
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('jsonInput').addEventListener('input', handleChange)
+  }, false);
+</script>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="reference.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">BIDS Stats Models Object Reference</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="model-zoo.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Model Zoo</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
