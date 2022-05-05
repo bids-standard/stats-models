@@ -66,6 +66,7 @@ StatisticalTest = Literal[
 
 # Aliases
 Filter = Dict[str, List[Any]]
+VariableList = List[Union[str, Literal[1]]]
 Weights = List[Union[int, float, str]]
 
 
@@ -132,7 +133,7 @@ class Options(BaseModel):
 class Contrast(BaseModel):
     Name: str
     """The name of the contrast. Must be unique."""
-    ConditionList: List[str]
+    ConditionList: VariableList
     """A list of variables used to compute the contrast. Must be a strict subset of the list of X available in the namespace (i.e., either produced by the model section, or available via propagation from previous nodes)."""
     Weights: Optional[Union[Weights, List[Weights]]]
     """A 1D or 2D array of weights. The array must have exactly the same number of total elements as in ConditionList. For t-tests, a 1D array must be passed. For F-tests, either a 1D or a 2D array may be passed. Variables are mapped 1-to-1 onto weights in the order they appear in ConditionList. If no weights are passed, unit weights are assigned to all variables (i.e., if variables = [‘A’, ‘B’, ‘C’], weights will be [1, 1, 1]). Fractional values MAY be passed as strings (e.g., “1/3")."""
@@ -141,7 +142,7 @@ class Contrast(BaseModel):
 
 
 class DummyContrasts(BaseModel):
-    Contrasts: List[str]
+    Contrasts: VariableList
     """A list of variables used to compute the contrast. Must be a strict subset of the list of X available in the namespace (i.e., either produced by the model section, or available via propagation from previous nodes)."""
     Test: Optional[StatisticalTest]
     """Indicates the contrast type that will be applied for each dummy contrast in the section."""
@@ -150,7 +151,7 @@ class DummyContrasts(BaseModel):
 class Model(BaseModel):
     Type: ModelType
     """The type of analysis to run. The following values are currently defined: "glm" for general linear model, "meta" for meta-analysis."""
-    X: List[Union[str, Literal[1]]]
+    X: VariableList
     """A list of predictors to include in the model. At present, the BIDS-Model specification only handles traditional GLM analyses, so the assumption is always that brain activation is being predicted from one or more predictors. All variables listed in the X field will be included as columns in the design matrix. Each variable name specified in X must exactly match one of the variables available in the namespace. Any available variables that are not explicitly named in X will be omitted from the model. Partial matching is supported and can be specified using wildcard characters; for example, use "aroma_motion_*" to specify all of the aroma components found in the confounds file. Following standard Unix-style glob rules, "*" is interpreted to match 0 or more alphanumeric characters, and "?" is interpreted to match exactly one alphanumeric character."""
     Formula: Optional[str]
     """Wilkinson notation specification of a Transformation of the design matrix X. A 1 or 0 term MUST be present to explicitly include or exclude, respectively, an intercept variable, to ensure consistent handling across formula interpreters."""
