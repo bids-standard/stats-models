@@ -243,7 +243,17 @@
           "title": "Conditionlist",
           "type": "array",
           "items": {
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "enum": [
+                  1
+                ],
+                "type": "integer"
+              }
+            ]
           }
         },
         "Weights": {
@@ -308,7 +318,17 @@
           "title": "Contrasts",
           "type": "array",
           "items": {
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "enum": [
+                  1
+                ],
+                "type": "integer"
+              }
+            ]
           }
         },
         "Test": {
