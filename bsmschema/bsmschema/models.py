@@ -60,7 +60,7 @@ HRFModel = Literal[
 ]
 
 StatisticalTest = Literal[
-    "none",
+    "skip",
     "t",
     "F",
 ]
@@ -164,7 +164,7 @@ class Options(_Commentable):
 class _Contrast(_Commentable):
     Test: StatisticalTest
     """The type of test statistic to compute on the contrast.
-    The special value "none" indicates that no statistical test is to be performed."""
+    The special value "skip" indicates that no statistical test is to be performed."""
 
 
 class Contrast(_Contrast):
