@@ -8,9 +8,11 @@ parts:
   chapters:
   - file: guide
   - file: integration
-- caption: Reference
+  - file: legacy
+- caption: Specification
   chapters:
   - file: reference
-- caption: Model Zoo
+  - file: validator
+- caption: Examples and resources
   chapters:
   - file: model-zoo
