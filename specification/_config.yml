@@ -32,6 +32,12 @@ html:
   use_issues_button: true
   use_repository_button: true
 
+latex:
+  latex_engine: xelatex
+  sphinx:
+    config:
+      autodoc_pydantic_model_show_json: false
+
 sphinx:
   extra_extensions:
    - sphinx.ext.autodoc
