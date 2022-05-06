@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BIDS Stats Models &#8212; BIDS Stats Models Specification</title>
+    <title>Legacy specification &#8212; BIDS Stats Models Specification</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,7 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="BIDS Stats Models User Guide" href="guide.html" />
+    <link rel="next" title="BIDS Stats Models Object Reference" href="reference.html" />
+    <link rel="prev" title="BIDS Stats Models User Guide" href="guide.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -92,8 +93,8 @@ const thebe_selector_output = ".output, .cell_output"
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
- <li class="toctree-l1 current">
-  <a class="reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
    BIDS Stats Models
   </a>
  </li>
@@ -103,14 +104,14 @@ const thebe_selector_output = ".output, .cell_output"
   User Guide
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="guide.html">
    BIDS Stats Models User Guide
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="legacy.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Legacy specification
   </a>
  </li>
@@ -184,7 +185,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/intro.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/legacy.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -204,7 +205,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/bids-standard/stats-models/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/bids-standard/stats-models/issues/new?title=Issue%20on%20page%20%2Flegacy.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -231,21 +232,26 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   Introduction
+  <a class="reference internal nav-link" href="#analysis-nodes">
+   Analysis nodes
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#why">
-     Why?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#scope-and-limitations">
-     Scope and limitations
+    <a class="reference internal nav-link" href="#specifying-node-sequences">
+     Specifying node sequences
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#node-structure">
+   Node structure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enumerating-sequences-of-nodes">
+   Enumerating sequences of Nodes
+  </a>
  </li>
 </ul>
 
@@ -257,7 +263,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>BIDS Stats Models</h1>
+                <h1>Legacy specification</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -268,21 +274,26 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   Introduction
+  <a class="reference internal nav-link" href="#analysis-nodes">
+   Analysis nodes
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#why">
-     Why?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#scope-and-limitations">
-     Scope and limitations
+    <a class="reference internal nav-link" href="#specifying-node-sequences">
+     Specifying node sequences
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#node-structure">
+   Node structure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enumerating-sequences-of-nodes">
+   Enumerating sequences of Nodes
+  </a>
  </li>
 </ul>
 
@@ -293,27 +304,58 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="bids-stats-models">
-<h1>BIDS Stats Models<a class="headerlink" href="#bids-stats-models" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>BIDS Statistical Models is a specification aimed at describing how a General Linear Model (GLM) or similar model should be fit to BIDS datasets, with current emphasis on task-based fMRI. Its purpose is prescriptive (e.g. a recipe of how to fit a model), rather than descriptive (e.g., summary of models that have already been fit).</p>
-<p>At the core of BIDS Statistical Models (BSM) is a single, machine-readable JSON document that allows users to define a fully reproducible statistical model across multiple stages of analysis. This specification—in combination with a preprocessed BIDS dataset—is sufficient to execute the statistical models, with minimal configuration and manual intervention required from the user.</p>
-<div class="section" id="why">
-<h3>Why?<a class="headerlink" href="#why" title="Permalink to this headline">¶</a></h3>
-<p>The representation of neuroimaging statistical models in a formal, machine readable document has several benefits. First, although much recent progress has been made in standardizing and automating neuroimaging pre-processing pipelines, model fitting typically requires a high degree of customization, resulting in heterogeneous analysis scripts that are often not <strong>reproducible</strong>. Second, bespoke user-generated analysis scripts can lack <strong>transparency</strong>, making it difficult for other researchers to interpret the key modeling decisions made in an analysis. Third, without a common machine-readable format for statistical models, it is difficult to <strong>automate and standardize</strong> statistical modeling in neuroimaging. In addition to costing time-limited researchers substantial effort, user-generated modeling scripts are often not <strong>interoperable</strong>, making it difficult to interface outputs with downstream pipelines. Finally, since such scripts are typically tied to specific analysis software, it is difficult to test the effects of software and computational environments on the final results. Altogether, these factors are significant barriers to increasing the <strong>reproducibility and generalizability</strong> of neuroimaging results, and we believe that we can make progress by promoting the formal specification of neuroimaging analysis models.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="legacy-specification">
+<h1>Legacy specification<a class="headerlink" href="#legacy-specification" title="Permalink to this headline">¶</a></h1>
+<p>This document exists to preserve components in the <a class="reference external" href="https://docs.google.com/document/d/1bq5eNDHTb6Nkx3WUiOBgKvLNnaa5OMcGtD0AZ9yms2M/edit">Google Doc</a> until they are fully
+incorporated into another part of this website.</p>
+<div class="section" id="analysis-nodes">
+<h2>Analysis nodes<a class="headerlink" href="#analysis-nodes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="specifying-node-sequences">
+<h3>Specifying node sequences<a class="headerlink" href="#specifying-node-sequences" title="Permalink to this headline">¶</a></h3>
+<p>Each analysis specification is composed of a collection of Nodes,
+each describing a level of modeling (for example, run or subject),
+and one or more sequences of these Nodes.
+In traditional fMRI analysis packages such as SPM, FSL and AFNI,
+which use the “summary statistics” approach,
+the meaning of the levels of analysis is usually highly constrained,
+and reflects a fixed hierarchy of entities that one ascends sequentially.
+Most commonly, the 1st level analysis is understood to refer to
+the statistical analysis of each individual BOLD run,
+and the 2nd level analysis refers to the analysis of either a single subject
+(which typically involves aggregating over 2 or more sets of 1st level results)
+or an entire group of subjects (in the case where there’s only one run per subject).
+Alternatively, in some packages (e.g., SPM), runs are first concatenated within-subject,
+producing only 2-level structures (subject and group).
+This hierarchy is not entirely rigid,
+as it is sometimes necessary to inject another level into the mix – for example,
+when each subject is scanned in multiple sessions, one may have a 4-level structure,
+where the levels reflect the modeling of runs, sessions, subjects, and groups, respectively.</p>
+<p>At present, the BIDS-StatsModel spec assumes the same sequential hierarchy.
+Thus, the following node sequences are all valid:</p>
+<ul class="simple">
+<li><p>run → subject → dataset</p></li>
+<li><p>run → session → subject → dataset</p></li>
+<li><p>run → subject</p></li>
+<li><p>subject → dataset</p></li>
+</ul>
+<p>A key point to appreciate here is that the keyword associated with each level of analysis
+(i.e., “run”, “session”, “subject”, or “dataset”)
+describes the grouping structure of the analysis,
+rather than specifying the precise nature of the inputs and outputs.
+The grouping structure must be made explicit in the <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> list
+(see <a class="reference internal" href="reference.html#bsmschema.models.BIDSStatsModel" title="bsmschema.models.BIDSStatsModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BIDSStatsModel</span></code></a>).
+The Level does determine what variables will be available to the model (see §3.3 below).</p>
 </div>
-<div class="section" id="scope-and-limitations">
-<h3>Scope and limitations<a class="headerlink" href="#scope-and-limitations" title="Permalink to this headline">¶</a></h3>
-<p>The current specification deliberately focuses on the family of common general(ized) linear mixed models. Although in practice this specification was designed to operate on any BIDS-compliant datasets, the specification has been primarily tested with task-based fMRI data, and may require future extensions and software implementations to operate on other neuroimaging modalities.</p>
-<p>Other use cases that are possible but not thoroughly tested include: voxel-based morphometry (VBM), region of interest (ROI) analyses and contrasts between multiple tasks. In addition, the current specification is designed to operate on a single set of inputs at a time, and therefore cannot support multimodal analyses in a single model. Finally, there is currently no way to specify more sophisticated models, such as arbitrary covariance structures. We welcome contributions to showcase the use of the specification on these untested use cases, as well as proposals to extend the specification to support a broader range of analyses!</p>
 </div>
+<div class="section" id="node-structure">
+<h2>Node structure<a class="headerlink" href="#node-structure" title="Permalink to this headline">¶</a></h2>
+<p>Each analysis node has fields defined in <a class="reference internal" href="reference.html#bsmschema.models.BIDSStatsModel" title="bsmschema.models.BIDSStatsModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BIDSStatsModel</span></code></a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Model</span></code> specification MUST be invoked prior to <code class="docutils literal notranslate"><span class="pre">Contrasts</span></code> and <code class="docutils literal notranslate"><span class="pre">DummyContrasts</span></code>.
+That is, first, the <code class="docutils literal notranslate"><span class="pre">Model</span></code> specification is processed, typically resulting in the estimation of some model. Then, the <code class="docutils literal notranslate"><span class="pre">Contrasts</span></code> are generated from the parameter estimates obtained from the model estimation step and/or propagated from previous levels (see section 3.2).
+Note that all applicable variables may be used for grouping. For example, if a task has multiple runs and multiple subjects, to separately fit a run-level model for each run from each subject, one should specify <code class="docutils literal notranslate"><span class="pre">&quot;GroupBy&quot;:</span> <span class="pre">[&quot;run&quot;,</span> <span class="pre">&quot;subject&quot;]</span></code>. If <code class="docutils literal notranslate"><span class="pre">&quot;run&quot;</span></code> is omitted, then all runs for each subject will be fit with a single model; likewise, if <code class="docutils literal notranslate"><span class="pre">&quot;subject&quot;</span></code> is omitted, then one model will be fit for each run, combining all subjects for higher levels than the current node.</p>
 </div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
+<div class="section" id="enumerating-sequences-of-nodes">
+<h2>Enumerating sequences of Nodes<a class="headerlink" href="#enumerating-sequences-of-nodes" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -341,11 +383,18 @@ const thebe_selector_output = ".output, .cell_output"
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="guide.html" title="next page">
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="guide.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">BIDS Stats Models User Guide</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="reference.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">BIDS Stats Models User Guide</p>
+        <p class="prev-next-title">BIDS Stats Models Object Reference</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

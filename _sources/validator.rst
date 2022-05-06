@@ -1,6 +1,8 @@
-==========================
-BIDS Stats Model Validator
-==========================
+.. only:: html
 
-.. raw:: html
-    :file: _validator.html
+    ==========================
+    BIDS Stats Model Validator
+    ==========================
+
+    .. raw:: html
+        :file: _validator.html
