@@ -4,14 +4,15 @@
 format: jb-book
 root: intro
 parts:
-- caption: User Guide
-  chapters:
-  - file: guide
-  - file: legacy
-- caption: Specification
-  chapters:
-  - file: reference
-  - file: validator
-- caption: Examples and resources
-  chapters:
-  - file: model-zoo
+  - caption: User Guide
+    chapters:
+      - file: json_101
+      - file: guide
+      - file: legacy
+  - caption: Specification
+    chapters:
+      - file: reference
+      - file: validator
+  - caption: Examples and resources
+    chapters:
+      - file: model-zoo
