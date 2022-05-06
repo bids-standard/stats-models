@@ -38,55 +38,37 @@
   </style>
   <div class="left">
     Models go here:
-    <textarea id="jsonInput">
-    </textarea>
+    <div id="jsonInput">
+    </div>
   </div>
   <div class="right">
     Validator Output:<br />
     <div id="isValidContainer">
     </div>
   </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/6.12.2/ajv.min.js"></script>
 <script async>
   const url = "./BIDSStatsModel.json"
-  let validate
+  import { JSONEditor, createAjvValidator } from '../../package/dist/jsoneditor.js'
+  let validator
   let ajv
   (async function() {
     ajv = new Ajv({allErrors: true})
-    validate = await fetch(url).then(resp => resp.json()).then(schema => ajv.compile(schema))
+    await fetch(url).then((resp) => {
+      return resp.json()
+    }).then((schema) => {
+      validator = ajv.compile(schema)
+      const target = document.getElementById('jsoneditor')
+      const editor = new JSONEditor({
+        target: document.getElementById('jsonInput'),
+        props: {
+          content,
+          onChange: (update) => console.log('onChange', update),
+          validator: validator
+        }
+      })
+
+    })
   })()
 
-  function renderValid(valid) {
-    let display = [];
-    valid.map((x, i) => {
-      display.push(`<li key={i}><pre>${JSON.stringify(x, null, 2)}</pre></li>`);
-      return x;
-    });
-    return `<div><ul>${display.join('')}</ul></div>`
-  }
-
-  function handleChange(e){
-    console.log(e.target.value)
-    let newVal = e.target.value;
-    e.preventDefault();
-    try {
-      newVal = JSON.parse(newVal);
-    } catch(e) {
-       console.log(e);
-    }
-
-    //Validation Rule
-    let valid = validate(newVal);
-    if (valid) {
-        valid = ['Valid!'];
-    } else {
-        console.log(validate.errors);
-        valid = validate.errors;
-    }
-    document.getElementById('isValidContainer').innerHTML = renderValid(valid)
-  }
-  document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('jsonInput').addEventListener('input', handleChange)
-  }, false);
 </script>
 </div>

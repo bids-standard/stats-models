@@ -46,3 +46,7 @@ sphinx:
     add_module_names: false
     html_extra_path:
       - schema
+    html_js_files 
+      - js/jsoneditor.js
+      - js/jsoneditor.js.map
+
