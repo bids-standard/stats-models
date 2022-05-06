@@ -6,6 +6,15 @@
       "title": "Description",
       "type": "string"
     },
+    "Test": {
+      "title": "Test",
+      "enum": [
+        "skip",
+        "t",
+        "F"
+      ],
+      "type": "string"
+    },
     "Name": {
       "title": "Name",
       "type": "string"
@@ -66,18 +75,12 @@
           }
         }
       ]
-    },
-    "Test": {
-      "title": "Test",
-      "enum": [
-        "t",
-        "F"
-      ],
-      "type": "string"
     }
   },
   "required": [
+    "Test",
     "Name",
-    "ConditionList"
+    "ConditionList",
+    "Weights"
   ]
 }

@@ -258,6 +258,15 @@
           "title": "Description",
           "type": "string"
         },
+        "Test": {
+          "title": "Test",
+          "enum": [
+            "skip",
+            "t",
+            "F"
+          ],
+          "type": "string"
+        },
         "Name": {
           "title": "Name",
           "type": "string"
@@ -318,27 +327,31 @@
               }
             }
           ]
-        },
-        "Test": {
-          "title": "Test",
-          "enum": [
-            "t",
-            "F"
-          ],
-          "type": "string"
         }
       },
       "required": [
+        "Test",
         "Name",
-        "ConditionList"
+        "ConditionList",
+        "Weights"
       ]
     },
     "DummyContrasts": {
       "title": "DummyContrasts",
+      "description": "Dummy contrasts are contrasts with one condition, a weight of one,\nand the same name as the condition. That is,\n\n::\n\n    \"DummyContrasts\": {\"Contrasts\": [\"A\", \"B\"], \"Test\": \"t\"}\n\nis equivalent to::\n\n    \"Contrasts\": [\n        {\"Name\": \"A\", \"ConditionList\": [\"A\"], \"Weights\": [1], \"Test\": \"t\"}\n        {\"Name\": \"B\", \"ConditionList\": [\"B\"], \"Weights\": [1], \"Test\": \"t\"}\n    ]",
       "type": "object",
       "properties": {
         "Description": {
           "title": "Description",
+          "type": "string"
+        },
+        "Test": {
+          "title": "Test",
+          "enum": [
+            "skip",
+            "t",
+            "F"
+          ],
           "type": "string"
         },
         "Contrasts": {
@@ -357,18 +370,10 @@
               }
             ]
           }
-        },
-        "Test": {
-          "title": "Test",
-          "enum": [
-            "t",
-            "F"
-          ],
-          "type": "string"
         }
       },
       "required": [
-        "Contrasts"
+        "Test"
       ]
     }
   }
