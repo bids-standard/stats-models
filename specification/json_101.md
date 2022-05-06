@@ -133,6 +133,8 @@ a bracket or something similar. And even fix mistakes for you.
 
 ![](/images/autofix.jpg)
 
+<br>
+
 If you directly want to edit you BIDS stats model JSON in the browser, you can
 also use the BIDS stats model JSON schema by clicking
 `Options --> JSON schema --> URL` and give it this URL:
@@ -140,3 +142,45 @@ also use the BIDS stats model JSON schema by clicking
 https://raw.githubusercontent.com/bids-standard/stats-models/gh-pages/BIDSStatsModel.json
 
 ![](/images/schema_in_browser.jpg)
+
+### On your computer
+
+If you need to edit JSON files on your computer, it will make your life easier
+if you use a modern code editor like:
+
+- [visual studio code](https://code.visualstudio.com/)
+- [atom](https://atom.io/)
+
+Modern code editors can tell you if you have a valid JSON file and highlight the
+lines where you have errors. Most of them usually also have code formatting
+extensions that can automatically indent your JSON like
+[Prettier for vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+You can also validate the BIDS stats model as you are creating it:
+
+- by adding the following key-value pair in your BIDS stats model,
+
+```json
+  "$schema": "https://raw.githubusercontent.com/bids-standard/stats-models/gh-pages/BIDSStatsModel.json",
+```
+
+For vs-code you can also add this to your settings:
+
+```json
+"json.schemas": [
+    {"fileMatch": [
+            "model_*_smdl.json"
+        ],
+        "url": "https://raw.githubusercontent.com/bids-standard/stats-models/gh-pages/BIDSStatsModel.json"
+    }
+]
+```
+
+Source:
+https://code.visualstudio.com/docs/languages/json#_json-schemas-and-settings
+
+<br>
+
+Example of JSON syntax error and BIDS stats model schema error in VS code: 
+
+![](/images/vs_code_validation.jpg)
