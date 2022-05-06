@@ -2,6 +2,10 @@
   "title": "Contrast",
   "type": "object",
   "properties": {
+    "Description": {
+      "title": "Description",
+      "type": "string"
+    },
     "Name": {
       "title": "Name",
       "type": "string"

@@ -2,6 +2,10 @@
   "title": "HRF",
   "type": "object",
   "properties": {
+    "Description": {
+      "title": "Description",
+      "type": "string"
+    },
     "Variables": {
       "title": "Variables",
       "type": "array",
@@ -31,6 +35,10 @@
       "title": "Parameters",
       "type": "object",
       "properties": {
+        "Description": {
+          "title": "Description",
+          "type": "string"
+        },
         "PeakDelay": {
           "title": "Peakdelay",
           "type": "number"

@@ -3,16 +3,16 @@
   "description": "A BIDS Stats Model is a JSON file that defines one or more hierarchical models\non brain imaging data.\n\nA hierarchical model is a sequence of estimator **nodes**. These nodes are connected\nvia **edges** to form a directed, acyclic graph. The graph contains a single \"root\"\nnode, which only has outgoing edges, and may have many \"leaf\" nodes that only have\nincoming edges. Each path from the root to a leaf may be thought of as a single\nhierarchical model.",
   "type": "object",
   "properties": {
+    "Description": {
+      "title": "Description",
+      "type": "string"
+    },
     "Name": {
       "title": "Name",
       "type": "string"
     },
     "BIDSModelVersion": {
       "title": "Bidsmodelversion",
-      "type": "string"
-    },
-    "Description": {
-      "title": "Description",
       "type": "string"
     },
     "Input": {
@@ -48,6 +48,10 @@
       "title": "Transformations",
       "type": "object",
       "properties": {
+        "Description": {
+          "title": "Description",
+          "type": "string"
+        },
         "Transformer": {
           "title": "Transformer",
           "enum": [
@@ -70,6 +74,10 @@
       "title": "Parameters",
       "type": "object",
       "properties": {
+        "Description": {
+          "title": "Description",
+          "type": "string"
+        },
         "PeakDelay": {
           "title": "Peakdelay",
           "type": "number"
@@ -107,6 +115,10 @@
       "title": "HRF",
       "type": "object",
       "properties": {
+        "Description": {
+          "title": "Description",
+          "type": "string"
+        },
         "Variables": {
           "title": "Variables",
           "type": "array",
@@ -136,6 +148,10 @@
       "title": "Options",
       "type": "object",
       "properties": {
+        "Description": {
+          "title": "Description",
+          "type": "string"
+        },
         "HighPassFilterCutoffHz": {
           "title": "Highpassfiltercutoffhz",
           "type": "number"
@@ -171,6 +187,10 @@
       "title": "Model",
       "type": "object",
       "properties": {
+        "Description": {
+          "title": "Description",
+          "type": "string"
+        },
         "Type": {
           "title": "Type",
           "enum": [
@@ -226,6 +246,10 @@
       "title": "Contrast",
       "type": "object",
       "properties": {
+        "Description": {
+          "title": "Description",
+          "type": "string"
+        },
         "Name": {
           "title": "Name",
           "type": "string"
@@ -305,6 +329,10 @@
       "title": "DummyContrasts",
       "type": "object",
       "properties": {
+        "Description": {
+          "title": "Description",
+          "type": "string"
+        },
         "Contrasts": {
           "title": "Contrasts",
           "type": "array",
@@ -340,6 +368,10 @@
       "description": "A node represents an estimator that applies to a given level of analysis.\nIt contains sufficient information to construct a design matrix, estimate\nparameter weights (betas) and construct contrasts.",
       "type": "object",
       "properties": {
+        "Description": {
+          "title": "Description",
+          "type": "string"
+        },
         "Level": {
           "title": "Level",
           "enum": [
@@ -390,6 +422,10 @@
       "description": "An ``Edge`` connects two ``Node``\\s, indicating the outputs (contrasts) of the ``Source`` node \nare to be made available as inputs to the ``Destination`` node.\n\nContrasts may be filtered by any metadata field, including entities. \nEach contrast has an additional entity ``\"contrast\"`` that may be used to filter contrasts by name.",
       "type": "object",
       "properties": {
+        "Description": {
+          "title": "Description",
+          "type": "string"
+        },
         "Source": {
           "title": "Source",
           "type": "string"

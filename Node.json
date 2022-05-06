@@ -3,6 +3,10 @@
   "description": "A node represents an estimator that applies to a given level of analysis.\nIt contains sufficient information to construct a design matrix, estimate\nparameter weights (betas) and construct contrasts.",
   "type": "object",
   "properties": {
+    "Description": {
+      "title": "Description",
+      "type": "string"
+    },
     "Level": {
       "title": "Level",
       "enum": [
@@ -52,6 +56,10 @@
       "title": "Transformations",
       "type": "object",
       "properties": {
+        "Description": {
+          "title": "Description",
+          "type": "string"
+        },
         "Transformer": {
           "title": "Transformer",
           "enum": [
@@ -74,6 +82,10 @@
       "title": "Parameters",
       "type": "object",
       "properties": {
+        "Description": {
+          "title": "Description",
+          "type": "string"
+        },
         "PeakDelay": {
           "title": "Peakdelay",
           "type": "number"
@@ -111,6 +123,10 @@
       "title": "HRF",
       "type": "object",
       "properties": {
+        "Description": {
+          "title": "Description",
+          "type": "string"
+        },
         "Variables": {
           "title": "Variables",
           "type": "array",
@@ -140,6 +156,10 @@
       "title": "Options",
       "type": "object",
       "properties": {
+        "Description": {
+          "title": "Description",
+          "type": "string"
+        },
         "HighPassFilterCutoffHz": {
           "title": "Highpassfiltercutoffhz",
           "type": "number"
@@ -175,6 +195,10 @@
       "title": "Model",
       "type": "object",
       "properties": {
+        "Description": {
+          "title": "Description",
+          "type": "string"
+        },
         "Type": {
           "title": "Type",
           "enum": [
@@ -230,6 +254,10 @@
       "title": "Contrast",
       "type": "object",
       "properties": {
+        "Description": {
+          "title": "Description",
+          "type": "string"
+        },
         "Name": {
           "title": "Name",
           "type": "string"
@@ -309,6 +337,10 @@
       "title": "DummyContrasts",
       "type": "object",
       "properties": {
+        "Description": {
+          "title": "Description",
+          "type": "string"
+        },
         "Contrasts": {
           "title": "Contrasts",
           "type": "array",

@@ -2,6 +2,10 @@
   "title": "Transformations",
   "type": "object",
   "properties": {
+    "Description": {
+      "title": "Description",
+      "type": "string"
+    },
     "Transformer": {
       "title": "Transformer",
       "enum": [

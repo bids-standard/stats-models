@@ -2,6 +2,10 @@
   "title": "Options",
   "type": "object",
   "properties": {
+    "Description": {
+      "title": "Description",
+      "type": "string"
+    },
     "HighPassFilterCutoffHz": {
       "title": "Highpassfiltercutoffhz",
       "type": "number"
