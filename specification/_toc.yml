@@ -7,10 +7,11 @@ parts:
 - caption: User Guide
   chapters:
   - file: guide
-- caption: Reference
+  - file: legacy
+- caption: Specification
   chapters:
   - file: reference
   - file: validator
-- caption: Model Zoo
+- caption: Examples and resources
   chapters:
   - file: model-zoo

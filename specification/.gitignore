@@ -1,1 +1,5 @@
 _build
+
+# Currently generated with `python -m bsmschema schema`
+# We should set this up to be some kind of auto-doc thing
+schema/

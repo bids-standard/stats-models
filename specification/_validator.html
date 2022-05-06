@@ -6,7 +6,7 @@
       flex-direction: column;
       width: 100%;
     }
-
+  
     .App {
       display: flex;
       flex-direction: row;
@@ -16,20 +16,31 @@
 
     .app > * { flex: 1; }
     .left {
+      unset: all;
       width: 100%;
     }
 
-    .right {
-      width: 100%;
-      margin-left: 30px;
-    }
-    .clear {
-      clear: both;
+    .bg.svelte-g4wg3a {
+      z-index: 2001;
     }
 
-    textarea {
+    #jsonInput {
       height: 100%;
       width: 100%;
+    } 
+    #jsonInput .row {
+      margin-left: 0px;
+      margin-right: 0px;
+      display: revert;
+      flex-wrap: revert;
+    }
+
+    #jsonInput .first {
+      margin-top: 5px !important;
+    }
+
+    #jsonInput div.contents{
+      padding: revert !important;
     }
     .col-md-9 {
       max-width: 100%;
@@ -37,36 +48,31 @@
     }
   </style>
   <div class="left">
-    Models go here:
-    <div id="jsonInput">
-    </div>
+      Models go here:<br />
+      <div id="jsonInput"></div>
   </div>
-  <div class="right">
-    Validator Output:<br />
-    <div id="isValidContainer">
-    </div>
-  </div>
-<script async>
+<script type="module" src='./_static/js/jsoneditor.js'></script>
+<script type="module" async>
+  import { JSONEditor, createAjvValidator } from './_static/js/jsoneditor.js'
   const url = "./BIDSStatsModel.json"
-  import { JSONEditor, createAjvValidator } from '../../package/dist/jsoneditor.js'
+  let content = {text: ''}
   let validator
-  let ajv
   (async function() {
-    ajv = new Ajv({allErrors: true})
     await fetch(url).then((resp) => {
       return resp.json()
     }).then((schema) => {
-      validator = ajv.compile(schema)
+      validator = createAjvValidator(schema)
       const target = document.getElementById('jsoneditor')
       const editor = new JSONEditor({
         target: document.getElementById('jsonInput'),
         props: {
           content,
           onChange: (update) => console.log('onChange', update),
-          validator: validator
+          validator: validator,
+          mode: 'code',
+          mainMenuBar: true
         }
       })
-
     })
   })()
 
