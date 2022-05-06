@@ -57,11 +57,11 @@ BIDSStatsModel.parse_file('stats-models/specification/examples/model-example_smd
 1) Build the JupyterBook:
 
    ```
-   make build
+	jb build specification
    ```
 
 1) Serve the built website:
 
    ```
-   make serve
+	python -m http.server -d specification/_build/html/
    ```
