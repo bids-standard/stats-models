@@ -60,6 +60,7 @@ HRFModel = Literal[
 ]
 
 StatisticalTest = Literal[
+    "skip",
     "t",
     "F",
 ]
@@ -160,38 +161,47 @@ class Options(_Commentable):
     "pca" returns the first principal component of all voxels within each discrete non-zero value found in the image."""
 
 
-class Contrast(_Commentable):
+class _Contrast(_Commentable):
+    Test: StatisticalTest
+    """The type of test statistic to compute on the contrast.
+    The special value "skip" indicates that no statistical test is to be performed."""
+
+
+class Contrast(_Contrast):
     Name: str
     """The name of the contrast. Must be unique."""
     ConditionList: VariableList
     """A list of variables used to compute the contrast. 
     Must be a strict subset of the list of X available in the namespace 
     (i.e., either produced by the model section, or available via propagation from previous nodes)."""
-    Weights: Optional[Union[Weights, List[Weights]]]
+    Weights: Union[Weights, List[Weights]]
     """A 1D or 2D array of weights. 
     The array must have exactly the same number of total elements as in ConditionList. 
     For t-tests, a 1D array must be passed. For F-tests, either a 1D or a 2D array may be passed. 
     Variables are mapped 1-to-1 onto weights in the order they appear in ConditionList. 
-    If no weights are passed, unit weights are assigned to all variables 
-    (i.e., if variables = [‘A’, ‘B’, ‘C’], weights will be [1, 1, 1]). 
     Fractional values MAY be passed as strings (e.g., “1/3")."""
-    Test: Optional[StatisticalTest]
-    """The type of test statistic to compute on the contrast. 
-    If provided, must be one of “t”,  “F”. 
-    Alternatively, if no Test is provided, no statistical test will be performed. 
-    This allows the contrasts section to be used to generate weighted sums of parameter estimates 
-    without computing associated statistical maps 
-    (e.g., to compute beta maps for individual subjects that are to be fed to the group level, 
-    without conducting single-subject statistical tests)."""
 
 
-class DummyContrasts(_Commentable):
-    Contrasts: VariableList
-    """A list of variables used to compute the contrast. 
-    Must be a strict subset of the list of X available in the namespace 
-    (i.e., either produced by the model section, or available via propagation from previous nodes)."""
-    Test: Optional[StatisticalTest]
-    """Indicates the contrast type that will be applied for each dummy contrast in the section."""
+class DummyContrasts(_Contrast):
+    """Dummy contrasts are contrasts with one condition, a weight of one,
+    and the same name as the condition. That is,
+
+    ::
+
+        "DummyContrasts": {"Contrasts": ["A", "B"], "Test": "t"}
+
+    is equivalent to::
+
+        "Contrasts": [
+            {"Name": "A", "ConditionList": ["A"], "Weights": [1], "Test": "t"}
+            {"Name": "B", "ConditionList": ["B"], "Weights": [1], "Test": "t"}
+        ]
+
+    """
+    Contrasts: Optional[VariableList]
+    """A list of variables to construct DummyContrasts for.
+    Must be a strict subset of ``Model.X``.
+    If absent, then dummy contrasts for all variables are constructed."""
 
 
 class Model(_Commentable):
