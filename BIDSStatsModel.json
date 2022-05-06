@@ -387,7 +387,7 @@
     },
     "Edge": {
       "title": "Edge",
-      "description": "An ``Edge`` connects two ``Node``\\s, indicating the outputs (contrasts) of the ``Source`` node are to be made available as inputs to the ``Destination`` node.\n\nContrasts may be filtered by any metadata field, including entities. Each contrast has an additional entity ``\"contrast\"`` that may be used to filter contrasts by name.",
+      "description": "An ``Edge`` connects two ``Node``\\s, indicating the outputs (contrasts) of the ``Source`` node \nare to be made available as inputs to the ``Destination`` node.\n\nContrasts may be filtered by any metadata field, including entities. \nEach contrast has an additional entity ``\"contrast\"`` that may be used to filter contrasts by name.",
       "type": "object",
       "properties": {
         "Source": {
