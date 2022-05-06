@@ -6,7 +6,6 @@ The following example model is intended to demonstrate many features of BIDS Sta
 
 ```{literalinclude} examples/model-example_smdl.json
 :language: JSON
-:linenos:
 ```
 
 ## Tutorial
