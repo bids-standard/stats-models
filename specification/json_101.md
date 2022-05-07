@@ -49,7 +49,7 @@ In JSON, arrays are:
 ["this", "is", 1, "JSON", "array"]
 ```
 
-### Boolean
+### A note on Booleans
 
 In JSON boolean values must be typed as lowercase with no quotes:
 
@@ -69,7 +69,7 @@ For example:
 { "ThisIsTrue": true, "ThisIsTrue": false }
 ```
 
-It is also common to indent JSON files to help human readibility.
+It is common to indent JSON files to help human readibility.
 
 ```json
 {
@@ -77,6 +77,10 @@ It is also common to indent JSON files to help human readibility.
   "ThisIsTrue": false
 }
 ```
+
+Finally, you cannot add comments in JSON files, but the BIDS stats model allows
+you to add a `"Description"` key to most objects to give explanations to the
+reader.
 
 ### Nesting
 
@@ -181,6 +185,6 @@ https://code.visualstudio.com/docs/languages/json#_json-schemas-and-settings
 
 <br>
 
-Example of JSON syntax error and BIDS stats model schema error in VS code: 
+Example of JSON syntax error and BIDS stats model schema error in VS code:
 
 ![](/images/vs_code_validation.jpg)
