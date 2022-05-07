@@ -1,5 +1,2 @@
 .*.swp
 .vscode
-
-# jupyter book related
-bsmschema/build/
