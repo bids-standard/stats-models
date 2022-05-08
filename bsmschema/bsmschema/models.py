@@ -161,15 +161,16 @@ class Options(_Commentable):
     "pca" returns the first principal component of all voxels within each discrete non-zero value found in the image."""
 
 
-class _Contrast(_Commentable):
-    Test: StatisticalTest
-    """The type of test statistic to compute on the contrast.
-    The special value "skip" indicates that no statistical test is to be performed."""
-
-
-class Contrast(_Contrast):
+class Contrast(_Commentable):
+    """Contrasts are the outputs of a :py:class:`Node`.
+    """
     Name: str
-    """The name of the contrast. Must be unique."""
+    r"""The name of the contrast.
+    Must be unique in :py:attr:`Node.Contrasts` and must not appear in
+    :py:attr:`DummyContrasts.Contrasts` for the same Node.
+
+    This name will be attached to output statistical maps via the ``"contrast"`` entity.
+    """
     ConditionList: VariableList
     """A list of variables used to compute the contrast. 
     Must be a strict subset of the list of X available in the namespace 
@@ -180,9 +181,14 @@ class Contrast(_Contrast):
     For t-tests, a 1D array must be passed. For F-tests, either a 1D or a 2D array may be passed. 
     Variables are mapped 1-to-1 onto weights in the order they appear in ConditionList. 
     Fractional values MAY be passed as strings (e.g., “1/3")."""
+    # Note: Keep Test synced with DummyContrasts.Test, including docstring and type
+    Test: StatisticalTest
+    """The type of test statistic to compute on the contrast.
+    The special value "skip" indicates that no statistical test is to be performed."""
 
 
-class DummyContrasts(_Contrast):
+
+class DummyContrasts(_Commentable):
     """Dummy contrasts are contrasts with one condition, a weight of one,
     and the same name as the condition. That is,
 
@@ -202,6 +208,10 @@ class DummyContrasts(_Contrast):
     """A list of variables to construct DummyContrasts for.
     Must be a strict subset of ``Model.X``.
     If absent, then dummy contrasts for all variables are constructed."""
+    # Note: Keep Test synced with Contrast.Test, including docstring and type
+    Test: StatisticalTest
+    """The type of test statistic to compute on the contrast.
+    The special value "skip" indicates that no statistical test is to be performed."""
 
 
 class Model(_Commentable):
