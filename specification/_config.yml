@@ -45,9 +45,11 @@ sphinx:
    - sphinxcontrib.autodoc_pydantic
   config:
     autodoc_member_order: 'bysource'
+    autodoc_pydantic_model_show_field_summary: false
     autodoc_pydantic_model_summary_list_order: bysource
     autodoc_pydantic_model_member_order: bysource
     autodoc_pydantic_model_signature_prefix: object
+    autodoc_pydantic_model_undoc_members: false
     autosummary_generate: true
     add_module_names: false
     html_extra_path:

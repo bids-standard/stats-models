@@ -1,10 +1,17 @@
 """
-==================================
-BIDS Stats Models Object Reference
-==================================
+The objects defined here are nested as follows:
 
-This document defines the valid keys and values in a BIDS Stats Model.
-A BIDS Stats Model is defined in a `JSON <https://www.json.org/json-en.html>`_ document.
+* :py:class:`BIDSStatsModel`
+   * :py:class:`Node`
+      * :py:class:`Transformations`
+      * :py:class:`Model`
+         * :py:class:`HRF`
+         * :py:class:`Options`
+      * :py:class:`Contrast`
+      * :py:class:`DummyContrasts`
+   * :py:class:`Edge`
+
+Note that these are the structured and validatable objects.
 
 """
 from enum import Enum
