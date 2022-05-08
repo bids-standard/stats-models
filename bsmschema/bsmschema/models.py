@@ -85,8 +85,9 @@ class _Commentable(BaseModel):
 
 
 class Edge(_Commentable):
-    """An ``Edge`` connects two ``Node``\s, indicating the outputs (contrasts) of the ``Source`` node 
-    are to be made available as inputs to the ``Destination`` node.
+    r"""An Edge connects two :py:class:`Node`\s, indicating the outputs (contrasts) of
+    the :py:attr:`Source` Node are to be made available as inputs to the
+    :py:attr:`Destination` Node.
 
     Contrasts may be filtered by any metadata field, including entities. 
     Each contrast has an additional entity ``"contrast"`` that may be used to filter contrasts by name.
@@ -102,6 +103,15 @@ class Edge(_Commentable):
 
 
 class Transformations(_Commentable):
+    """Transformations describe modifications of variables to prepare a design matrix.
+
+    This field is indirect, with a :py:attr:`Transformer` name identifying an instruction
+    set, and a sequence of :py:attr:`Instructions`.
+
+    A Transformer accepts data frames of sparse (onset, duration, amplitude) and
+    dense (onset, sampling rate, values) variables along with the list of Instructions,
+    and then return a new set of sparse and/or dense variables.
+    """
     Transformer: TransformerID
     """Name of the specification of an instruction set."""
     Instructions: List[Any]
@@ -110,6 +120,7 @@ class Transformations(_Commentable):
 
 
 class Parameters(_Commentable):
+    """Parameters to an :py:class:`HRF` model."""
     PeakDelay: Optional[float]
     """Delay, in seconds, from onset to peak response. 
     Applies to models: Gamma, DoubleGamma."""
@@ -135,8 +146,9 @@ class Parameters(_Commentable):
 
 
 class HRF(_Commentable):
+    """Specification of a hemodynamic response function (HRF) model."""
     Variables: List[str]
-    """Name of the variables to be convolved."""
+    """Name of the variables to be convolved. These must appear in :py:attr:`Model.X`"""
     Model: HRFModel
     """Name of a hemodynamic model."""
     Parameters: Optional[Parameters]
@@ -144,6 +156,8 @@ class HRF(_Commentable):
 
 
 class Options(_Commentable):
+    """ Options
+    """
     HighPassFilterCutoffHz: Optional[float]
     """The cutoff frequency, in Hz, for a high-pass filter."""
     LowPassFilterCutoffHz: Optional[float]
@@ -221,7 +235,10 @@ class DummyContrasts(_Commentable):
     The special value "skip" indicates that no statistical test is to be performed."""
 
 
+
 class Model(_Commentable):
+    """Model
+    """
     Type: ModelType
     """The type of analysis to run. 
     The following values are currently defined: 
@@ -269,7 +286,10 @@ class Node(_Commentable):
     Level: NodeLevel
     """Level of analysis being described."""
     Name: str
-    """Name of node."""
+    r"""The name of the node. Must be unique in :py:attr:`BIDSStatsModel.Nodes`.
+
+    This name is used by :py:class:`Edge`\s to connect two :py:class:`Node`\s.
+    """
     GroupBy: List[str]
     """The output statistical maps received from the input node are split along 
     unique combinations of the grouping variables and passed to the model as subsets. 
