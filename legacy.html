@@ -44,6 +44,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
+    <script src="_static/js/jsoneditor.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -122,10 +123,62 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="reference.html">
    BIDS Stats Models Object Reference
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.BIDSStatsModel.html">
+     bsmschema.models.BIDSStatsModel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.Node.html">
+     bsmschema.models.Node
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.Transformations.html">
+     bsmschema.models.Transformations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.Model.html">
+     bsmschema.models.Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.HRF.html">
+     bsmschema.models.HRF
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.Options.html">
+     bsmschema.models.Options
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.Contrast.html">
+     bsmschema.models.Contrast
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.DummyContrasts.html">
+     bsmschema.models.DummyContrasts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.Edge.html">
+     bsmschema.models.Edge
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="validator.html">
@@ -343,13 +396,13 @@ Thus, the following node sequences are all valid:</p>
 describes the grouping structure of the analysis,
 rather than specifying the precise nature of the inputs and outputs.
 The grouping structure must be made explicit in the <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> list
-(see <a class="reference internal" href="reference.html#bsmschema.models.BIDSStatsModel" title="bsmschema.models.BIDSStatsModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BIDSStatsModel</span></code></a>).
+(see <a class="reference internal" href="_autosummary/bsmschema.models.BIDSStatsModel.html#bsmschema.models.BIDSStatsModel" title="bsmschema.models.BIDSStatsModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BIDSStatsModel</span></code></a>).
 The Level does determine what variables will be available to the model (see §3.3 below).</p>
 </div>
 </div>
 <div class="section" id="node-structure">
 <h2>Node structure<a class="headerlink" href="#node-structure" title="Permalink to this headline">¶</a></h2>
-<p>Each analysis node has fields defined in <a class="reference internal" href="reference.html#bsmschema.models.BIDSStatsModel" title="bsmschema.models.BIDSStatsModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BIDSStatsModel</span></code></a>.</p>
+<p>Each analysis node has fields defined in <a class="reference internal" href="_autosummary/bsmschema.models.BIDSStatsModel.html#bsmschema.models.BIDSStatsModel" title="bsmschema.models.BIDSStatsModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BIDSStatsModel</span></code></a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Model</span></code> specification MUST be invoked prior to <code class="docutils literal notranslate"><span class="pre">Contrasts</span></code> and <code class="docutils literal notranslate"><span class="pre">DummyContrasts</span></code>.
 That is, first, the <code class="docutils literal notranslate"><span class="pre">Model</span></code> specification is processed, typically resulting in the estimation of some model. Then, the <code class="docutils literal notranslate"><span class="pre">Contrasts</span></code> are generated from the parameter estimates obtained from the model estimation step and/or propagated from previous levels (see section 3.2).
 Note that all applicable variables may be used for grouping. For example, if a task has multiple runs and multiple subjects, to separately fit a run-level model for each run from each subject, one should specify <code class="docutils literal notranslate"><span class="pre">&quot;GroupBy&quot;:</span> <span class="pre">[&quot;run&quot;,</span> <span class="pre">&quot;subject&quot;]</span></code>. If <code class="docutils literal notranslate"><span class="pre">&quot;run&quot;</span></code> is omitted, then all runs for each subject will be fit with a single model; likewise, if <code class="docutils literal notranslate"><span class="pre">&quot;subject&quot;</span></code> is omitted, then one model will be fit for each run, combining all subjects for higher levels than the current node.</p>

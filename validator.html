@@ -44,6 +44,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
+    <script src="_static/js/jsoneditor.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -55,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Model Zoo" href="model-zoo.html" />
-    <link rel="prev" title="BIDS Stats Models Object Reference" href="reference.html" />
+    <link rel="prev" title="bsmschema.models.Edge" href="_autosummary/bsmschema.models.Edge.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -122,10 +123,62 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="reference.html">
    BIDS Stats Models Object Reference
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.BIDSStatsModel.html">
+     bsmschema.models.BIDSStatsModel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.Node.html">
+     bsmschema.models.Node
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.Transformations.html">
+     bsmschema.models.Transformations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.Model.html">
+     bsmschema.models.Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.HRF.html">
+     bsmschema.models.HRF
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.Options.html">
+     bsmschema.models.Options
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.Contrast.html">
+     bsmschema.models.Contrast
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.DummyContrasts.html">
+     bsmschema.models.DummyContrasts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.Edge.html">
+     bsmschema.models.Edge
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
@@ -254,7 +307,7 @@ const thebe_selector_output = ".output, .cell_output"
       flex-direction: column;
       width: 100%;
     }
-
+  
     .App {
       display: flex;
       flex-direction: row;
@@ -264,20 +317,31 @@ const thebe_selector_output = ".output, .cell_output"
 
     .app > * { flex: 1; }
     .left {
+      unset: all;
       width: 100%;
     }
 
-    .right {
-      width: 100%;
-      margin-left: 30px;
-    }
-    .clear {
-      clear: both;
+    .bg.svelte-g4wg3a {
+      z-index: 2001;
     }
 
-    textarea {
+    #jsonInput {
       height: 100%;
       width: 100%;
+    } 
+    #jsonInput .row {
+      margin-left: 0px;
+      margin-right: 0px;
+      display: revert;
+      flex-wrap: revert;
+    }
+
+    #jsonInput .first {
+      margin-top: 5px !important;
+    }
+
+    #jsonInput div.contents{
+      padding: revert !important;
     }
     .col-md-9 {
       max-width: 100%;
@@ -285,57 +349,34 @@ const thebe_selector_output = ".output, .cell_output"
     }
   </style>
   <div class="left">
-    Models go here:
-    <textarea id="jsonInput">
-    </textarea>
+      Models go here:<br />
+      <div id="jsonInput"></div>
   </div>
-  <div class="right">
-    Validator Output:<br />
-    <div id="isValidContainer">
-    </div>
-  </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/6.12.2/ajv.min.js"></script>
-<script async>
+<script type="module" src='./_static/js/jsoneditor.js'></script>
+<script type="module" async>
+  import { JSONEditor, createAjvValidator } from './_static/js/jsoneditor.js'
   const url = "./BIDSStatsModel.json"
-  let validate
-  let ajv
+  let content = {text: ''}
+  let validator
   (async function() {
-    ajv = new Ajv({allErrors: true})
-    validate = await fetch(url).then(resp => resp.json()).then(schema => ajv.compile(schema))
+    await fetch(url).then((resp) => {
+      return resp.json()
+    }).then((schema) => {
+      validator = createAjvValidator(schema)
+      const target = document.getElementById('jsoneditor')
+      const editor = new JSONEditor({
+        target: document.getElementById('jsonInput'),
+        props: {
+          content,
+          onChange: (update) => console.log('onChange', update),
+          validator: validator,
+          mode: 'code',
+          mainMenuBar: true
+        }
+      })
+    })
   })()
 
-  function renderValid(valid) {
-    let display = [];
-    valid.map((x, i) => {
-      display.push(`<li key={i}><pre>${JSON.stringify(x, null, 2)}</pre></li>`);
-      return x;
-    });
-    return `<div><ul>${display.join('')}</ul></div>`
-  }
-
-  function handleChange(e){
-    console.log(e.target.value)
-    let newVal = e.target.value;
-    e.preventDefault();
-    try {
-      newVal = JSON.parse(newVal);
-    } catch(e) {
-       console.log(e);
-    }
-
-    //Validation Rule
-    let valid = validate(newVal);
-    if (valid) {
-        valid = ['Valid!'];
-    } else {
-        console.log(validate.errors);
-        valid = validate.errors;
-    }
-    document.getElementById('isValidContainer').innerHTML = renderValid(valid)
-  }
-  document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('jsonInput').addEventListener('input', handleChange)
-  }, false);
 </script>
 </div>
 </div>
@@ -365,11 +406,11 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="reference.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="_autosummary/bsmschema.models.Edge.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">BIDS Stats Models Object Reference</p>
+            <p class="prev-next-title">bsmschema.models.Edge</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="model-zoo.html" title="next page">

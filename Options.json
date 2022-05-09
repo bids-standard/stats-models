@@ -1,5 +1,6 @@
 {
   "title": "Options",
+  "description": "Options\n    ",
   "type": "object",
   "properties": {
     "Description": {

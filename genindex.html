@@ -44,6 +44,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
+    <script src="_static/js/jsoneditor.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -120,10 +121,62 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="reference.html">
    BIDS Stats Models Object Reference
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.BIDSStatsModel.html">
+     bsmschema.models.BIDSStatsModel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.Node.html">
+     bsmschema.models.Node
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.Transformations.html">
+     bsmschema.models.Transformations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.Model.html">
+     bsmschema.models.Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.HRF.html">
+     bsmschema.models.HRF
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.Options.html">
+     bsmschema.models.Options
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.Contrast.html">
+     bsmschema.models.Contrast
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.DummyContrasts.html">
+     bsmschema.models.DummyContrasts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/bsmschema.models.Edge.html">
+     bsmschema.models.Edge
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="validator.html">
@@ -254,7 +307,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Options.Aggregate">Aggregate (Options attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Options.html#bsmschema.models.Options.Aggregate">Aggregate (Options attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -262,31 +315,22 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.BIDSStatsModel.BIDSModelVersion">BIDSModelVersion (BIDSStatsModel attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.BIDSStatsModel.html#bsmschema.models.BIDSStatsModel.BIDSModelVersion">BIDSModelVersion (BIDSStatsModel attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li>
-    bsmschema.models
-
-      <ul>
-        <li><a href="reference.html#module-bsmschema.models">module</a>
-</li>
-      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Contrast.ConditionList">ConditionList (Contrast attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Contrast.html#bsmschema.models.Contrast.ConditionList">ConditionList (Contrast attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.DummyContrasts.Contrasts">Contrasts (DummyContrasts attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.DummyContrasts.html#bsmschema.models.DummyContrasts.Contrasts">Contrasts (DummyContrasts attribute)</a>
 
       <ul>
-        <li><a href="reference.html#bsmschema.models.Node.Contrasts">(Node attribute)</a>
+        <li><a href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.Contrasts">(Node attribute)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -295,13 +339,13 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.BIDSStatsModel.Description">Description (BIDSStatsModel attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.BIDSStatsModel.html#bsmschema.models.BIDSStatsModel.Description">Description (BIDSStatsModel attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Edge.Destination">Destination (Edge attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Edge.html#bsmschema.models.Edge.Destination">Destination (Edge attribute)</a>
 </li>
-      <li><a href="reference.html#bsmschema.models.Node.DummyContrasts">DummyContrasts (Node attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.DummyContrasts">DummyContrasts (Node attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -309,7 +353,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.BIDSStatsModel.Edges">Edges (BIDSStatsModel attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.BIDSStatsModel.html#bsmschema.models.BIDSStatsModel.Edges">Edges (BIDSStatsModel attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -317,11 +361,11 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Edge.Filter">Filter (Edge attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Edge.html#bsmschema.models.Edge.Filter">Filter (Edge attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Model.Formula">Formula (Model attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Model.html#bsmschema.models.Model.Formula">Formula (Model attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -329,7 +373,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Node.GroupBy">GroupBy (Node attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.GroupBy">GroupBy (Node attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -337,11 +381,11 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Options.HighPassFilterCutoffHz">HighPassFilterCutoffHz (Options attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Options.html#bsmschema.models.Options.HighPassFilterCutoffHz">HighPassFilterCutoffHz (Options attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Model.HRF">HRF (Model attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Model.html#bsmschema.models.Model.HRF">HRF (Model attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -349,11 +393,11 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.BIDSStatsModel.Input">Input (BIDSStatsModel attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.BIDSStatsModel.html#bsmschema.models.BIDSStatsModel.Input">Input (BIDSStatsModel attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Transformations.Instructions">Instructions (Transformations attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Transformations.html#bsmschema.models.Transformations.Instructions">Instructions (Transformations attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -361,11 +405,11 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Node.Level">Level (Node attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.Level">Level (Node attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Options.LowPassFilterCutoffHz">LowPassFilterCutoffHz (Options attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Options.html#bsmschema.models.Options.LowPassFilterCutoffHz">LowPassFilterCutoffHz (Options attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -373,21 +417,14 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Options.Mask">Mask (Options attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Options.html#bsmschema.models.Options.Mask">Mask (Options attribute)</a>
 </li>
-      <li><a href="reference.html#bsmschema.models.HRF.Model">Model (HRF attribute)</a>
-
-      <ul>
-        <li><a href="reference.html#bsmschema.models.Node.Model">(Node attribute)</a>
-</li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li>
-    module
+      <li><a href="_autosummary/bsmschema.models.HRF.html#bsmschema.models.HRF.Model">Model (HRF attribute)</a>
 
       <ul>
-        <li><a href="reference.html#module-bsmschema.models">bsmschema.models</a>
+        <li><a href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.Model">(Node attribute)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -396,17 +433,17 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.BIDSStatsModel.Name">Name (BIDSStatsModel attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.BIDSStatsModel.html#bsmschema.models.BIDSStatsModel.Name">Name (BIDSStatsModel attribute)</a>
 
       <ul>
-        <li><a href="reference.html#bsmschema.models.Contrast.Name">(Contrast attribute)</a>
+        <li><a href="_autosummary/bsmschema.models.Contrast.html#bsmschema.models.Contrast.Name">(Contrast attribute)</a>
 </li>
-        <li><a href="reference.html#bsmschema.models.Node.Name">(Node attribute)</a>
+        <li><a href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.Name">(Node attribute)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.BIDSStatsModel.Nodes">Nodes (BIDSStatsModel attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.BIDSStatsModel.html#bsmschema.models.BIDSStatsModel.Nodes">Nodes (BIDSStatsModel attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -414,7 +451,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Model.Options">Options (Model attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Model.html#bsmschema.models.Model.Options">Options (Model attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -422,7 +459,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.HRF.Parameters">Parameters (HRF attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.HRF.html#bsmschema.models.HRF.Parameters">Parameters (HRF attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -430,7 +467,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Options.ReplaceVariables">ReplaceVariables (Options attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Options.html#bsmschema.models.Options.ReplaceVariables">ReplaceVariables (Options attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -438,11 +475,11 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Model.Software">Software (Model attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Model.html#bsmschema.models.Model.Software">Software (Model attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Edge.Source">Source (Edge attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Edge.html#bsmschema.models.Edge.Source">Source (Edge attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -450,13 +487,19 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Node.Transformations">Transformations (Node attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Contrast.html#bsmschema.models.Contrast.Test">Test (Contrast attribute)</a>
+
+      <ul>
+        <li><a href="_autosummary/bsmschema.models.DummyContrasts.html#bsmschema.models.DummyContrasts.Test">(DummyContrasts attribute)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Transformations.Transformer">Transformer (Transformations attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.Transformations">Transformations (Node attribute)</a>
 </li>
-      <li><a href="reference.html#bsmschema.models.Model.Type">Type (Model attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Transformations.html#bsmschema.models.Transformations.Transformer">Transformer (Transformations attribute)</a>
+</li>
+      <li><a href="_autosummary/bsmschema.models.Model.html#bsmschema.models.Model.Type">Type (Model attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -464,7 +507,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.HRF.Variables">Variables (HRF attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.HRF.html#bsmschema.models.HRF.Variables">Variables (HRF attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -472,7 +515,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Contrast.Weights">Weights (Contrast attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Contrast.html#bsmschema.models.Contrast.Weights">Weights (Contrast attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -480,7 +523,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2 id="X">X</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference.html#bsmschema.models.Model.X">X (Model attribute)</a>
+      <li><a href="_autosummary/bsmschema.models.Model.html#bsmschema.models.Model.X">X (Model attribute)</a>
 </li>
   </ul></td>
 </tr></table>

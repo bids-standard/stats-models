@@ -1,5 +1,6 @@
 {
   "title": "Transformations",
+  "description": "Transformations describe modifications of variables to prepare a design matrix.\n\nThis field is indirect, with a :py:attr:`Transformer` name identifying an instruction\nset, and a sequence of :py:attr:`Instructions`.\n\nA Transformer accepts data frames of sparse (onset, duration, amplitude) and\ndense (onset, sampling rate, values) variables along with the list of Instructions,\nand then return a new set of sparse and/or dense variables.\n\nExamples\n--------\n\n.. code-block:: json\n\n   {\n     \"Transformer\": \"pybids-transforms-v1\",\n     \"Instructions\": [\n       {\n         \"Name\": \"Factor\",\n         \"Input\": [\"trial_type\"]\n       },\n       {\n         \"Name\": \"Convolve\",\n         \"Model\": \"spm\",\n         \"Input\": [\"trial_type.cond1\", \"trial_type.cond2\"]\n       }\n     ]\n   }",
   "type": "object",
   "properties": {
     "Description": {

@@ -1,5 +1,6 @@
 {
   "title": "HRF",
+  "description": "Specification of a hemodynamic response function (HRF) model.",
   "type": "object",
   "properties": {
     "Description": {
@@ -33,6 +34,7 @@
   "definitions": {
     "Parameters": {
       "title": "Parameters",
+      "description": "Parameters to an :py:class:`HRF` model.",
       "type": "object",
       "properties": {
         "Description": {
