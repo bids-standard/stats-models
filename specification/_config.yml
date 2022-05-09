@@ -40,6 +40,7 @@ sphinx:
    - sphinx.ext.autodoc
    - sphinx.ext.autosummary
    - sphinxcontrib.autodoc_pydantic
+   - sphinx.ext.napoleon
   config:
     autodoc_member_order: 'bysource'
     autodoc_pydantic_model_show_field_summary: false
