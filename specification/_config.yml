@@ -34,9 +34,6 @@ html:
 
 latex:
   latex_engine: xelatex
-  sphinx:
-    config:
-      autodoc_pydantic_model_show_json: false
 
 sphinx:
   extra_extensions:
@@ -50,6 +47,8 @@ sphinx:
     autodoc_pydantic_model_member_order: bysource
     autodoc_pydantic_model_signature_prefix: object
     autodoc_pydantic_model_undoc_members: false
+    autodoc_pydantic_model_show_json: false
+    autodoc_pydantic_field_show_default: false
     autosummary_generate: true
     add_module_names: false
     html_extra_path:

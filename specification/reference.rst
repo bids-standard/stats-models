@@ -4,12 +4,11 @@ BIDS Stats Models Object Reference
 
 .. currentmodule:: bsmschema.models
 
-This document defines the valid keys and values in a BIDS Stats Model.
+This section defines the valid keys and values in a BIDS Stats Model.
 A BIDS Stats Model is defined in a `JSON <https://www.json.org/json-en.html>`_ document.
 
 .. autosummary::
    :toctree: _autosummary
-   :recursive:
 
    BIDSStatsModel
    Node
@@ -20,6 +19,3 @@ A BIDS Stats Model is defined in a `JSON <https://www.json.org/json-en.html>`_ d
    Contrast
    DummyContrasts
    Edge
-
-.. automodule:: bsmschema.models
-   :noindex:
