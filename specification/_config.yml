@@ -54,3 +54,5 @@ sphinx:
     add_module_names: false
     html_extra_path:
       - schema
+    suppress_warnings:
+      - etoc.toctree
