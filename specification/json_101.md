@@ -143,7 +143,7 @@ If you directly want to edit you BIDS stats model JSON in the browser, you can
 also use the BIDS stats model JSON schema by clicking
 `Options --> JSON schema --> URL` and give it this URL:
 
-https://raw.githubusercontent.com/bids-standard/stats-models/gh-pages/BIDSStatsModel.json
+https://bids-standard.github.io/stats-models/BIDSStatsModel.json
 
 ![](/images/schema_in_browser.jpg)
 
@@ -173,7 +173,7 @@ For vs-code you can also add this to your settings:
 ```json
 "json.schemas": [
     {"fileMatch": [
-            "model_*_smdl.json"
+            "model-*_smdl.json"
         ],
         "url": "https://raw.githubusercontent.com/bids-standard/stats-models/gh-pages/BIDSStatsModel.json"
     }
