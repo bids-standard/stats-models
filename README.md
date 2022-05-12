@@ -65,3 +65,6 @@ BIDSStatsModel.parse_file('stats-models/specification/examples/model-example_smd
    ```
 	python -m http.server -d specification/_build/html/
    ```
+
+Note that this will start a long-running web-server that will occupy your terminal. 
+`Ctrl-C` quits.
