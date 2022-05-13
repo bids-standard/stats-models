@@ -1,4 +1,5 @@
-img { border-color: black; 
-      border-width: 5px; 
-      border-style: solid;
-    }
+img.light-border {
+  border-color: #cccccc;
+  border-width: 1px;
+  border-style: solid;
+}

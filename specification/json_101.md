@@ -135,7 +135,9 @@ See for example this one: http://jsoneditoronline.org/
 Online editors can also usually tell you if you forgot a comma, forgot to close
 a bracket or something similar. And even fix mistakes for you.
 
-![](/images/autofix.jpg)
+```{image} images/autofix.jpg
+:class: light-border
+```
 
 <br>
 
@@ -145,7 +147,9 @@ also use the BIDS stats model JSON schema by clicking
 
 https://bids-standard.github.io/stats-models/BIDSStatsModel.json
 
-![](/images/schema_in_browser.jpg)
+```{image} images/schema_in_browser.jpg
+:class: light-border
+```
 
 ### On your computer
 
@@ -187,4 +191,6 @@ https://code.visualstudio.com/docs/languages/json#_json-schemas-and-settings
 
 Example of JSON syntax error and BIDS stats model schema error in VS code:
 
-![](/images/vs_code_validation.jpg)
+```{image} images/vs_code_validation.jpg
+:class: light-border
+```
