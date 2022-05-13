@@ -6,11 +6,9 @@ At the core of BSM is a single, machine-readable JSON document that allows users
 
 ### Why?
 
-The representation of neuroimaging statistical models in a formal, machine readable format has several benefits. First, although much progress has been made in standardizing and automating neuroimaging pre-processing pipelines, model fitting typically requires a high degree of flexibility, resultingfor in heterogeneous analysis scripts that are often not **reproducible**. Upon publication, neuroimaging models are typically verbally described, making it difficult if not impossible to reproduce analyses from published studies. Even when analysis scripts are shared, they often lack **transparency**, making it difficult for other researchers to interpret the key modeling decisions, and apply the same model to a different dataset. 
+Although progress has been made in standardizing neuroimaging pipelines, model fitting requires a high degree of flexibility, resulting in heterogeneous scripts that are often not **reproducible**. Upon publication, models are often verbally described, making it difficult to reproduce analyses from published studies. Even when analysis scripts are shared, they often lack **transparency**, making it difficult for other researchers to interpret and apply the same model to a different dataset. 
 
-Without a common machine-readable format for statistical models, it is difficult to **automate and standardize** statistical modeling in neuroimaging. In addition to costing time-limited researchers substantial effort, user-generated modeling scripts are often not **interoperable**, making it difficult to interface outputs with downstream pipelines. Finally, since such scripts are typically tied to specific analysis software, it is difficult to test the effects of software and computational environments on the final results. 
-
-Altogether, these factors are significant barriers to increasing the **reproducibility and generalizability** of neuroimaging results, and we believe that we can make progress by promoting the formal specification of neuroimaging analysis models.
+*BIDS Stats Models* aims to facilitate the development **automated and standardized** neuroimaging model fitting pipelines, encouraging **reproducible and generalizable scientific** practice. In addition, by promoting the development of an ecosystem of easy to use and **interoperable** tools, BSM aims to facilitate the process of building and fitting statistical models on neuroimaging data.
 
 ### Scope and limitations
 
