@@ -33,16 +33,37 @@ A BIDS Stats Model is defined in a [JSON](https://www.json.org/json-en.html) doc
    Edge
 ```
 
+{py:class}`~bsmschema.models.BIDSStatsModel` is the top-level structure,
+while the remaining classes define sub-structures.
+To demonstrate this hierarchy, here we show the [example model](guide.md#example-model)
+in this structure, with missing fields rendered as `None`:
+
 ```{code-cell} python3
 ---
-tags: ["hide_input"]
+tags: ["remove_cell"]
 ---
+# The above tag ensures this does not show in the page.
 
+from pathlib import Path
+from myst_nb import glue
+from IPython.display import Code
 import black
 from bsmschema.models import BIDSStatsModel
 
-print(black.format_str(
-    repr(BIDSStatsModel.parse_file('examples/model-example_smdl.json')),
-    mode=black.mode.Mode()
-))
+orig = Path('examples/model-example_smdl.json').read_text()
+model = BIDSStatsModel.parse_raw(orig)
+
+# Here we use MyST "glue" to insert generated structures in tabs
+glue("structured", Code(black.format_str(repr(model), mode=black.mode.Mode()), language="python"))
+glue("orig_json", Code(orig, language="json"))
 ```
+
+````{tabbed} Structure
+```{glue:} structured
+```
+````
+
+````{tabbed} Original JSON
+```{glue:} orig_json
+```
+````
