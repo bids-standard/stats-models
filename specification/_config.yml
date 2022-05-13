@@ -41,6 +41,7 @@ sphinx:
    - sphinx.ext.autosummary
    - sphinxcontrib.autodoc_pydantic
    - sphinx.ext.napoleon
+   - sphinx.ext.intersphinx
   config:
     autodoc_member_order: 'bysource'
     autodoc_pydantic_model_show_field_summary: false
@@ -53,6 +54,9 @@ sphinx:
     autosummary_generate: true
     add_module_names: false
     python_use_unqualified_type_names: true
+    intersphinx_mapping:
+      python: ['https://docs.python.org/3', null]
+      pybids: ['https://bids-standard.github.io/pybids', null]
     html_extra_path:
       - schema
     suppress_warnings:

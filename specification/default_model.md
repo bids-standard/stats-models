@@ -9,9 +9,8 @@ See below for code snippet showing how to do it with each package.
 
 [PyBIDS](https://github.com/bids-standard/pybids) currently represents
 models as dictionaries.
-To generate a default model dictionary, use
-[bids.modeling.auto_model](https://bids-standard.github.io/pybids/generated/bids.modeling.auto_model.html),
-and then use `json.dump` to save it to a file.
+To generate a default model dictionary, use {py:func}`bids.modeling.auto_model`,
+and then use {py:func}`json.dump` to save it to a file.
 
 ```python
 from bids import BIDSLayout
