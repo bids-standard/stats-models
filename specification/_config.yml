@@ -53,6 +53,7 @@ sphinx:
     autosummary_generate: true
     add_module_names: false
     python_use_unqualified_type_names: true
+    myst_heading_anchors: 3
     html_extra_path:
       - schema
     suppress_warnings:
