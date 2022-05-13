@@ -210,13 +210,13 @@
           "items": {
             "anyOf": [
               {
-                "type": "string"
-              },
-              {
                 "enum": [
                   1
                 ],
                 "type": "integer"
+              },
+              {
+                "type": "string"
               }
             ]
           }
@@ -266,13 +266,13 @@
           "items": {
             "anyOf": [
               {
-                "type": "string"
-              },
-              {
                 "enum": [
                   1
                 ],
                 "type": "integer"
+              },
+              {
+                "type": "string"
               }
             ]
           }
@@ -349,13 +349,13 @@
           "items": {
             "anyOf": [
               {
-                "type": "string"
-              },
-              {
                 "enum": [
                   1
                 ],
                 "type": "integer"
+              },
+              {
+                "type": "string"
               }
             ]
           }
