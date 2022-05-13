@@ -1,8 +1,8 @@
 # BIDS Stats Models
 
-BIDS Stats Models (BSM) is a specification for describing statistical models for neuroimaging data. Its purpose is prescriptive (e.g. a recipe of how to fit a model), rather than descriptive (e.g., summary of models that have already been fit). 
+BIDS Stats Models (BSM) is a specification for describing statistical models for neuroimaging data. 
 
-At the core of BSM is a single, machine-readable JSON document that allows users to define a fully reproducible statistical model across multiple stages of analysis. Models are represented as a graph composed on Nodes and Edges, enabling the expression of a wide range of models. A BSM—in combination with a preprocessed BIDS dataset—is sufficient to execute statistical models, with minimal configuration and manual intervention required from the user. 
+At the core of BSM is a single, machine-readable JSON document that allows users to define a fully reproducible statistical model across multiple stages of analysis. Its purpose is prescriptive (e.g. a recipe), rather than descriptive (e.g., summary of models that have already been fit). Models are represented as a graph composed on Nodes and Edges, enabling the expression of a wide range of models. A BSM—in combination with a preprocessed BIDS dataset—is sufficient to execute statistical models, with minimal configuration and manual intervention required from the user. 
 
 ### Why?
 
