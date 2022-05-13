@@ -192,7 +192,7 @@ Given two types of images `variance` and `effect`, this would result in 12 image
 
 #### Subject-level Model
 
-Finally, we can specify the `Subject` level model next. Since our intent is to estimate the *mean* for each subject, we only need an intercept (`1`) in our model. We specify the `"Type"` to be `Meta`, which is a special type to identify fixed-effects models (see: _).
+We can now specify the `Subject` level `Model`. Since our intent is to estimate the *mean* for each subject, we only need an intercept (`1`) in our model. We specify the `"Type"` to be `Meta`, which is a special type to identify fixed-effects models (see: _).
 
 Remember that we must specify `Contrasts` in order to produce outputs for the next `Node`. Here, we compute a simple identity identity contrast to pass forward the subject-evel estimates forward. Note that we specified the `Test` as `skip`, since we don't want to perform a t-test, but simply pass forward parameter and variance estimates.   
 
