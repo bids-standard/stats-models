@@ -5,9 +5,13 @@ bids-matlab.
 
 See below for code snippet showing how to do it with each package.
 
-## pybids
+## PyBIDS - `auto_model`
 
-https://bids-standard.github.io/pybids/generated/bids.modeling.auto_model.html
+[PyBIDS](https://github.com/bids-standard/pybids) currently represents
+models as dictionaries.
+To generate a default model dictionary, use
+[bids.modeling.auto_model](https://bids-standard.github.io/pybids/generated/bids.modeling.auto_model.html),
+and then use `json.dump` to save it to a file.
 
 ```python
 from bids import BIDSLayout
@@ -22,12 +26,14 @@ model = auto_model(layout, one_vs_rest=True)
 
 # saving to a JSON file
 with open("model-default_smdl.json", "w") as outfile:
-    json.dump(model[0], outfile)
+    json.dump(model[0], outfile, indent=2)
 ```
 
-## bids-matlab
+## BIDS-MATLAB - `Model.default`
 
-https://bids-matlab.readthedocs.io/en/latest/stats_model.html#+bids.Model.default
+[BIDS-MATLAB](https://github.com/bids-standard/bids-matlab) provides
+similar functionality through
+[bids.Model.default](https://bids-matlab.readthedocs.io/en/latest/stats_model.html#+bids.Model.default):
 
 ```matlab
 % indexing the dataset
