@@ -60,12 +60,6 @@ Aggregate = Literal[
     "pca",
 ]
 
-HRFModel = Literal[
-    "DoubleGamma",
-    "Gamma",
-    "FiniteImpulseResponse",
-]
-
 StatisticalTest = Literal[
     "skip",
     "t",
@@ -160,40 +154,31 @@ class Transformations(_Commentable):
     The format of these instructions is determined by the :py:attr:`Transformer`."""
 
 
-class Parameters(_Commentable):
-    """Parameters to an :py:class:`HRF` model."""
-    PeakDelay: Optional[float]
-    """Delay, in seconds, from onset to peak response.
-    Applies to models: Gamma, DoubleGamma."""
-    PeakDispersion: Optional[float]
-    """Width of peak.
-    Applies to models: Gamma, DoubleGamma."""
-    UndershootDelay: Optional[float]
-    """Delay, in seconds, from onset to undershoot response.
-    Applies to model: DoubleGamma."""
-    UndershootDispersion: Optional[float]
-    """Width of undershoot.
-    Applies to model: DoubleGamma."""
-    PeakUndershootRatio: Optional[float]
-    """Peak-to-undershoot ratio.
-    Applies to model: DoubleGamma."""
-    Derivatives: Optional[int]
-    """Order of derivatives to include. 1 indicates the first derivative,
-    while 2 indicates the first and second derivative.
-    Applies to models: Gamma, DoubleGamma."""
-    Delays: Optional[List[int]]
-    """List of delays, in scans, for impulse responses.
-    Applies to model: FiniteImpulseResponse."""
-
-
 class HRF(_Commentable):
     """Specification of a hemodynamic response function (HRF) model."""
     Variables: List[str]
     """Name of the variables to be convolved. These must appear in :py:attr:`Model.X`"""
-    Model: HRFModel
-    """Name of a hemodynamic model."""
-    Parameters: Optional[Parameters]
-    """Parameters to the hemodynamic model."""
+    Model: str
+    """Name of a hemodynamic model.
+
+    Known model names include:
+
+    * ``"spm"``
+    * ``"spm + derivative"``
+    * ``"spm + derivative + dispersion"``
+    * ``"glover"``
+    * ``"glover + derivative"``
+    * ``"glover + derivative + dispersion"``
+    * ``"fir"``
+
+    The list of supported models is expandable and limited by the estimator, not the specification.
+    """
+    Parameters: Optional[Dict[str, Any]]
+    """Parameters to the hemodynamic model.
+
+    Options will be software specific and are not controlled.
+    For ``"fir"``, the parameter ``"fir_delays"`` is required.
+    """
 
 
 class Options(_Commentable):
