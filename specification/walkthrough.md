@@ -6,7 +6,7 @@ The statistical analysis of neuroimaging data typically occurs across several di
 
 For example, in fMRI it is common to first fit a design matrix to run-level time series followed by a fixed-effects model to combine estimates at the subject-level. Finally, a dataset-level random-effects one-sample t-test can be performed to estimate population level effects of the modeled regressors. At each level of the analysis, we need to know which inputs correspond to which design matrix, and more importantly how to keep track of and combine outputs from the previous level at the current level of analysis. 
 
-*BIDS Statistical Models* proposes a general machine-readable document to describe multi-stage neuroimaging analyses in a precise, yet flexible manner. We accomplish this by defining a *graph* composed of [Nodes](bsmschema.models.Node.html#bsmschema-models-node) representing each level of the analysis, and [Edges](_autosummary/bsmschema.models.Node.html#bsmschema-models-edge) which define the flow of data throughout our analysis. Within each `Node` we specify a [Model](_autosummary/bsmschema.models.Model.html#bsmschema.models.Model) to estimate, and [Contrasts](_autosummary/bsmschema.models.Contrast.html#bsmschema.models.Contrast) to compute the `Node` outputs.
+*BIDS Statistical Models* proposes a general machine-readable document to describe multi-stage neuroimaging analyses in a precise, yet flexible manner. We accomplish this by defining a *graph* composed of {py:attr}`~bsmschema.models.Node` representing each level of the analysis, and {py:attr}`~bsmschema.models.Edge` which define the flow of data throughout our analysis. Within each `Node` we specify a {py:attr}`~bsmschema.models.Model` to estimate, and {py:attr}`~bsmschema.models.Contrast` to compute the `Node` outputs.
 
 
 ## A simple example
@@ -89,9 +89,9 @@ First, we define a `Node` for the run level analysis.
       "Name": "run_level"
 ```
 
-Note that the [Level](_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.Level) key is necessary for determining which input images are available to the estimator. At the `Run` level, there are many sources of possible variables, most notably `_events.tsv` files which define the timing of task-related events.  
+Note that the {py:attr}`~bsmschema.models.Node.Level` key is necessary for determining which input images are available to the estimator. At the `Run` level, there are many sources of possible variables, most notably `_events.tsv` files which define the timing of task-related events.  
 
-Next we define a [Model](_autosummary/bsmschema.models.Model.html#bsmschema.models.Model) for this node. 
+Next we define a {py:attr}`~bsmschema.models.Model` for this node. 
 
 
 ```json
@@ -101,9 +101,9 @@ Next we define a [Model](_autosummary/bsmschema.models.Model.html#bsmschema.mode
       }
 ```
 
-The [X](_autosummary/bsmschema.models.Model.html#bsmschema.models.Model.X) parameter defines the variables in the design matrix. Here, we are modeling the `incongruent` and `congruent` trial types, in addition to an intercept (idenitified by the special key: `1`; see: _).
+The {py:attr}`~bsmschema.models.Model.X` parameter defines the variables in the design matrix. Here, we are modeling the `incongruent` and `congruent` trial types, in addition to an intercept (idenitified by the special key: `1`; see: _).
 
-Next, we specify an *Incongruent-Congruent (IvC)* contrast using the [Contrasts](_autosummary/bsmschema.models.Contrast.html) key:
+Next, we specify an *Incongruent-Congruent (IvC)* contrast using the {py:attr}`~bsmschema.models.Contrast` key:
 
 
 ```json
@@ -129,7 +129,7 @@ Since we only modeled a single contrast (`IvC`), the next `Node` will not have a
 
 An underappreciated assumption in multi-stage models is the grouping of image inputs into analysis units. In this example, we want to estimate a timeseries model for each `Run` separately, rather that concatenating all runs for each subject into one large model.
 
-In *BSM*, we explicitly define this grouping structure using the [GroupBy](_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.GroupBy) key at every node. For example, to specify that every run image should be fit to its own model, we specify:
+In *BSM*, we explicitly define this grouping structure using the {py:attr}`~bsmschema.models.Node.GroupBy` key at every node. For example, to specify that every run image should be fit to its own model, we specify:
 
 
 ```json
