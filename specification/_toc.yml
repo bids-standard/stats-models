@@ -8,7 +8,9 @@ parts:
   chapters:
   - file: guide
   - file: default_model
+  - file: integration
   - file: legacy
+  - file: json_101
 - caption: Specification
   chapters:
   - file: reference
