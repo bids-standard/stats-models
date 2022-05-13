@@ -64,3 +64,4 @@ sphinx:
       - schema
     suppress_warnings:
       - etoc.toctree
+      - myst.domains
