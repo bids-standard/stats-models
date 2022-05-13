@@ -31,8 +31,7 @@ with open("model-default_smdl.json", "w") as outfile:
 ## BIDS-MATLAB - `Model.default`
 
 [BIDS-MATLAB](https://github.com/bids-standard/bids-matlab) provides
-similar functionality through
-[bids.Model.default](https://bids-matlab.readthedocs.io/en/latest/stats_model.html#+bids.Model.default):
+similar functionality through {mat:meth}`+bids.Model.default`:
 
 ```matlab
 % indexing the dataset
