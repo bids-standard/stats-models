@@ -394,3 +394,140 @@ class BIDSStatsModel(_Commentable):
 
     Edges: Optional[List[Edge]]
     """A list of edges between analysis nodes. If absent, the nodes are connected in the sequence presented in Nodes."""
+
+
+class ExplainerModel(BaseModel):
+    """This is an example model.
+
+    In schema terms, the structure that defines a JSON object is a "model". To avoid
+    confusion with BIDS Stats Models and more general notions of mathematical or
+    statistical models, we will use "schema model" to unambiguously refer to this concept.
+
+    A schema model defines a JSON object with fields that have both a name and a type,
+    where "type" indicates the range of acceptable values.
+
+    Below are a number of fields that demonstrate the types we use in this specification.
+    These types can be mixed and matched somewhat.
+    Probably the most complex-looking field is :py:attr:`Contrast.Weights`.
+    """
+    StringField: str
+    """This field is called ``StringField`` and has type ``str``.
+
+    This type indicates that any string is acceptable, while other types (even string-like)
+    are unacceptable.
+
+    Valid example::
+
+        {"StringField": "any string value"}
+
+    Invalid examples::
+
+        {"StringField": 0}
+        {"StringField": ["list", "of", "strings"]}
+    """
+    IntField: str
+    """This strict integer field must have integer values.
+
+    Valid example::
+
+        {"IntField": 0}
+
+    Invalid examples::
+
+        {"IntField": 1.0}
+        {"IntField": "2"}
+    """
+    SomeOptions: Literal[1, "stringval", 2.0]
+    """The ``Literal`` type allows a specific value or set of values.
+
+    Valid examples::
+
+        {"SomeOptions": 1}
+        {"SomeOptions": "stringval"}
+        {"SomeOptions": 2.0}
+
+    Invalid examples::
+
+        {"SomeOptions": "1"}
+        {"SomeOptions": "differentstringval"}
+        {"SomeOptions": 2}
+    """
+    ArrayOfInts: List[str]
+    """JSON arrays appear as ``List`` types, and ``List[str]`` means
+    the values must be integers.
+
+    Valid example::
+
+        {"ArrayOfInts": [1, 2]}
+    """
+    Object: Dict[str, Any]
+    """JSON objects appear as ``Dict`` types.
+
+    The general form is ``Dict[str, <value-type>]``, because the field name
+    in a JSON object is always a string.
+    To allow for any values, including integers, strings or nested types, we
+    use ``Any``.
+
+    Valid example::
+
+        {"Object": {"key1": "stringval", "key2": 1}}
+
+    We use these when objects with arbitrary names can be used. If the full list
+    of valid names is known, we define a new schema model.
+    """
+    ObjectOfObjects: Dict[str, Dict[str, Any]]
+    """ Nested objects can start to have hairy type signatures.
+
+    Because ``Dict[str, <value-type>]`` is the general form for objects,
+    the general form for objects of objects is
+    ``Dict[str, Dict[str, <value-type>]]``.
+
+    The actual result is fairly straightforward, though::
+
+        {
+          "ObjectOfObjects": {
+            "field1": {"subfield": "value of ObjectOfObjects.field1.subfield"},
+            "field2": {"intsubfield": 1}
+          }
+        }
+    """
+    ModelField: DummyContrasts
+    """Schema models are nested objects with pre-determined names and types.
+
+    This is a specialized version of ``Object``, and you can follow the link in the
+    type to learn more.
+
+    Here, the :py:class:`DummyContrasts` model defines the structure of the object.
+
+    Valid example::
+
+        {"ModelField": {"Contrasts": ["contrast1", "contrast2"], "Test": "t"}}
+    """
+    UnionField: Union[str, str]
+    """Unions mean that a value could take multiple types.
+
+    Valid examples::
+
+        {"UnionField": 1}
+        {"UnionField": "stringval"}
+
+    Invalid examples::
+
+        {"UnionField": 2.0}
+    """
+    OptionalField: Optional[str]
+    """``OptionalField`` could be present or absent.
+
+    Up to now, all fields have been required. If a field is optional, its type will be
+    wrapped in ``Optional[]`` and will not have ``[Required]`` in its signature.
+    """
+    ListOrListOfLists: Union[List[int], List[List[int]]]
+    """A 1- or 2D array of integers.
+
+    To allow this form, we need to use the ``Union`` type with ``List[]`` and
+    ``List[List[]]``. At the "bottom" of the type is an integer.
+
+    :py:attr:`Contrast.Weights` has this form, but instead of ``int``, it
+    permits integers, floats or strings because it is intended to allow values
+    like ``0.5`` or ``"-1/3"``.
+    """

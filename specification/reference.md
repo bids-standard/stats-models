@@ -15,6 +15,8 @@ kernelspec:
 This section defines the valid keys and values in a BIDS Stats Model.
 A BIDS Stats Model is defined in a [JSON](https://www.json.org/json-en.html) document.
 
+## Object definitions
+
 ```{eval-rst}
 
 .. currentmodule:: bsmschema.models
@@ -67,3 +69,13 @@ glue("orig_json", Code(orig, language="json"))
 ```{glue:} orig_json
 ```
 ````
+
+Note that each structured field has a `Description` subfield.
+Any JSON object may have a `Description` key where the author or generator of a model
+can provide an explanation of the section.
+
+## How to read object definitions
+
+```{eval-rst}
+.. autopydantic_model:: bsmschema.models.ExplainerModel
+```
