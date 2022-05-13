@@ -9,6 +9,7 @@ parts:
   - file: guide
   - file: integration
   - file: legacy
+  - file: json_101
 - caption: Specification
   chapters:
   - file: reference
