@@ -19,7 +19,7 @@ Let's visualize this model for 3 participants:
 
 ![flow](images/flow_model_5.jpg)
 
-We can formally represent this analysis as **BIDS Statistical Model**:
+We can formally represent this analysis as **BIDS Stats Model**:
 
 ```json
 {
@@ -74,7 +74,7 @@ We can formally represent this analysis as **BIDS Statistical Model**:
 ```
 
 ```{note}
-For this example, we have limited analysis to three subjects using the `Input` key. 
+For this example, we have limited the model to three subjects using the `Input` key. 
 ```
 
 *BSM* defines this multi-stage analysis as a Graph, with each level of analysis defined as a separate `Node` object. 
@@ -251,66 +251,4 @@ As before, we can simply specify an intercept-only model, but of a `glm` type si
         }
       ]
     }
-```
-
-### Final Model
-
-```json
-{
-  "Name": "Simon IvC",
-  "BIDSModelVersion": "1.0.0",
-  "Nodes": [
-    {
-      "Level": "Run",
-      "Name": "run_level",
-      "GroupBy": ["run", "subject"],
-      "Model": {
-        "X": [1, "incongruent", "congruent"],
-        "Type": "glm"
-      },
-      "Contrasts": [
-        {
-          "Name": "IvC",
-          "ConditionList": ["incongruent", "congruent"],
-          "Weights": [1, -1],
-          "Test": "t"
-        }
-      ]
-    },
-    {
-      "Level": "Subject",
-      "Name": "subject_level",
-      "GroupBy": ["subject", "contrast"],
-      "Model": {
-        "X": [1], 
-        "Type": "Meta"
-      },
-      "Contrasts": [
-        {
-          "Name": "IvC",
-          "ConditionList": ["IvC"],
-          "Weights": [1],
-          "Test": "t"
-        }
-      ]
-    },
-    {
-      "Level": "Dataset",
-      "Name": "one-sample_dataset",
-      "GroupBy": ["contrast"],
-      "Model": {
-        "X": [1],
-        "Type": "glm"
-      },
-      "Contrasts": [
-        {
-          "Name": "IvC",
-          "ConditionList": ["IvC"],
-          "Weights": [1],
-          "Test": "t"
-        }
-      ]
-    }
-  ]
-}
 ```

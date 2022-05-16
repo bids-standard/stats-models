@@ -11,4 +11,7 @@ To **learn more**, step through our [User Guide](intro.md), or browse the [Model
 
 For details on the **formal specification**, visit the BSM [reference](reference.rst).
 
-BIDS Stats Models is part of the [Brain Imaging Data Standard (BIDS)](https://bids.neuroimaging.io/index.html) community. 
+
+#### Acknowledments
+
+BIDS Stats Models is supported by by NIH award R01MH109682, and as part of the broader [Brain Imaging Data Standard (BIDS)](https://bids.neuroimaging.io/index.html) community. 
