@@ -14,9 +14,10 @@ The objects defined here are nested as follows:
 Note that these are the structured and validatable objects.
 
 """
+import sys
 from enum import Enum
 from typing import List, Optional, Dict, Literal, Any, Union
-from pydantic import BaseModel
+from pydantic import BaseModel, StrictStr, StrictInt, StrictFloat
 
 __all__ = [
     'BIDSStatsModel',
@@ -29,6 +30,13 @@ __all__ = [
     'Contrast',
     'DummyContrasts',
 ]
+
+# Hack to avoid unnecessary verbosity when generating documentation
+# Has no impact on emitted JSON, only on whether Python will attempt to cast instead of error
+if 'sphinxcontrib.autodoc_pydantic' in sys.modules:
+    StrictStr = str
+    StrictInt = int
+    StrictFloat = float
 
 # Notes
 # HRF model parameters are unclear how to specify
@@ -73,9 +81,9 @@ StatisticalTest = Literal[
 ]
 
 # Aliases
-Filter = Dict[str, List[Any]]
-VariableList = List[Union[str, Literal[1]]]
-Weights = List[Union[int, float, str]]
+Filter = Dict[StrictStr, List[Any]]
+VariableList = List[Union[Literal[1], StrictStr]]
+Weights = List[Union[StrictInt, StrictFloat, StrictStr]]
 
 
 class _Commentable(BaseModel):
@@ -110,9 +118,9 @@ class Edge(_Commentable):
          "Filter": {"contrast": ["contrast1", "contrast2"]}
        }
     """
-    Source: str
+    Source: StrictStr
     """Name of :py:class:`Node`. The outputs of this node are passed to :py:attr:`Destination`."""
-    Destination: str
+    Destination: StrictStr
     """Name of :py:class:`Node`. The outputs of :py:attr:`Source` are passed to this node.
 
     If :py:attr:`Filter` is defined,
@@ -188,7 +196,7 @@ class Parameters(_Commentable):
 
 class HRF(_Commentable):
     """Specification of a hemodynamic response function (HRF) model."""
-    Variables: List[str]
+    Variables: List[StrictStr]
     """Name of the variables to be convolved. These must appear in :py:attr:`Model.X`"""
     Model: HRFModel
     """Name of a hemodynamic model."""
@@ -203,7 +211,7 @@ class Options(_Commentable):
     """The cutoff frequency, in Hz, for a high-pass filter."""
     LowPassFilterCutoffHz: Optional[float]
     """The cutoff frequency, in Hz, for a low-pass filter."""
-    ReplaceVariables: Optional[Dict[str, Any]]
+    ReplaceVariables: Optional[Dict[StrictStr, Any]]
     """Allows a specification of design matrix columns that are to be replaced by the estimating software.
     Keys are the names of columns to replace; values are unconstrained,
     and can be anything that helps the receiving software understand what is intended.
@@ -230,7 +238,7 @@ class Contrast(_Commentable):
     While ``"t"`` and ``"skip"`` contrasts are passed as inputs to the next node, ``"F"``
     contrasts are terminal and are not passed as inputs to following nodes.
     """
-    Name: str
+    Name: StrictStr
     r"""The name of the contrast.
     Must be unique in :py:attr:`Node.Contrasts` and must not appear in
     :py:attr:`DummyContrasts.Contrasts` for the same Node.
@@ -301,7 +309,7 @@ class Model(_Commentable):
     Following standard Unix-style glob rules,
     "*" is interpreted to match 0 or more alphanumeric characters, and
     "?" is interpreted to match exactly one alphanumeric character."""
-    Formula: Optional[str]
+    Formula: Optional[StrictStr]
     """Wilkinson notation specification of a Transformation of the design matrix X.
     A 1 or 0 term MUST be present to explicitly include or exclude, respectively, an intercept variable,
     to ensure consistent handling across formula interpreters."""
@@ -315,7 +323,7 @@ class Model(_Commentable):
     # """Specifies how to model the error."""
     Options: Optional[Options]
     """Estimation options that are common to multiple estimation packages."""
-    Software: Optional[Dict[str, Dict[str, Any]]]
+    Software: Optional[Dict[StrictStr, Dict[StrictStr, Any]]]
     """This section allows one to specify any software-specific estimation parameters.
     Each key in the object is the name of the software package (FSL, SPM, etc.),
     and the value is an object containing software-specific parameters.
@@ -331,12 +339,12 @@ class Node(_Commentable):
     """
     Level: NodeLevel
     """Level of analysis being described."""
-    Name: str
+    Name: StrictStr
     r"""The name of the node. Must be unique in :py:attr:`BIDSStatsModel.Nodes`.
 
     This name is used by :py:class:`Edge`\s to connect two :py:class:`Node`\s.
     """
-    GroupBy: List[str]
+    GroupBy: List[StrictStr]
     """The output statistical maps received from the input node are split along
     unique combinations of the grouping variables and passed to the model as subsets.
     If empty, all inputs are passed to a single model to fit.
@@ -365,18 +373,18 @@ class BIDSStatsModel(_Commentable):
     incoming edges. Each path from the root to a leaf may be thought of as a single
     hierarchical model.
     """
-    Name: str
+    Name: StrictStr
     """A name identifying the model, ideally short.
     While no hard constraints are imposed on the specific format of the name,
     each model's name should be unique for any given BIDS project
     (i.e., if a single BIDS project contains multiple model specifications in different files and/or folders,
     care should be taken to ensure that each model has a unique name)."""
 
-    BIDSModelVersion: str
+    BIDSModelVersion: StrictStr
     """A string identifying the version of the specification adhered to.
     Note this is different from BIDSVersion"""
 
-    Description: Optional[str]
+    Description: Optional[StrictStr]
     """A concise verbal description of the model."""
 
     Input: Optional[Filter]
@@ -387,3 +395,140 @@ class BIDSStatsModel(_Commentable):
 
     Edges: Optional[List[Edge]]
     """A list of edges between analysis nodes. If absent, the nodes are connected in the sequence presented in Nodes."""
+
+
+class ExplainerModel(BaseModel):
+    """This is an example model.
+
+    In schema terms, the structure that defines a JSON object is a "model". To avoid
+    confusion with BIDS Stats Models and more general notions of mathematical or
+    statistical models, we will use "schema model" to unambiguously refer to this concept.
+
+    A schema model defines a JSON object with fields that have both a name and a type,
+    where "type" indicates the range of acceptable values.
+
+    Below are a number of fields that demonstrate the types we use in this specification.
+    These types can be mixed and matched somewhat.
+    Probably the most complex-looking field is :py:attr:`Contrast.Weights`.
+    """
+    StringField: str
+    """This field is called ``StringField`` and has type ``str``.
+
+    This type indicates that any string is acceptable, while other types (even string-like)
+    are unacceptable.
+
+    Valid example::
+
+        {"StringField": "any string value"}
+
+    Invalid examples::
+
+        {"StringField": 0}
+        {"StringField": ["list", "of", "strings"]}
+    """
+    IntField: str
+    """This strict integer field must have integer values.
+
+    Valid example::
+
+        {"IntField": 0}
+
+    Invalid examples::
+
+        {"IntField": 1.0}
+        {"IntField": "2"}
+    """
+    SomeOptions: Literal[1, "stringval", 2.0]
+    """The ``Literal`` type allows a specific value or set of values.
+
+    Valid examples::
+
+        {"SomeOptions": 1}
+        {"SomeOptions": "stringval"}
+        {"SomeOptions": 2.0}
+
+    Invalid examples::
+
+        {"SomeOptions": "1"}
+        {"SomeOptions": "differentstringval"}
+        {"SomeOptions": 2}
+    """
+    ArrayOfInts: List[str]
+    """JSON arrays appear as ``List`` types, and ``List[str]`` means
+    the values must be integers.
+
+    Valid example::
+
+        {"ArrayOfInts": [1, 2]}
+    """
+    Object: Dict[str, Any]
+    """JSON objects appear as ``Dict`` types.
+
+    The general form is ``Dict[str, <value-type>]``, because the field name
+    in a JSON object is always a string.
+    To allow for any values, including integers, strings or nested types, we
+    use ``Any``.
+
+    Valid example::
+
+        {"Object": {"key1": "stringval", "key2": 1}}
+
+    We use these when objects with arbitrary names can be used. If the full list
+    of valid names is known, we define a new schema model.
+    """
+    ObjectOfObjects: Dict[str, Dict[str, Any]]
+    """ Nested objects can start to have hairy type signatures.
+
+    Because ``Dict[str, <value-type>]`` is the general form for objects,
+    the general form for objects of objects is
+    ``Dict[str, Dict[str, <value-type>]]``.
+
+    The actual result is fairly straightforward, though::
+
+        {
+          "ObjectOfObjects": {
+            "field1": {"subfield": "value of ObjectOfObjects.field1.subfield"},
+            "field2": {"intsubfield": 1}
+          }
+        }
+    """
+    ModelField: DummyContrasts
+    """Schema models are nested objects with pre-determined names and types.
+
+    This is a specialized version of ``Object``, and you can follow the link in the
+    type to learn more.
+
+    Here, the :py:class:`DummyContrasts` model defines the structure of the object.
+
+    Valid example::
+
+        {"ModelField": {"Contrasts": ["contrast1", "contrast2"], "Test": "t"}}
+    """
+    UnionField: Union[str, str]
+    """Unions mean that a value could take multiple types.
+
+    Valid examples::
+
+        {"UnionField": 1}
+        {"UnionField": "stringval"}
+
+    Invalid examples::
+
+        {"UnionField": 2.0}
+    """
+    OptionalField: Optional[str]
+    """``OptionalField`` could be present or absent.
+
+    Up to now, all fields have been required. If a field is optional, its type will be
+    wrapped in ``Optional[]`` and will not have ``[Required]`` in its signature.
+    """
+    ListOrListOfLists: Union[List[int], List[List[int]]]
+    """A 1- or 2D array of integers.
+
+    To allow this form, we need to use the ``Union`` type with ``List[]`` and
+    ``List[List[]]``. At the "bottom" of the type is an integer.
+
+    :py:attr:`Contrast.Weights` has this form, but instead of ``int``, it
+    permits integers, floats or strings because it is intended to allow values
+    like ``0.5`` or ``"-1/3"``.
+    """

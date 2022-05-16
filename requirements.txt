@@ -1,3 +1,6 @@
 jupyter-book
+jupytext
 autodoc_pydantic
+sphinxcontrib-matlabdomain
+black
 ./bsmschema
