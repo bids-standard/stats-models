@@ -241,12 +241,9 @@
         },
         "Software": {
           "title": "Software",
-          "type": "array",
-          "items": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object"
-            }
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
           }
         }
       },
