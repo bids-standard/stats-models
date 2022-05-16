@@ -41,6 +41,8 @@ sphinx:
    - sphinx.ext.autosummary
    - sphinxcontrib.autodoc_pydantic
    - sphinx.ext.napoleon
+   - sphinx.ext.intersphinx
+   - sphinxcontrib.matlab
   config:
     autodoc_member_order: 'bysource'
     autodoc_pydantic_model_show_field_summary: false
@@ -54,7 +56,12 @@ sphinx:
     add_module_names: false
     python_use_unqualified_type_names: true
     myst_heading_anchors: 3
+    intersphinx_mapping:
+      python: ['https://docs.python.org/3', null]
+      pybids: ['https://bids-standard.github.io/pybids', null]
+      bids-matlab: ['https://bids-matlab.readthedocs.io/en/latest', null]
     html_extra_path:
       - schema
     suppress_warnings:
       - etoc.toctree
+      - myst.domains
