@@ -169,6 +169,7 @@ class HRF(_Commentable):
     * ``"glover"``
     * ``"glover + derivative"``
     * ``"glover + derivative + dispersion"``
+    * ``"afni"``
     * ``"fir"``
 
     The list of supported models is expandable and limited by the estimator, not the specification. Note that ``"glover"`` is the default "Gamma" HRF in FSL.
