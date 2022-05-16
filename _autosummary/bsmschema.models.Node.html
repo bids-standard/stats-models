@@ -208,6 +208,11 @@ const thebe_selector_output = ".output, .cell_output"
    Model Zoo
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../default_model.html">
+   Creating a default model
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -324,14 +329,14 @@ parameter weights (betas) and construct contrasts.</p>
 
 <dl class="py attribute pydantic_field">
 <dt class="sig sig-object py" id="bsmschema.models.Node.Name">
-<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#bsmschema.models.Node.Name" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#bsmschema.models.Node.Name" title="Permalink to this definition">¶</a></dt>
 <dd><p>The name of the node. Must be unique in <a class="reference internal" href="bsmschema.models.BIDSStatsModel.html#bsmschema.models.BIDSStatsModel.Nodes" title="bsmschema.models.BIDSStatsModel.Nodes"><code class="xref py py-attr docutils literal notranslate"><span class="pre">BIDSStatsModel.Nodes</span></code></a>.</p>
 <p>This name is used by <a class="reference internal" href="bsmschema.models.Edge.html#bsmschema.models.Edge" title="bsmschema.models.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a>s to connect two <a class="reference internal" href="#bsmschema.models.Node" title="bsmschema.models.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a>s.</p>
 </dd></dl>
 
 <dl class="py attribute pydantic_field">
 <dt class="sig sig-object py" id="bsmschema.models.Node.GroupBy">
-<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GroupBy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#bsmschema.models.Node.GroupBy" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GroupBy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#bsmschema.models.Node.GroupBy" title="Permalink to this definition">¶</a></dt>
 <dd><p>The output statistical maps received from the input node are split along
 unique combinations of the grouping variables and passed to the model as subsets.
 If empty, all inputs are passed to a single model to fit.

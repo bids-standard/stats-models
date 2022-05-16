@@ -208,6 +208,11 @@ const thebe_selector_output = ".output, .cell_output"
    Model Zoo
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../default_model.html">
+   Creating a default model
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -322,7 +327,7 @@ incoming edges. Each path from the root to a leaf may be thought of as a single
 hierarchical model.</p>
 <dl class="py attribute pydantic_field">
 <dt class="sig sig-object py" id="bsmschema.models.BIDSStatsModel.Name">
-<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#bsmschema.models.BIDSStatsModel.Name" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#bsmschema.models.BIDSStatsModel.Name" title="Permalink to this definition">¶</a></dt>
 <dd><p>A name identifying the model, ideally short.
 While no hard constraints are imposed on the specific format of the name,
 each model’s name should be unique for any given BIDS project
@@ -332,20 +337,20 @@ care should be taken to ensure that each model has a unique name).</p>
 
 <dl class="py attribute pydantic_field">
 <dt class="sig sig-object py" id="bsmschema.models.BIDSStatsModel.BIDSModelVersion">
-<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BIDSModelVersion</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#bsmschema.models.BIDSStatsModel.BIDSModelVersion" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BIDSModelVersion</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#bsmschema.models.BIDSStatsModel.BIDSModelVersion" title="Permalink to this definition">¶</a></dt>
 <dd><p>A string identifying the version of the specification adhered to.
 Note this is different from BIDSVersion</p>
 </dd></dl>
 
 <dl class="py attribute pydantic_field">
 <dt class="sig sig-object py" id="bsmschema.models.BIDSStatsModel.Description">
-<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bsmschema.models.BIDSStatsModel.Description" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bsmschema.models.BIDSStatsModel.Description" title="Permalink to this definition">¶</a></dt>
 <dd><p>A concise verbal description of the model.</p>
 </dd></dl>
 
 <dl class="py attribute pydantic_field">
 <dt class="sig sig-object py" id="bsmschema.models.BIDSStatsModel.Input">
-<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Input</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bsmschema.models.BIDSStatsModel.Input" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Input</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bsmschema.models.BIDSStatsModel.Input" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dictionary specification of input images</p>
 </dd></dl>
 

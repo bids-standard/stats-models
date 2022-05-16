@@ -208,6 +208,11 @@ const thebe_selector_output = ".output, .cell_output"
    Model Zoo
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../default_model.html">
+   Creating a default model
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -327,7 +332,7 @@ and the same name as the condition. That is,</p>
 </div>
 <dl class="py attribute pydantic_field">
 <dt class="sig sig-object py" id="bsmschema.models.DummyContrasts.Contrasts">
-<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Contrasts</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bsmschema.models.DummyContrasts.Contrasts" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Contrasts</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bsmschema.models.DummyContrasts.Contrasts" title="Permalink to this definition">¶</a></dt>
 <dd><p>A list of variables to construct DummyContrasts for.
 Must be a strict subset of <code class="docutils literal notranslate"><span class="pre">Model.X</span></code>.
 If absent, then dummy contrasts for all variables are constructed.</p>
