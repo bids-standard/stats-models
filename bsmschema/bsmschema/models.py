@@ -171,7 +171,7 @@ class HRF(_Commentable):
     * ``"glover + derivative + dispersion"``
     * ``"fir"``
 
-    The list of supported models is expandable and limited by the estimator, not the specification.
+    The list of supported models is expandable and limited by the estimator, not the specification. Note that ``"glover"`` is the default "Gamma" HRF in FSL.
     """
     Parameters: Optional[Dict[str, Any]]
     """Parameters to the hemodynamic model.
