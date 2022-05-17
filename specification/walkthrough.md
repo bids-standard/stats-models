@@ -112,6 +112,8 @@ tags: ["remove_input"]
 ---
 from IPython.display import display
 import pandas as pd
+pd.set_option('display.max_colwidth', None)
+
 subjects = ["01", "02", "03"]
 runs = [1, 2]
 # For later use
@@ -196,7 +198,6 @@ outputs = pd.DataFrame.from_records(
    for subject in subjects for run in runs
    for contrast in contrasts for stat in stats]
 )
-pd.set_option('display.max_colwidth', None)
 display_groups(outputs, ["subject", "contrast"])
 ```
 
@@ -253,7 +254,6 @@ outputs = pd.DataFrame.from_records(
    for subject in subjects
    for contrast in contrasts for stat in stats]
 )
-pd.set_option('display.max_colwidth', None)
 display_groups(outputs, ["contrast"])
 ```
 
