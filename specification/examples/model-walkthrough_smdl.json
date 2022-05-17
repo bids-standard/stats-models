@@ -1,7 +1,7 @@
 {
   "Name": "Simon IvC",
   "BIDSModelVersion": "1.0.0",
-  "Input": {"Subject": ["01", "02", "03"]},
+  "Input": {"subject": ["01", "02", "03"]},
   "Nodes": [
     {
       "Level": "Run",
@@ -21,7 +21,7 @@
       "Level": "Subject",
       "Name": "subject_level",
       "GroupBy": ["subject", "contrast"],
-      "Model": {"X": [1], "Type": "Meta"},
+      "Model": {"X": [1], "Type": "meta"},
       "Contrasts": [
         {
           "Name": "IvC",

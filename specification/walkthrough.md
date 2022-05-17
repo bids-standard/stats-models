@@ -132,20 +132,20 @@ Note that with 3 subjects and 2 runs, we will have 6 groups of output images fro
 
 | image       | subject     | run | contrast |
 | ----------- | ----------- | ----------- | ----------- |
-| sub-01_task-simon_run-1_contrast-IvC-effect_statmap.nii.gz | 01 | 1 | IvC |
-| sub-01_task-simon_run-1_contrast-IvC-variance_statmap.nii.gz | 01| 1| IvC |
-| sub-01_task-simon_run-2_contrast-IvC-effect_statmap.nii.gz | 01| 2| IvC |
-| sub-01_task-simon_run-2_contrast-IvC-variance_statmap.nii.gz |01| 2| IvC |
+| sub-01_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii.gz | 01 | 1 | IvC |
+| sub-01_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii.gz | 01| 1| IvC |
+| sub-01_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii.gz | 01| 2| IvC |
+| sub-01_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii.gz |01| 2| IvC |
 | - | - | - | - |
-| sub-02_task-simon_run-1_contrast-IvC-effect_statmap.nii.gz | 02| 1| IvC |
-| sub-02_task-simon_run-1_contrast-IvC-variance_statmap.nii.gz | 02| 1| IvC |
-| sub-02_task-simon_run-2_contrast-IvC-effect_statmap.nii.gz | 02| 2| IvC |
-| sub-02_task-simon_run-2_contrast-IvC-variance_statmap.nii.gz | 02| 2| IvC |
+| sub-02_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii.gz | 02| 1| IvC |
+| sub-02_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii.gz | 02| 1| IvC |
+| sub-02_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii.gz | 02| 2| IvC |
+| sub-02_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii.gz | 02| 2| IvC |
 | - | - | - | - |
-| sub-03_task-simon_run-1_contrast-IvC-effect_statmap.nii.gz | 03| 1| IvC |
-| sub-03_task-simon_run-1_contrast-IvC-variance_statmap.nii.gz | 03| 1| IvC |
-| sub-03_task-simon_run-2_contrast-IvC-effect_statmap.nii.gz | 03| 2| IvC |
-| sub-03_task-simon_run-2_contrast-IvC-variance_statmap.nii.gz | 03| 2| IvC |
+| sub-03_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii.gz | 03| 1| IvC |
+| sub-03_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii.gz | 03| 1| IvC |
+| sub-03_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii.gz | 03| 2| IvC |
+| sub-03_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii.gz | 03| 2| IvC |
 
 ```{tip}
 In this example there is only one `contrast`, but we include `contrast` as a grouping variable to be explicit.
@@ -188,12 +188,12 @@ Here we only need to `GroupBy` `contrast`, as we want a separate estimate for ea
 
 | image       | subject     | contrast |
 | ----------- | ----------- | ----------- |
-| sub-01_task-simon_contrast-IvC-effect_statmap.nii.gz | "1" | "IvC" |
-| sub-01_task-simon_contrast-IvC-effect_statmap.nii.gz | "1"| "IvC" |
-| sub-02_task-simon_contrast-IvC-effect_statmap.nii.gz | "2"|  "IvC" |
-| sub-02_task-simon_contrast-IvC-effect_statmap.nii.gz | "2"| "IvC" |
-| sub-03_task-simon_contrast-IvC-effect_statmap.nii.gz | "3"| "IvC" |
-| sub-03_task-simon_contrast-IvC-effect_statmap.nii.gz | "3"| "IvC" |
+| sub-01_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "1" | "IvC" |
+| sub-01_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "1"| "IvC" |
+| sub-02_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "2"|  "IvC" |
+| sub-02_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "2"| "IvC" |
+| sub-03_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "3"| "IvC" |
+| sub-03_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "3"| "IvC" |
 
 
 As before, we can specify an intercept-only model, but of type `glm` since we want to perform a random-effects analysis. We also specify a single identity t-test `Contrast` in order to compute the output of this `Node`.
