@@ -274,3 +274,19 @@ As before, we can specify an intercept-only model, but of type `glm` since we wa
       ]
     }
 ```
+
+The outputs of this node collapse across subjects, leaving a single effect/variance pair:
+
+```{code-cell} python3
+---
+tags: ["remove_input"]
+---
+outputs = pd.DataFrame.from_records(
+  [{
+     "contrast": contrast,
+     "image": f"task-simon_contrast-{contrast}_stat-{stat}_statmap.nii",
+   }
+   for contrast in contrasts for stat in stats]
+)
+display_groups(outputs, ["contrast"])
+```
