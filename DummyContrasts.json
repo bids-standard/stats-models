@@ -27,7 +27,7 @@
     "Test": {
       "title": "Test",
       "enum": [
-        "skip",
+        "pass",
         "t",
         "F"
       ],
