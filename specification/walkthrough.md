@@ -114,10 +114,13 @@ from IPython.display import display
 import pandas as pd
 subjects = ["01", "02", "03"]
 runs = [1, 2]
+# For later use
+contrasts = ["IvC"]
+stats = ["effect", "variance"]
 
 def display_groups(df, groups):
-    for group in df.groupby(groups):
-        display(group[1])
+    for group in df.groupby(groups, as_index=False):
+        display(group[1].style.hide(axis="index"))
 
 inputs = pd.DataFrame.from_records(
   [{
@@ -126,7 +129,7 @@ inputs = pd.DataFrame.from_records(
      "image": f"sub-{subject}_task-simon_run-{run}_bold.nii.gz",
    } for subject in subjects for run in runs]
 )
-display(inputs)
+display(inputs.style.hide(axis="index"))
 ```
 
 If we `GroupBy` *subject*, there would be three groups of images--one for each subject:
@@ -178,23 +181,24 @@ Here we are specifying that all images belonging to a single `subject` and from 
 
 Note that with 3 subjects and 2 runs, we will have 6 groups of output images from the `Run` node. Given two types of images (`variance` and `effect`), this results in 12 images that would be grouped as follows:
 
-
-| image       | subject     | run | contrast |
-| ----------- | ----------- | ----------- | ----------- |
-| sub-01_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii.gz | 01 | 1 | IvC |
-| sub-01_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii.gz | 01| 1| IvC |
-| sub-01_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii.gz | 01| 2| IvC |
-| sub-01_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii.gz |01| 2| IvC |
-| - | - | - | - |
-| sub-02_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii.gz | 02| 1| IvC |
-| sub-02_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii.gz | 02| 1| IvC |
-| sub-02_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii.gz | 02| 2| IvC |
-| sub-02_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii.gz | 02| 2| IvC |
-| - | - | - | - |
-| sub-03_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii.gz | 03| 1| IvC |
-| sub-03_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii.gz | 03| 1| IvC |
-| sub-03_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii.gz | 03| 2| IvC |
-| sub-03_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii.gz | 03| 2| IvC |
+```{code-cell} python3
+---
+tags: ["remove_input"]
+---
+outputs = pd.DataFrame.from_records(
+  [{
+     "subject": subject,
+     "run": run,
+     "contrast": contrast,
+     "image": f"sub-{subject}_task-simon_run-{run}_"
+              f"contrast-{contrast}_stat-{stat}_statmap.nii",
+   }
+   for subject in subjects for run in runs
+   for contrast in contrasts for stat in stats]
+)
+pd.set_option('display.max_colwidth', None)
+display_groups(outputs, ["subject", "contrast"])
+```
 
 ```{tip}
 In this example there is only one `contrast`, but we include `contrast` as a grouping variable to be explicit.
@@ -235,15 +239,23 @@ We are ready to perform a one-sample t-test to estimate population-level effects
 
 Here we only need to `GroupBy` `contrast`, as we want a separate estimate for each contrast, but want to include all subjects in the same analysis. Since we only have one `contrast`, all the incoming subject-level images will be grouped together:
 
-| image       | subject     | contrast |
-| ----------- | ----------- | ----------- |
-| sub-01_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "1" | "IvC" |
-| sub-01_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "1"| "IvC" |
-| sub-02_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "2"|  "IvC" |
-| sub-02_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "2"| "IvC" |
-| sub-03_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "3"| "IvC" |
-| sub-03_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "3"| "IvC" |
-
+```{code-cell} python3
+---
+tags: ["remove_input"]
+---
+outputs = pd.DataFrame.from_records(
+  [{
+     "subject": subject,
+     "contrast": contrast,
+     "image": f"sub-{subject}_task-simon_"
+              f"contrast-{contrast}_stat-{stat}_statmap.nii",
+   }
+   for subject in subjects
+   for contrast in contrasts for stat in stats]
+)
+pd.set_option('display.max_colwidth', None)
+display_groups(outputs, ["contrast"])
+```
 
 As before, we can specify an intercept-only model, but of type `glm` since we want to perform a random-effects analysis. We also specify a single identity t-test `Contrast` in order to compute the output of this `Node`.
 
