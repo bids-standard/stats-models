@@ -50,9 +50,10 @@ For this example, we have limited the model to three subjects using the `Input` 
 
 First, we define a `Node` for the run level analysis. 
 
-```json
-      "Level": "Run",
-      "Name": "run_level"
+```{literalinclude} examples/model-walkthrough_smdl.json
+:language: JSON
+:start-at: '"Level": "Run"'
+:lines: 1-2
 ```
 
 Note that the {py:attr}`~bsmschema.models.Node.Level` key is necessary for determining which input images are available to the estimator. At the `Run` level, there are many sources of possible variables, most notably `_events.tsv` files which define the timing of task-related events.  
@@ -60,11 +61,10 @@ Note that the {py:attr}`~bsmschema.models.Node.Level` key is necessary for deter
 Next we define a {py:attr}`~bsmschema.models.Model` for this node. 
 
 
-```json
-      "Model": {
-        "X": [1, "incongruent", "congruent"],
-        "Type": "glm"
-      }
+```{literalinclude} examples/model-walkthrough_smdl.json
+:language: JSON
+:start-at: '"Model": {"X": [1,'
+:lines: 1
 ```
 
 The {py:attr}`~bsmschema.models.Model.X` parameter defines the variables in the design matrix. Here, we are modeling the `incongruent` and `congruent` trial types, in addition to an intercept (idenitified by the special key: `1`; see: _).
