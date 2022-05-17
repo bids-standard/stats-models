@@ -1,3 +1,15 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 # Walkthrough 
 
 ## The problem: Representing multi-stage models
@@ -94,18 +106,55 @@ Here, `GroupBy` states that for every unique combination of `run` and `subject`,
 
 If you are familar with tabular data such as R `DataFrames`, or `pandas`, the `GroupBy` operation should be familar. For instance, given three subjects with two runs each, we can define 6 rows in a table (3x2):
 
-| image       | subject     | run |
-| ----------- | ----------- | ----------- |
-| sub-01_task-simon_run-1_bold.nii.gz      | "1"       | 1       |
-| sub-01_task-simon_run-2_bold.nii.gz   | "1"        | 2        |
-| sub-02_task-simon_run-1_bold.nii.gz      | "2"       | 1       |
-| sub-02_task-simon_run-2_bold.nii.gz   | "2"        | 2        |
-| sub-03_task-simon_run-1_bold.nii.gz      | "3"       | 1       |
-| sub-03_task-simon_run-2_bold.nii.gz   | "3"        | 2        |
+```{code-cell} python3
+---
+tags: ["remove_input"]
+---
+from IPython.display import display
+import pandas as pd
+subjects = ["01", "02", "03"]
+runs = [1, 2]
 
-If we `GroupBy` *subject*, there would be three groups of images--one for each subject. If we `GroupBy` *run*, all images with the same *run* ID would be grouped together, resulting in two groups, one for each distinct group ID. 
+def display_groups(df, groups):
+    for group in df.groupby(groups):
+        display(group[1])
+
+inputs = pd.DataFrame.from_records(
+  [{
+     "subject": subject,
+     "run": run,
+     "image": f"sub-{subject}_task-simon_run-{run}_bold.nii.gz",
+   } for subject in subjects for run in runs]
+)
+display(inputs)
+```
+
+If we `GroupBy` *subject*, there would be three groups of images--one for each subject:
+
+```{code-cell} python3
+---
+tags: ["remove_input"]
+---
+display_groups(inputs, "subject")
+```
+
+If we `GroupBy` *run*, all images with the same *run* ID would be grouped together, resulting in two groups, one for each distinct group ID:
+
+```{code-cell} python3
+---
+tags: ["remove_input"]
+---
+display_groups(inputs, "run")
+```
 
 However, since we want to model each `BOLD` image separately, we must `GroupBy` **both *subject* and *run***, resulting in six groups with a single image each. 
+
+```{code-cell} python3
+---
+tags: ["remove_input"]
+---
+display_groups(inputs, ["run", "subject"])
+```
 
 ### Subject level Node
 
