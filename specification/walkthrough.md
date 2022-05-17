@@ -6,7 +6,7 @@ The statistical analysis of neuroimaging data typically occurs across distinct s
 
 For example, in fMRI it is common to first fit a design matrix to run-level time series followed by a fixed-effects model to combine estimates at the subject-level. Finally, a dataset-level (or "group level") random-effects one-sample t-test can be performed to estimate population level effects. At each level of the analysis, we need to know which image inputs correspond to which design matrix, and more how to keep track of and combine outputs from the previous level at the current level of analysis. 
 
-*BIDS Stats Models* proposes a general machine-readable document to describe multi-stage neuroimaging analyses in a precise, yet flexible manner. We accomplish this by defining a *graph* composed of **Nodes** representing each level of the analysis, and `Edges` which define the flow of data from one `Node` to another. Within each {py:attr}`~bsmschema.models.Node` we specify a {py:attr}`~bsmschema.models.Model` to estimate, and at least one {py:attr}`~bsmschema.models.Contrast` to define the computed outputs of each `Node`. Within each node we also specify how to group the incoming inputs into analysis units using the {py:attr}`~bsmschema.models.Node.GroupBy` directive.
+*BIDS Stats Models* proposes a general machine-readable document to describe multi-stage neuroimaging analyses in a precise, yet flexible manner. We accomplish this by defining a *graph* composed of **Nodes** representing each level of the analysis and **Edges** which define the flow of data from one Node to another. Within each {py:class}`~bsmschema.models.Node` we specify a {py:class}`~bsmschema.models.Model` to estimate, and at least one {py:class}`~bsmschema.models.Contrast` to define the computed outputs of each `Node`. Within each node we also specify how to group the incoming inputs into analysis units using the {py:attr}`~bsmschema.models.Node.GroupBy` directive.
 
 
 ## A simple example
@@ -23,56 +23,8 @@ Let's visualize this model for 3 participants:
 
 We can formally represent this analysis as **BIDS Stats Model**:
 
-```json
-{
-  "Name": "Simon IvC",
-  "BIDSModelVersion": "1.0.0",
-  "Input": {"Subject": ["01", "02", "03"]},
-  "Nodes": [
-    {
-      "Level": "Run",
-      "Name": "run_level",
-      "GroupBy": ["run", "subject"],
-      "Model": {"X": [1, "incongruent", "congruent"], "Type": "glm"},
-      "Contrasts": [
-        {
-          "Name": "IvC",
-          "ConditionList": ["incongruent", "congruent"],
-          "Weights": [1, -1],
-          "Test": "t"
-        }
-      ]
-    },
-    {
-      "Level": "Subject",
-      "Name": "subject_level",
-      "GroupBy": ["subject", "contrast"],
-      "Model": {"X": [1], "Type": "Meta"},
-      "Contrasts": [
-        {
-          "Name": "IvC",
-          "ConditionList": ["IvC"],
-          "Weights": [1],
-          "Test": "pass"
-        }
-      ]
-    },
-    {
-      "Level": "Dataset",
-      "Name": "one-sample_dataset",
-      "GroupBy": ["contrast"],
-      "Model": {"X": [1], "Type": "glm"},
-      "Contrasts": [
-        {
-          "Name": "IvC",
-          "ConditionList": ["IvC"],
-          "Weights": [1],
-          "Test": "t"
-        }
-      ]
-    }
-  ]
-}
+```{literalinclude} examples/model-walkthrough_smdl.json
+:language: JSON
 ```
 
 ```{note}
