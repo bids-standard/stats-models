@@ -155,7 +155,7 @@ In this example there is only one `contrast`, but we include `contrast` as a gro
 
 We can now specify the `Subject` level `Model`. Since our intent is to estimate the *mean* for each subject, we only need an intercept (`1`) in our model. We specify the `"Type"` to be `Meta`, which is a special type to identify fixed-effects models.
 
-Remember that we must specify `Contrasts` in order to produce outputs for the next `Node`. Here, we compute a simple identity identity contrast to pass forward the subject-evel estimates forward. Note that we specified the `Test` as `pass`, since we don't want to perform a t-test, but simply need pass forward parameter and variance estimates.   
+Remember that we must specify `Contrasts` in order to produce outputs for the next `Node`. Here, we compute a simple identity contrast to pass forward the subject-evel estimates forward. Note that we specified the `Test` as `pass`, since we don't want to perform a t-test, but simply need to compute and pass forward parameter and variance estimates.
 
 ```json
       "Model": {
