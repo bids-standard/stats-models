@@ -323,11 +323,12 @@ class Model(_Commentable):
     # """Specifies how to model the error."""
     Options: Optional[Options]
     """Estimation options that are common to multiple estimation packages."""
-    Software: Optional[List[Dict[StrictStr, Dict[StrictStr, Any]]]]
+    Software: Optional[Dict[StrictStr, Dict[StrictStr, Any]]]
     """This section allows one to specify any software-specific estimation parameters.
-    Each value in the list is an object, with the key being the name of the software package (FSL, SPM, etc.),
-    and the value being an object containing software-specific parameters.
-    The BIDS-Model spec makes no attempt to control the vocabulary available for use in any particular software package;
+    Each key in the object is the name of the software package (FSL, SPM, etc.),
+    and the value is an object containing software-specific parameters.
+    The BIDS Stats Models spec makes no attempt to control the vocabulary available for
+    use in any particular software package;
     we expect that the developers of each package will, over time, fill in these specifications."""
 
 
