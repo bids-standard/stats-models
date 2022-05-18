@@ -1,21 +1,48 @@
-# Walkthrough 
+# Walkthrough
 
 ## The problem: Representing multi-stage models
 
-The statistical analysis of neuroimaging data typically occurs across distinct stages of analysis, with parameter estimates from lower levels of analysis propagating to higher levels for subsequent analysis. 
+The statistical analysis of neuroimaging data typically occurs across distinct
+stages of analysis, with parameter estimates from lower levels of analysis
+propagating to higher levels for subsequent analysis.
 
-For example, in fMRI it is common to first fit a design matrix to run-level time series followed by a fixed-effects model to combine estimates at the subject-level. Finally, a dataset-level (or "group level") random-effects one-sample t-test can be performed to estimate population level effects. At each level of the analysis, we need to know which image inputs correspond to which design matrix, and more how to keep track of and combine outputs from the previous level at the current level of analysis. 
+For example, in fMRI it is common to first fit a design matrix to run-level time
+series followed by a fixed-effects model to combine estimates at the
+subject-level. Finally, a dataset-level (or "group level") random-effects
+one-sample t-test can be performed to estimate population level effects. At each
+level of the analysis, we need to know which image inputs correspond to which
+design matrix, and more how to keep track of and combine outputs from the
+previous level at the current level of analysis.
 
-*BIDS Stats Models* proposes a general machine-readable document to describe multi-stage neuroimaging analyses in a precise, yet flexible manner. We accomplish this by defining a *graph* composed of **Nodes** representing each level of the analysis and **Edges** which define the flow of data from one Node to another. Within each {py:class}`~bsmschema.models.Node` we specify a {py:class}`~bsmschema.models.Model` to estimate, and at least one {py:class}`~bsmschema.models.Contrast` to define the computed outputs of each `Node`. Within each node we also specify how to group the incoming inputs into analysis units using the {py:attr}`~bsmschema.models.Node.GroupBy` directive.
-
+_BIDS Stats Models_ proposes a general machine-readable document to describe
+multi-stage neuroimaging analyses in a precise, yet flexible manner. We
+accomplish this by defining a _graph_ composed of **Nodes** representing each
+level of the analysis and **Edges** which define the flow of data from one Node
+to another. Within each {py:class}`~bsmschema.models.Node` we specify a
+{py:class}`~bsmschema.models.Model` to estimate, and at least one
+{py:class}`~bsmschema.models.Contrast` to define the computed outputs of each
+`Node`. Within each node we also specify how to group the incoming inputs into
+analysis units using the {py:attr}`~bsmschema.models.Node.GroupBy` directive.
 
 ## A simple example
 
-In a [Simon task](https://openneuro.org/datasets/ds000101/versions/00004), participants were scanned for 2 runs and asked to indicate whether a diamond that was presented to the left or right of a central fixation cross was green or red. There were two conditions: color-spatial *congruent* and *incongruent* trials.
+In a [Simon task](https://openneuro.org/datasets/ds000101/versions/00004),
+participants were scanned for 2 runs and asked to indicate whether a diamond
+that was presented to the left or right of a central fixation cross was green or
+red. There were two conditions: color-spatial _congruent_ and _incongruent_
+trials.
 
-A basic analysis of this task is to determine which regions showed *greater activity for incongruent versus congruent trials*, across all participants. 
+A basic analysis of this task is to determine which regions showed _greater
+activity for incongruent versus congruent trials_, across all participants.
 
-We can perform this analysis by first estimating a **run-level** timeseries model for "Incongruent" and "Congruent" trials--separately for each individual run. We then compute a contrast comparing *Incongruent > Congruent* (IvC) trials. Next, we pass the resulting statistical maps for the contrast to a **subject-level** estimator, which computes the average *IvC* effect for each subject separately. Finally, we pass the resulting estimates to a **dataset-level** estimator, which conduts a one-sample t-test across all of the subject estimates for the *IvC* contrast.
+We can perform this analysis by first estimating a **run-level** timeseries
+model for "Incongruent" and "Congruent" trials--separately for each individual
+run. We then compute a contrast comparing _Incongruent > Congruent_ (IvC)
+trials. Next, we pass the resulting statistical maps for the contrast to a
+**subject-level** estimator, which computes the average _IvC_ effect for each
+subject separately. Finally, we pass the resulting estimates to a
+**dataset-level** estimator, which conduts a one-sample t-test across all of the
+subject estimates for the _IvC_ contrast.
 
 Let's visualize this model for 3 participants:
 
@@ -28,25 +55,27 @@ We can formally represent this analysis as **BIDS Stats Model**:
 ```
 
 ```{note}
-For this example, we have limited the model to three subjects using the `Input` key. 
+For this example, we have limited the model to three subjects using the `Input` key.
 ```
 
-*BSM* defines this multi-stage analysis as a Graph, with each level of analysis defined as a separate `Node` object. 
-
+_BSM_ defines this multi-stage analysis as a Graph, with each level of analysis
+defined as a separate `Node` object.
 
 ### Run-level Model
 
-First, we define a `Node` for the run level analysis. 
+First, we define a `Node` for the run level analysis.
 
 ```json
       "Level": "Run",
       "Name": "run_level"
 ```
 
-Note that the {py:attr}`~bsmschema.models.Node.Level` key is necessary for determining which input images are available to the estimator. At the `Run` level, there are many sources of possible variables, most notably `_events.tsv` files which define the timing of task-related events.  
+Note that the {py:attr}`~bsmschema.models.Node.Level` key is necessary for
+determining which input images are available to the estimator. At the `Run`
+level, there are many sources of possible variables, most notably `_events.tsv`
+files which define the timing of task-related events.
 
-Next we define a {py:attr}`~bsmschema.models.Model` for this node. 
-
+Next we define a {py:attr}`~bsmschema.models.Model` for this node.
 
 ```json
       "Model": {
@@ -55,10 +84,13 @@ Next we define a {py:attr}`~bsmschema.models.Model` for this node.
       }
 ```
 
-The {py:attr}`~bsmschema.models.Model.X` parameter defines the variables in the design matrix. Here, we are modeling the `incongruent` and `congruent` trial types, in addition to an intercept (idenitified by the special key: `1`; see: _).
+The {py:attr}`~bsmschema.models.Model.X` parameter defines the variables in the
+design matrix. Here, we are modeling the `incongruent` and `congruent` trial
+types, in addition to an intercept (idenitified by the special key: `1`; see:
+\_).
 
-Next, we specify an *Incongruent-Congruent (IvC)* contrast using the {py:attr}`~bsmschema.models.Contrast` key:
-
+Next, we specify an _Incongruent-Congruent (IvC)_ contrast using the
+{py:attr}`~bsmschema.models.Contrast` key:
 
 ```json
       "Contrasts": [
@@ -71,53 +103,67 @@ Next, we specify an *Incongruent-Congruent (IvC)* contrast using the {py:attr}`~
       ]
 ```
 
-If you have used other fMRI modeling tools this should be familar. We have specified a t-test contrast with the weights `[1, -1]` for the conditions: `["incongruent", "congruent"]` and given this contrast the name `IvC`. 
+If you have used other fMRI modeling tools this should be familar. We have
+specified a t-test contrast with the weights `[1, -1]` for the conditions:
+`["incongruent", "congruent"]` and given this contrast the name `IvC`.
 
 ```{attention}
-`Contrasts` **define the outputs** that will be available to the next `Node`. 
+`Contrasts` **define the outputs** that will be available to the next `Node`.
 
 Since we only modeled a single contrast (`IvC`), the next `Node` will not have access to estimates for main effects for the `congruent` or `incongruent` conditions, unless we explicitly compute a `Contrast` for each.
 ```
 
-#### How to *group* analysis inputs?
+#### How to _group_ analysis inputs?
 
-An underappreciated factor in multi-stage models is the grouping of image inputs into analysis units. For example, here we want to estimate a timeseries model for each `Run` separately, rather that concatenating all runs for each subject into one large model.
+An underappreciated factor in multi-stage models is the grouping of image inputs
+into analysis units. For example, here we want to estimate a timeseries model
+for each `Run` separately, rather that concatenating all runs for each subject
+into one large model.
 
-We must explicitly define this grouping structure using the {py:attr}`~bsmschema.models.Node.GroupBy` key for every node. To fit a separate time series model for each individual run image, we specify:
-
+We must explicitly define this grouping structure using the
+{py:attr}`~bsmschema.models.Node.GroupBy` key for every node. To fit a separate
+time series model for each individual run image, we specify:
 
 ```json
       "GroupBy": ["run", "subject"]
 ```
 
-Here, `GroupBy` states that for every unique combination of `run` and `subject`, we will fit a separate model. This results in a single input image per model. 
+Here, `GroupBy` states that for every unique combination of `run` and `subject`,
+we will fit a separate model. This results in a single input image per model.
 
-If you are familar with tabular data such as R `DataFrames`, or `pandas`, the `GroupBy` operation should be familar. For instance, given three subjects with two runs each, we can define 6 rows in a table (3x2):
+If you are familar with tabular data such as R `DataFrames`, or `pandas`, the
+`GroupBy` operation should be familar. For instance, given three subjects with
+two runs each, we can define 6 rows in a table (3x2):
 
-| image       | subject     | run |
-| ----------- | ----------- | ----------- |
-| sub-01_task-simon_run-1_bold.nii.gz      | "1"       | 1       |
-| sub-01_task-simon_run-2_bold.nii.gz   | "1"        | 2        |
-| sub-02_task-simon_run-1_bold.nii.gz      | "2"       | 1       |
-| sub-02_task-simon_run-2_bold.nii.gz   | "2"        | 2        |
-| sub-03_task-simon_run-1_bold.nii.gz      | "3"       | 1       |
-| sub-03_task-simon_run-2_bold.nii.gz   | "3"        | 2        |
+| image                               | subject | run |
+| ----------------------------------- | ------- | --- |
+| sub-01_task-simon_run-1_bold.nii.gz | "1"     | 1   |
+| sub-01_task-simon_run-2_bold.nii.gz | "1"     | 2   |
+| sub-02_task-simon_run-1_bold.nii.gz | "2"     | 1   |
+| sub-02_task-simon_run-2_bold.nii.gz | "2"     | 2   |
+| sub-03_task-simon_run-1_bold.nii.gz | "3"     | 1   |
+| sub-03_task-simon_run-2_bold.nii.gz | "3"     | 2   |
 
-If we `GroupBy` *subject*, there would be three groups of images--one for each subject. If we `GroupBy` *run*, all images with the same *run* ID would be grouped together, resulting in two groups, one for each distinct group ID. 
+If we `GroupBy` _subject_, there would be three groups of images--one for each
+subject. If we `GroupBy` _run_, all images with the same _run_ ID would be
+grouped together, resulting in two groups, one for each distinct group ID.
 
-However, since we want to model each `BOLD` image separately, we must `GroupBy` **both *subject* and *run***, resulting in six groups with a single image each. 
+However, since we want to model each `BOLD` image separately, we must `GroupBy`
+**both _subject_ and _run_**, resulting in six groups with a single image each.
 
 ### Subject level Node
 
 #### From Run Outputs to Subject Inputs
 
-Next, we define a fixed-effects model to combine contrast outputs from each subject's runs together. 
+Next, we define a fixed-effects model to combine contrast outputs from each
+subject's runs together.
 
 ```{note}
-By default, `Nodes` are linked sequentially, with all the `Contrast` outputs from a `Node` available to the subsequent `Node`. 
+By default, `Nodes` are linked sequentially, with all the `Contrast` outputs from a `Node` available to the subsequent `Node`.
 ```
 
-We need to use `GroupBy` to define how to group the outputs from the `Run` node as inputs to the `Subject` level:
+We need to use `GroupBy` to define how to group the outputs from the `Run` node
+as inputs to the `Subject` level:
 
 ```json
       "Level": "Subject",
@@ -125,27 +171,29 @@ We need to use `GroupBy` to define how to group the outputs from the `Run` node 
       "GroupBy": ["subject", "contrast"],
 ```
 
-Here we are specifying that all images belonging to a single `subject` and from a single `contrast` should be grouped together for analysis.
+Here we are specifying that all images belonging to a single `subject` and from
+a single `contrast` should be grouped together for analysis.
 
-Note that with 3 subjects and 2 runs, we will have 6 groups of output images from the `Run` node. Given two types of images (`variance` and `effect`), this results in 12 images that would be grouped as follows:
+Note that with 3 subjects and 2 runs, we will have 6 groups of output images
+from the `Run` node. Given two types of images (`variance` and `effect`), this
+results in 12 images that would be grouped as follows:
 
-
-| image       | subject     | run | contrast |
-| ----------- | ----------- | ----------- | ----------- |
-| sub-01_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii.gz | 01 | 1 | IvC |
-| sub-01_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii.gz | 01| 1| IvC |
-| sub-01_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii.gz | 01| 2| IvC |
-| sub-01_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii.gz |01| 2| IvC |
-| - | - | - | - |
-| sub-02_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii.gz | 02| 1| IvC |
-| sub-02_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii.gz | 02| 1| IvC |
-| sub-02_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii.gz | 02| 2| IvC |
-| sub-02_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii.gz | 02| 2| IvC |
-| - | - | - | - |
-| sub-03_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii.gz | 03| 1| IvC |
-| sub-03_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii.gz | 03| 1| IvC |
-| sub-03_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii.gz | 03| 2| IvC |
-| sub-03_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii.gz | 03| 2| IvC |
+| image                                                             | subject | run | contrast |
+| ----------------------------------------------------------------- | ------- | --- | -------- |
+| sub-01_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii.gz   | 01      | 1   | IvC      |
+| sub-01_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii.gz | 01      | 1   | IvC      |
+| sub-01_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii.gz   | 01      | 2   | IvC      |
+| sub-01_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii.gz | 01      | 2   | IvC      |
+| -                                                                 | -       | -   | -        |
+| sub-02_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii.gz   | 02      | 1   | IvC      |
+| sub-02_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii.gz | 02      | 1   | IvC      |
+| sub-02_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii.gz   | 02      | 2   | IvC      |
+| sub-02_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii.gz | 02      | 2   | IvC      |
+| -                                                                 | -       | -   | -        |
+| sub-03_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii.gz   | 03      | 1   | IvC      |
+| sub-03_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii.gz | 03      | 1   | IvC      |
+| sub-03_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii.gz   | 03      | 2   | IvC      |
+| sub-03_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii.gz | 03      | 2   | IvC      |
 
 ```{tip}
 In this example there is only one `contrast`, but we include `contrast` as a grouping variable to be explicit.
@@ -153,13 +201,20 @@ In this example there is only one `contrast`, but we include `contrast` as a gro
 
 #### Subject-level Model
 
-We can now specify the `Subject` level `Model`. Since our intent is to estimate the *mean* for each subject, we only need an intercept (`1`) in our model. We specify the `"Type"` to be `Meta`, which is a special type to identify fixed-effects models.
+We can now specify the `Subject` level `Model`. Since our intent is to estimate
+the _mean_ for each subject, we only need an intercept (`1`) in our model. We
+specify the `"Type"` to be `Meta`, which is a special type to identify
+fixed-effects models.
 
-Remember that we must specify `Contrasts` in order to produce outputs for the next `Node`. Here, we compute a simple identity contrast to pass forward the subject-evel estimates forward. Note that we specified the `Test` as `pass`, since we don't want to perform a t-test, but simply need to compute and pass forward parameter and variance estimates.
+Remember that we must specify `Contrasts` in order to produce outputs for the
+next `Node`. Here, we compute a simple identity contrast to pass forward the
+subject-evel estimates forward. Note that we specified the `Test` as `pass`,
+since we don't want to perform a t-test, but simply need to compute and pass
+forward parameter and variance estimates.
 
 ```json
       "Model": {
-        "X": [1], 
+        "X": [1],
         "Type": "Meta"
       },
       "Contrasts": [
@@ -174,8 +229,8 @@ Remember that we must specify `Contrasts` in order to produce outputs for the ne
 
 ### Dataset level Node
 
-We are ready to perform a one-sample t-test to estimate population-level effects for the *IvC* `Contrast`. We refer to this level as the `Dataset` level. 
-
+We are ready to perform a one-sample t-test to estimate population-level effects
+for the _IvC_ `Contrast`. We refer to this level as the `Dataset` level.
 
 ```json
       "Level": "Dataset",
@@ -183,20 +238,23 @@ We are ready to perform a one-sample t-test to estimate population-level effects
       "GroupBy": ["contrast"],
 ```
 
+Here we only need to `GroupBy` `contrast`, as we want a separate estimate for
+each contrast, but want to include all subjects in the same analysis. Since we
+only have one `contrast`, all the incoming subject-level images will be grouped
+together:
 
-Here we only need to `GroupBy` `contrast`, as we want a separate estimate for each contrast, but want to include all subjects in the same analysis. Since we only have one `contrast`, all the incoming subject-level images will be grouped together:
+| image                                                     | subject | contrast |
+| --------------------------------------------------------- | ------- | -------- |
+| sub-01_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "1"     | "IvC"    |
+| sub-01_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "1"     | "IvC"    |
+| sub-02_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "2"     | "IvC"    |
+| sub-02_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "2"     | "IvC"    |
+| sub-03_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "3"     | "IvC"    |
+| sub-03_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "3"     | "IvC"    |
 
-| image       | subject     | contrast |
-| ----------- | ----------- | ----------- |
-| sub-01_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "1" | "IvC" |
-| sub-01_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "1"| "IvC" |
-| sub-02_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "2"|  "IvC" |
-| sub-02_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "2"| "IvC" |
-| sub-03_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "3"| "IvC" |
-| sub-03_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "3"| "IvC" |
-
-
-As before, we can specify an intercept-only model, but of type `glm` since we want to perform a random-effects analysis. We also specify a single identity t-test `Contrast` in order to compute the output of this `Node`.
+As before, we can specify an intercept-only model, but of type `glm` since we
+want to perform a random-effects analysis. We also specify a single identity
+t-test `Contrast` in order to compute the output of this `Node`.
 
 ```json
       "Model": {
