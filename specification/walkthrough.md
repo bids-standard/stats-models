@@ -1,4 +1,16 @@
-# Walkthrough
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
+# Walkthrough 
 
 ## The problem: Representing multi-stage models
 
@@ -65,9 +77,10 @@ defined as a separate `Node` object.
 
 First, we define a `Node` for the run level analysis.
 
-```json
-      "Level": "Run",
-      "Name": "run_level"
+```{literalinclude} examples/model-walkthrough_smdl.json
+:language: JSON
+:start-at: '"Level": "Run"'
+:lines: 1-2
 ```
 
 Note that the {py:attr}`~bsmschema.models.Node.Level` key is necessary for
@@ -77,17 +90,15 @@ files which define the timing of task-related events.
 
 Next we define a {py:attr}`~bsmschema.models.Model` for this node.
 
-```json
-      "Model": {
-        "X": [1, "incongruent", "congruent"],
-        "Type": "glm"
-      }
+```{literalinclude} examples/model-walkthrough_smdl.json
+:language: JSON
+:start-at: '"Model": {"X": [1,'
+:lines: 1
 ```
 
-The {py:attr}`~bsmschema.models.Model.X` parameter defines the variables in the
-design matrix. Here, we are modeling the `incongruent` and `congruent` trial
-types, in addition to an intercept (idenitified by the special key: `1`; see:
-\_).
+The {py:attr}`~bsmschema.models.Model.X` parameter defines the variables in the design matrix. Here, we are modeling the `incongruent` and `congruent` trial types, in addition to an intercept (idenitified by the special key: `1`; see: \_).
+
+Next, we specify an *Incongruent-Congruent (IvC)* contrast using the {py:attr}`~bsmschema.models.Contrast` key:
 
 Next, we specify an _Incongruent-Congruent (IvC)_ contrast using the
 {py:attr}`~bsmschema.models.Contrast` key:
@@ -135,21 +146,61 @@ If you are familar with tabular data such as R `DataFrames`, or `pandas`, the
 `GroupBy` operation should be familar. For instance, given three subjects with
 two runs each, we can define 6 rows in a table (3x2):
 
-| image                               | subject | run |
-| ----------------------------------- | ------- | --- |
-| sub-01_task-simon_run-1_bold.nii.gz | "1"     | 1   |
-| sub-01_task-simon_run-2_bold.nii.gz | "1"     | 2   |
-| sub-02_task-simon_run-1_bold.nii.gz | "2"     | 1   |
-| sub-02_task-simon_run-2_bold.nii.gz | "2"     | 2   |
-| sub-03_task-simon_run-1_bold.nii.gz | "3"     | 1   |
-| sub-03_task-simon_run-2_bold.nii.gz | "3"     | 2   |
+```{code-cell} python3
+---
+tags: ["remove_input"]
+---
+from IPython.display import display
+import pandas as pd
+pd.set_option('display.max_colwidth', None)
 
-If we `GroupBy` _subject_, there would be three groups of images--one for each
-subject. If we `GroupBy` _run_, all images with the same _run_ ID would be
-grouped together, resulting in two groups, one for each distinct group ID.
+subjects = ["01", "02", "03"]
+runs = [1, 2]
+# For later use
+contrasts = ["IvC"]
+stats = ["effect", "variance"]
+
+def display_groups(df, groups):
+    for group in df.groupby(groups, as_index=False):
+        display(group[1].style.hide(axis="index"))
+
+inputs = pd.DataFrame.from_records(
+  [{
+     "subject": subject,
+     "run": run,
+     "image": f"sub-{subject}_task-simon_run-{run}_bold.nii.gz",
+   } for subject in subjects for run in runs]
+)
+display(inputs.style.hide(axis="index"))
+```
+
+If we `GroupBy` *subject*, there would be three groups of images--one for each subject:
+
+```{code-cell} python3
+---
+tags: ["remove_input"]
+---
+display_groups(inputs, "subject")
+```
+
+If we `GroupBy` *run*, all images with the same *run* ID would be grouped together, resulting in two groups, one for each distinct group ID:
+
+```{code-cell} python3
+---
+tags: ["remove_input"]
+---
+display_groups(inputs, "run")
+```
 
 However, since we want to model each `BOLD` image separately, we must `GroupBy`
 **both _subject_ and _run_**, resulting in six groups with a single image each.
+
+```{code-cell} python3
+---
+tags: ["remove_input"]
+---
+display_groups(inputs, ["run", "subject"])
+```
 
 ### Subject level Node
 
@@ -171,29 +222,27 @@ as inputs to the `Subject` level:
       "GroupBy": ["subject", "contrast"],
 ```
 
-Here we are specifying that all images belonging to a single `subject` and from
-a single `contrast` should be grouped together for analysis.
+Here we are specifying that all images belonging to a single `subject` and from a single `contrast` should be grouped together for analysis.
 
-Note that with 3 subjects and 2 runs, we will have 6 groups of output images
-from the `Run` node. Given two types of images (`variance` and `effect`), this
-results in 12 images that would be grouped as follows:
+Note that with 3 subjects and 2 runs, we will have 6 groups of output images from the `Run` node. Given two types of images (`variance` and `effect`), this results in 12 images that would be grouped as follows:
 
-| image                                                             | subject | run | contrast |
-| ----------------------------------------------------------------- | ------- | --- | -------- |
-| sub-01_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii.gz   | 01      | 1   | IvC      |
-| sub-01_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii.gz | 01      | 1   | IvC      |
-| sub-01_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii.gz   | 01      | 2   | IvC      |
-| sub-01_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii.gz | 01      | 2   | IvC      |
-| -                                                                 | -       | -   | -        |
-| sub-02_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii.gz   | 02      | 1   | IvC      |
-| sub-02_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii.gz | 02      | 1   | IvC      |
-| sub-02_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii.gz   | 02      | 2   | IvC      |
-| sub-02_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii.gz | 02      | 2   | IvC      |
-| -                                                                 | -       | -   | -        |
-| sub-03_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii.gz   | 03      | 1   | IvC      |
-| sub-03_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii.gz | 03      | 1   | IvC      |
-| sub-03_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii.gz   | 03      | 2   | IvC      |
-| sub-03_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii.gz | 03      | 2   | IvC      |
+```{code-cell} python3
+---
+tags: ["remove_input"]
+---
+outputs = pd.DataFrame.from_records(
+  [{
+     "subject": subject,
+     "run": run,
+     "contrast": contrast,
+     "image": f"sub-{subject}_task-simon_run-{run}_"
+              f"contrast-{contrast}_stat-{stat}_statmap.nii",
+   }
+   for subject in subjects for run in runs
+   for contrast in contrasts for stat in stats]
+)
+display_groups(outputs, ["subject", "contrast"])
+```
 
 ```{tip}
 In this example there is only one `contrast`, but we include `contrast` as a grouping variable to be explicit.
@@ -243,18 +292,24 @@ each contrast, but want to include all subjects in the same analysis. Since we
 only have one `contrast`, all the incoming subject-level images will be grouped
 together:
 
-| image                                                     | subject | contrast |
-| --------------------------------------------------------- | ------- | -------- |
-| sub-01_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "1"     | "IvC"    |
-| sub-01_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "1"     | "IvC"    |
-| sub-02_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "2"     | "IvC"    |
-| sub-02_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "2"     | "IvC"    |
-| sub-03_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "3"     | "IvC"    |
-| sub-03_task-simon_contrast-IvC_stat-effect_statmap.nii.gz | "3"     | "IvC"    |
+```{code-cell} python3
+---
+tags: ["remove_input"]
+---
+outputs = pd.DataFrame.from_records(
+  [{
+     "subject": subject,
+     "contrast": contrast,
+     "image": f"sub-{subject}_task-simon_"
+              f"contrast-{contrast}_stat-{stat}_statmap.nii",
+   }
+   for subject in subjects
+   for contrast in contrasts for stat in stats]
+)
+display_groups(outputs, ["contrast"])
+```
 
-As before, we can specify an intercept-only model, but of type `glm` since we
-want to perform a random-effects analysis. We also specify a single identity
-t-test `Contrast` in order to compute the output of this `Node`.
+As before, we can specify an intercept-only model, but of type `glm` since we want to perform a random-effects analysis. We also specify a single identity t-test `Contrast` in order to compute the output of this `Node`.
 
 ```json
       "Model": {
@@ -270,4 +325,20 @@ t-test `Contrast` in order to compute the output of this `Node`.
         }
       ]
     }
+```
+
+The outputs of this node collapse across subjects, leaving a single effect/variance pair:
+
+```{code-cell} python3
+---
+tags: ["remove_input"]
+---
+outputs = pd.DataFrame.from_records(
+  [{
+     "contrast": contrast,
+     "image": f"task-simon_contrast-{contrast}_stat-{stat}_statmap.nii",
+   }
+   for contrast in contrasts for stat in stats]
+)
+display_groups(outputs, ["contrast"])
 ```
