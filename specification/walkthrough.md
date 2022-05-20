@@ -100,18 +100,9 @@ The {py:attr}`~bsmschema.models.Model.X` parameter defines the variables in the 
 
 Next, we specify an *Incongruent-Congruent (IvC)* contrast using the {py:attr}`~bsmschema.models.Contrast` key:
 
-Next, we specify an _Incongruent-Congruent (IvC)_ contrast using the
-{py:attr}`~bsmschema.models.Contrast` key:
-
-```json
-      "Contrasts": [
-        {
-          "Name": "IvC",
-          "ConditionList": ["incongruent", "congruent"],
-          "Weights": [1, -1],
-          "Test": "t"
-        }
-      ]
+```{literalinclude} examples/model-walkthrough_smdl.json
+:language: JSON
+:lines: 11-18
 ```
 
 If you have used other fMRI modeling tools this should be familar. We have
@@ -135,8 +126,11 @@ We must explicitly define this grouping structure using the
 {py:attr}`~bsmschema.models.Node.GroupBy` key for every node. To fit a separate
 time series model for each individual run image, we specify:
 
-```json
-      "GroupBy": ["run", "subject"]
+
+```{literalinclude} examples/model-walkthrough_smdl.json
+:language: JSON
+:start-at: ' "GroupBy": ["run", "subject"]'
+:lines: 1
 ```
 
 Here, `GroupBy` states that for every unique combination of `run` and `subject`,
@@ -216,10 +210,10 @@ By default, `Nodes` are linked sequentially, with all the `Contrast` outputs fro
 We need to use `GroupBy` to define how to group the outputs from the `Run` node
 as inputs to the `Subject` level:
 
-```json
-      "Level": "Subject",
-      "Name": "subject_level",
-      "GroupBy": ["subject", "contrast"],
+```{literalinclude} examples/model-walkthrough_smdl.json
+:language: JSON
+:start-at: '"Level": "Subject",'
+:lines: 3
 ```
 
 Here we are specifying that all images belonging to a single `subject` and from a single `contrast` should be grouped together for analysis.
@@ -248,7 +242,7 @@ display_groups(outputs, ["subject", "contrast"])
 In this example there is only one `contrast`, but we include `contrast` as a grouping variable to be explicit.
 ```
 
-#### Subject-level Model
+#### Subject Model
 
 We can now specify the `Subject` level `Model`. Since our intent is to estimate
 the _mean_ for each subject, we only need an intercept (`1`) in our model. We
@@ -261,19 +255,11 @@ subject-evel estimates forward. Note that we specified the `Test` as `pass`,
 since we don't want to perform a t-test, but simply need to compute and pass
 forward parameter and variance estimates.
 
-```json
-      "Model": {
-        "X": [1],
-        "Type": "Meta"
-      },
-      "Contrasts": [
-        {
-          "Name": "IvC",
-          "ConditionList": ["IvC"],
-          "Weights": [1],
-          "Test": "pass"
-        }
-      ]
+
+```{literalinclude} examples/model-walkthrough_smdl.json
+:language: JSON
+:start-at: '"Model": {"X": [1], "Type": "meta"}'
+:lines: 2
 ```
 
 ### Dataset level Node
@@ -281,10 +267,10 @@ forward parameter and variance estimates.
 We are ready to perform a one-sample t-test to estimate population-level effects
 for the _IvC_ `Contrast`. We refer to this level as the `Dataset` level.
 
-```json
-      "Level": "Dataset",
-      "Name": "one-sample_dataset",
-      "GroupBy": ["contrast"],
+```{literalinclude} examples/model-walkthrough_smdl.json
+:language: JSON
+:start-at: '"Level": "Dataset",'
+:lines: 3
 ```
 
 Here we only need to `GroupBy` `contrast`, as we want a separate estimate for
@@ -311,20 +297,10 @@ display_groups(outputs, ["contrast"])
 
 As before, we can specify an intercept-only model, but of type `glm` since we want to perform a random-effects analysis. We also specify a single identity t-test `Contrast` in order to compute the output of this `Node`.
 
-```json
-      "Model": {
-        "X": [1],
-        "Type": "glm"
-      },
-      "Contrasts": [
-        {
-          "Name": "IvC",
-          "ConditionList": ["IvC"],
-          "Weights": [1],
-          "Test": "t"
-        }
-      ]
-    }
+
+```{literalinclude} examples/model-walkthrough_smdl.json
+:language: JSON
+:lines: 31-32
 ```
 
 The outputs of this node collapse across subjects, leaving a single effect/variance pair:

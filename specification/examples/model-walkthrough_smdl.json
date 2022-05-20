@@ -1,7 +1,7 @@
 {
   "Name": "Simon IvC",
   "BIDSModelVersion": "1.0.0",
-  "Input": {"subject": ["01", "02", "03"]},
+  "Input": {"subject": ["01", "02", "03"], "task": "simon"},
   "Nodes": [
     {
       "Level": "Run",
@@ -22,28 +22,14 @@
       "Name": "subject_level",
       "GroupBy": ["subject", "contrast"],
       "Model": {"X": [1], "Type": "meta"},
-      "Contrasts": [
-        {
-          "Name": "IvC",
-          "ConditionList": ["IvC"],
-          "Weights": [1],
-          "Test": "pass"
-        }
-      ]
+      "DummyContrasts": {"Test": "pass"}
     },
     {
       "Level": "Dataset",
       "Name": "one-sample_dataset",
       "GroupBy": ["contrast"],
       "Model": {"X": [1], "Type": "glm"},
-      "Contrasts": [
-        {
-          "Name": "IvC",
-          "ConditionList": ["IvC"],
-          "Weights": [1],
-          "Test": "t"
-        }
-      ]
+      "DummyContrasts": {"Test": "t"}
     }
   ]
 }
