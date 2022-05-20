@@ -350,8 +350,8 @@ Our model will compute a run level incongruent-congruent contrast, pass forward 
 
 We can now pair this *BSM* specification with a pre-processed derivative from the original raw dataset and hand these to a tool that supports *BSM* for **fully automated execution**.
 
-### Next up
+## Next up
 
-- Read the next chapter to dive deeper into advanced usage of *BSM* that enable more complex models.
-- Check out tools like [FitLins](https://github.com/poldracklab/fitlins) which implement *BSM* execution, and run this or your own model.
+- Read the next chapter to dive deeper into advanced usage of *BSM* to enable more complex models.
+- Check out tools like [FitLins](https://github.com/poldracklab/fitlins) which implement *BSM* execution to learn how to run a *BIDS Stats Model*
 - Take a look at more example models in the  **[](model-zoo.md)**.
