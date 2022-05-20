@@ -8,7 +8,9 @@ parts:
 - caption: User Guide
   chapters:
   - file: motivation
-  - file: walkthrough
+  - file: walkthrough-1
+    sections:
+    - file: walkthrough-2
   - file: integration
   - file: legacy
   - file: json_101
