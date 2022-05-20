@@ -207,23 +207,24 @@ At this point, we have defined a `Model` that will be fit separate to each group
 
 Next, we want to define a `subject` level node to pool together estimates from this `Node` for each `subject` using a fixed-effects model. 
 
-
-```{note}
-By default, `Nodes` are linked sequentially, with all the `Contrast` outputs from a `Node` available to the subsequent `Node`.
-```
-
-#### From Run Outputs to Subject Inputs
-
-Next, we define a fixed-effects model to combine contrast outputs from each
-subject's runs together.
-
 ```{literalinclude} examples/model-walkthrough_smdl.json
 :language: JSON
 :lines: 20-26
 ```
 
+```{note}
+By default, `Nodes` are linked in sequential order, with all the `Contrast` outputs from a `Node` available to the subsequent `Node`.
+```
+
+#### From Run Outputs to Subject Inputs
+
 We need to use `GroupBy` to define how to group the outputs from the `Run` node
 as inputs to the `Subject` level:
+
+```{literalinclude} examples/model-walkthrough_smdl.json
+:language: JSON
+:lines: 23
+```
 
 Here we are specifying that all images belonging to a single `subject` and from a single `contrast` should be grouped into a unit of analysis.
 
@@ -262,8 +263,12 @@ We can now specify the `Subject` level `Model`.
 ```
 
 Since our intent is to estimate the _mean effect_ for each subject, we only need an 
-intercept (`1`) in our model. We specify the `"Type"` to be `Meta`, which is a 
+intercept in our model. We specify the `"Type"` to be `Meta`, which is a 
 special type to identify fixed-effects models.
+
+```{note}
+`1` is a special variable to represent the intercept.
+```
 
 Remember that we must specify `Contrasts` in order to produce outputs for the
 next `Node`. `DummyContrasts` is a convenience function which will create contrasts with
@@ -278,10 +283,6 @@ verbose (but identical) `Contrast`.
 :lines: 1-2
 ```
 
-```{note}
-We will dive into more details about `Contrasts` in the next chapter.
-```
-
 ### Dataset level Node
 
 We are ready to perform a one-sample t-test to estimate population-level effects
@@ -293,9 +294,10 @@ for the _IvC_ `Contrast`. We refer to this level as the `Dataset` level.
 :lines: 1-3
 ```
 
-Here we only need to `GroupBy` `contrast`, as we want to compute a separate estimate for
-each contrast, but want to include all subjects in the same analysis. Since we
-only have one `contrast`, all the incoming subject-level images will be grouped
+Here we only need to `GroupBy: ['contrast']` as we want to compute a separate estimate for
+each contrast, but want to include all subjects in the same analysis. 
+
+Since we only have one `contrast`, all the incoming subject-level images will be grouped
 together:
 
 ```{code-cell} python3
@@ -315,9 +317,7 @@ outputs = pd.DataFrame.from_records(
 display_groups(outputs, ["contrast"])
 ```
 
-As before, we can specify an intercept-only model, but of type `glm` since we want to perform a random-effects analysis.
-
-Here, we can again use `DummyContrasts` to specify a simple one-sample t-test contrast on the incoming `IvC` subject-level contrasts. 
+As before, we can specify an intercept-only model, but of type `glm` since we want to perform a random-effects analysis. We can again use `DummyContrasts` to specify a simple one-sample t-test contrast on the incoming `IvC` subject-level contrasts. 
 
 
 ```{literalinclude} examples/model-walkthrough_smdl.json
