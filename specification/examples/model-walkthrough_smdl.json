@@ -22,7 +22,7 @@
       "Name": "subject_level",
       "GroupBy": ["subject", "contrast"],
       "Model": {"X": [1], "Type": "meta"},
-      "DummyContrasts": {"Test": "pass"}
+      "DummyContrasts": {"Test": "t"}
     },
     {
       "Level": "Dataset",
