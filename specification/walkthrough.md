@@ -70,7 +70,7 @@ We can formally represent this analysis as **BIDS Stats Model**:
 :language: JSON
 ```
 
-BIDS statistical models *must* have a `~bsmschema.models.BIDSStatsModel.Name` and `~bsmschema.models.BIDSStatsModel.BIDSModelVersion` defined. 
+BIDS statistical models *must* have a {py:attr}`~bsmschema.models.BIDSStatsModel.Name` and {py:attr}`~bsmschema.models.BIDSStatsModel.BIDSModelVersion` defined. 
 
 ```{note}
 For this example, we have limited the model to three subjects using the `Input` key.
