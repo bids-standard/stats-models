@@ -86,7 +86,6 @@ First, we define a `Node` for the run level analysis.
 ```{literalinclude} examples/model-walkthrough_smdl.json
 :language: JSON
 :lines: 6-19
-:emphasize-lines: 2
 ```
 
 Note that the {py:attr}`~bsmschema.models.Node.Level` key is necessary for
