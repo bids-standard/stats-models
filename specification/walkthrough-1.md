@@ -10,9 +10,7 @@ kernelspec:
   name: python3
 ---
 
-# Walkthrough
-
-## The problem: Representing multi-stage models
+# Representing multi-stage neuroimaging models
 
 The statistical analysis of neuroimaging data typically occurs across distinct
 stages of analysis, with parameter estimates from lower levels of analysis

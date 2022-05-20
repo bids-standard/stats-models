@@ -12,16 +12,16 @@ The **mission** of *BSM* is to promote scientific best practice by making neuroi
 :::{panels}
 :column: col-lg-6 px-2 py-2
 ---
-**Learn more**
+**📖 Learn more**
 ^^^
 **[](motivation.md)**: Why do we need *BSM*?
 
-**[](walkthrough.rst)**: Step-by-step introduction
+**[](walkthrough-intro.rst)**: Step-by-step introduction
 
 **[Specification](reference.rst)**: Dive into the technical reference
 
 ---
-**Get started**
+**🚀 Get started**
 ^^^
 **[](model-zoo.md)**: View example models on public datasets, and modify them to your own data
 

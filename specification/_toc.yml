@@ -8,8 +8,9 @@ parts:
 - caption: User Guide
   chapters:
   - file: motivation
-  - file: walkthrough-1
+  - file: walkthrough-intro
     sections:
+    - file: walkthrough-1
     - file: walkthrough-2
   - file: integration
   - file: legacy
