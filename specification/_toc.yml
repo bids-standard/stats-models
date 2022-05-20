@@ -7,7 +7,7 @@ title: ''
 parts:
 - caption: User Guide
   chapters:
-  - file: intro
+  - file: motivation
   - file: walkthrough
   - file: integration
   - file: legacy
