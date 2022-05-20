@@ -117,7 +117,7 @@ specified a t-test contrast with the weights `[1, -1]` for the conditions:
 ```{attention}
 `Contrasts` **define the outputs** that will be available to the next `Node`.
 
-Since we only modeled a single contrast (`IvC`), the next `Node` will not have access to estimates for main effects for the `congruent` or `incongruent` conditions, unless we explicitly compute a `Contrast` for each.
+Since we only modeled a single contrast (`IvC`), the next `Node` will not have access to estimates for main effects for the `congruent` or `incongruent` conditions, unless we explicitly define a `Contrast` for each.
 ```
 
 #### How to _group_ analysis inputs?
@@ -201,11 +201,16 @@ tags: ["remove_input"]
 display_groups(inputs, ["run", "subject"])
 ```
 
+### Subject level Node
+
+At this point, we have defined a `Model` that will be fit separate to each grouping-- in this case a separate time-series model for each `run`. 
+
+Next, we want to define a `subject` level node to pool together estimates from this `Node` for each `subject` using a fixed-effects model. 
+
+
 ```{note}
 By default, `Nodes` are linked sequentially, with all the `Contrast` outputs from a `Node` available to the subsequent `Node`.
 ```
-
-### Subject level Node
 
 #### From Run Outputs to Subject Inputs
 
