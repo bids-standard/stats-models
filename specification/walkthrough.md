@@ -50,9 +50,13 @@ activity for incongruent versus congruent trials_, across all participants.
 We can perform this analysis by first estimating a **run-level** timeseries
 model for "Incongruent" and "Congruent" trials--separately for each individual
 run. We then compute a contrast comparing _Incongruent > Congruent_ (IvC)
-trials. Next, we pass the resulting statistical maps for the contrast to a
+trials. 
+
+Next, we pass the resulting statistical maps for the contrast to a
 **subject-level** estimator, which computes the average _IvC_ effect for each
-subject separately. Finally, we pass the resulting estimates to a
+subject separately. 
+
+Finally, we pass the resulting estimates to a
 **dataset-level** estimator, which conduts a one-sample t-test across all of the
 subject estimates for the _IvC_ contrast.
 
@@ -65,6 +69,8 @@ We can formally represent this analysis as **BIDS Stats Model**:
 ```{literalinclude} examples/model-walkthrough_smdl.json
 :language: JSON
 ```
+
+BIDS statistical models *must* have a `~bsmschema.models.BIDSStatsModel.Name` and `~bsmschema.models.BIDSStatsModel.BIDSModelVersion` defined. 
 
 ```{note}
 For this example, we have limited the model to three subjects using the `Input` key.
