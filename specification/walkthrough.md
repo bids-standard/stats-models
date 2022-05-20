@@ -70,14 +70,14 @@ We can formally represent this analysis as **BIDS Stats Model**:
 :language: JSON
 ```
 
-BIDS statistical models *must* have a {py:attr}`~bsmschema.models.BIDSStatsModel.Name` and {py:attr}`~bsmschema.models.BIDSStatsModel.BIDSModelVersion` defined. 
+BIDS Stats Models *must* have a {py:attr}`~bsmschema.models.BIDSStatsModel.Name` and {py:attr}`~bsmschema.models.BIDSStatsModel.BIDSModelVersion` defined, and optionally can restrict input images with {py:attr}`~bsmschema.models.BIDSStatsModel.Input`.
 
 ```{note}
 For this example, we have limited the model to three subjects using the `Input` key.
 ```
 
 _BSM_ defines this multi-stage analysis as a Graph, with each level of analysis
-defined as a separate `Node` object.
+defined as a separate `Node` object. Let's step through each `Node` separately. 
 
 ### Run-level Model
 
