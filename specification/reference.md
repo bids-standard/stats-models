@@ -37,7 +37,7 @@ A BIDS Stats Model is defined in a [JSON](https://www.json.org/json-en.html) doc
 
 {py:class}`~bsmschema.models.BIDSStatsModel` is the top-level structure,
 while the remaining classes define sub-structures.
-To demonstrate this hierarchy, here we show the [](guide.md#example-model)
+To demonstrate this hierarchy, here we show an example model
 in this structure, with missing fields rendered as `None`:
 
 ```{code-cell} python3

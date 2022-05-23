@@ -2,11 +2,16 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: index
+title: ''
 parts:
 - caption: User Guide
   chapters:
-  - file: guide
+  - file: motivation
+  - file: walkthrough-intro
+    sections:
+    - file: walkthrough-1
+    - file: walkthrough-2
   - file: integration
   - file: legacy
   - file: json_101

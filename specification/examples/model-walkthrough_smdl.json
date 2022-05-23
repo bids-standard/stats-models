@@ -1,0 +1,35 @@
+{
+  "Name": "Simon IvC",
+  "BIDSModelVersion": "1.0.0",
+  "Input": {"subject": ["01", "02", "03"], "task": "simon"},
+  "Nodes": [
+    {
+      "Level": "Run",
+      "Name": "run_level",
+      "GroupBy": ["run", "subject"],
+      "Model": {"X": [1, "incongruent", "congruent"], "Type": "glm"},
+      "Contrasts": [
+        {
+          "Name": "IvC",
+          "ConditionList": ["incongruent", "congruent"],
+          "Weights": [1, -1],
+          "Test": "t"
+        }
+      ]
+    },
+    {
+      "Level": "Subject",
+      "Name": "subject_level",
+      "GroupBy": ["subject", "contrast"],
+      "Model": {"X": [1], "Type": "meta"},
+      "DummyContrasts": {"Test": "t"}
+    },
+    {
+      "Level": "Dataset",
+      "Name": "one-sample_dataset",
+      "GroupBy": ["contrast"],
+      "Model": {"X": [1], "Type": "glm"},
+      "DummyContrasts": {"Test": "t"}
+    }
+  ]
+}
