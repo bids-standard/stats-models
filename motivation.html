@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BIDS Stats Models User Guide &#8212; BIDS Stats Models Specification</title>
+    <title>Motivation &#8212; BIDS Stats Models Specification</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Integration with other standards" href="integration.html" />
-    <link rel="prev" title="BIDS Stats Models" href="intro.html" />
+    <link rel="next" title="Walkthrough" href="walkthrough-intro.html" />
+    <link rel="prev" title="BIDS Stats Models" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -94,14 +94,7 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   BIDS Stats Models
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   User Guide
  </span>
@@ -109,8 +102,30 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   BIDS Stats Models User Guide
+   Motivation
   </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="walkthrough-intro.html">
+   Walkthrough
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="walkthrough-1.html">
+     Representing multi-stage neuroimaging models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="walkthrough-2.html">
+     Advanced usage
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="integration.html">
@@ -138,8 +153,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="reference.html">
    BIDS Stats Models Object Reference
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -254,7 +269,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/guide.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/motivation.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -274,7 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/bids-standard/stats-models/issues/new?title=Issue%20on%20page%20%2Fguide.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/bids-standard/stats-models/issues/new?title=Issue%20on%20page%20%2Fmotivation.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -301,13 +316,13 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-model">
-   Example model
+  <a class="reference internal nav-link" href="#goal">
+   Goal
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tutorial">
-   Tutorial
+  <a class="reference internal nav-link" href="#scope-and-limitations">
+   Scope and limitations
   </a>
  </li>
 </ul>
@@ -320,7 +335,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>BIDS Stats Models User Guide</h1>
+                <h1>Motivation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -331,13 +346,13 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-model">
-   Example model
+  <a class="reference internal nav-link" href="#goal">
+   Goal
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tutorial">
-   Tutorial
+  <a class="reference internal nav-link" href="#scope-and-limitations">
+   Scope and limitations
   </a>
  </li>
 </ul>
@@ -349,67 +364,17 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="bids-stats-models-user-guide">
-<h1>BIDS Stats Models User Guide<a class="headerlink" href="#bids-stats-models-user-guide" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="example-model">
-<h2>Example model<a class="headerlink" href="#example-model" title="Permalink to this headline">¶</a></h2>
-<p>The following example model is intended to demonstrate many features of BIDS Stats Models.</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_first_model&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;BIDSModelVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;Description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My first BIDS model: a simple 2-condition contrast.&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;Input&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;task&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;stroop&quot;</span><span class="p">]</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;Nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Run&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;subject&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;congruent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;incongruent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;nuissance1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;nuissance2&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;glm&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Contrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;incongruent_vs_congruent&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;ConditionList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;incongruent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;congruent&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;Weights&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">],</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Subject&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;subject&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;contrast&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;subject&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;meta&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;DummyContrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dataset&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dataset&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;contrast&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;glm&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;DummyContrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;Edges&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;Source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Destination&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;subject&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;Source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;subject&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Destination&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dataset&quot;</span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</pre></div>
+  <div class="tex2jax_ignore mathjax_ignore section" id="motivation">
+<h1>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h1>
+<p>Although much progress has been made in standardizing neuroimaging pipelines, model fitting requires a high degree of flexibility, resulting in heterogeneous scripts that are often not <strong>reproducible</strong>. Upon publication, models are often verbally described, making it difficult to reproduce analyses from published studies. Even when analysis scripts are shared, they often lack <strong>transparency</strong>, making it difficult for other researchers to interpret and apply the same model to a different dataset.</p>
+<div class="section" id="goal">
+<h2>Goal<a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></h2>
+<p><em>BIDS Stats Models</em> aims to facilitate the development <strong>automated and standardized</strong> neuroimaging model fitting pipelines, encouraging <strong>reproducible and generalizable scientific</strong> practice. In addition, by promoting the development of an ecosystem of easy to use and <strong>interoperable</strong> tools, BSM aims to facilitate the process of building and fitting statistical models on neuroimaging data.</p>
 </div>
-</div>
-<div class="section" id="tutorial">
-<h2>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="scope-and-limitations">
+<h2>Scope and limitations<a class="headerlink" href="#scope-and-limitations" title="Permalink to this headline">¶</a></h2>
+<p>The current specification deliberately focuses general linear mixed models (GLMs). Although the mission of BSM is to describe models for any BIDS datasets, the current specification has been primarily tested with task-based fMRI data and may require future extensions to operate across other neuroimaging modalities (e.g. EEG, MEG).</p>
+<p>Other use cases that are possible but not thoroughly tested include: voxel-based morphometry (VBM), region of interest (ROI) analyses and contrasts between multiple tasks. In addition, the current specification is designed to operate on a single set of inputs at a time, and therefore cannot support multimodal analyses in a single model. Finally, there is currently no way to specify more sophisticated models, such as arbitrary covariance structures. We welcome contributions to showcase the use of the specification on these untested use cases, as well as proposals to extend the specification to support a broader range of analyses!</p>
 </div>
 </div>
 
@@ -438,17 +403,17 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">BIDS Stats Models</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="integration.html" title="next page">
+    <a class='right-next' id="next-link" href="walkthrough-intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Integration with other standards</p>
+        <p class="prev-next-title">Walkthrough</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
