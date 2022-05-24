@@ -16,9 +16,9 @@ The **mission** of *BSM* is to promote scientific best practice by making neuroi
 ^^^
 **[](motivation.md)**: Why do we need *BSM*?
 
-**[](walkthrough-intro.rst)**: Step-by-step introduction
+**[](walkthrough-1.md)**: Step-by-step introduction
 
-**[Specification](reference.rst)**: Dive into the technical reference
+**[Specification](reference.md)**: Dive into the technical reference
 
 ---
 **🚀 Get started**
