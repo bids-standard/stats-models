@@ -342,14 +342,28 @@ const thebe_selector_output = ".output, .cell_output"
 
 <dl class="py attribute pydantic_field">
 <dt class="sig sig-object py" id="bsmschema.models.HRF.Model">
-<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'DoubleGamma'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Gamma'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'FiniteImpulseResponse'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#bsmschema.models.HRF.Model" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#bsmschema.models.HRF.Model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Name of a hemodynamic model.</p>
+<p>Known model names include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;spm&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;spm</span> <span class="pre">+</span> <span class="pre">derivative&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;spm</span> <span class="pre">+</span> <span class="pre">derivative</span> <span class="pre">+</span> <span class="pre">dispersion&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;glover&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;glover</span> <span class="pre">+</span> <span class="pre">derivative&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;glover</span> <span class="pre">+</span> <span class="pre">derivative</span> <span class="pre">+</span> <span class="pre">dispersion&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;afni&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;fir&quot;</span></code></p></li>
+</ul>
+<p>The list of supported models is expandable and limited by the estimator, not the specification. Note that <code class="docutils literal notranslate"><span class="pre">&quot;glover&quot;</span></code> is the default “Gamma” HRF in FSL.</p>
 </dd></dl>
 
 <dl class="py attribute pydantic_field">
 <dt class="sig sig-object py" id="bsmschema.models.HRF.Parameters">
-<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Parameters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bsmschema.models.Parameters</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bsmschema.models.HRF.Parameters" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Parameters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bsmschema.models.HRF.Parameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parameters to the hemodynamic model.</p>
+<p>Options will be software specific and are not controlled.
+For <code class="docutils literal notranslate"><span class="pre">&quot;fir&quot;</span></code>, the parameter <code class="docutils literal notranslate"><span class="pre">&quot;fir_delays&quot;</span></code> is required.</p>
 </dd></dl>
 
 </dd></dl>

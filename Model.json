@@ -55,48 +55,6 @@
     "X"
   ],
   "definitions": {
-    "Parameters": {
-      "title": "Parameters",
-      "description": "Parameters to an :py:class:`HRF` model.",
-      "type": "object",
-      "properties": {
-        "Description": {
-          "title": "Description",
-          "type": "string"
-        },
-        "PeakDelay": {
-          "title": "Peakdelay",
-          "type": "number"
-        },
-        "PeakDispersion": {
-          "title": "Peakdispersion",
-          "type": "number"
-        },
-        "UndershootDelay": {
-          "title": "Undershootdelay",
-          "type": "number"
-        },
-        "UndershootDispersion": {
-          "title": "Undershootdispersion",
-          "type": "number"
-        },
-        "PeakUndershootRatio": {
-          "title": "Peakundershootratio",
-          "type": "number"
-        },
-        "Derivatives": {
-          "title": "Derivatives",
-          "type": "integer"
-        },
-        "Delays": {
-          "title": "Delays",
-          "type": "array",
-          "items": {
-            "type": "integer"
-          }
-        }
-      }
-    },
     "HRF": {
       "title": "HRF",
       "description": "Specification of a hemodynamic response function (HRF) model.",
@@ -115,15 +73,11 @@
         },
         "Model": {
           "title": "Model",
-          "enum": [
-            "DoubleGamma",
-            "Gamma",
-            "FiniteImpulseResponse"
-          ],
           "type": "string"
         },
         "Parameters": {
-          "$ref": "#/definitions/Parameters"
+          "title": "Parameters",
+          "type": "object"
         }
       },
       "required": [
