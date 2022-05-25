@@ -413,17 +413,6 @@ specifies the statistical model to be estimated.
 }
 ```
 
-### Hemodynamic response functions
-
-Hemodynamic response functions are specified as an object with the following fields.
-This section has been deliberately underspecified, and future efforts may further standardize the options in this section.
-
-| Key name | Description |
-|--|--|
-| `Model` | REQUIRED. String. Name of the HRF model to use. Supported model names include: "spm", "spm + derivative", "spm + derivative + dispersion", "glover", "glover + derivative", "glover + derivative + dispersion", or "fir". The list of supported models is expandable and limited by the estimator, not the specification. |
-| `Parameters` | OPTIONAL. Object. Key value pairs of parameters to pass to the Estimator. Options will be software specific and are not controlled. For "fir", the parameter "fir_delays" is required. |
-
-
 ## Contrasts
 
 
