@@ -76,6 +76,15 @@ can provide an explanation of the section.
 
 ## How to read object definitions
 
+The object definitions linked above have a common structure that may not be obvious.
+Some confusion may arise from a conflation of JSON and Python terms,
+as the definitions are written as
+[Pydantic models](https://pydantic-docs.helpmanual.io/usage/models/) and use
+[Python `typing`](https://docs.python.org/3/library/typing.html) to constrain values.
+
+Here we present an "explainer model" that demonstrates different types,
+how they appear in the definition, and their corresponding JSON.
+
 ```{eval-rst}
 .. autopydantic_model:: bsmschema.models.ExplainerModel
 ```
