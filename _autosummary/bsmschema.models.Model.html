@@ -426,14 +426,16 @@ title="Print to PDF"
 <dl class="py class pydantic_model">
 <dt class="sig sig-object py" id="bsmschema.models.Model">
 <em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Model</span></span><a class="headerlink" href="#bsmschema.models.Model" title="Permalink to this definition">#</a></dt>
-<dd><p>Model</p>
+<dd><p>The model to fit to the collection of input images.</p>
+<p>This section defines the design matrix construction, estimator type,
+and additional options needed to estimate the model parameters.</p>
 <dl class="py attribute pydantic_field">
 <dt class="sig sig-object py" id="bsmschema.models.Model.Type">
 <em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'glm'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'meta'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#bsmschema.models.Model.Type" title="Permalink to this definition">#</a></dt>
 <dd><p>The type of analysis to run.
 The following values are currently defined:
-“glm” for general linear model,
-“meta” for meta-analysis.</p>
+* <code class="docutils literal notranslate"><span class="pre">&quot;glm&quot;</span></code> for general linear model,
+* <code class="docutils literal notranslate"><span class="pre">&quot;meta&quot;</span></code> for meta-analysis.</p>
 </dd></dl>
 
 <dl class="py attribute pydantic_field">
@@ -455,7 +457,7 @@ Following standard Unix-style glob rules,
 <dl class="py attribute pydantic_field">
 <dt class="sig sig-object py" id="bsmschema.models.Model.Formula">
 <em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Formula</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bsmschema.models.Model.Formula" title="Permalink to this definition">#</a></dt>
-<dd><p>Wilkinson notation specification of a Transformation of the design matrix X.
+<dd><p>Wilkinson notation specification of a transformation of the design matrix X.
 A 1 or 0 term MUST be present to explicitly include or exclude, respectively, an intercept variable,
 to ensure consistent handling across formula interpreters.</p>
 </dd></dl>

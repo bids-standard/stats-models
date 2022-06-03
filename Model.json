@@ -1,6 +1,6 @@
 {
   "title": "Model",
-  "description": "Model\n    ",
+  "description": "The model to fit to the collection of input images.\n\nThis section defines the design matrix construction, estimator type,\nand additional options needed to estimate the model parameters.",
   "type": "object",
   "properties": {
     "Description": {
@@ -57,7 +57,7 @@
   "definitions": {
     "HRF": {
       "title": "HRF",
-      "description": "Specification of a hemodynamic response function (HRF) model.",
+      "description": "Specification of a hemodynamic response function (HRF) model.\n\nMost design matrix constructors permit sparse events of the form\n(onset, duration, amplitude) to be convolved by a named HRF,\npossibly with some parameters.\nSome may permit dense time series to be convolved as well.\n\nThis specification makes no attempt to constrain the names and parameters,\nor require consistency of accepted model names across implementations.\nImplementations SHOULD fail if the model is unknown.\n\nExamples\n--------\n\nThe \"canonical\" HRF defined in SPM:\n\n.. code-block:: json\n\n    {\n      \"Variables\": [\"condition1\", \"condition2\"],\n      \"Model\": \"spm\"\n    }",
       "type": "object",
       "properties": {
         "Description": {
@@ -87,7 +87,7 @@
     },
     "Options": {
       "title": "Options",
-      "description": "Options\n    ",
+      "description": "Estimation options that are common to multiple estimation packages.",
       "type": "object",
       "properties": {
         "Description": {

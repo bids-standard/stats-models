@@ -1,6 +1,6 @@
 {
   "title": "Options",
-  "description": "Options\n    ",
+  "description": "Estimation options that are common to multiple estimation packages.",
   "type": "object",
   "properties": {
     "Description": {

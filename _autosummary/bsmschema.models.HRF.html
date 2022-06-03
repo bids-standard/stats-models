@@ -427,10 +427,26 @@ title="Print to PDF"
 <dt class="sig sig-object py" id="bsmschema.models.HRF">
 <em class="property"><span class="pre">object</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">HRF</span></span><a class="headerlink" href="#bsmschema.models.HRF" title="Permalink to this definition">#</a></dt>
 <dd><p>Specification of a hemodynamic response function (HRF) model.</p>
+<p>Most design matrix constructors permit sparse events of the form
+(onset, duration, amplitude) to be convolved by a named HRF,
+possibly with some parameters.
+Some may permit dense time series to be convolved as well.</p>
+<p>This specification makes no attempt to constrain the names and parameters,
+or require consistency of accepted model names across implementations.
+Implementations SHOULD fail if the model is unknown.</p>
+<p class="rubric">Examples</p>
+<p>The “canonical” HRF defined in SPM:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;Variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;condition1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;condition2&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;spm&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
 <dl class="py attribute pydantic_field">
 <dt class="sig sig-object py" id="bsmschema.models.HRF.Variables">
 <em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Variables</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#bsmschema.models.HRF.Variables" title="Permalink to this definition">#</a></dt>
-<dd><p>Name of the variables to be convolved. These must appear in <a class="reference internal" href="bsmschema.models.Model.html#bsmschema.models.Model.X" title="bsmschema.models.Model.X"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Model.X</span></code></a></p>
+<dd><p>Name of the variables to be convolved.</p>
+<p>These must appear in <a class="reference internal" href="bsmschema.models.Model.html#bsmschema.models.Model.X" title="bsmschema.models.Model.X"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Model.X</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py attribute pydantic_field">
@@ -448,7 +464,8 @@ title="Print to PDF"
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;afni&quot;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;fir&quot;</span></code></p></li>
 </ul>
-<p>The list of supported models is expandable and limited by the estimator, not the specification. Note that <code class="docutils literal notranslate"><span class="pre">&quot;glover&quot;</span></code> is the default “Gamma” HRF in FSL.</p>
+<p>The list of supported models is expandable and limited by the estimator, not the specification.
+Note that <code class="docutils literal notranslate"><span class="pre">&quot;glover&quot;</span></code> is the default “Gamma” HRF in FSL.</p>
 </dd></dl>
 
 <dl class="py attribute pydantic_field">
