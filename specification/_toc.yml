@@ -17,6 +17,7 @@ parts:
   - file: json_101
 - caption: Specification
   chapters:
+  - file: spec
   - file: reference
   - file: validator
 - caption: Examples and resources
