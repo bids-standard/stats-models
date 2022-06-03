@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Legacy specification &#8212; BIDS Stats Models Specification</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,22 +20,18 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -41,13 +39,14 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/js/jsoneditor.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -65,7 +64,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -74,9 +87,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -231,90 +245,180 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/legacy.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/bids-standard/stats-models"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/bids-standard/stats-models/issues/new?title=Issue%20on%20page%20%2Flegacy.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/bids-standard/stats-models"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/bids-standard/stats-models/issues/new?title=Issue%20on%20page%20%2Flegacy.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/legacy.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#analysis-nodes">
    Analysis nodes
@@ -402,12 +506,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Legacy specification</h1>
@@ -511,17 +614,18 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="legacy-specification">
-<h1>Legacy specification<a class="headerlink" href="#legacy-specification" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="legacy-specification">
+<h1>Legacy specification<a class="headerlink" href="#legacy-specification" title="Permalink to this headline">#</a></h1>
 <p>This document exists to preserve components in the <a class="reference external" href="https://docs.google.com/document/d/1bq5eNDHTb6Nkx3WUiOBgKvLNnaa5OMcGtD0AZ9yms2M/edit">Google Doc</a> until they are fully
 incorporated into another part of this website.</p>
-<div class="section" id="analysis-nodes">
-<h2>Analysis nodes<a class="headerlink" href="#analysis-nodes" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="specifying-node-sequences">
-<h3>Specifying node sequences<a class="headerlink" href="#specifying-node-sequences" title="Permalink to this headline">¶</a></h3>
+<section id="analysis-nodes">
+<h2>Analysis nodes<a class="headerlink" href="#analysis-nodes" title="Permalink to this headline">#</a></h2>
+<section id="specifying-node-sequences">
+<h3>Specifying node sequences<a class="headerlink" href="#specifying-node-sequences" title="Permalink to this headline">#</a></h3>
 <p>Each analysis specification is composed of a collection of Nodes,
 each describing a level of modeling (for example, run or subject),
 and one or more sequences of these Nodes.
@@ -555,9 +659,9 @@ rather than specifying the precise nature of the inputs and outputs.
 The grouping structure must be made explicit in the <a class="reference internal" href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.GroupBy" title="bsmschema.models.Node.GroupBy"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GroupBy</span></code></a> list
 (see <a class="reference internal" href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node" title="bsmschema.models.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a>).
 The Level does determine what variables will be available to the model (see §3.3 below).</p>
-</div>
-<div class="section" id="node-structure">
-<h3>Node structure<a class="headerlink" href="#node-structure" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="node-structure">
+<h3>Node structure<a class="headerlink" href="#node-structure" title="Permalink to this headline">#</a></h3>
 <p>Each analysis node has fields defined in <a class="reference internal" href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node" title="bsmschema.models.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a>.</p>
 <p>The <a class="reference internal" href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.Model" title="bsmschema.models.Node.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> specification MUST be invoked prior to
 <a class="reference internal" href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.Contrasts" title="bsmschema.models.Node.Contrasts"><code class="xref py py-class docutils literal notranslate"><span class="pre">Contrasts</span></code></a> and
@@ -573,9 +677,9 @@ one should specify <code class="docutils literal notranslate"><span class="pre">
 If <code class="docutils literal notranslate"><span class="pre">&quot;run&quot;</span></code> is omitted, then all runs for each subject will be fit with a single model;
 likewise, if <code class="docutils literal notranslate"><span class="pre">&quot;subject&quot;</span></code> is omitted, then one model will be fit for each run,
 combining all subjects for higher levels than the current node.</p>
-</div>
-<div class="section" id="enumerating-sequences-of-nodes">
-<h3>Enumerating sequences of Nodes<a class="headerlink" href="#enumerating-sequences-of-nodes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="enumerating-sequences-of-nodes">
+<h3>Enumerating sequences of Nodes<a class="headerlink" href="#enumerating-sequences-of-nodes" title="Permalink to this headline">#</a></h3>
 <p>To enumerate the sequences of <a class="reference internal" href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node" title="bsmschema.models.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a>s,
 we use <code class="xref py py-class docutils literal notranslate"><span class="pre">Edges</span></code>.
 Each <code class="docutils literal notranslate"><span class="pre">Edge</span></code> describes a single connection between two <code class="docutils literal notranslate"><span class="pre">Node</span></code>s,
@@ -598,12 +702,12 @@ in a group column of a participants.tsv file:</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">&quot;Edges&quot;</span></code> is not present in the model,
 then a linear sequence is assumed from the first <code class="docutils literal notranslate"><span class="pre">Node</span></code> to the last,
 with no filters specified on each <code class="docutils literal notranslate"><span class="pre">Edge</span></code>.</p>
-</div>
-</div>
-<div class="section" id="inputs">
-<h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="specifying-image-inputs">
-<h3>Specifying image inputs<a class="headerlink" href="#specifying-image-inputs" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="inputs">
+<h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">#</a></h2>
+<section id="specifying-image-inputs">
+<h3>Specifying image inputs<a class="headerlink" href="#specifying-image-inputs" title="Permalink to this headline">#</a></h3>
 <p>Specification of image inputs to a BIDS Model is deliberately minimalistic.
 The spec itself says nothing about how images are to be passed in as inputs to the first node in a model spec;
 this is deliberately left as an implementation detail for BIDS Model-compliant software.
@@ -629,9 +733,9 @@ For example:</p>
 <p>In this example, we only want to analyze images for the motor task, and with a run index of 1.
 The implication (which we make explicit here) is that all image inputs to a
 BIDS Model-based analysis must be BIDS-compliant filenames.</p>
-</div>
-<div class="section" id="automatic-input-output-chaining-between-levels">
-<h3>Automatic input/output chaining between levels<a class="headerlink" href="#automatic-input-output-chaining-between-levels" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="automatic-input-output-chaining-between-levels">
+<h3>Automatic input/output chaining between levels<a class="headerlink" href="#automatic-input-output-chaining-between-levels" title="Permalink to this headline">#</a></h3>
 <p>Beyond the initial (and optional) top-level <code class="docutils literal notranslate"><span class="pre">&quot;Input&quot;</span></code> field, inputs and outputs do not have to (and indeed, cannot) be explicitly specified anywhere in a BIDS-Model model.
 Instead, all outputs from each node are automatically passed on as the inputs to the next node.
 These inputs can be included or ignored as desired within the next node in the sequence; however, all outputs generated by a given node are implicitly assumed to be available in the namespace of the next node in the sequence unless an explicit filter is present in the connecting edge.</p>
@@ -703,9 +807,9 @@ Those variables are automatically made available for use in the subject-level mo
 If the Face contrast is not explicitly named as a predictor in the <code class="docutils literal notranslate"><span class="pre">Model</span></code> and/or <code class="docutils literal notranslate"><span class="pre">Contrasts</span></code> specifications in the 2nd Node, it will simply be ignored in all further analysis (i.e., it will not be passed onto further Nodes).
 An important corollary of this principle is that <span style="text-decoration:underline;">variables must be explicitly named in the <code>Model</code> and/or <code>Contrasts</code> sections of every <code>Level </code>in order to be propagated to the next <code class="docutils literal notranslate"><span class="pre">Level</span></code>.
 Note that Tests of “Type”: “F” are excluded from this, and not passed forward to other levels in the Model.</span></p>
-</div>
-<div class="section" id="automatic-ingestion-of-design-level-and-scan-level-variables">
-<h3><strong>Automatic ingestion of design-level and scan-level variables</strong><a class="headerlink" href="#automatic-ingestion-of-design-level-and-scan-level-variables" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="automatic-ingestion-of-design-level-and-scan-level-variables">
+<h3><strong>Automatic ingestion of design-level and scan-level variables</strong><a class="headerlink" href="#automatic-ingestion-of-design-level-and-scan-level-variables" title="Permalink to this headline">#</a></h3>
 <p>Per the core BIDS spec, each level of analysis (i.e., <code class="docutils literal notranslate"><span class="pre">run</span></code>, <code class="docutils literal notranslate"><span class="pre">session</span></code>, <code class="docutils literal notranslate"><span class="pre">subject</span></code>, or <code class="docutils literal notranslate"><span class="pre">dataset</span></code>) is associated with a different BIDS file or files that contains optional design events or variables.
 These files are expected to be automatically read in and made available for inclusion in the model specification.
 Specifically, the core BIDS spec defines the following level-to-file-to-variable mapping:</p>
@@ -734,16 +838,16 @@ Specifically, the core BIDS spec defines the following level-to-file-to-variable
 <p>Within each <code class="docutils literal notranslate"><span class="pre">Node</span></code>, the expectation is that the namespace should automatically include all variables found within the corresponding file(s) defined in the table.
 For example, if the <code class="docutils literal notranslate"><span class="pre">events.tsv</span> </code>files for a given project contain columns named “face” and “house”, then, inside any node with <code class="docutils literal notranslate"><span class="pre">Level=&quot;Run&quot;</span></code>, the user can automatically use the names <code class="docutils literal notranslate"><span class="pre">&quot;face&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;house&quot;</span></code> anywhere in the <code class="docutils literal notranslate"><span class="pre">Model</span></code> specification.</p>
 <p>The expected formats for each of the file types listed in Table 1 are defined in the core BIDS spec, and any BIDS-Model-compliant software must respect the core spec and be able to read variables from all defined variable files.</p>
-</div>
-<div class="section" id="the-intercept-variable">
-<h3>The intercept variable<a class="headerlink" href="#the-intercept-variable" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="the-intercept-variable">
+<h3>The intercept variable<a class="headerlink" href="#the-intercept-variable" title="Permalink to this headline">#</a></h3>
 <p>The value <code class="docutils literal notranslate"><span class="pre">1</span></code> has a special status in <code class="docutils literal notranslate"><span class="pre">Model</span> </code>and <code class="docutils literal notranslate"><span class="pre">Contrast</span></code> definitions as an intercept variable that requires no explicit name.
 A value of <code class="docutils literal notranslate"><span class="pre">1</span></code> in <code class="docutils literal notranslate"><span class="pre">Model.X</span></code> indicates an intercept column is to be added to the design matrix.
 At higher-level Nodes, the intercept has an interpretable meaning (e.g., in the absence of other regressors, it is the sample mean) and may stand in for the name of the input contrast in <code class="docutils literal notranslate"><span class="pre">Model</span></code> and <code class="docutils literal notranslate"><span class="pre">Contrast</span></code> definitions.</p>
-</div>
-</div>
-<div class="section" id="transformations">
-<h2>Transformations<a class="headerlink" href="#transformations" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="transformations">
+<h2>Transformations<a class="headerlink" href="#transformations" title="Permalink to this headline">#</a></h2>
 <p>The OPTIONAL <a class="reference internal" href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.Transformations" title="bsmschema.models.Node.Transformations"><code class="xref py py-class docutils literal notranslate"><span class="pre">Transformations</span></code></a> section of a Node allows one to specify transformations of variables that should be applied prior to constructing a design matrix.</p>
 <p>It is not in the scope of this specification to design a universal transformation description that all implementing tools must provide.
 Rather, this section describes a protocol that will permit a <code class="docutils literal notranslate"><span class="pre">Transformer</span></code> to provide its own specification language.</p>
@@ -872,13 +976,13 @@ If you are accustomed to thinking about the time series regressors in a 3 column
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="specifying-the-model">
-<h2>Specifying the model<a class="headerlink" href="#specifying-the-model" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="specifying-the-model">
+<h2>Specifying the model<a class="headerlink" href="#specifying-the-model" title="Permalink to this headline">#</a></h2>
 <p>The <a class="reference internal" href="_autosummary/bsmschema.models.Model.html#bsmschema.models.Model" title="bsmschema.models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> section of a <a class="reference internal" href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node" title="bsmschema.models.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a>
 specifies the statistical model to be estimated.</p>
-<div class="section" id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;Level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Run&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"></span>
@@ -919,12 +1023,12 @@ specifies the statistical model to be estimated.</p>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="contrasts">
-<h2>Contrasts<a class="headerlink" href="#contrasts" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="contrast-specification">
-<h3>Contrast specification<a class="headerlink" href="#contrast-specification" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="contrasts">
+<h2>Contrasts<a class="headerlink" href="#contrasts" title="Permalink to this headline">#</a></h2>
+<section id="contrast-specification">
+<h3>Contrast specification<a class="headerlink" href="#contrast-specification" title="Permalink to this headline">#</a></h3>
 <p>Contrasts are specified in the (optional) <code class="docutils literal notranslate"><span class="pre">Contrasts</span></code> section of each node, and define weighted sums of available parameter estimates.
 All contrasts in each node must have unique names (though names can be reused across different nodes, and can be the same as design matrix columns).
 The <code class="docutils literal notranslate"><span class="pre">Contrasts</span></code> section has the following form:</p>
@@ -964,9 +1068,9 @@ The <code class="docutils literal notranslate"><span class="pre">Contrasts</span
 <p><a class="reference internal" href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.Contrasts" title="bsmschema.models.Node.Contrasts"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Contrasts</span></code></a> field contains a list of JSON objects,
 where each object represents a single contrast,
 defined in <a class="reference internal" href="_autosummary/bsmschema.models.Contrast.html#bsmschema.models.Contrast" title="bsmschema.models.Contrast"><code class="xref py py-class docutils literal notranslate"><span class="pre">Contrast</span></code></a>.</p>
-</div>
-<div class="section" id="dummy-contrasts">
-<h3>Dummy contrasts<a class="headerlink" href="#dummy-contrasts" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="dummy-contrasts">
+<h3>Dummy contrasts<a class="headerlink" href="#dummy-contrasts" title="Permalink to this headline">#</a></h3>
 <p>In addition to an explicit specification of individual contrasts,
 the BIDS Stats Model spec also supports an optional <a class="reference internal" href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.DummyContrasts" title="bsmschema.models.Node.DummyContrasts"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DummyContrasts</span></code></a>
 field that one can include as a field at the top level of each node.</p>
@@ -974,9 +1078,9 @@ field that one can include as a field at the top level of each node.</p>
 However, in cases where the same name is re-used in the <code class="docutils literal notranslate"><span class="pre">Contrasts</span></code> list, the latter will take precedence over any contrast generated via <code class="docutils literal notranslate"><span class="pre">DummyContrasts</span></code>.
 For example, if the design matrix contains a variable named <code class="docutils literal notranslate"><span class="pre">&quot;face&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">DummyContrasts</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, and a contrast with the name<code class="docutils literal notranslate"> <span class="pre">&quot;face&quot;</span></code> is also included in <code class="docutils literal notranslate"><span class="pre">Contrasts</span></code>, only the latter will be retained, and the <code class="docutils literal notranslate"><span class="pre">DummyContrasts</span></code>-generated contrast will be ignored.</p>
 <p>Note that tests of “Type: “F” will be computed but their parameters estimates will not be passed forward through an “Edge” to subsequent “Nodes” in the model.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1000,9 +1104,11 @@ For example, if the design matrix contains a variable named <code class="docutil
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="integration.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1018,24 +1124,28 @@ For example, if the design matrix contains a variable named <code class="docutil
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The BIDS Community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By The BIDS Community<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
