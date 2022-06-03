@@ -9,9 +9,12 @@ A *BSM*—in combination with a preprocessed BIDS dataset—is sufficient to exe
 
 The **mission** of *BSM* is to promote scientific best practice by making neuroimaging models *transparent and reproducible*, as well as encourging the development of *standardized and automated* statistical analysis pipelines.
 
-:::{panels}
-:column: col-lg-6 px-2 py-2
----
+::::{grid} 1 1 1 2
+:gutter: 3 3 3 3
+
+:::{grid-item-card}
+:shadow: md
+:class-header: bg-light
 **📖 Learn more**
 ^^^
 **[](motivation.md)**: Why do we need *BSM*?
@@ -19,14 +22,20 @@ The **mission** of *BSM* is to promote scientific best practice by making neuroi
 **[](walkthrough-1.md)**: Step-by-step introduction
 
 **[Specification](reference.md)**: Dive into the technical reference
+:::
 
----
+:::{grid-item-card}
+:shadow: md
+:class-header: bg-light
 **🚀 Get started**
 ^^^
 **[](model-zoo.md)**: View example models on public datasets, and modify them to your own data
 
 **[Default model](default_model.md)**: How to create a simple model
 :::
+
+::::
+
 ## Acknowledments
 
 BIDS Stats Models is supported by by NIH award R01MH109682, and is part of the [Brain Imaging Data Standard (BIDS)](https://bids.neuroimaging.io/index.html) community.
