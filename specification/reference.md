@@ -60,15 +60,17 @@ glue("structured", Code(black.format_str(repr(model), mode=black.mode.Mode()), l
 glue("orig_json", Code(orig, language="json"))
 ```
 
-````{tabbed} Structure
+`````{tab-set}
+````{tab-item} Structure
 ```{glue:} structured
 ```
 ````
 
-````{tabbed} Original JSON
+````{tab-item} Original JSON
 ```{glue:} orig_json
 ```
 ````
+`````
 
 Note that each structured field has a `Description` subfield.
 Any JSON object may have a `Description` key where the author or generator of a model
