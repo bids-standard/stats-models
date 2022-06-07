@@ -99,7 +99,7 @@ Next we define a {py:attr}`~bsmschema.models.Model` for this node.
 :lines: 1
 ```
 
-The {py:attr}`~bsmschema.models.Model.X` parameter defines the variables in the design matrix. Here, we are modeling the `incongruent` and `congruent` trial types, in addition to an intercept (idenitified by the special key: `1`; see: \_).
+The {py:attr}`~bsmschema.models.Model.X` parameter defines the variables in the design matrix. Here, we are modeling the `incongruent` and `congruent` trial types, in addition to an intercept (idenitified by the special key: `1`).
 
 Next, we specify an *Incongruent-Congruent (IvC)* contrast using the {py:attr}`~bsmschema.models.Contrast` key:
 
