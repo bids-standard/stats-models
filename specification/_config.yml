@@ -11,6 +11,10 @@ logo: bids_black.png
 execute:
   execute_notebooks: force
 
+parse:
+  myst_enable_extensions:
+    - deflist
+
 # Define the name of the latex output file for PDF builds
 latex:
   latex_documents:
