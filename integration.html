@@ -504,16 +504,15 @@ structured according to the Brain Imaging Data Structure (BIDS) standard.
 BIDS describes the naming and organization of neuroimages, task events and
 timing parameters.
 A BIDS Stats Model will use variables extracted from BIDS tabular files,
-filename components (for example, <code class="docutils literal notranslate"><span class="pre">&quot;task&quot;</span></code>), and possibly metadata extracted
-from JSON “sidecars”, but otherwise has no strong dependence on the BIDS
-standard.</p>
+filename components (for example, <code class="docutils literal notranslate"><span class="pre">&quot;task&quot;</span></code>),
+and possibly metadata extracted from JSON “sidecars”,
+but otherwise has no strong dependence on the BIDS standard.</p>
 <section id="naming-of-bids-stats-models-files-in-bids-datasets">
 <h3>Naming of BIDS Stats Models files in BIDS datasets<a class="headerlink" href="#naming-of-bids-stats-models-files-in-bids-datasets" title="Permalink to this headline">#</a></h3>
-<p>The location and naming scheme were not specified in BIDS at the time of this
-writing, but this may have changed since publication. See the latest version
-of BIDS at <a class="reference external" href="https://bids-specification.readthedocs.io">https://bids-specification.readthedocs.io</a>.
-Until these conventions are established in BIDS, it is RECOMMENDED to use the
-following:</p>
+<p>The location and naming scheme were not specified in BIDS at the time of this writing,
+but this may have changed since publication.
+See the latest version of BIDS at <a class="reference external" href="https://bids-specification.readthedocs.io">https://bids-specification.readthedocs.io</a>.
+Until these conventions are established in BIDS, it is RECOMMENDED to use the following:</p>
 <p>Template:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">models</span><span class="o">/</span><span class="n">model</span><span class="o">-&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="n">_</span><span class="p">[</span><span class="n">desc</span><span class="o">-&lt;</span><span class="n">description</span><span class="o">&gt;</span><span class="p">]</span><span class="n">_smdl</span><span class="o">.</span><span class="n">json</span>
 </pre></div>
@@ -528,18 +527,18 @@ following:</p>
 </section>
 <section id="bids-derivatives">
 <h3>BIDS Derivatives<a class="headerlink" href="#bids-derivatives" title="Permalink to this headline">#</a></h3>
-<p>BIDS Stats Models does not prescribe naming conventions for the outputs of
-estimators implementing the BIDS Stats Models specification.
-We recommend using following the <a class="reference external" href="https://bids-specification.readthedocs.io/en/stable/05-derivatives/01-introduction.html">BIDS Derivatives</a> specification to the
-extent possible.</p>
+<p>BIDS Stats Models does not prescribe naming conventions
+for the outputs of estimators implementing the BIDS Stats Models specification.
+We recommend using following the <a class="reference external" href="https://bids-specification.readthedocs.io/en/stable/05-derivatives/01-introduction.html">BIDS Derivatives</a> specification to the extent possible.</p>
 </section>
 </section>
 <section id="nidm-results">
 <h2>NIDM-Results<a class="headerlink" href="#nidm-results" title="Permalink to this headline">#</a></h2>
-<p>The purpose of BIDS Stats Models is prescriptive, essentially a recipe for
-how to fit a model, rather than a description of a model that was already fit.
-<a class="reference external" href="http://nidm.nidash.org/specs/nidm-results.html">NIDM-Results</a> describes the results of modeling, and does not conflict with
-BIDS Stats Models.</p>
+<p>The purpose of BIDS Stats Models is prescriptive,
+essentially a recipe for how to fit a model,
+rather than a description of a model that was already fit.
+<a class="reference external" href="http://nidm.nidash.org/specs/nidm-results.html">NIDM-Results</a> describes the results of modeling,
+and does not conflict with BIDS Stats Models.</p>
 </section>
 </section>
 

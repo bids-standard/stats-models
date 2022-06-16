@@ -12,11 +12,10 @@ Here we will quickly:
 
 ## JSON terms
 
-JSON stands for JavaScript Object Notation and as its name indicates takes its
-syntax from the JavaScript language.
+JSON stands for JavaScript Object Notation 
+and as its name indicates takes its syntax from the JavaScript language.
 
-The main "building blocks" of JSON you must be familiar with are `Objects` and
-`Arrays`.
+The main "building blocks" of JSON you must be familiar with are `Objects` and `Arrays`.
 
 ### Objects
 
@@ -33,16 +32,15 @@ For example, this is an object.
 { "Key": "value", "Key2": 1 }
 ```
 
-As you can see, in JSON strings start and end with double quotes `"`. Also note
-the comma between the key-value pairs but not after the last key-value pair.
+As you can see, in JSON strings start and end with double quotes `"`. 
+Also note the comma between the key-value pairs but not after the last key-value pair.
 
 ### Arrays
 
 In JSON, arrays are:
 
 - are opened and closes by square brackets `[ ]`
-- an ordered list of zero or more elements, each of which may be of any type
-  (string, number..)
+- an ordered list of zero or more elements, each of which may be of any type (string, number..)
 - elements must be separated by a comma
 
 ```json
@@ -58,8 +56,8 @@ In JSON boolean values must be typed as lowercase with no quotes:
 
 ### JSON "styling"
 
-In JavaScript it is custom to use CamelCase to write code, this is why most of
-keys you will see in JSON are also in CamelCase.
+In JavaScript it is custom to use CamelCase to write code, 
+this is why most of keys you will see in JSON are also in CamelCase.
 
 <!-- Add link to camelcase wikipedia -->
 
@@ -78,14 +76,14 @@ It is common to indent JSON files to help human readibility.
 }
 ```
 
-Finally, you cannot add comments in JSON files, but the BIDS stats model allows
-you to add a `"Description"` key to most objects to give explanations to the
-reader.
+Finally, you cannot add comments in JSON files, 
+but the BIDS stats model allows you to add a `"Description"` key 
+to most objects to give explanations to the reader.
 
 ### Nesting
 
-JSON allows to "nest" objects within objects, to create arrays of objects and
-combine all those elements however deep you want or need.
+JSON allows to "nest" objects within objects, to create arrays of objects 
+and combine all those elements however deep you want or need.
 
 Just remember to place commas:
 
@@ -127,13 +125,14 @@ Then you can specify those rules in what is called a JSON schema.
 
 Working with JSON can be a headache if you do not have the proper tools.
 
-To get started we suggest playing around with JSON in an online editor, to get a
-feeling for how JSON works.
+To get started we suggest playing around with JSON in an online editor, 
+to get a feeling for how JSON works.
 
 See for example this one: http://jsoneditoronline.org/
 
-Online editors can also usually tell you if you forgot a comma, forgot to close
-a bracket or something similar. And even fix mistakes for you.
+Online editors can also usually tell you if you forgot a comma, 
+forgot to close a bracket or something similar. 
+And even fix mistakes for you.
 
 ```{image} images/autofix.png
 :class: light-border
@@ -141,9 +140,9 @@ a bracket or something similar. And even fix mistakes for you.
 
 <br>
 
-If you directly want to edit you BIDS stats model JSON in the browser, you can
-also use the BIDS stats model JSON schema by clicking
-`Options --> JSON schema --> URL` and give it this URL:
+If you directly want to edit you BIDS stats model JSON in the browser, 
+you can also use the BIDS stats model JSON schema by clicking `Options --> JSON schema --> URL` 
+and give it this URL:
 
 https://bids-standard.github.io/stats-models/BIDSStatsModel.json
 
@@ -159,9 +158,10 @@ if you use a modern code editor like:
 - [visual studio code](https://code.visualstudio.com/)
 - [atom](https://atom.io/)
 
-Modern code editors can tell you if you have a valid JSON file and highlight the
-lines where you have errors. Most of them usually also have code formatting
-extensions that can automatically indent your JSON like
+Modern code editors can tell you if you have a valid JSON file 
+and highlight the lines where you have errors. 
+Most of them usually also have code formatting extensions 
+that can automatically indent your JSON like
 [Prettier for vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
 You can also validate the BIDS stats model as you are creating it:

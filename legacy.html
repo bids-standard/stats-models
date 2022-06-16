@@ -639,7 +639,7 @@ the statistical analysis of each individual BOLD run,
 and the 2nd level analysis refers to the analysis of either a single subject
 (which typically involves aggregating over 2 or more sets of 1st level results)
 or an entire group of subjects (in the case where there’s only one run per subject).
-Alternatively, in some packages (e.g., SPM), runs are first concatenated within-subject,
+Alternatively, in some packages (like SPM), runs are first concatenated within-subject,
 producing only 2-level structures (subject and group).
 This hierarchy is not entirely rigid,
 as it is sometimes necessary to inject another level into the mix – for example,
@@ -654,7 +654,7 @@ Thus, the following node sequences are all valid:</p>
 <li><p>subject → dataset</p></li>
 </ul>
 <p>A key point to appreciate here is that the keyword associated with each level of analysis
-(i.e., “run”, “session”, “subject”, or “dataset”)
+(meaning “run”, “session”, “subject”, or “dataset”)
 describes the grouping structure of the analysis,
 rather than specifying the precise nature of the inputs and outputs.
 The grouping structure must be made explicit in the <a class="reference internal" href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.GroupBy" title="bsmschema.models.Node.GroupBy"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GroupBy</span></code></a> list
@@ -786,7 +786,7 @@ For example, take the following partial model specification:</p>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>In this case, executing the first node, with the level “Run” (i.e., what is typically termed the 1st-level model) will produce contrast maps named “Face” and “Word” for each run and subject (because the <code class="docutils literal notranslate"><span class="pre">DummyContrasts</span></code> directive will automatically generate a 1 vs. 0 “t” contrast for each variable in <code class="docutils literal notranslate"><span class="pre">X</span></code>).
+<p>In this case, executing the first node, with the level “Run” (what is typically termed the 1st-level model) will produce contrast maps named “Face” and “Word” for each run and subject (because the <code class="docutils literal notranslate"><span class="pre">DummyContrasts</span></code> directive will automatically generate a 1 vs. 0 “t” contrast for each variable in <code class="docutils literal notranslate"><span class="pre">X</span></code>).
 Suppose that there are three runs per subject.
 Then, for each contrast (“Face” and “Word”),  a “Subject”-level model will have one input column with three rows.
 The columns will always have the value 1 in all cells.
@@ -805,13 +805,13 @@ So, for the subject-level models, the input from the previous level will look li
 <p>Note that we did not need to explicitly state anywhere that “Face” and “Word” should be passed as inputs to the 2nd level.
 Those variables are automatically made available for use in the subject-level model, by virtue of the fact that (a) we set <code class="docutils literal notranslate"><span class="pre">DummyContrasts</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;t&quot;</span></code>, and (b) the subject-level Node is connected by an Edge from the run-level Node, so it has automatic access to all variables outputted by the run-level Node.</p>
 <p>Note also that availability does not mandate inclusion: the fact that Face and Word contrasts were defined in the 1st Node does not mean that the user has to include them in a model specification in a 2nd Node.
-If the Face contrast is not explicitly named as a predictor in the <code class="docutils literal notranslate"><span class="pre">Model</span></code> and/or <code class="docutils literal notranslate"><span class="pre">Contrasts</span></code> specifications in the 2nd Node, it will simply be ignored in all further analysis (i.e., it will not be passed onto further Nodes).
+If the Face contrast is not explicitly named as a predictor in the <code class="docutils literal notranslate"><span class="pre">Model</span></code> and/or <code class="docutils literal notranslate"><span class="pre">Contrasts</span></code> specifications in the 2nd Node, it will simply be ignored in all further analysis (meanig that it will not be passed onto further Nodes).
 An important corollary of this principle is that <span style="text-decoration:underline;">variables must be explicitly named in the <code>Model</code> and/or <code>Contrasts</code> sections of every <code>Level </code>in order to be propagated to the next <code class="docutils literal notranslate"><span class="pre">Level</span></code>.
 Note that Tests of “Type”: “F” are excluded from this, and not passed forward to other levels in the Model.</span></p>
 </section>
 <section id="automatic-ingestion-of-design-level-and-scan-level-variables">
 <h3><strong>Automatic ingestion of design-level and scan-level variables</strong><a class="headerlink" href="#automatic-ingestion-of-design-level-and-scan-level-variables" title="Permalink to this headline">#</a></h3>
-<p>Per the core BIDS spec, each level of analysis (i.e., <code class="docutils literal notranslate"><span class="pre">run</span></code>, <code class="docutils literal notranslate"><span class="pre">session</span></code>, <code class="docutils literal notranslate"><span class="pre">subject</span></code>, or <code class="docutils literal notranslate"><span class="pre">dataset</span></code>) is associated with a different BIDS file or files that contains optional design events or variables.
+<p>Per the core BIDS spec, each level of analysis (meaning <code class="docutils literal notranslate"><span class="pre">run</span></code>, <code class="docutils literal notranslate"><span class="pre">session</span></code>, <code class="docutils literal notranslate"><span class="pre">subject</span></code>, or <code class="docutils literal notranslate"><span class="pre">dataset</span></code>) is associated with a different BIDS file or files that contains optional design events or variables.
 These files are expected to be automatically read in and made available for inclusion in the model specification.
 Specifically, the core BIDS spec defines the following level-to-file-to-variable mapping:</p>
 <table class="colwidths-auto table">
@@ -844,7 +844,7 @@ For example, if the <code class="docutils literal notranslate"><span class="pre"
 <h3>The intercept variable<a class="headerlink" href="#the-intercept-variable" title="Permalink to this headline">#</a></h3>
 <p>The value <code class="docutils literal notranslate"><span class="pre">1</span></code> has a special status in <code class="docutils literal notranslate"><span class="pre">Model</span> </code>and <code class="docutils literal notranslate"><span class="pre">Contrast</span></code> definitions as an intercept variable that requires no explicit name.
 A value of <code class="docutils literal notranslate"><span class="pre">1</span></code> in <code class="docutils literal notranslate"><span class="pre">Model.X</span></code> indicates an intercept column is to be added to the design matrix.
-At higher-level Nodes, the intercept has an interpretable meaning (e.g., in the absence of other regressors, it is the sample mean) and may stand in for the name of the input contrast in <code class="docutils literal notranslate"><span class="pre">Model</span></code> and <code class="docutils literal notranslate"><span class="pre">Contrast</span></code> definitions.</p>
+At higher-level Nodes, the intercept has an interpretable meaning (for exmaple in the absence of other regressors, it is the sample mean) and may stand in for the name of the input contrast in <code class="docutils literal notranslate"><span class="pre">Model</span></code> and <code class="docutils literal notranslate"><span class="pre">Contrast</span></code> definitions.</p>
 </section>
 </section>
 <section id="transformations">

@@ -569,10 +569,9 @@ with JSON.</p></li>
 </ul>
 <section id="json-terms">
 <h2>JSON terms<a class="headerlink" href="#json-terms" title="Permalink to this headline">#</a></h2>
-<p>JSON stands for JavaScript Object Notation and as its name indicates takes its
-syntax from the JavaScript language.</p>
-<p>The main “building blocks” of JSON you must be familiar with are <code class="docutils literal notranslate"><span class="pre">Objects</span></code> and
-<code class="docutils literal notranslate"><span class="pre">Arrays</span></code>.</p>
+<p>JSON stands for JavaScript Object Notation
+and as its name indicates takes its syntax from the JavaScript language.</p>
+<p>The main “building blocks” of JSON you must be familiar with are <code class="docutils literal notranslate"><span class="pre">Objects</span></code> and <code class="docutils literal notranslate"><span class="pre">Arrays</span></code>.</p>
 <section id="objects">
 <h3>Objects<a class="headerlink" href="#objects" title="Permalink to this headline">#</a></h3>
 <p>In JSON, objects</p>
@@ -589,16 +588,15 @@ syntax from the JavaScript language.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;Key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Key2&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>As you can see, in JSON strings start and end with double quotes <code class="docutils literal notranslate"><span class="pre">&quot;</span></code>. Also note
-the comma between the key-value pairs but not after the last key-value pair.</p>
+<p>As you can see, in JSON strings start and end with double quotes <code class="docutils literal notranslate"><span class="pre">&quot;</span></code>.
+Also note the comma between the key-value pairs but not after the last key-value pair.</p>
 </section>
 <section id="arrays">
 <h3>Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline">#</a></h3>
 <p>In JSON, arrays are:</p>
 <ul class="simple">
 <li><p>are opened and closes by square brackets <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code></p></li>
-<li><p>an ordered list of zero or more elements, each of which may be of any type
-(string, number..)</p></li>
+<li><p>an ordered list of zero or more elements, each of which may be of any type (string, number..)</p></li>
 <li><p>elements must be separated by a comma</p></li>
 </ul>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s2">&quot;this&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;is&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;JSON&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">]</span><span class="w"></span>
@@ -615,8 +613,8 @@ the comma between the key-value pairs but not after the last key-value pair.</p>
 </section>
 <section id="json-styling">
 <h3>JSON “styling”<a class="headerlink" href="#json-styling" title="Permalink to this headline">#</a></h3>
-<p>In JavaScript it is custom to use CamelCase to write code, this is why most of
-keys you will see in JSON are also in CamelCase.</p>
+<p>In JavaScript it is custom to use CamelCase to write code,
+this is why most of keys you will see in JSON are also in CamelCase.</p>
 <!-- Add link to camelcase wikipedia -->
 <p>For example:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;ThisIsTrue&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;ThisIsTrue&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
@@ -629,14 +627,14 @@ keys you will see in JSON are also in CamelCase.</p>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Finally, you cannot add comments in JSON files, but the BIDS stats model allows
-you to add a <code class="docutils literal notranslate"><span class="pre">&quot;Description&quot;</span></code> key to most objects to give explanations to the
-reader.</p>
+<p>Finally, you cannot add comments in JSON files,
+but the BIDS stats model allows you to add a <code class="docutils literal notranslate"><span class="pre">&quot;Description&quot;</span></code> key
+to most objects to give explanations to the reader.</p>
 </section>
 <section id="nesting">
 <h3>Nesting<a class="headerlink" href="#nesting" title="Permalink to this headline">#</a></h3>
-<p>JSON allows to “nest” objects within objects, to create arrays of objects and
-combine all those elements however deep you want or need.</p>
+<p>JSON allows to “nest” objects within objects, to create arrays of objects
+and combine all those elements however deep you want or need.</p>
 <p>Just remember to place commas:</p>
 <ul class="simple">
 <li><p>between array elements</p></li>
@@ -678,16 +676,17 @@ combine all those elements however deep you want or need.</p>
 <section id="in-the-browser">
 <h3>In the browser<a class="headerlink" href="#in-the-browser" title="Permalink to this headline">#</a></h3>
 <p>Working with JSON can be a headache if you do not have the proper tools.</p>
-<p>To get started we suggest playing around with JSON in an online editor, to get a
-feeling for how JSON works.</p>
+<p>To get started we suggest playing around with JSON in an online editor,
+to get a feeling for how JSON works.</p>
 <p>See for example this one: <a class="reference external" href="http://jsoneditoronline.org/">http://jsoneditoronline.org/</a></p>
-<p>Online editors can also usually tell you if you forgot a comma, forgot to close
-a bracket or something similar. And even fix mistakes for you.</p>
+<p>Online editors can also usually tell you if you forgot a comma,
+forgot to close a bracket or something similar.
+And even fix mistakes for you.</p>
 <img alt="_images/autofix.png" class="light-border" src="_images/autofix.png" />
 <br>
-<p>If you directly want to edit you BIDS stats model JSON in the browser, you can
-also use the BIDS stats model JSON schema by clicking
-<code class="docutils literal notranslate"><span class="pre">Options</span> <span class="pre">--&gt;</span> <span class="pre">JSON</span> <span class="pre">schema</span> <span class="pre">--&gt;</span> <span class="pre">URL</span></code> and give it this URL:</p>
+<p>If you directly want to edit you BIDS stats model JSON in the browser,
+you can also use the BIDS stats model JSON schema by clicking <code class="docutils literal notranslate"><span class="pre">Options</span> <span class="pre">--&gt;</span> <span class="pre">JSON</span> <span class="pre">schema</span> <span class="pre">--&gt;</span> <span class="pre">URL</span></code>
+and give it this URL:</p>
 <p><a class="reference external" href="https://bids-standard.github.io/stats-models/BIDSStatsModel.json">https://bids-standard.github.io/stats-models/BIDSStatsModel.json</a></p>
 <img alt="_images/schema_in_browser.png" class="light-border" src="_images/schema_in_browser.png" />
 </section>
@@ -699,9 +698,10 @@ if you use a modern code editor like:</p>
 <li><p><a class="reference external" href="https://code.visualstudio.com/">visual studio code</a></p></li>
 <li><p><a class="reference external" href="https://atom.io/">atom</a></p></li>
 </ul>
-<p>Modern code editors can tell you if you have a valid JSON file and highlight the
-lines where you have errors. Most of them usually also have code formatting
-extensions that can automatically indent your JSON like
+<p>Modern code editors can tell you if you have a valid JSON file
+and highlight the lines where you have errors.
+Most of them usually also have code formatting extensions
+that can automatically indent your JSON like
 <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">Prettier for vscode</a></p>
 <p>You can also validate the BIDS stats model as you are creating it:</p>
 <ul class="simple">
