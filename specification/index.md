@@ -3,11 +3,18 @@ BIDS Stats Models
 
 *A specification for neuroimaging statistical models.*
 
-*BIDS Stats Models* describe how to fit *statistical models for neuroimaging data* using *a machine-readable JSON document*.  Its purpose is prescriptive (as in a recipe), rather than descriptive (as in summary of already fit models). 
+*BIDS Stats Models* describe how to fit *statistical models for neuroimaging data* 
+using *a machine-readable JSON document*.  
+Its purpose is prescriptive (as in a recipe), 
+rather than descriptive (as in summary of already fit models). 
 
-A *BIDS Stats Models* — in combination with a preprocessed BIDS dataset— is sufficient to execute statistical models, with minimal configuration and intervention required from the user.
+A *BIDS Stats Models* — in combination with a preprocessed BIDS dataset — 
+is sufficient to execute statistical models, 
+with minimal configuration and intervention required from the user.
 
-The **mission** of *BIDS Stats Models* is to promote scientific best practice by making neuroimaging models *transparent and reproducible*, as well as encourging the development of *standardized and automated* statistical analysis pipelines.
+The **mission** of *BIDS Stats Models* is to promote scientific best practice 
+by making neuroimaging models *transparent and reproducible*, 
+as well as encourging the development of *standardized and automated* statistical analysis pipelines.
 
 ::::{grid} 1 1 1 2
 :gutter: 3 3 3 3
@@ -38,4 +45,5 @@ The **mission** of *BIDS Stats Models* is to promote scientific best practice by
 
 ## Acknowledments
 
-BIDS Stats Models is supported by by NIH award R01MH109682, and is part of the [Brain Imaging Data Standard (BIDS)](https://bids.neuroimaging.io/index.html) community.
+BIDS Stats Models is supported by by NIH award R01MH109682, 
+and is part of the [Brain Imaging Data Standard (BIDS)](https://bids.neuroimaging.io/index.html) community.
