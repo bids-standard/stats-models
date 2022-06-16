@@ -19,7 +19,7 @@ the statistical analysis of each individual BOLD run,
 and the 2nd level analysis refers to the analysis of either a single subject
 (which typically involves aggregating over 2 or more sets of 1st level results)
 or an entire group of subjects (in the case where there’s only one run per subject).
-Alternatively, in some packages (e.g., SPM), runs are first concatenated within-subject,
+Alternatively, in some packages (like SPM), runs are first concatenated within-subject,
 producing only 2-level structures (subject and group).
 This hierarchy is not entirely rigid,
 as it is sometimes necessary to inject another level into the mix – for example,
@@ -35,7 +35,7 @@ Thus, the following node sequences are all valid:
 * subject → dataset
 
 A key point to appreciate here is that the keyword associated with each level of analysis
-(i.e., "run", "session", "subject", or "dataset")
+(meaning "run", "session", "subject", or "dataset")
 describes the grouping structure of the analysis,
 rather than specifying the precise nature of the inputs and outputs.
 The grouping structure must be made explicit in the {py:attr}`~bsmschema.models.Node.GroupBy` list
@@ -177,7 +177,7 @@ For example, take the following partial model specification:
 ```
 
 
-In this case, executing the first node, with the level "Run" (i.e., what is typically termed the 1st-level model) will produce contrast maps named "Face" and "Word" for each run and subject (because the `DummyContrasts` directive will automatically generate a 1 vs. 0 "t" contrast for each variable in `X`).
+In this case, executing the first node, with the level "Run" (what is typically termed the 1st-level model) will produce contrast maps named "Face" and "Word" for each run and subject (because the `DummyContrasts` directive will automatically generate a 1 vs. 0 "t" contrast for each variable in `X`).
 Suppose that there are three runs per subject.
 Then, for each contrast ("Face" and "Word"),  a "Subject"-level model will have one input column with three rows.
 The columns will always have the value 1 in all cells.
@@ -200,14 +200,14 @@ Note that we did not need to explicitly state anywhere that "Face" and "Word" sh
 Those variables are automatically made available for use in the subject-level model, by virtue of the fact that (a) we set `DummyContrasts` to `"t"`, and (b) the subject-level Node is connected by an Edge from the run-level Node, so it has automatic access to all variables outputted by the run-level Node.
 
 Note also that availability does not mandate inclusion: the fact that Face and Word contrasts were defined in the 1st Node does not mean that the user has to include them in a model specification in a 2nd Node.
-If the Face contrast is not explicitly named as a predictor in the `Model` and/or `Contrasts` specifications in the 2nd Node, it will simply be ignored in all further analysis (i.e., it will not be passed onto further Nodes).
+If the Face contrast is not explicitly named as a predictor in the `Model` and/or `Contrasts` specifications in the 2nd Node, it will simply be ignored in all further analysis (meanig that it will not be passed onto further Nodes).
 An important corollary of this principle is that <span style="text-decoration:underline;">variables must be explicitly named in the <code>Model</code> and/or <code>Contrasts</code> sections of every <code>Level </code>in order to be propagated to the next `Level`.
 Note that Tests of "Type": "F" are excluded from this, and not passed forward to other levels in the Model.</span>
 
 
 ### **Automatic ingestion of design-level and scan-level variables**
 
-Per the core BIDS spec, each level of analysis (i.e., `run`, `session`, `subject`, or `dataset`) is associated with a different BIDS file or files that contains optional design events or variables.
+Per the core BIDS spec, each level of analysis (meaning `run`, `session`, `subject`, or `dataset`) is associated with a different BIDS file or files that contains optional design events or variables.
 These files are expected to be automatically read in and made available for inclusion in the model specification.
 Specifically, the core BIDS spec defines the following level-to-file-to-variable mapping:
 
@@ -231,7 +231,7 @@ The expected formats for each of the file types listed in Table 1 are defined in
 
 The value `1` has a special status in `Model `and `Contrast` definitions as an intercept variable that requires no explicit name.
 A value of `1` in `Model.X` indicates an intercept column is to be added to the design matrix.
-At higher-level Nodes, the intercept has an interpretable meaning (e.g., in the absence of other regressors, it is the sample mean) and may stand in for the name of the input contrast in `Model` and `Contrast` definitions.
+At higher-level Nodes, the intercept has an interpretable meaning (for exmaple in the absence of other regressors, it is the sample mean) and may stand in for the name of the input contrast in `Model` and `Contrast` definitions.
 
 
 ## Transformations
