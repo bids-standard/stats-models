@@ -74,7 +74,7 @@ BIDS Stats Models *must* have a {py:attr}`~bsmschema.models.BIDSStatsModel.Name`
 For this example, we have limited the model to three subjects using the `Input` key.
 ```
 
-_BSM_ defines this multi-stage analysis as a Graph, with each level of analysis
+_BIDS Stats Models_ defines this multi-stage analysis as a Graph, with each level of analysis
 defined as a separate `Node` object. Let's step through each `Node` separately. 
 
 ### Run-level Model
@@ -340,10 +340,10 @@ At this point, we have a fully specified model three-stage fMRI model.
 
 Our model will compute a run level incongruent-congruent contrast, pass forward the estimates to a fixed-effects model to pool subject estimates, and compute a dataset-level random-effects model and one-sample t-test to estimate population effects for the `IvC` contrast. 
 
-We can now pair this *BSM* specification with a pre-processed derivative from the original raw dataset and hand these to a tool that supports *BSM* for **fully automated execution**.
+We can now pair this *BIDS Stats Models* specification with a pre-processed derivative from the original raw dataset and hand these to a tool that supports *BIDS Stats Models* for **fully automated execution**.
 
 ## Next up
 
-- Read the next section to dive deeper into advanced usage of *BSM* to enable more complex models.
-- Check out tools like [FitLins](https://github.com/poldracklab/fitlins) which implement *BSM* execution to learn how to run a *BIDS Stats Model*
+- Read the next section to dive deeper into advanced usage of *BIDS Stats Models* to enable more complex models.
+- Check out tools like [FitLins](https://github.com/poldracklab/fitlins) which implement *BIDS Stats Models* execution to learn how to run a *BIDS Stats Model*
 - Take a look at more example models in the  **[](model-zoo.md)**.

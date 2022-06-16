@@ -3,11 +3,11 @@ BIDS Stats Models
 
 *A specification for neuroimaging statistical models.*
 
-*BIDS Stats Models* (BSM) describe how to fit *statistical models for neuroimaging data* using *a machine-readable JSON document*.  Its purpose is prescriptive (e.g. a recipe), rather than descriptive (e.g. summary of already fit models). 
+*BIDS Stats Models* describe how to fit *statistical models for neuroimaging data* using *a machine-readable JSON document*.  Its purpose is prescriptive (e.g. a recipe), rather than descriptive (e.g. summary of already fit models). 
 
-A *BSM*—in combination with a preprocessed BIDS dataset—is sufficient to execute statistical models, with minimal configuration and intervention required from the user.
+A *BIDS Stats Models* — in combination with a preprocessed BIDS dataset— is sufficient to execute statistical models, with minimal configuration and intervention required from the user.
 
-The **mission** of *BSM* is to promote scientific best practice by making neuroimaging models *transparent and reproducible*, as well as encourging the development of *standardized and automated* statistical analysis pipelines.
+The **mission** of *BIDS Stats Models* is to promote scientific best practice by making neuroimaging models *transparent and reproducible*, as well as encourging the development of *standardized and automated* statistical analysis pipelines.
 
 ::::{grid} 1 1 1 2
 :gutter: 3 3 3 3
@@ -17,7 +17,7 @@ The **mission** of *BSM* is to promote scientific best practice by making neuroi
 :class-header: bg-light
 **📖 Learn more**
 ^^^
-**[](motivation.md)**: Why do we need *BSM*?
+**[](motivation.md)**: Why do we need *BIDS Stats Models*?
 
 **[](walkthrough-1.md)**: Step-by-step introduction
 
