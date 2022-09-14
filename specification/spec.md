@@ -18,23 +18,28 @@ Editors:
 
 ---
 
-## Abstract
-
 This document contains specifications for writing BIDS Stats Models, a recipe for fitting
 hierarchical statistical models to neuroimaging datasets.
 This specification was developed in the [Brain Imaging Data Structure (BIDS)][BIDS] community
 as BIDS Extension Proposal (BEP) 2.
 
-## Status of this document
-
-The previously released version of this specification was [1.0.0rc0][].
-
-## Introduction
-
 The components of this specification interact,
 and it is difficult to discuss one structure without referencing others.
 Therefore this document makes no attempt to introduce all concepts before referring to them.
 For a more graduated introduction of these concepts, please refer to the [Walkthrough](walkthrough-intro).
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
+NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and
+"OPTIONAL" in this document are to be interpreted as described in
+[RFC 2119].
+
+## Status of this document
+
+<!-- Note here the current version of the specification, once released. -->
+<!--
+The current released version of this specification is 1.0.
+-->
+The previously released version of this specification was [1.0.0rc0][].
 
 ## On-disk layout
 
@@ -95,18 +100,14 @@ An example top-level structure has the form:
 
 ### Variable model and transformations protocol
 
-## JSON Schema
 
-The following JSON schema enumerates permissible fields within BIDS Stats Models.
-Note that not all rules specified in this document are implemented in this schema.
-
-```{literalinclude} schema/BIDSStatsModel.json
-```
+<!-- Markdown link definitions -->
 
 [1.0.0rc0]: https://docs.google.com/document/d/1IthJC7rZw_fUK7Qka4mHxSjndyrvKKRoJcvll7XQN08/edit
 [BIDS]: https://bids.neuroimaging.io/
 [JSON]: https://www.json.org/json-en.html
 [RFC8259]: https://datatracker.ietf.org/doc/html/rfc8259
+[RFC 2119]: https://datatracker.ietf.org/doc/html/rfc2119
 [Alejandro de la Vega]: https://orcid.org/0000-0001-9062-3778
 [University of Texas at Austin]: https://www.utexas.edu/
 [Christopher J Markiewicz]: https://orcid.org/0000-0002-6533-164X
