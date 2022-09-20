@@ -27,5 +27,6 @@
   "required": [
     "Source",
     "Destination"
-  ]
+  ],
+  "additionalProperties": false
 }

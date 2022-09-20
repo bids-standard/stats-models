@@ -23,5 +23,6 @@
   "required": [
     "Transformer",
     "Instructions"
-  ]
+  ],
+  "additionalProperties": false
 }

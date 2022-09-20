@@ -83,5 +83,6 @@
     "ConditionList",
     "Weights",
     "Test"
-  ]
+  ],
+  "additionalProperties": false
 }

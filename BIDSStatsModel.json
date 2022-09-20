@@ -43,6 +43,7 @@
     "BIDSModelVersion",
     "Nodes"
   ],
+  "additionalProperties": false,
   "definitions": {
     "Transformations": {
       "title": "Transformations",
@@ -69,7 +70,8 @@
       "required": [
         "Transformer",
         "Instructions"
-      ]
+      ],
+      "additionalProperties": false
     },
     "HRF": {
       "title": "HRF",
@@ -99,7 +101,8 @@
       "required": [
         "Variables",
         "Model"
-      ]
+      ],
+      "additionalProperties": false
     },
     "Options": {
       "title": "Options",
@@ -139,7 +142,8 @@
           ],
           "type": "string"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Model": {
       "title": "Model",
@@ -196,7 +200,8 @@
       "required": [
         "Type",
         "X"
-      ]
+      ],
+      "additionalProperties": false
     },
     "Contrast": {
       "title": "Contrast",
@@ -283,7 +288,8 @@
         "ConditionList",
         "Weights",
         "Test"
-      ]
+      ],
+      "additionalProperties": false
     },
     "DummyContrasts": {
       "title": "DummyContrasts",
@@ -323,7 +329,8 @@
       },
       "required": [
         "Test"
-      ]
+      ],
+      "additionalProperties": false
     },
     "Node": {
       "title": "Node",
@@ -377,7 +384,8 @@
         "Name",
         "GroupBy",
         "Model"
-      ]
+      ],
+      "additionalProperties": false
     },
     "Edge": {
       "title": "Edge",
@@ -408,7 +416,8 @@
       "required": [
         "Source",
         "Destination"
-      ]
+      ],
+      "additionalProperties": false
     }
   }
 }

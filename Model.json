@@ -54,6 +54,7 @@
     "Type",
     "X"
   ],
+  "additionalProperties": false,
   "definitions": {
     "HRF": {
       "title": "HRF",
@@ -83,7 +84,8 @@
       "required": [
         "Variables",
         "Model"
-      ]
+      ],
+      "additionalProperties": false
     },
     "Options": {
       "title": "Options",
@@ -123,7 +125,8 @@
           ],
           "type": "string"
         }
-      }
+      },
+      "additionalProperties": false
     }
   }
 }
