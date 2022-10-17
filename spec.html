@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Integration with other standards &#8212; BIDS Stats Models Specification</title>
+    <title>BIDS Stats Models Specification &#8212; BIDS Stats Models Specification</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -57,8 +57,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Legacy specification" href="legacy.html" />
-    <link rel="prev" title="Advanced usage" href="walkthrough-2.html" />
+    <link rel="next" title="BIDS Stats Models Object Reference" href="reference.html" />
+    <link rel="prev" title="JSON 101" href="json_101.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -115,7 +115,7 @@ const thebe_selector_output = ".output, .cell_output"
   User Guide
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="motivation.html">
    Motivation
@@ -143,8 +143,8 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="integration.html">
    Integration with other standards
   </a>
  </li>
@@ -164,9 +164,9 @@ const thebe_selector_output = ".output, .cell_output"
   Specification
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="spec.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    BIDS Stats Models Specification
   </a>
  </li>
@@ -300,6 +300,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/bids-standard/stats-models/main?urlpath=tree/specification/spec.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -339,7 +368,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/bids-standard/stats-models/issues/new?title=Issue%20on%20page%20%2Fintegration.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/bids-standard/stats-models/issues/new?title=Issue%20on%20page%20%2Fspec.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -367,7 +396,24 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/integration.md"
+        <a href="_sources/spec.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="_sources/spec.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -427,26 +473,55 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-brain-imaging-data-structure-bids">
-   The Brain Imaging Data Structure (BIDS)
+  <a class="reference internal nav-link" href="#status-of-this-document">
+   Status of this document
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#on-disk-layout">
+   On-disk layout
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#naming-of-bids-stats-models-files-in-bids-datasets">
-     Naming of BIDS Stats Models files in BIDS datasets
+    <a class="reference internal nav-link" href="#execution-graph-and-data-flow">
+     Execution Graph and Data Flow
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nodes-and-edges">
+       Nodes and Edges
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#groupby-and-filter">
+       GroupBy and Filter
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bids-derivatives">
-     BIDS Derivatives
+    <a class="reference internal nav-link" href="#estimation-nodes">
+     Estimation Nodes
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#model">
+       Model
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#contrasts">
+       Contrasts
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variable-model-and-transformations-protocol">
+     Variable model and transformations protocol
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#nidm-results">
-   NIDM-Results
-  </a>
  </li>
 </ul>
 
@@ -457,7 +532,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Integration with other standards</h1>
+                <h1>BIDS Stats Models Specification</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -468,26 +543,55 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-brain-imaging-data-structure-bids">
-   The Brain Imaging Data Structure (BIDS)
+  <a class="reference internal nav-link" href="#status-of-this-document">
+   Status of this document
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#on-disk-layout">
+   On-disk layout
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#naming-of-bids-stats-models-files-in-bids-datasets">
-     Naming of BIDS Stats Models files in BIDS datasets
+    <a class="reference internal nav-link" href="#execution-graph-and-data-flow">
+     Execution Graph and Data Flow
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nodes-and-edges">
+       Nodes and Edges
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#groupby-and-filter">
+       GroupBy and Filter
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bids-derivatives">
-     BIDS Derivatives
+    <a class="reference internal nav-link" href="#estimation-nodes">
+     Estimation Nodes
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#model">
+       Model
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#contrasts">
+       Contrasts
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variable-model-and-transformations-protocol">
+     Variable model and transformations protocol
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#nidm-results">
-   NIDM-Results
-  </a>
  </li>
 </ul>
 
@@ -499,52 +603,100 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="integration-with-other-standards">
-<h1>Integration with other standards<a class="headerlink" href="#integration-with-other-standards" title="Permalink to this headline">#</a></h1>
-<p>This standard describes the contents of a BIDS Stats Model document.
-Here we discuss the relationship of this standard to other standards.</p>
-<section id="the-brain-imaging-data-structure-bids">
-<h2>The Brain Imaging Data Structure (BIDS)<a class="headerlink" href="#the-brain-imaging-data-structure-bids" title="Permalink to this headline">#</a></h2>
-<p>The models described by this standard are intended to supplement datasets
-structured according to the Brain Imaging Data Structure (BIDS) standard.
-BIDS describes the naming and organization of neuroimages, task events and
-timing parameters.
-A BIDS Stats Model will use variables extracted from BIDS tabular files,
-filename components (for example, <code class="docutils literal notranslate"><span class="pre">&quot;task&quot;</span></code>),
-and possibly metadata extracted from JSON “sidecars”,
-but otherwise has no strong dependence on the BIDS standard.</p>
-<section id="naming-of-bids-stats-models-files-in-bids-datasets">
-<h3>Naming of BIDS Stats Models files in BIDS datasets<a class="headerlink" href="#naming-of-bids-stats-models-files-in-bids-datasets" title="Permalink to this headline">#</a></h3>
-<p>The location and naming scheme were not specified in BIDS at the time of this writing,
-but this may have changed since publication.
-See the latest version of BIDS at <a class="reference external" href="https://bids-specification.readthedocs.io">https://bids-specification.readthedocs.io</a>.
-Until these conventions are established in BIDS, it is RECOMMENDED to use the following:</p>
-<p>Template:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">models</span><span class="o">/</span><span class="n">model</span><span class="o">-&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="n">_</span><span class="p">[</span><span class="n">desc</span><span class="o">-&lt;</span><span class="n">description</span><span class="o">&gt;</span><span class="p">]</span><span class="n">_smdl</span><span class="o">.</span><span class="n">json</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="bids-stats-models-specification">
+<h1>BIDS Stats Models Specification<a class="headerlink" href="#bids-stats-models-specification" title="Permalink to this headline">#</a></h1>
+<dl class="simple myst">
+<dt>Editors:</dt><dd><p><a class="reference external" href="https://orcid.org/0000-0001-9062-3778">Alejandro de la Vega</a> (<a class="reference external" href="https://www.utexas.edu/">University of Texas at Austin</a>)</p>
+</dd>
+<dd><p><a class="reference external" href="https://orcid.org/0000-0002-6533-164X">Christopher J Markiewicz</a> (<a class="reference external" href="https://www.stanford.edu">Stanford University</a>)</p>
+</dd>
+</dl>
+<hr class="docutils" />
+<p>This document contains specifications for writing BIDS Stats Models, a recipe for fitting
+hierarchical statistical models to neuroimaging datasets.
+This specification was developed in the <a class="reference external" href="https://bids.neuroimaging.io/">Brain Imaging Data Structure (BIDS)</a> community
+as BIDS Extension Proposal (BEP) 2.</p>
+<p>The components of this specification interact,
+and it is difficult to discuss one structure without referencing others.
+Therefore this document makes no attempt to introduce all concepts before referring to them.
+For a more graduated introduction of these concepts, please refer to the <a class="reference internal" href="walkthrough-intro.html"><span class="doc std std-doc">Walkthrough</span></a>.</p>
+<p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL
+NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”,  “MAY”, and
+“OPTIONAL” in this document are to be interpreted as described in
+<a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc2119">RFC 2119</a>.</p>
+<section id="status-of-this-document">
+<h2>Status of this document<a class="headerlink" href="#status-of-this-document" title="Permalink to this headline">#</a></h2>
+<!-- Note here the current version of the specification, once released. -->
+<!--
+The current released version of this specification is 1.0.
+-->
+<p>The previously released version of this specification was <a class="reference external" href="https://docs.google.com/document/d/1IthJC7rZw_fUK7Qka4mHxSjndyrvKKRoJcvll7XQN08/edit">1.0.0rc0</a>.</p>
+</section>
+<section id="on-disk-layout">
+<h2>On-disk layout<a class="headerlink" href="#on-disk-layout" title="Permalink to this headline">#</a></h2>
+<p>BIDS Stats Models are <a class="reference external" href="https://www.json.org/json-en.html">JSON</a> (<a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc8259">RFC8259</a>) documents containing the following fields:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="_autosummary/bsmschema.models.BIDSStatsModel.html#bsmschema.models.BIDSStatsModel.Name" title="bsmschema.models.BIDSStatsModel.Name"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Name</span></code></a></p></li>
+<li><p><a class="reference internal" href="_autosummary/bsmschema.models.BIDSStatsModel.html#bsmschema.models.BIDSStatsModel.BIDSModelVersion" title="bsmschema.models.BIDSStatsModel.BIDSModelVersion"><code class="xref py py-attr docutils literal notranslate"><span class="pre">BIDSModelVersion</span></code></a></p></li>
+<li><p><a class="reference internal" href="_autosummary/bsmschema.models.BIDSStatsModel.html#bsmschema.models.BIDSStatsModel.Description" title="bsmschema.models.BIDSStatsModel.Description"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Description</span></code></a></p></li>
+<li><p><a class="reference internal" href="_autosummary/bsmschema.models.BIDSStatsModel.html#bsmschema.models.BIDSStatsModel.Input" title="bsmschema.models.BIDSStatsModel.Input"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Input</span></code></a></p></li>
+<li><p><a class="reference internal" href="_autosummary/bsmschema.models.BIDSStatsModel.html#bsmschema.models.BIDSStatsModel.Nodes" title="bsmschema.models.BIDSStatsModel.Nodes"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Nodes</span></code></a></p></li>
+<li><p><a class="reference internal" href="_autosummary/bsmschema.models.BIDSStatsModel.html#bsmschema.models.BIDSStatsModel.Edges" title="bsmschema.models.BIDSStatsModel.Edges"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Edges</span></code></a></p></li>
+</ul>
+<p>An example top-level structure has the form:</p>
+<div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;Name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;my_first_model&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;BIDSModelVersion&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;1.0&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;Input&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;task&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;motor&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">},</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;Description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;My</span><span class="nv"> </span><span class="s">first</span><span class="nv"> </span><span class="s">BIDS</span><span class="nv"> </span><span class="s">model:</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">simple</span><span class="nv"> </span><span class="s">2-condition</span><span class="nv"> </span><span class="s">contrast.&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;Nodes&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">{</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;Level&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Run&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">      </span><span class="nv">...</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">},</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">{</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;Level&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Session&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">      </span><span class="nv">...</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">},</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">{</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;Level&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Subject&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">      </span><span class="nv">...</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">},</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">{</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;Level&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Dataset&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">      </span><span class="nv">...</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">}</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">],</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;Edges&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"></span>
+<span class="w">    </span><span class="nv">...</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="p p-Indicator">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">models</span><span class="o">/</span><span class="n">model</span><span class="o">-</span><span class="n">nback_desc</span><span class="o">-</span><span class="n">preprint_smdl</span><span class="o">.</span><span class="n">json</span>
-<span class="n">models</span><span class="o">/</span><span class="n">model</span><span class="o">-</span><span class="n">nback_desc</span><span class="o">-</span><span class="n">postreview_smdl</span><span class="o">.</span><span class="n">json</span>
-<span class="n">models</span><span class="o">/</span><span class="n">model</span><span class="o">-</span><span class="n">nonwordrepetition_smdl</span><span class="o">.</span><span class="n">json</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">smdl</span></code> suffix stands for “statistical model”.</p>
+<section id="execution-graph-and-data-flow">
+<h3>Execution Graph and Data Flow<a class="headerlink" href="#execution-graph-and-data-flow" title="Permalink to this headline">#</a></h3>
+<section id="nodes-and-edges">
+<h4>Nodes and Edges<a class="headerlink" href="#nodes-and-edges" title="Permalink to this headline">#</a></h4>
 </section>
-<section id="bids-derivatives">
-<h3>BIDS Derivatives<a class="headerlink" href="#bids-derivatives" title="Permalink to this headline">#</a></h3>
-<p>BIDS Stats Models does not prescribe naming conventions
-for the outputs of estimators implementing the BIDS Stats Models specification.
-We recommend using following the <a class="reference external" href="https://bids-specification.readthedocs.io/en/stable/05-derivatives/01-introduction.html">BIDS Derivatives</a> specification to the extent possible.</p>
+<section id="groupby-and-filter">
+<h4>GroupBy and Filter<a class="headerlink" href="#groupby-and-filter" title="Permalink to this headline">#</a></h4>
 </section>
 </section>
-<section id="nidm-results">
-<h2>NIDM-Results<a class="headerlink" href="#nidm-results" title="Permalink to this headline">#</a></h2>
-<p>The purpose of BIDS Stats Models is prescriptive,
-essentially a recipe for how to fit a model,
-rather than a description of a model that was already fit.
-<a class="reference external" href="http://nidm.nidash.org/specs/nidm-results.html">NIDM-Results</a> describes the results of modeling,
-and does not conflict with BIDS Stats Models.</p>
+<section id="estimation-nodes">
+<h3>Estimation Nodes<a class="headerlink" href="#estimation-nodes" title="Permalink to this headline">#</a></h3>
+<section id="model">
+<h4>Model<a class="headerlink" href="#model" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="contrasts">
+<h4>Contrasts<a class="headerlink" href="#contrasts" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+<section id="variable-model-and-transformations-protocol">
+<h3>Variable model and transformations protocol<a class="headerlink" href="#variable-model-and-transformations-protocol" title="Permalink to this headline">#</a></h3>
+<!-- Markdown link definitions -->
+</section>
 </section>
 </section>
 
@@ -575,17 +727,17 @@ and does not conflict with BIDS Stats Models.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="walkthrough-2.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="json_101.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Advanced usage</p>
+            <p class="prev-next-title">JSON 101</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="legacy.html" title="next page">
+    <a class='right-next' id="next-link" href="reference.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Legacy specification</p>
+        <p class="prev-next-title">BIDS Stats Models Object Reference</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
