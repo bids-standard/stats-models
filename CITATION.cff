@@ -31,16 +31,24 @@ authors:
   #   email: XXX@XXX.XXX
   #   orcid: "https://orcid.org/XXXX-XXXX-XXXX-XXXX"
 
-  - given-names: Christopher
-    family-names: J. Markiewicz
+  - family-names: J. Markiewicz
+    given-names: Christopher
     website: https://github.com/effigies
     email: effigies@gmail.com
+
+  - family-names: Bansal
+    given-names: Shashank
+    email: shashankbansal56@gmail.com
+
+  - family-names: W. Blair
+    given-names: Ross
+    website: https://github.com/rwblair
 
   - given-names: Katherine
     family-names: Bottenhorn
 
-  - given-names: Gang
-    family-names: Chen
+  - family-names: Chen
+    given-names: Gang
     website: https://github.com/afni-gangc
     orcid: https://orcid.org/0000-0002-2960-089X
     affiliation:
@@ -48,12 +56,8 @@ authors:
       NIMH, Bethesda, MD 20892, USA
     email: gangchen@mail.nih.gov
 
-  - given-names: Alejandro
-    family-names: de la Vega
-    website: https://github.com/adelavega
-
-  - given-names: Oscar
-    family-names: Esteban
+  - family-names: Esteban
+    given-names: Oscar
     website: http://www.axonlab.org
     orcid: https://orcid.org/0000-0001-8435-6191
     affiliation:
@@ -73,28 +77,57 @@ authors:
     orcid: https://orcid.org/0000-0002-6290-553X
     affiliation: Inria, Univ Rennes, CNRS, Inserm, Rennes, 35042, France
 
-  - given-names: Thomas
-    family-names: E. Nichols
+  - family-names: Mumford
+    given-names: Jeanette
+    website: https://github.com/jmumford
+    email: jeanette.mumford@gmail.com
+
+  - family-names: Narayan
+    given-names: Manjari
+    email: manjari@alumni.rice.edu
+
+  - family-names: E. Nichols
+    given-names: Thomas
     website: http://nisox.org
     orcid: https://orcid.org/0000-0002-4516-5103
     affiliation:
       "University of Oxford, Big Data Institute, Oxford, OX3 7LF, UK "
     email: thomas.nichols@BDI.OX.AC.UK
 
-  - given-names: Russell
-    family-names: A. Poldrack
+  - given-names: Hernando
+    family-names: Ombao
+    email: hernando.ombao@kaust.edu.sa
+
+  - family-names: Guiomar Niso Galán
+    given-names: Julia
+    website: http://guiomarniso.com
+    orcid: https://orcid.org/0000-0001-5872-8924
+    affiliation: Indiana University
+    email: guiomar.niso@ctb.upm.es
+
+  - family-names: A. Poldrack
+    given-names: Russell
     website: http://www.poldracklab.org
     orcid: https://orcid.org/0000-0001-6755-0259
     affiliation: Stanford University, Stanford, CA 94305 USA
     email: russpold@stanford.edu
 
-  - given-names: Jean-Baptiste
-    family-names: Poline
+  - family-names: Poline
+    given-names: Jean-Baptiste
     website: https://github.com/jbpoline
     orcid: https://orcid.org/0000-0002-9794-749X
 
-  - given-names: Tal
-    family-names: Yarkoni
+  - family-names: Thirion
+    given-names: Bertrand
+    website: https://github.com/bthirion
+    orcid: https://orcid.org/0000-0001-5018-7895
+
+  - family-names: de la Vega
+    given-names: Alejandro
+    website: https://github.com/adelavega
+
+  - family-names: Yarkoni
+    given-names: Tal
     website: https://github.com/tyarkoni
     orcid: https://orcid.org/0000-0002-6558-5113
 
