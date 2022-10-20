@@ -1,0 +1,105 @@
+# schema: https://github.com/citation-file-format/citation-file-format/blob/main/schema-guide.md
+
+cff-version: 1.2.0
+
+title: "BIDS Stats Models Specification"
+
+version: 0.1.0
+
+abstract: BIDS Stats Models Specification.
+
+message: "If you are using the BIDS stats model, please cite it as below."
+
+repository-code: "https://github.com/bids-standard/stats-models.git"
+
+# identifiers:
+#   - description: This is the collection of archived snapshots of all releases of BIDSpm
+#     type: doi
+#     value: "10.5281/zenodo.3554331"
+
+contact:
+  - family-names: XXX
+    affiliation: XXX
+    given-names: XXX
+    email: XXX@XXX.XXX
+
+authors:
+  # TEMPLATE
+  # - family-names: XXX
+  #   affiliation: XXX
+  #   given-names: XXX
+  #   email: XXX@XXX.XXX
+  #   orcid: "https://orcid.org/XXXX-XXXX-XXXX-XXXX"
+
+  - given-names: Christopher
+    family-names: J. Markiewicz
+    website: https://github.com/effigies
+    email: effigies@gmail.com
+
+  - given-names: Katherine
+    family-names: Bottenhorn
+
+  - given-names: Gang
+    family-names: Chen
+    website: https://github.com/afni-gangc
+    orcid: https://orcid.org/0000-0002-2960-089X
+    affiliation:
+      National Institutes of Health, Scientific and Statistical Computing Core,
+      NIMH, Bethesda, MD 20892, USA
+    email: gangchen@mail.nih.gov
+
+  - given-names: Alejandro
+    family-names: de la Vega
+    website: https://github.com/adelavega
+
+  - given-names: Oscar
+    family-names: Esteban
+    website: http://www.axonlab.org
+    orcid: https://orcid.org/0000-0001-8435-6191
+    affiliation:
+      Department of Radiology, Lausanne University Hospital, Lausanne, CH-1011,
+      Switzerland
+    email: phd@oscaresteban.es
+
+  - family-names: "Gau"
+    given-names: "Rémi"
+    affiliation: "Université catholique de Louvain"
+    email: remi.gau@uclouvain.be
+    orcid: "https://orcid.org/0000-0002-1535-9767"
+
+  - given-names: Camille
+    family-names: Maumet
+    website: https://camillemaumet.com/
+    orcid: https://orcid.org/0000-0002-6290-553X
+    affiliation: Inria, Univ Rennes, CNRS, Inserm, Rennes, 35042, France
+
+  - given-names: Thomas
+    family-names: E. Nichols
+    website: http://nisox.org
+    orcid: https://orcid.org/0000-0002-4516-5103
+    affiliation:
+      "University of Oxford, Big Data Institute, Oxford, OX3 7LF, UK "
+    email: thomas.nichols@BDI.OX.AC.UK
+
+  - given-names: Russell
+    family-names: A. Poldrack
+    website: http://www.poldracklab.org
+    orcid: https://orcid.org/0000-0001-6755-0259
+    affiliation: Stanford University, Stanford, CA 94305 USA
+    email: russpold@stanford.edu
+
+  - given-names: Jean-Baptiste
+    family-names: Poline
+    website: https://github.com/jbpoline
+    orcid: https://orcid.org/0000-0002-9794-749X
+
+  - given-names: Tal
+    family-names: Yarkoni
+    website: https://github.com/tyarkoni
+    orcid: https://orcid.org/0000-0002-6558-5113
+
+license: CC-BY-4.0
+
+keywords:
+  - BIDS
+  - brain imaging data structure

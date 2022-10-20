@@ -17,6 +17,9 @@ export PRINT_HELP_PYSCRIPT
 help: ## Show what this Makefile can do
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
+validate_cff: CITATION.cff ## Makes sure the CITATION.cff file is valid. (pip install cffconvert)
+	cffconvert --validate
+
 test: ## Build the book, checks for dead link and fail on warning
 	jupyter-book build specification --warningiserror --builder linkcheck
 
