@@ -4,7 +4,7 @@ cff-version: 1.2.0
 
 title: "BIDS Stats Models Specification"
 
-version: 0.1.0
+version: 1.0.0-rc2
 
 abstract: BIDS Stats Models Specification.
 
@@ -18,10 +18,13 @@ repository-code: "https://github.com/bids-standard/stats-models.git"
 #     value: "10.5281/zenodo.3554331"
 
 contact:
-  - family-names: XXX
-    affiliation: XXX
-    given-names: XXX
-    email: XXX@XXX.XXX
+  - family-names: Markiewicz
+    given-names: Christopher J.
+    website: https://github.com/effigies
+    email: effigies@gmail.com
+  - family-names: de la Vega
+    given-names: Alejandro
+    website: https://github.com/adelavega
 
 authors:
   # TEMPLATE
@@ -44,8 +47,8 @@ authors:
     website: https://shashankbansal6.github.io/
     email: shashankbansal56@gmail.com
 
-  - family-names: W. Blair
-    given-names: Ross
+  - family-names: Blair
+    given-names: Ross W. 
     website: https://github.com/rwblair
 
   - given-names: Katherine
@@ -107,8 +110,8 @@ authors:
     given-names: Manjari
     email: manjari@alumni.rice.edu
 
-  - family-names: E. Nichols
-    given-names: Thomas
+  - family-names: Nichols
+    given-names: Thomas E. 
     website: http://nisox.org
     orcid: https://orcid.org/0000-0002-4516-5103
     affiliation:
@@ -126,8 +129,8 @@ authors:
     affiliation: Indiana University
     email: guiomar.niso@ctb.upm.es
 
-  - family-names: A. Poldrack
-    given-names: Russell
+  - family-names: Poldrack
+    given-names: Russell A. 
     website: http://www.poldracklab.org
     orcid: https://orcid.org/0000-0001-6755-0259
     affiliation: Stanford University, Stanford, CA 94305 USA
