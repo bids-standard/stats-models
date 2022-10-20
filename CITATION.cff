@@ -26,10 +26,13 @@ contact:
 authors:
   # TEMPLATE
   # - family-names: XXX
-  #   affiliation: XXX
   #   given-names: XXX
+  #   affiliation: XXX
+  #   website: XXX
   #   email: XXX@XXX.XXX
   #   orcid: "https://orcid.org/XXXX-XXXX-XXXX-XXXX"
+
+  #  Sorted alphabetically except for the 1rst and last authors
 
   - family-names: J. Markiewicz
     given-names: Christopher
@@ -38,6 +41,7 @@ authors:
 
   - family-names: Bansal
     given-names: Shashank
+    website: https://shashankbansal6.github.io/
     email: shashankbansal56@gmail.com
 
   - family-names: W. Blair
@@ -56,6 +60,16 @@ authors:
       NIMH, Bethesda, MD 20892, USA
     email: gangchen@mail.nih.gov
 
+  - family-names: Dafflon
+    given-names: Jessica
+    website: https://jessicadafflon.github.io/
+
+  - family-names: Nielson
+    given-names: Dylan
+    affiliation:
+      Machine Learning Team at the National Institute of Mental Health
+    website: https://github.com/Shotgunosine
+
   - family-names: Esteban
     given-names: Oscar
     website: http://www.axonlab.org
@@ -65,11 +79,18 @@ authors:
       Switzerland
     email: phd@oscaresteban.es
 
-  - family-names: "Gau"
-    given-names: "Rémi"
-    affiliation: "Université catholique de Louvain"
+  - family-names: Gau
+    given-names: Rémi
+    affiliation: Université catholique de Louvain
     email: remi.gau@uclouvain.be
     orcid: "https://orcid.org/0000-0002-1535-9767"
+
+  - family-names: Kent
+    given-names: James
+    affiliation:
+      Psychoinformatics Laboratory at the University of Texas at Austin
+    website: https://jdkent.github.io/
+    email: jamesdkent21@gmail.com
 
   - given-names: Camille
     family-names: Maumet
