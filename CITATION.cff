@@ -34,8 +34,8 @@ authors:
 
   #  Sorted alphabetically except for the 1rst and last authors
 
-  - family-names: J. Markiewicz
-    given-names: Christopher
+  - family-names: Markiewicz
+    given-names: Christopher J.
     website: https://github.com/effigies
     email: effigies@gmail.com
 
@@ -157,3 +157,5 @@ license: CC-BY-4.0
 keywords:
   - BIDS
   - brain imaging data structure
+  - statistical modeling
+  - general linear model
