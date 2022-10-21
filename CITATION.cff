@@ -40,7 +40,9 @@ authors:
   - family-names: Markiewicz
     given-names: Christopher J.
     website: https://github.com/effigies
-    email: effigies@gmail.com
+    email: markiewicz@stanford.edu
+    orcid: https://orcid.org/0000-0002-6533-164X
+    affiliation: Stanford University
 
   - family-names: Bansal
     given-names: Shashank
