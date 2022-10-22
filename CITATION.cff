@@ -122,8 +122,7 @@ authors:
     given-names: Thomas E. 
     website: http://nisox.org
     orcid: https://orcid.org/0000-0002-4516-5103
-    affiliation:
-      "University of Oxford, Big Data Institute, Oxford, OX3 7LF, UK "
+    affiliation: University of Oxford, Big Data Institute, Oxford, OX3 7LF, UK
     email: thomas.nichols@BDI.OX.AC.UK
 
   - given-names: Hernando
