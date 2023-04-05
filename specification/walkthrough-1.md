@@ -115,7 +115,7 @@ using the {py:attr}`~bsmschema.models.Contrast` key:
 :lines: 11-18
 ```
 
-If you have used other fMRI modeling tools this should be familar. 
+If you have used other fMRI modeling tools this should be familiar. 
 We have specified a t-test contrast with the weights `[1, -1]` for the conditions:
 `["incongruent", "congruent"]` and given this contrast the name `IvC`.
 
@@ -149,8 +149,8 @@ To fit a separate time series model for each individual run image, we specify:
 Here, `GroupBy` states that for every unique combination of `run` and `subject`,
 we will fit a separate model. This results in a single input image per model.
 
-If you are familar with tabular data such as R `DataFrames`, or `pandas`, 
-the `GroupBy` operation should be familar. 
+If you are familiar with tabular data such as R `DataFrames`, or `pandas`, 
+the `GroupBy` operation should be familiar. 
 For instance, given three subjects with two runs each, we can define 6 rows in a table (3x2):
 
 ```{code-cell} python3

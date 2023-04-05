@@ -231,7 +231,7 @@ The expected formats for each of the file types listed in Table 1 are defined in
 
 The value `1` has a special status in `Model `and `Contrast` definitions as an intercept variable that requires no explicit name.
 A value of `1` in `Model.X` indicates an intercept column is to be added to the design matrix.
-At higher-level Nodes, the intercept has an interpretable meaning (for exmaple in the absence of other regressors, it is the sample mean) and may stand in for the name of the input contrast in `Model` and `Contrast` definitions.
+At higher-level Nodes, the intercept has an interpretable meaning (for example in the absence of other regressors, it is the sample mean) and may stand in for the name of the input contrast in `Model` and `Contrast` definitions.
 
 
 ## Transformations
