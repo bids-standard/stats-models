@@ -15,7 +15,6 @@ Note that these are the structured and validatable objects.
 
 """
 import sys
-from enum import Enum
 from typing import List, Optional, Dict, Literal, Any, Union
 from pydantic import BaseModel, StrictStr, StrictInt, StrictFloat, Extra
 
@@ -34,9 +33,9 @@ __all__ = [
 # Hack to avoid unnecessary verbosity when generating documentation
 # Has no impact on emitted JSON, only on whether Python will attempt to cast instead of error
 if 'sphinxcontrib.autodoc_pydantic' in sys.modules:
-    StrictStr = str
-    StrictInt = int
-    StrictFloat = float
+    StrictStr = str      # noqa: F811
+    StrictInt = int      # noqa: F811
+    StrictFloat = float  # noqa: F811
 
 # Notes
 # HRF model parameters are unclear how to specify
