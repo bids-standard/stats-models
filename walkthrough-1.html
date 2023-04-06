@@ -1,52 +1,63 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Representing multi-stage neuroimaging models &#8212; BIDS Stats Models Specification</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/documentation_options.js"></script>
     <script src="_static/js/jsoneditor.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -54,565 +65,348 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'walkthrough-1';</script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Advanced usage" href="walkthrough-2.html" />
     <link rel="prev" title="Walkthrough" href="walkthrough-intro.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/bids_black.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">BIDS Stats Models Specification</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  User Guide
- </span>
-</p>
+    
+    
+    <img src="_static/bids_black.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/bids_black.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="motivation.html">
-   Motivation
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="walkthrough-intro.html">
-   Walkthrough
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Representing multi-stage neuroimaging models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="walkthrough-2.html">
-     Advanced usage
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="integration.html">
-   Integration with other standards
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="legacy.html">
-   Legacy specification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="json_101.html">
-   JSON 101
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="motivation.html">Motivation</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="walkthrough-intro.html">Walkthrough</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Representing multi-stage neuroimaging models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="walkthrough-2.html">Advanced usage</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Specification
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="spec.html">
-   BIDS Stats Models Specification
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="reference.html">
-   BIDS Stats Models Object Reference
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="_autosummary/bsmschema.models.BIDSStatsModel.html">
-     bsmschema.models.BIDSStatsModel
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="_autosummary/bsmschema.models.Node.html">
-     bsmschema.models.Node
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="_autosummary/bsmschema.models.Transformations.html">
-     bsmschema.models.Transformations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="_autosummary/bsmschema.models.Model.html">
-     bsmschema.models.Model
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="_autosummary/bsmschema.models.HRF.html">
-     bsmschema.models.HRF
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="_autosummary/bsmschema.models.Options.html">
-     bsmschema.models.Options
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="_autosummary/bsmschema.models.Contrast.html">
-     bsmschema.models.Contrast
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="_autosummary/bsmschema.models.DummyContrasts.html">
-     bsmschema.models.DummyContrasts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="_autosummary/bsmschema.models.Edge.html">
-     bsmschema.models.Edge
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="validator.html">
-   BIDS Stats Model Validator
-  </a>
- </li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integration.html">Integration with other standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legacy.html">Legacy specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json_101.html">JSON 101</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Examples and resources
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Specification</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="model-zoo.html">
-   Model Zoo
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="default_model.html">
-   Creating a default model
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="spec.html">BIDS Stats Models Specification</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="reference.html">BIDS Stats Models Object Reference</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/bsmschema.models.BIDSStatsModel.html">bsmschema.models.BIDSStatsModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/bsmschema.models.Node.html">bsmschema.models.Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/bsmschema.models.Transformations.html">bsmschema.models.Transformations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/bsmschema.models.Model.html">bsmschema.models.Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/bsmschema.models.HRF.html">bsmschema.models.HRF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/bsmschema.models.Options.html">bsmschema.models.Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/bsmschema.models.Contrast.html">bsmschema.models.Contrast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/bsmschema.models.DummyContrasts.html">bsmschema.models.DummyContrasts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/bsmschema.models.Edge.html">bsmschema.models.Edge</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="validator.html">BIDS Stats Model Validator</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples and resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="model-zoo.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="default_model.html">Creating a default model</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/bids-standard/stats-models/main?urlpath=tree/specification/walkthrough-1.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/bids-standard/stats-models" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bids-standard/stats-models/issues/new?title=Issue%20on%20page%20%2Fwalkthrough-1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/walkthrough-1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/bids-standard/stats-models"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/bids-standard/stats-models/issues/new?title=Issue%20on%20page%20%2Fwalkthrough-1.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/walkthrough-1.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="_sources/walkthrough-1.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-simple-example">
-   A simple example
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#run-level-model">
-     Run-level Model
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-to-group-analysis-inputs">
-       How to
-       <em>
-        group
-       </em>
-       analysis inputs?
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#subject-level-node">
-     Subject level Node
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#from-run-outputs-to-subject-inputs">
-       From Run Outputs to Subject Inputs
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#subject-model">
-       Subject Model
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataset-level-node">
-     Dataset level Node
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ready-to-run">
-   Ready to run 🚀
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#next-up">
-   Next up
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Representing multi-stage neuroimaging models</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-simple-example">
-   A simple example
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#run-level-model">
-     Run-level Model
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-to-group-analysis-inputs">
-       How to
-       <em>
-        group
-       </em>
-       analysis inputs?
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#subject-level-node">
-     Subject level Node
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#from-run-outputs-to-subject-inputs">
-       From Run Outputs to Subject Inputs
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#subject-model">
-       Subject Model
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataset-level-node">
-     Dataset level Node
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ready-to-run">
-   Ready to run 🚀
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#next-up">
-   Next up
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Representing multi-stage neuroimaging models</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A simple example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-level-model">Run-level Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-group-analysis-inputs">How to <em>group</em> analysis inputs?</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subject-level-node">Subject level Node</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-run-outputs-to-subject-inputs">From Run Outputs to Subject Inputs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subject-model">Subject Model</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-level-node">Dataset level Node</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ready-to-run">Ready to run 🚀</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-up">Next up</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="representing-multi-stage-neuroimaging-models">
-<h1>Representing multi-stage neuroimaging models<a class="headerlink" href="#representing-multi-stage-neuroimaging-models" title="Permalink to this headline">#</a></h1>
+<h1>Representing multi-stage neuroimaging models<a class="headerlink" href="#representing-multi-stage-neuroimaging-models" title="Permalink to this heading">#</a></h1>
 <p>The statistical analysis of neuroimaging data typically occurs
 across distinct stages of analysis,
 with parameter estimates from lower levels of analysis propagating
@@ -637,7 +431,7 @@ to define the computed outputs of each <code class="docutils literal notranslate
 Within each node we also specify how to group the incoming inputs
 into analysis units using the <a class="reference internal" href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.GroupBy" title="bsmschema.models.Node.GroupBy"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GroupBy</span></code></a> directive.</p>
 <section id="a-simple-example">
-<h2>A simple example<a class="headerlink" href="#a-simple-example" title="Permalink to this headline">#</a></h2>
+<h2>A simple example<a class="headerlink" href="#a-simple-example" title="Permalink to this heading">#</a></h2>
 <p>In a <a class="reference external" href="https://openneuro.org/datasets/ds000101/versions/00004">Simon task</a>,
 participants were scanned for 2 runs and asked to indicate whether a diamond
 that was presented to the left or right of a central fixation cross was green or red.
@@ -655,41 +449,41 @@ which conduts a one-sample t-test across all of the subject estimates for the <e
 <p>Let’s visualize this model for 3 participants:</p>
 <p><img alt="flow" src="_images/flow_model.png" /></p>
 <p>We can formally represent this analysis as <strong>BIDS Stats Model</strong>:</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Simon IvC&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;BIDSModelVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;Input&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;01&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;02&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;03&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;task&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simon&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;Nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Run&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;run_level&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;subject&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;incongruent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;congruent&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;glm&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Contrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IvC&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;ConditionList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;incongruent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;congruent&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;Weights&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">],</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Subject&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;subject_level&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;subject&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;contrast&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;meta&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;DummyContrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dataset&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;one-sample_dataset&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;contrast&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;glm&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;DummyContrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Simon IvC&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;BIDSModelVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Input&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;01&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;02&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;03&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;task&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simon&quot;</span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;Nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;Level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Run&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;run_level&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;subject&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;incongruent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;congruent&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;glm&quot;</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;Contrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IvC&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;ConditionList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;incongruent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;congruent&quot;</span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;Weights&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;Level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Subject&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;subject_level&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;subject&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;contrast&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;meta&quot;</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;DummyContrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;Level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dataset&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;one-sample_dataset&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;contrast&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;glm&quot;</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;DummyContrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>BIDS Stats Models <em>must</em> have a <a class="reference internal" href="_autosummary/bsmschema.models.BIDSStatsModel.html#bsmschema.models.BIDSStatsModel.Name" title="bsmschema.models.BIDSStatsModel.Name"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Name</span></code></a>
@@ -703,22 +497,22 @@ and optionally can restrict input images with <a class="reference internal" href
 with each level of analysis defined as a separate <code class="docutils literal notranslate"><span class="pre">Node</span></code> object.
 Let’s step through each <code class="docutils literal notranslate"><span class="pre">Node</span></code> separately.</p>
 <section id="run-level-model">
-<h3>Run-level Model<a class="headerlink" href="#run-level-model" title="Permalink to this headline">#</a></h3>
+<h3>Run-level Model<a class="headerlink" href="#run-level-model" title="Permalink to this heading">#</a></h3>
 <p>First, we define a <code class="docutils literal notranslate"><span class="pre">Node</span></code> for the run level analysis.</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Run&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;run_level&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;subject&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;incongruent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;congruent&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;glm&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Contrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IvC&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;ConditionList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;incongruent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;congruent&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;Weights&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">],</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;Level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Run&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;run_level&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;subject&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;incongruent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;congruent&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;glm&quot;</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;Contrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IvC&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;ConditionList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;incongruent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;congruent&quot;</span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;Weights&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
 </pre></div>
 </div>
 <p>Note that the <a class="reference internal" href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.Level" title="bsmschema.models.Node.Level"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Level</span></code></a> key is necessary
@@ -726,7 +520,7 @@ for determining which input images are available to the estimator.
 At the <code class="docutils literal notranslate"><span class="pre">Run</span></code> level, there are many sources of possible variables,
 most notably <code class="docutils literal notranslate"><span class="pre">_events.tsv</span></code> files which define the timing of task-related events.</p>
 <p>Next we define a <a class="reference internal" href="_autosummary/bsmschema.models.Model.html#bsmschema.models.Model" title="bsmschema.models.Model"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Model</span></code></a> for this node.</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;incongruent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;congruent&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;glm&quot;</span><span class="p">},</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;incongruent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;congruent&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;glm&quot;</span><span class="p">},</span>
 </pre></div>
 </div>
 <p>The <a class="reference internal" href="_autosummary/bsmschema.models.Model.html#bsmschema.models.Model.X" title="bsmschema.models.Model.X"><code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code></a> parameter defines the variables in the design matrix.
@@ -734,17 +528,17 @@ Here, we are modeling the <code class="docutils literal notranslate"><span class
 in addition to an intercept (identified by the special key: <code class="docutils literal notranslate"><span class="pre">1</span></code>).</p>
 <p>Next, we specify an <em>Incongruent-Congruent (IvC)</em> contrast
 using the <a class="reference internal" href="_autosummary/bsmschema.models.Contrast.html#bsmschema.models.Contrast" title="bsmschema.models.Contrast"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Contrast</span></code></a> key:</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="nt">&quot;Contrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IvC&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;ConditionList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;incongruent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;congruent&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;Weights&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">],</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="p">]</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="nt">&quot;Contrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IvC&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;ConditionList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;incongruent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;congruent&quot;</span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;Weights&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
 </pre></div>
 </div>
-<p>If you have used other fMRI modeling tools this should be familar.
+<p>If you have used other fMRI modeling tools this should be familiar.
 We have specified a t-test contrast with the weights <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">-1]</span></code> for the conditions:
 <code class="docutils literal notranslate"><span class="pre">[&quot;incongruent&quot;,</span> <span class="pre">&quot;congruent&quot;]</span></code> and given this contrast the name <code class="docutils literal notranslate"><span class="pre">IvC</span></code>.</p>
 <div class="admonition attention">
@@ -756,7 +550,7 @@ for main effects for the <code class="docutils literal notranslate"><span class=
 unless we explicitly define a <code class="docutils literal notranslate"><span class="pre">Contrast</span></code> for each.</p>
 </div>
 <section id="how-to-group-analysis-inputs">
-<h4>How to <em>group</em> analysis inputs?<a class="headerlink" href="#how-to-group-analysis-inputs" title="Permalink to this headline">#</a></h4>
+<h4>How to <em>group</em> analysis inputs?<a class="headerlink" href="#how-to-group-analysis-inputs" title="Permalink to this heading">#</a></h4>
 <p>An underappreciated factor in multi-stage models is
 the grouping of image inputs into analysis units.
 For example, here we want to estimate a timeseries model for each <code class="docutils literal notranslate"><span class="pre">Run</span></code> separately,
@@ -764,56 +558,56 @@ rather that concatenating all runs for each subject into one large model.</p>
 <p>We must explicitly define this grouping structure
 using the <a class="reference internal" href="_autosummary/bsmschema.models.Node.html#bsmschema.models.Node.GroupBy" title="bsmschema.models.Node.GroupBy"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GroupBy</span></code></a> key for every node.
 To fit a separate time series model for each individual run image, we specify:</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;subject&quot;</span><span class="p">],</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;subject&quot;</span><span class="p">],</span>
 </pre></div>
 </div>
 <p>Here, <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> states that for every unique combination of <code class="docutils literal notranslate"><span class="pre">run</span></code> and <code class="docutils literal notranslate"><span class="pre">subject</span></code>,
 we will fit a separate model. This results in a single input image per model.</p>
-<p>If you are familar with tabular data such as R <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code>, or <code class="docutils literal notranslate"><span class="pre">pandas</span></code>,
-the <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> operation should be familar.
+<p>If you are familiar with tabular data such as R <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code>, or <code class="docutils literal notranslate"><span class="pre">pandas</span></code>,
+the <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> operation should be familiar.
 For instance, given three subjects with two runs each, we can define 6 rows in a table (3x2):</p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_8bad5">
+<table id="T_40d99">
   <thead>
     <tr>
-      <th id="T_8bad5_level0_col0" class="col_heading level0 col0" >subject</th>
-      <th id="T_8bad5_level0_col1" class="col_heading level0 col1" >run</th>
-      <th id="T_8bad5_level0_col2" class="col_heading level0 col2" >image</th>
+      <th id="T_40d99_level0_col0" class="col_heading level0 col0" >subject</th>
+      <th id="T_40d99_level0_col1" class="col_heading level0 col1" >run</th>
+      <th id="T_40d99_level0_col2" class="col_heading level0 col2" >image</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_8bad5_row0_col0" class="data row0 col0" >01</td>
-      <td id="T_8bad5_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_8bad5_row0_col2" class="data row0 col2" >sub-01_task-simon_run-1_bold.nii.gz</td>
+      <td id="T_40d99_row0_col0" class="data row0 col0" >01</td>
+      <td id="T_40d99_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_40d99_row0_col2" class="data row0 col2" >sub-01_task-simon_run-1_bold.nii.gz</td>
     </tr>
     <tr>
-      <td id="T_8bad5_row1_col0" class="data row1 col0" >01</td>
-      <td id="T_8bad5_row1_col1" class="data row1 col1" >2</td>
-      <td id="T_8bad5_row1_col2" class="data row1 col2" >sub-01_task-simon_run-2_bold.nii.gz</td>
+      <td id="T_40d99_row1_col0" class="data row1 col0" >01</td>
+      <td id="T_40d99_row1_col1" class="data row1 col1" >2</td>
+      <td id="T_40d99_row1_col2" class="data row1 col2" >sub-01_task-simon_run-2_bold.nii.gz</td>
     </tr>
     <tr>
-      <td id="T_8bad5_row2_col0" class="data row2 col0" >02</td>
-      <td id="T_8bad5_row2_col1" class="data row2 col1" >1</td>
-      <td id="T_8bad5_row2_col2" class="data row2 col2" >sub-02_task-simon_run-1_bold.nii.gz</td>
+      <td id="T_40d99_row2_col0" class="data row2 col0" >02</td>
+      <td id="T_40d99_row2_col1" class="data row2 col1" >1</td>
+      <td id="T_40d99_row2_col2" class="data row2 col2" >sub-02_task-simon_run-1_bold.nii.gz</td>
     </tr>
     <tr>
-      <td id="T_8bad5_row3_col0" class="data row3 col0" >02</td>
-      <td id="T_8bad5_row3_col1" class="data row3 col1" >2</td>
-      <td id="T_8bad5_row3_col2" class="data row3 col2" >sub-02_task-simon_run-2_bold.nii.gz</td>
+      <td id="T_40d99_row3_col0" class="data row3 col0" >02</td>
+      <td id="T_40d99_row3_col1" class="data row3 col1" >2</td>
+      <td id="T_40d99_row3_col2" class="data row3 col2" >sub-02_task-simon_run-2_bold.nii.gz</td>
     </tr>
     <tr>
-      <td id="T_8bad5_row4_col0" class="data row4 col0" >03</td>
-      <td id="T_8bad5_row4_col1" class="data row4 col1" >1</td>
-      <td id="T_8bad5_row4_col2" class="data row4 col2" >sub-03_task-simon_run-1_bold.nii.gz</td>
+      <td id="T_40d99_row4_col0" class="data row4 col0" >03</td>
+      <td id="T_40d99_row4_col1" class="data row4 col1" >1</td>
+      <td id="T_40d99_row4_col2" class="data row4 col2" >sub-03_task-simon_run-1_bold.nii.gz</td>
     </tr>
     <tr>
-      <td id="T_8bad5_row5_col0" class="data row5 col0" >03</td>
-      <td id="T_8bad5_row5_col1" class="data row5 col1" >2</td>
-      <td id="T_8bad5_row5_col2" class="data row5 col2" >sub-03_task-simon_run-2_bold.nii.gz</td>
+      <td id="T_40d99_row5_col0" class="data row5 col0" >03</td>
+      <td id="T_40d99_row5_col1" class="data row5 col1" >2</td>
+      <td id="T_40d99_row5_col2" class="data row5 col2" >sub-03_task-simon_run-2_bold.nii.gz</td>
     </tr>
   </tbody>
 </table>
@@ -824,70 +618,70 @@ For instance, given three subjects with two runs each, we can define 6 rows in a
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_8b04d">
+<table id="T_5113e">
   <thead>
     <tr>
-      <th id="T_8b04d_level0_col0" class="col_heading level0 col0" >subject</th>
-      <th id="T_8b04d_level0_col1" class="col_heading level0 col1" >run</th>
-      <th id="T_8b04d_level0_col2" class="col_heading level0 col2" >image</th>
+      <th id="T_5113e_level0_col0" class="col_heading level0 col0" >subject</th>
+      <th id="T_5113e_level0_col1" class="col_heading level0 col1" >run</th>
+      <th id="T_5113e_level0_col2" class="col_heading level0 col2" >image</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_8b04d_row0_col0" class="data row0 col0" >01</td>
-      <td id="T_8b04d_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_8b04d_row0_col2" class="data row0 col2" >sub-01_task-simon_run-1_bold.nii.gz</td>
+      <td id="T_5113e_row0_col0" class="data row0 col0" >01</td>
+      <td id="T_5113e_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_5113e_row0_col2" class="data row0 col2" >sub-01_task-simon_run-1_bold.nii.gz</td>
     </tr>
     <tr>
-      <td id="T_8b04d_row1_col0" class="data row1 col0" >01</td>
-      <td id="T_8b04d_row1_col1" class="data row1 col1" >2</td>
-      <td id="T_8b04d_row1_col2" class="data row1 col2" >sub-01_task-simon_run-2_bold.nii.gz</td>
+      <td id="T_5113e_row1_col0" class="data row1 col0" >01</td>
+      <td id="T_5113e_row1_col1" class="data row1 col1" >2</td>
+      <td id="T_5113e_row1_col2" class="data row1 col2" >sub-01_task-simon_run-2_bold.nii.gz</td>
     </tr>
   </tbody>
 </table>
 </div><div class="output text_html"><style type="text/css">
 </style>
-<table id="T_759a5">
+<table id="T_10cc6">
   <thead>
     <tr>
-      <th id="T_759a5_level0_col0" class="col_heading level0 col0" >subject</th>
-      <th id="T_759a5_level0_col1" class="col_heading level0 col1" >run</th>
-      <th id="T_759a5_level0_col2" class="col_heading level0 col2" >image</th>
+      <th id="T_10cc6_level0_col0" class="col_heading level0 col0" >subject</th>
+      <th id="T_10cc6_level0_col1" class="col_heading level0 col1" >run</th>
+      <th id="T_10cc6_level0_col2" class="col_heading level0 col2" >image</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_759a5_row0_col0" class="data row0 col0" >02</td>
-      <td id="T_759a5_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_759a5_row0_col2" class="data row0 col2" >sub-02_task-simon_run-1_bold.nii.gz</td>
+      <td id="T_10cc6_row0_col0" class="data row0 col0" >02</td>
+      <td id="T_10cc6_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_10cc6_row0_col2" class="data row0 col2" >sub-02_task-simon_run-1_bold.nii.gz</td>
     </tr>
     <tr>
-      <td id="T_759a5_row1_col0" class="data row1 col0" >02</td>
-      <td id="T_759a5_row1_col1" class="data row1 col1" >2</td>
-      <td id="T_759a5_row1_col2" class="data row1 col2" >sub-02_task-simon_run-2_bold.nii.gz</td>
+      <td id="T_10cc6_row1_col0" class="data row1 col0" >02</td>
+      <td id="T_10cc6_row1_col1" class="data row1 col1" >2</td>
+      <td id="T_10cc6_row1_col2" class="data row1 col2" >sub-02_task-simon_run-2_bold.nii.gz</td>
     </tr>
   </tbody>
 </table>
 </div><div class="output text_html"><style type="text/css">
 </style>
-<table id="T_40415">
+<table id="T_49778">
   <thead>
     <tr>
-      <th id="T_40415_level0_col0" class="col_heading level0 col0" >subject</th>
-      <th id="T_40415_level0_col1" class="col_heading level0 col1" >run</th>
-      <th id="T_40415_level0_col2" class="col_heading level0 col2" >image</th>
+      <th id="T_49778_level0_col0" class="col_heading level0 col0" >subject</th>
+      <th id="T_49778_level0_col1" class="col_heading level0 col1" >run</th>
+      <th id="T_49778_level0_col2" class="col_heading level0 col2" >image</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_40415_row0_col0" class="data row0 col0" >03</td>
-      <td id="T_40415_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_40415_row0_col2" class="data row0 col2" >sub-03_task-simon_run-1_bold.nii.gz</td>
+      <td id="T_49778_row0_col0" class="data row0 col0" >03</td>
+      <td id="T_49778_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_49778_row0_col2" class="data row0 col2" >sub-03_task-simon_run-1_bold.nii.gz</td>
     </tr>
     <tr>
-      <td id="T_40415_row1_col0" class="data row1 col0" >03</td>
-      <td id="T_40415_row1_col1" class="data row1 col1" >2</td>
-      <td id="T_40415_row1_col2" class="data row1 col2" >sub-03_task-simon_run-2_bold.nii.gz</td>
+      <td id="T_49778_row1_col0" class="data row1 col0" >03</td>
+      <td id="T_49778_row1_col1" class="data row1 col1" >2</td>
+      <td id="T_49778_row1_col2" class="data row1 col2" >sub-03_task-simon_run-2_bold.nii.gz</td>
     </tr>
   </tbody>
 </table>
@@ -899,57 +693,57 @@ resulting in two groups, one for each distinct group ID:</p>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_d59d4">
+<table id="T_8c334">
   <thead>
     <tr>
-      <th id="T_d59d4_level0_col0" class="col_heading level0 col0" >subject</th>
-      <th id="T_d59d4_level0_col1" class="col_heading level0 col1" >run</th>
-      <th id="T_d59d4_level0_col2" class="col_heading level0 col2" >image</th>
+      <th id="T_8c334_level0_col0" class="col_heading level0 col0" >subject</th>
+      <th id="T_8c334_level0_col1" class="col_heading level0 col1" >run</th>
+      <th id="T_8c334_level0_col2" class="col_heading level0 col2" >image</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_d59d4_row0_col0" class="data row0 col0" >01</td>
-      <td id="T_d59d4_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_d59d4_row0_col2" class="data row0 col2" >sub-01_task-simon_run-1_bold.nii.gz</td>
+      <td id="T_8c334_row0_col0" class="data row0 col0" >01</td>
+      <td id="T_8c334_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_8c334_row0_col2" class="data row0 col2" >sub-01_task-simon_run-1_bold.nii.gz</td>
     </tr>
     <tr>
-      <td id="T_d59d4_row1_col0" class="data row1 col0" >02</td>
-      <td id="T_d59d4_row1_col1" class="data row1 col1" >1</td>
-      <td id="T_d59d4_row1_col2" class="data row1 col2" >sub-02_task-simon_run-1_bold.nii.gz</td>
+      <td id="T_8c334_row1_col0" class="data row1 col0" >02</td>
+      <td id="T_8c334_row1_col1" class="data row1 col1" >1</td>
+      <td id="T_8c334_row1_col2" class="data row1 col2" >sub-02_task-simon_run-1_bold.nii.gz</td>
     </tr>
     <tr>
-      <td id="T_d59d4_row2_col0" class="data row2 col0" >03</td>
-      <td id="T_d59d4_row2_col1" class="data row2 col1" >1</td>
-      <td id="T_d59d4_row2_col2" class="data row2 col2" >sub-03_task-simon_run-1_bold.nii.gz</td>
+      <td id="T_8c334_row2_col0" class="data row2 col0" >03</td>
+      <td id="T_8c334_row2_col1" class="data row2 col1" >1</td>
+      <td id="T_8c334_row2_col2" class="data row2 col2" >sub-03_task-simon_run-1_bold.nii.gz</td>
     </tr>
   </tbody>
 </table>
 </div><div class="output text_html"><style type="text/css">
 </style>
-<table id="T_4c4ff">
+<table id="T_e712a">
   <thead>
     <tr>
-      <th id="T_4c4ff_level0_col0" class="col_heading level0 col0" >subject</th>
-      <th id="T_4c4ff_level0_col1" class="col_heading level0 col1" >run</th>
-      <th id="T_4c4ff_level0_col2" class="col_heading level0 col2" >image</th>
+      <th id="T_e712a_level0_col0" class="col_heading level0 col0" >subject</th>
+      <th id="T_e712a_level0_col1" class="col_heading level0 col1" >run</th>
+      <th id="T_e712a_level0_col2" class="col_heading level0 col2" >image</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_4c4ff_row0_col0" class="data row0 col0" >01</td>
-      <td id="T_4c4ff_row0_col1" class="data row0 col1" >2</td>
-      <td id="T_4c4ff_row0_col2" class="data row0 col2" >sub-01_task-simon_run-2_bold.nii.gz</td>
+      <td id="T_e712a_row0_col0" class="data row0 col0" >01</td>
+      <td id="T_e712a_row0_col1" class="data row0 col1" >2</td>
+      <td id="T_e712a_row0_col2" class="data row0 col2" >sub-01_task-simon_run-2_bold.nii.gz</td>
     </tr>
     <tr>
-      <td id="T_4c4ff_row1_col0" class="data row1 col0" >02</td>
-      <td id="T_4c4ff_row1_col1" class="data row1 col1" >2</td>
-      <td id="T_4c4ff_row1_col2" class="data row1 col2" >sub-02_task-simon_run-2_bold.nii.gz</td>
+      <td id="T_e712a_row1_col0" class="data row1 col0" >02</td>
+      <td id="T_e712a_row1_col1" class="data row1 col1" >2</td>
+      <td id="T_e712a_row1_col2" class="data row1 col2" >sub-02_task-simon_run-2_bold.nii.gz</td>
     </tr>
     <tr>
-      <td id="T_4c4ff_row2_col0" class="data row2 col0" >03</td>
-      <td id="T_4c4ff_row2_col1" class="data row2 col1" >2</td>
-      <td id="T_4c4ff_row2_col2" class="data row2 col2" >sub-03_task-simon_run-2_bold.nii.gz</td>
+      <td id="T_e712a_row2_col0" class="data row2 col0" >03</td>
+      <td id="T_e712a_row2_col1" class="data row2 col1" >2</td>
+      <td id="T_e712a_row2_col2" class="data row2 col2" >sub-03_task-simon_run-2_bold.nii.gz</td>
     </tr>
   </tbody>
 </table>
@@ -962,109 +756,109 @@ resulting in six groups with a single image each.</p>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_f46ff">
+<table id="T_c8bd0">
   <thead>
     <tr>
-      <th id="T_f46ff_level0_col0" class="col_heading level0 col0" >subject</th>
-      <th id="T_f46ff_level0_col1" class="col_heading level0 col1" >run</th>
-      <th id="T_f46ff_level0_col2" class="col_heading level0 col2" >image</th>
+      <th id="T_c8bd0_level0_col0" class="col_heading level0 col0" >subject</th>
+      <th id="T_c8bd0_level0_col1" class="col_heading level0 col1" >run</th>
+      <th id="T_c8bd0_level0_col2" class="col_heading level0 col2" >image</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_f46ff_row0_col0" class="data row0 col0" >01</td>
-      <td id="T_f46ff_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_f46ff_row0_col2" class="data row0 col2" >sub-01_task-simon_run-1_bold.nii.gz</td>
+      <td id="T_c8bd0_row0_col0" class="data row0 col0" >01</td>
+      <td id="T_c8bd0_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_c8bd0_row0_col2" class="data row0 col2" >sub-01_task-simon_run-1_bold.nii.gz</td>
     </tr>
   </tbody>
 </table>
 </div><div class="output text_html"><style type="text/css">
 </style>
-<table id="T_957eb">
+<table id="T_82176">
   <thead>
     <tr>
-      <th id="T_957eb_level0_col0" class="col_heading level0 col0" >subject</th>
-      <th id="T_957eb_level0_col1" class="col_heading level0 col1" >run</th>
-      <th id="T_957eb_level0_col2" class="col_heading level0 col2" >image</th>
+      <th id="T_82176_level0_col0" class="col_heading level0 col0" >subject</th>
+      <th id="T_82176_level0_col1" class="col_heading level0 col1" >run</th>
+      <th id="T_82176_level0_col2" class="col_heading level0 col2" >image</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_957eb_row0_col0" class="data row0 col0" >02</td>
-      <td id="T_957eb_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_957eb_row0_col2" class="data row0 col2" >sub-02_task-simon_run-1_bold.nii.gz</td>
+      <td id="T_82176_row0_col0" class="data row0 col0" >02</td>
+      <td id="T_82176_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_82176_row0_col2" class="data row0 col2" >sub-02_task-simon_run-1_bold.nii.gz</td>
     </tr>
   </tbody>
 </table>
 </div><div class="output text_html"><style type="text/css">
 </style>
-<table id="T_fea36">
+<table id="T_432b5">
   <thead>
     <tr>
-      <th id="T_fea36_level0_col0" class="col_heading level0 col0" >subject</th>
-      <th id="T_fea36_level0_col1" class="col_heading level0 col1" >run</th>
-      <th id="T_fea36_level0_col2" class="col_heading level0 col2" >image</th>
+      <th id="T_432b5_level0_col0" class="col_heading level0 col0" >subject</th>
+      <th id="T_432b5_level0_col1" class="col_heading level0 col1" >run</th>
+      <th id="T_432b5_level0_col2" class="col_heading level0 col2" >image</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_fea36_row0_col0" class="data row0 col0" >03</td>
-      <td id="T_fea36_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_fea36_row0_col2" class="data row0 col2" >sub-03_task-simon_run-1_bold.nii.gz</td>
+      <td id="T_432b5_row0_col0" class="data row0 col0" >03</td>
+      <td id="T_432b5_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_432b5_row0_col2" class="data row0 col2" >sub-03_task-simon_run-1_bold.nii.gz</td>
     </tr>
   </tbody>
 </table>
 </div><div class="output text_html"><style type="text/css">
 </style>
-<table id="T_3451d">
+<table id="T_b8c37">
   <thead>
     <tr>
-      <th id="T_3451d_level0_col0" class="col_heading level0 col0" >subject</th>
-      <th id="T_3451d_level0_col1" class="col_heading level0 col1" >run</th>
-      <th id="T_3451d_level0_col2" class="col_heading level0 col2" >image</th>
+      <th id="T_b8c37_level0_col0" class="col_heading level0 col0" >subject</th>
+      <th id="T_b8c37_level0_col1" class="col_heading level0 col1" >run</th>
+      <th id="T_b8c37_level0_col2" class="col_heading level0 col2" >image</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_3451d_row0_col0" class="data row0 col0" >01</td>
-      <td id="T_3451d_row0_col1" class="data row0 col1" >2</td>
-      <td id="T_3451d_row0_col2" class="data row0 col2" >sub-01_task-simon_run-2_bold.nii.gz</td>
+      <td id="T_b8c37_row0_col0" class="data row0 col0" >01</td>
+      <td id="T_b8c37_row0_col1" class="data row0 col1" >2</td>
+      <td id="T_b8c37_row0_col2" class="data row0 col2" >sub-01_task-simon_run-2_bold.nii.gz</td>
     </tr>
   </tbody>
 </table>
 </div><div class="output text_html"><style type="text/css">
 </style>
-<table id="T_b6cf4">
+<table id="T_7bf0c">
   <thead>
     <tr>
-      <th id="T_b6cf4_level0_col0" class="col_heading level0 col0" >subject</th>
-      <th id="T_b6cf4_level0_col1" class="col_heading level0 col1" >run</th>
-      <th id="T_b6cf4_level0_col2" class="col_heading level0 col2" >image</th>
+      <th id="T_7bf0c_level0_col0" class="col_heading level0 col0" >subject</th>
+      <th id="T_7bf0c_level0_col1" class="col_heading level0 col1" >run</th>
+      <th id="T_7bf0c_level0_col2" class="col_heading level0 col2" >image</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_b6cf4_row0_col0" class="data row0 col0" >02</td>
-      <td id="T_b6cf4_row0_col1" class="data row0 col1" >2</td>
-      <td id="T_b6cf4_row0_col2" class="data row0 col2" >sub-02_task-simon_run-2_bold.nii.gz</td>
+      <td id="T_7bf0c_row0_col0" class="data row0 col0" >02</td>
+      <td id="T_7bf0c_row0_col1" class="data row0 col1" >2</td>
+      <td id="T_7bf0c_row0_col2" class="data row0 col2" >sub-02_task-simon_run-2_bold.nii.gz</td>
     </tr>
   </tbody>
 </table>
 </div><div class="output text_html"><style type="text/css">
 </style>
-<table id="T_98c0d">
+<table id="T_4f271">
   <thead>
     <tr>
-      <th id="T_98c0d_level0_col0" class="col_heading level0 col0" >subject</th>
-      <th id="T_98c0d_level0_col1" class="col_heading level0 col1" >run</th>
-      <th id="T_98c0d_level0_col2" class="col_heading level0 col2" >image</th>
+      <th id="T_4f271_level0_col0" class="col_heading level0 col0" >subject</th>
+      <th id="T_4f271_level0_col1" class="col_heading level0 col1" >run</th>
+      <th id="T_4f271_level0_col2" class="col_heading level0 col2" >image</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_98c0d_row0_col0" class="data row0 col0" >03</td>
-      <td id="T_98c0d_row0_col1" class="data row0 col1" >2</td>
-      <td id="T_98c0d_row0_col2" class="data row0 col2" >sub-03_task-simon_run-2_bold.nii.gz</td>
+      <td id="T_4f271_row0_col0" class="data row0 col0" >03</td>
+      <td id="T_4f271_row0_col1" class="data row0 col1" >2</td>
+      <td id="T_4f271_row0_col2" class="data row0 col2" >sub-03_task-simon_run-2_bold.nii.gz</td>
     </tr>
   </tbody>
 </table>
@@ -1073,19 +867,19 @@ resulting in six groups with a single image each.</p>
 </section>
 </section>
 <section id="subject-level-node">
-<h3>Subject level Node<a class="headerlink" href="#subject-level-node" title="Permalink to this headline">#</a></h3>
+<h3>Subject level Node<a class="headerlink" href="#subject-level-node" title="Permalink to this heading">#</a></h3>
 <p>At this point, we have defined a <code class="docutils literal notranslate"><span class="pre">Model</span></code> that will be fit separate to each grouping–
 in this case a separate time-series model for each <code class="docutils literal notranslate"><span class="pre">run</span></code>.</p>
 <p>Next, we want to define a <code class="docutils literal notranslate"><span class="pre">subject</span></code> level node
 to pool together estimates from this <code class="docutils literal notranslate"><span class="pre">Node</span></code> for each <code class="docutils literal notranslate"><span class="pre">subject</span></code>
 using a fixed-effects model.</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Subject&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;subject_level&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;subject&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;contrast&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;meta&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;DummyContrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;Level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Subject&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;subject_level&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;subject&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;contrast&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;meta&quot;</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;DummyContrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1094,10 +888,10 @@ using a fixed-effects model.</p>
 with all the <code class="docutils literal notranslate"><span class="pre">Contrast</span></code> outputs from a <code class="docutils literal notranslate"><span class="pre">Node</span></code> available to the subsequent <code class="docutils literal notranslate"><span class="pre">Node</span></code>.</p>
 </div>
 <section id="from-run-outputs-to-subject-inputs">
-<h4>From Run Outputs to Subject Inputs<a class="headerlink" href="#from-run-outputs-to-subject-inputs" title="Permalink to this headline">#</a></h4>
+<h4>From Run Outputs to Subject Inputs<a class="headerlink" href="#from-run-outputs-to-subject-inputs" title="Permalink to this heading">#</a></h4>
 <p>We need to use <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> to define how to group the outputs from the <code class="docutils literal notranslate"><span class="pre">Run</span></code> node
 as inputs to the <code class="docutils literal notranslate"><span class="pre">Subject</span></code> level:</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;subject&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;contrast&quot;</span><span class="p">],</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;subject&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;contrast&quot;</span><span class="p">],</span>
 </pre></div>
 </div>
 <p>Here we are specifying that all images belonging to a single <code class="docutils literal notranslate"><span class="pre">subject</span></code>
@@ -1109,115 +903,115 @@ this results in 12 images that would be grouped as follows:</p>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_1be05">
+<table id="T_698fd">
   <thead>
     <tr>
-      <th id="T_1be05_level0_col0" class="col_heading level0 col0" >subject</th>
-      <th id="T_1be05_level0_col1" class="col_heading level0 col1" >run</th>
-      <th id="T_1be05_level0_col2" class="col_heading level0 col2" >contrast</th>
-      <th id="T_1be05_level0_col3" class="col_heading level0 col3" >image</th>
+      <th id="T_698fd_level0_col0" class="col_heading level0 col0" >subject</th>
+      <th id="T_698fd_level0_col1" class="col_heading level0 col1" >run</th>
+      <th id="T_698fd_level0_col2" class="col_heading level0 col2" >contrast</th>
+      <th id="T_698fd_level0_col3" class="col_heading level0 col3" >image</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_1be05_row0_col0" class="data row0 col0" >01</td>
-      <td id="T_1be05_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_1be05_row0_col2" class="data row0 col2" >IvC</td>
-      <td id="T_1be05_row0_col3" class="data row0 col3" >sub-01_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii</td>
+      <td id="T_698fd_row0_col0" class="data row0 col0" >01</td>
+      <td id="T_698fd_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_698fd_row0_col2" class="data row0 col2" >IvC</td>
+      <td id="T_698fd_row0_col3" class="data row0 col3" >sub-01_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii</td>
     </tr>
     <tr>
-      <td id="T_1be05_row1_col0" class="data row1 col0" >01</td>
-      <td id="T_1be05_row1_col1" class="data row1 col1" >1</td>
-      <td id="T_1be05_row1_col2" class="data row1 col2" >IvC</td>
-      <td id="T_1be05_row1_col3" class="data row1 col3" >sub-01_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii</td>
+      <td id="T_698fd_row1_col0" class="data row1 col0" >01</td>
+      <td id="T_698fd_row1_col1" class="data row1 col1" >1</td>
+      <td id="T_698fd_row1_col2" class="data row1 col2" >IvC</td>
+      <td id="T_698fd_row1_col3" class="data row1 col3" >sub-01_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii</td>
     </tr>
     <tr>
-      <td id="T_1be05_row2_col0" class="data row2 col0" >01</td>
-      <td id="T_1be05_row2_col1" class="data row2 col1" >2</td>
-      <td id="T_1be05_row2_col2" class="data row2 col2" >IvC</td>
-      <td id="T_1be05_row2_col3" class="data row2 col3" >sub-01_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii</td>
+      <td id="T_698fd_row2_col0" class="data row2 col0" >01</td>
+      <td id="T_698fd_row2_col1" class="data row2 col1" >2</td>
+      <td id="T_698fd_row2_col2" class="data row2 col2" >IvC</td>
+      <td id="T_698fd_row2_col3" class="data row2 col3" >sub-01_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii</td>
     </tr>
     <tr>
-      <td id="T_1be05_row3_col0" class="data row3 col0" >01</td>
-      <td id="T_1be05_row3_col1" class="data row3 col1" >2</td>
-      <td id="T_1be05_row3_col2" class="data row3 col2" >IvC</td>
-      <td id="T_1be05_row3_col3" class="data row3 col3" >sub-01_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii</td>
+      <td id="T_698fd_row3_col0" class="data row3 col0" >01</td>
+      <td id="T_698fd_row3_col1" class="data row3 col1" >2</td>
+      <td id="T_698fd_row3_col2" class="data row3 col2" >IvC</td>
+      <td id="T_698fd_row3_col3" class="data row3 col3" >sub-01_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii</td>
     </tr>
   </tbody>
 </table>
 </div><div class="output text_html"><style type="text/css">
 </style>
-<table id="T_00a9c">
+<table id="T_431c2">
   <thead>
     <tr>
-      <th id="T_00a9c_level0_col0" class="col_heading level0 col0" >subject</th>
-      <th id="T_00a9c_level0_col1" class="col_heading level0 col1" >run</th>
-      <th id="T_00a9c_level0_col2" class="col_heading level0 col2" >contrast</th>
-      <th id="T_00a9c_level0_col3" class="col_heading level0 col3" >image</th>
+      <th id="T_431c2_level0_col0" class="col_heading level0 col0" >subject</th>
+      <th id="T_431c2_level0_col1" class="col_heading level0 col1" >run</th>
+      <th id="T_431c2_level0_col2" class="col_heading level0 col2" >contrast</th>
+      <th id="T_431c2_level0_col3" class="col_heading level0 col3" >image</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_00a9c_row0_col0" class="data row0 col0" >02</td>
-      <td id="T_00a9c_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_00a9c_row0_col2" class="data row0 col2" >IvC</td>
-      <td id="T_00a9c_row0_col3" class="data row0 col3" >sub-02_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii</td>
+      <td id="T_431c2_row0_col0" class="data row0 col0" >02</td>
+      <td id="T_431c2_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_431c2_row0_col2" class="data row0 col2" >IvC</td>
+      <td id="T_431c2_row0_col3" class="data row0 col3" >sub-02_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii</td>
     </tr>
     <tr>
-      <td id="T_00a9c_row1_col0" class="data row1 col0" >02</td>
-      <td id="T_00a9c_row1_col1" class="data row1 col1" >1</td>
-      <td id="T_00a9c_row1_col2" class="data row1 col2" >IvC</td>
-      <td id="T_00a9c_row1_col3" class="data row1 col3" >sub-02_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii</td>
+      <td id="T_431c2_row1_col0" class="data row1 col0" >02</td>
+      <td id="T_431c2_row1_col1" class="data row1 col1" >1</td>
+      <td id="T_431c2_row1_col2" class="data row1 col2" >IvC</td>
+      <td id="T_431c2_row1_col3" class="data row1 col3" >sub-02_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii</td>
     </tr>
     <tr>
-      <td id="T_00a9c_row2_col0" class="data row2 col0" >02</td>
-      <td id="T_00a9c_row2_col1" class="data row2 col1" >2</td>
-      <td id="T_00a9c_row2_col2" class="data row2 col2" >IvC</td>
-      <td id="T_00a9c_row2_col3" class="data row2 col3" >sub-02_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii</td>
+      <td id="T_431c2_row2_col0" class="data row2 col0" >02</td>
+      <td id="T_431c2_row2_col1" class="data row2 col1" >2</td>
+      <td id="T_431c2_row2_col2" class="data row2 col2" >IvC</td>
+      <td id="T_431c2_row2_col3" class="data row2 col3" >sub-02_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii</td>
     </tr>
     <tr>
-      <td id="T_00a9c_row3_col0" class="data row3 col0" >02</td>
-      <td id="T_00a9c_row3_col1" class="data row3 col1" >2</td>
-      <td id="T_00a9c_row3_col2" class="data row3 col2" >IvC</td>
-      <td id="T_00a9c_row3_col3" class="data row3 col3" >sub-02_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii</td>
+      <td id="T_431c2_row3_col0" class="data row3 col0" >02</td>
+      <td id="T_431c2_row3_col1" class="data row3 col1" >2</td>
+      <td id="T_431c2_row3_col2" class="data row3 col2" >IvC</td>
+      <td id="T_431c2_row3_col3" class="data row3 col3" >sub-02_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii</td>
     </tr>
   </tbody>
 </table>
 </div><div class="output text_html"><style type="text/css">
 </style>
-<table id="T_8a39a">
+<table id="T_5f200">
   <thead>
     <tr>
-      <th id="T_8a39a_level0_col0" class="col_heading level0 col0" >subject</th>
-      <th id="T_8a39a_level0_col1" class="col_heading level0 col1" >run</th>
-      <th id="T_8a39a_level0_col2" class="col_heading level0 col2" >contrast</th>
-      <th id="T_8a39a_level0_col3" class="col_heading level0 col3" >image</th>
+      <th id="T_5f200_level0_col0" class="col_heading level0 col0" >subject</th>
+      <th id="T_5f200_level0_col1" class="col_heading level0 col1" >run</th>
+      <th id="T_5f200_level0_col2" class="col_heading level0 col2" >contrast</th>
+      <th id="T_5f200_level0_col3" class="col_heading level0 col3" >image</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_8a39a_row0_col0" class="data row0 col0" >03</td>
-      <td id="T_8a39a_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_8a39a_row0_col2" class="data row0 col2" >IvC</td>
-      <td id="T_8a39a_row0_col3" class="data row0 col3" >sub-03_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii</td>
+      <td id="T_5f200_row0_col0" class="data row0 col0" >03</td>
+      <td id="T_5f200_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_5f200_row0_col2" class="data row0 col2" >IvC</td>
+      <td id="T_5f200_row0_col3" class="data row0 col3" >sub-03_task-simon_run-1_contrast-IvC_stat-effect_statmap.nii</td>
     </tr>
     <tr>
-      <td id="T_8a39a_row1_col0" class="data row1 col0" >03</td>
-      <td id="T_8a39a_row1_col1" class="data row1 col1" >1</td>
-      <td id="T_8a39a_row1_col2" class="data row1 col2" >IvC</td>
-      <td id="T_8a39a_row1_col3" class="data row1 col3" >sub-03_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii</td>
+      <td id="T_5f200_row1_col0" class="data row1 col0" >03</td>
+      <td id="T_5f200_row1_col1" class="data row1 col1" >1</td>
+      <td id="T_5f200_row1_col2" class="data row1 col2" >IvC</td>
+      <td id="T_5f200_row1_col3" class="data row1 col3" >sub-03_task-simon_run-1_contrast-IvC_stat-variance_statmap.nii</td>
     </tr>
     <tr>
-      <td id="T_8a39a_row2_col0" class="data row2 col0" >03</td>
-      <td id="T_8a39a_row2_col1" class="data row2 col1" >2</td>
-      <td id="T_8a39a_row2_col2" class="data row2 col2" >IvC</td>
-      <td id="T_8a39a_row2_col3" class="data row2 col3" >sub-03_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii</td>
+      <td id="T_5f200_row2_col0" class="data row2 col0" >03</td>
+      <td id="T_5f200_row2_col1" class="data row2 col1" >2</td>
+      <td id="T_5f200_row2_col2" class="data row2 col2" >IvC</td>
+      <td id="T_5f200_row2_col3" class="data row2 col3" >sub-03_task-simon_run-2_contrast-IvC_stat-effect_statmap.nii</td>
     </tr>
     <tr>
-      <td id="T_8a39a_row3_col0" class="data row3 col0" >03</td>
-      <td id="T_8a39a_row3_col1" class="data row3 col1" >2</td>
-      <td id="T_8a39a_row3_col2" class="data row3 col2" >IvC</td>
-      <td id="T_8a39a_row3_col3" class="data row3 col3" >sub-03_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii</td>
+      <td id="T_5f200_row3_col0" class="data row3 col0" >03</td>
+      <td id="T_5f200_row3_col1" class="data row3 col1" >2</td>
+      <td id="T_5f200_row3_col2" class="data row3 col2" >IvC</td>
+      <td id="T_5f200_row3_col3" class="data row3 col3" >sub-03_task-simon_run-2_contrast-IvC_stat-variance_statmap.nii</td>
     </tr>
   </tbody>
 </table>
@@ -1229,10 +1023,10 @@ this results in 12 images that would be grouped as follows:</p>
 </div>
 </section>
 <section id="subject-model">
-<h4>Subject Model<a class="headerlink" href="#subject-model" title="Permalink to this headline">#</a></h4>
+<h4>Subject Model<a class="headerlink" href="#subject-model" title="Permalink to this heading">#</a></h4>
 <p>We can now specify the <code class="docutils literal notranslate"><span class="pre">Subject</span></code> level <code class="docutils literal notranslate"><span class="pre">Model</span></code>.</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;meta&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;DummyContrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span><span class="p">}</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;meta&quot;</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;DummyContrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Since our intent is to estimate the <em>mean effect</em> for each subject,
@@ -1251,13 +1045,13 @@ this is useful and saves us from specifying a more verbose (but identical) <code
 </section>
 </section>
 <section id="dataset-level-node">
-<h3>Dataset level Node<a class="headerlink" href="#dataset-level-node" title="Permalink to this headline">#</a></h3>
+<h3>Dataset level Node<a class="headerlink" href="#dataset-level-node" title="Permalink to this heading">#</a></h3>
 <p>We are ready to perform a one-sample t-test to estimate population-level effects
 for the <em>IvC</em> <code class="docutils literal notranslate"><span class="pre">Contrast</span></code>.
 We refer to this level as the <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> level.</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="nt">&quot;Level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dataset&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;one-sample_dataset&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;contrast&quot;</span><span class="p">],</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="nt">&quot;Level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dataset&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;one-sample_dataset&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;GroupBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;contrast&quot;</span><span class="p">],</span>
 </pre></div>
 </div>
 <p>Here we only need to <code class="docutils literal notranslate"><span class="pre">GroupBy:</span> <span class="pre">['contrast']</span></code> as we want to compute a separate estimate
@@ -1265,50 +1059,46 @@ for each contrast, but want to include all subjects in the same analysis.</p>
 <p>Since we only have one <code class="docutils literal notranslate"><span class="pre">contrast</span></code>, all the incoming subject-level images will be grouped together:</p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1840/372330760.py:12: FutureWarning: In a future version of pandas, a length 1 tuple will be returned when iterating over a groupby with a grouper equal to a list of length 1. Don&#39;t supply a list with a single grouper to avoid this warning.
-  for group in df.groupby(groups, as_index=False):
-</pre></div>
-</div>
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_50f8e">
+<table id="T_a2c10">
   <thead>
     <tr>
-      <th id="T_50f8e_level0_col0" class="col_heading level0 col0" >subject</th>
-      <th id="T_50f8e_level0_col1" class="col_heading level0 col1" >contrast</th>
-      <th id="T_50f8e_level0_col2" class="col_heading level0 col2" >image</th>
+      <th id="T_a2c10_level0_col0" class="col_heading level0 col0" >subject</th>
+      <th id="T_a2c10_level0_col1" class="col_heading level0 col1" >contrast</th>
+      <th id="T_a2c10_level0_col2" class="col_heading level0 col2" >image</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_50f8e_row0_col0" class="data row0 col0" >01</td>
-      <td id="T_50f8e_row0_col1" class="data row0 col1" >IvC</td>
-      <td id="T_50f8e_row0_col2" class="data row0 col2" >sub-01_task-simon_contrast-IvC_stat-effect_statmap.nii</td>
+      <td id="T_a2c10_row0_col0" class="data row0 col0" >01</td>
+      <td id="T_a2c10_row0_col1" class="data row0 col1" >IvC</td>
+      <td id="T_a2c10_row0_col2" class="data row0 col2" >sub-01_task-simon_contrast-IvC_stat-effect_statmap.nii</td>
     </tr>
     <tr>
-      <td id="T_50f8e_row1_col0" class="data row1 col0" >01</td>
-      <td id="T_50f8e_row1_col1" class="data row1 col1" >IvC</td>
-      <td id="T_50f8e_row1_col2" class="data row1 col2" >sub-01_task-simon_contrast-IvC_stat-variance_statmap.nii</td>
+      <td id="T_a2c10_row1_col0" class="data row1 col0" >01</td>
+      <td id="T_a2c10_row1_col1" class="data row1 col1" >IvC</td>
+      <td id="T_a2c10_row1_col2" class="data row1 col2" >sub-01_task-simon_contrast-IvC_stat-variance_statmap.nii</td>
     </tr>
     <tr>
-      <td id="T_50f8e_row2_col0" class="data row2 col0" >02</td>
-      <td id="T_50f8e_row2_col1" class="data row2 col1" >IvC</td>
-      <td id="T_50f8e_row2_col2" class="data row2 col2" >sub-02_task-simon_contrast-IvC_stat-effect_statmap.nii</td>
+      <td id="T_a2c10_row2_col0" class="data row2 col0" >02</td>
+      <td id="T_a2c10_row2_col1" class="data row2 col1" >IvC</td>
+      <td id="T_a2c10_row2_col2" class="data row2 col2" >sub-02_task-simon_contrast-IvC_stat-effect_statmap.nii</td>
     </tr>
     <tr>
-      <td id="T_50f8e_row3_col0" class="data row3 col0" >02</td>
-      <td id="T_50f8e_row3_col1" class="data row3 col1" >IvC</td>
-      <td id="T_50f8e_row3_col2" class="data row3 col2" >sub-02_task-simon_contrast-IvC_stat-variance_statmap.nii</td>
+      <td id="T_a2c10_row3_col0" class="data row3 col0" >02</td>
+      <td id="T_a2c10_row3_col1" class="data row3 col1" >IvC</td>
+      <td id="T_a2c10_row3_col2" class="data row3 col2" >sub-02_task-simon_contrast-IvC_stat-variance_statmap.nii</td>
     </tr>
     <tr>
-      <td id="T_50f8e_row4_col0" class="data row4 col0" >03</td>
-      <td id="T_50f8e_row4_col1" class="data row4 col1" >IvC</td>
-      <td id="T_50f8e_row4_col2" class="data row4 col2" >sub-03_task-simon_contrast-IvC_stat-effect_statmap.nii</td>
+      <td id="T_a2c10_row4_col0" class="data row4 col0" >03</td>
+      <td id="T_a2c10_row4_col1" class="data row4 col1" >IvC</td>
+      <td id="T_a2c10_row4_col2" class="data row4 col2" >sub-03_task-simon_contrast-IvC_stat-effect_statmap.nii</td>
     </tr>
     <tr>
-      <td id="T_50f8e_row5_col0" class="data row5 col0" >03</td>
-      <td id="T_50f8e_row5_col1" class="data row5 col1" >IvC</td>
-      <td id="T_50f8e_row5_col2" class="data row5 col2" >sub-03_task-simon_contrast-IvC_stat-variance_statmap.nii</td>
+      <td id="T_a2c10_row5_col0" class="data row5 col0" >03</td>
+      <td id="T_a2c10_row5_col1" class="data row5 col1" >IvC</td>
+      <td id="T_a2c10_row5_col2" class="data row5 col2" >sub-03_task-simon_contrast-IvC_stat-variance_statmap.nii</td>
     </tr>
   </tbody>
 </table>
@@ -1318,34 +1108,30 @@ for each contrast, but want to include all subjects in the same analysis.</p>
 since we want to perform a random-effects analysis.
 We can again use <code class="docutils literal notranslate"><span class="pre">DummyContrasts</span></code> to specify a simple one-sample t-test contrast
 on the incoming <code class="docutils literal notranslate"><span class="pre">IvC</span></code> subject-level contrasts.</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;glm&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;DummyContrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span><span class="p">}</span><span class="w"></span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="nt">&quot;Model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;X&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;glm&quot;</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;DummyContrasts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t&quot;</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>The outputs of this node collapse across subjects, leaving a single effect/variance pair:</p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1840/372330760.py:12: FutureWarning: In a future version of pandas, a length 1 tuple will be returned when iterating over a groupby with a grouper equal to a list of length 1. Don&#39;t supply a list with a single grouper to avoid this warning.
-  for group in df.groupby(groups, as_index=False):
-</pre></div>
-</div>
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_3a9d3">
+<table id="T_5d3d1">
   <thead>
     <tr>
-      <th id="T_3a9d3_level0_col0" class="col_heading level0 col0" >contrast</th>
-      <th id="T_3a9d3_level0_col1" class="col_heading level0 col1" >image</th>
+      <th id="T_5d3d1_level0_col0" class="col_heading level0 col0" >contrast</th>
+      <th id="T_5d3d1_level0_col1" class="col_heading level0 col1" >image</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_3a9d3_row0_col0" class="data row0 col0" >IvC</td>
-      <td id="T_3a9d3_row0_col1" class="data row0 col1" >task-simon_contrast-IvC_stat-effect_statmap.nii</td>
+      <td id="T_5d3d1_row0_col0" class="data row0 col0" >IvC</td>
+      <td id="T_5d3d1_row0_col1" class="data row0 col1" >task-simon_contrast-IvC_stat-effect_statmap.nii</td>
     </tr>
     <tr>
-      <td id="T_3a9d3_row1_col0" class="data row1 col0" >IvC</td>
-      <td id="T_3a9d3_row1_col1" class="data row1 col1" >task-simon_contrast-IvC_stat-variance_statmap.nii</td>
+      <td id="T_5d3d1_row1_col0" class="data row1 col0" >IvC</td>
+      <td id="T_5d3d1_row1_col1" class="data row1 col1" >task-simon_contrast-IvC_stat-variance_statmap.nii</td>
     </tr>
   </tbody>
 </table>
@@ -1354,7 +1140,7 @@ on the incoming <code class="docutils literal notranslate"><span class="pre">IvC
 </section>
 </section>
 <section id="ready-to-run">
-<h2>Ready to run 🚀<a class="headerlink" href="#ready-to-run" title="Permalink to this headline">#</a></h2>
+<h2>Ready to run 🚀<a class="headerlink" href="#ready-to-run" title="Permalink to this heading">#</a></h2>
 <p>At this point, we have a fully specified model three-stage fMRI model.</p>
 <p>Our model will compute a run level incongruent-congruent contrast,
 pass forward the estimates to a fixed-effects model to pool subject estimates,
@@ -1365,7 +1151,7 @@ from the original raw dataset and hand these to a tool that supports <em>BIDS St
 for <strong>fully automated execution</strong>.</p>
 </section>
 <section id="next-up">
-<h2>Next up<a class="headerlink" href="#next-up" title="Permalink to this headline">#</a></h2>
+<h2>Next up<a class="headerlink" href="#next-up" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Read the next section to dive deeper into advanced usage of <em>BIDS Stats Models</em>
 to enable more complex models.</p></li>
@@ -1388,7 +1174,7 @@ which implement <em>BIDS Stats Models</em> execution to learn how to run a <em>B
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1396,50 +1182,119 @@ which implement <em>BIDS Stats Models</em> execution to learn how to run a <em>B
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="walkthrough-intro.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Walkthrough</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="walkthrough-intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Walkthrough</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="walkthrough-2.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="walkthrough-2.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Advanced usage</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By The BIDS Community<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A simple example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-level-model">Run-level Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-group-analysis-inputs">How to <em>group</em> analysis inputs?</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subject-level-node">Subject level Node</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-run-outputs-to-subject-inputs">From Run Outputs to Subject Inputs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subject-model">Subject Model</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-level-node">Dataset level Node</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ready-to-run">Ready to run 🚀</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-up">Next up</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The BIDS Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

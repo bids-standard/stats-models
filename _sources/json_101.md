@@ -24,7 +24,7 @@ In JSON, objects
 - are opened and closes by curly brackets `{ }`
 - are a collection of key–value pairs where:
   - the keys are strings
-  - the key and the value are separated by a colum `:`
+  - the key and the value are separated by a colon `:`
 
 For example, this is an object.
 
@@ -67,7 +67,7 @@ For example:
 { "ThisIsTrue": true, "ThisIsTrue": false }
 ```
 
-It is common to indent JSON files to help human readibility.
+It is common to indent JSON files to improve readability.
 
 ```json
 {
