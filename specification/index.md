@@ -14,7 +14,7 @@ with minimal configuration and intervention required from the user.
 
 The **mission** of *BIDS Stats Models* is to promote scientific best practice 
 by making neuroimaging models *transparent and reproducible*, 
-as well as encourging the development of *standardized and automated* statistical analysis pipelines.
+as well as encouraging the development of *standardized and automated* statistical analysis pipelines.
 
 ::::{grid} 1 1 1 2
 :gutter: 3 3 3 3
