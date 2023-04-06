@@ -5,6 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "bsmschema"
 description = "A Pydantic schema for BIDS Stats Models"
+readme = "README.md"
 authors = [
     {name = "BIDS Contributors", email = "bids.maintenance@gmail.com" },
 ]
