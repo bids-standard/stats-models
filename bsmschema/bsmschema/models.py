@@ -15,8 +15,8 @@ Note that these are the structured and validatable objects.
 
 """
 import sys
-from typing import List, Optional, Dict, Literal, Any, Union
-from pydantic import BaseModel, StrictStr, StrictInt, StrictFloat, Extra
+from typing import List, Optional, Dict, Literal, Any, Union, TYPE_CHECKING
+from pydantic import BaseModel, Extra
 
 __all__ = [
     'BIDSStatsModel',
@@ -32,10 +32,12 @@ __all__ = [
 
 # Hack to avoid unnecessary verbosity when generating documentation
 # Has no impact on emitted JSON, only on whether Python will attempt to cast instead of error
-if 'sphinxcontrib.autodoc_pydantic' in sys.modules:
+if not TYPE_CHECKING and 'sphinxcontrib.autodoc_pydantic' in sys.modules:
     StrictStr = str      # noqa: F811
     StrictInt = int      # noqa: F811
     StrictFloat = float  # noqa: F811
+else:
+    from pydantic import StrictStr, StrictInt, StrictFloat
 
 # Notes
 # HRF model parameters are unclear how to specify
@@ -499,20 +501,19 @@ class ExplainerModel(BaseModel):
         {"IntField": 1.0}
         {"IntField": "2"}
     """
-    SomeOptions: Literal[1, "stringval", 2.0]
+    SomeOptions: Literal[1, "stringval"]
     """The ``Literal`` type allows a specific value or set of values.
 
     Valid examples::
 
         {"SomeOptions": 1}
         {"SomeOptions": "stringval"}
-        {"SomeOptions": 2.0}
 
     Invalid examples::
 
         {"SomeOptions": "1"}
         {"SomeOptions": "differentstringval"}
-        {"SomeOptions": 2}
+        {"SomeOptions": 2.0}
     """
     ArrayOfInts: List[str]
     """JSON arrays appear as ``List`` types, and ``List[str]`` means
