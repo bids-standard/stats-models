@@ -10,6 +10,8 @@ jobs:
     strategy:
       matrix:
         python: ["3.11"]
+        pip-flags: ["", "--pre"]
+      fail-fast: false
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python }}
@@ -19,13 +21,15 @@ jobs:
     - name: Install dependencies
       run: |
         pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install $PIP_FLAGS -r requirements.txt
+      env:
+        PIP_FLAGS: ${{ matrix.pip-flags }}
     - name: Generate schemas
       run: python -m bsmschema specification/schema/
     - name: Build
       run: jb build -W specification
     - uses: peaceiris/actions-gh-pages@v3
-      if: ${{ github.ref == 'refs/heads/main' }}
+      if: ${{ github.ref == 'refs/heads/main' && matrix.pip-flags == '' }}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: specification/_build/html
