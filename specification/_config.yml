@@ -75,3 +75,6 @@ sphinx:
     suppress_warnings:
       - etoc.toctree
       - myst.domains
+    # Default to light mode until we update things to look good in dark
+    html_context:
+      default_mode: light
