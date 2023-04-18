@@ -53,11 +53,11 @@ authors:
     affiliation: UCSD Bioengineering
 
   - family-names: Blair
-    given-names: Ross W. 
+    given-names: Ross W.
     website: https://github.com/rwblair
 
-  - given-names: Katherine
-    family-names: Bottenhorn
+  - family-names: Bottenhorn
+    given-names: Katherine
     website: https://github.com/62442katieb
     orcid: https://orcid.org/0000-0002-7796-8795
     affiliation: Department of Population and Public Health Sciences, Keck School of Medicine of USC, Los Angeles, CA USA
@@ -75,12 +75,6 @@ authors:
   - family-names: Dafflon
     given-names: Jessica
     website: https://jessicadafflon.github.io/
-
-  - family-names: Nielson
-    given-names: Dylan
-    affiliation:
-      Machine Learning Team at the National Institute of Mental Health
-    website: https://github.com/Shotgunosine
 
   - family-names: Esteban
     given-names: Oscar
@@ -103,6 +97,12 @@ authors:
     website: https://centerforopenneuroscience.org/whoweare#yaroslav_o_halchenko_
     orcid: "https://orcid.org/0000-0003-3456-2493"
 
+  - family-names: Johnson
+    given-names: Timothy
+    affiliation: University of Michigan, Biostatistics
+    email: tdjtdj@umich.edu
+    website: https://sph.umich.edu/faculty-profiles/johnson-timothy.html
+
   - family-names: Kent
     given-names: James
     affiliation:
@@ -110,8 +110,8 @@ authors:
     website: https://jdkent.github.io/
     email: jamesdkent21@gmail.com
 
-  - given-names: Camille
-    family-names: Maumet
+  - family-names: Maumet
+    given-names: Camille
     website: https://camillemaumet.com/
     orcid: https://orcid.org/0000-0002-6290-553X
     affiliation: Inria, Univ Rennes, CNRS, Inserm, Rennes, 35042, France
@@ -126,25 +126,34 @@ authors:
     email: manjari@alumni.rice.edu
 
   - family-names: Nichols
-    given-names: Thomas E. 
+    given-names: Thomas E.
     website: http://nisox.org
     orcid: https://orcid.org/0000-0002-4516-5103
     affiliation: University of Oxford, Big Data Institute, Oxford, OX3 7LF, UK
     email: thomas.nichols@BDI.OX.AC.UK
 
-  - given-names: Hernando
-    family-names: Ombao
-    email: hernando.ombao@kaust.edu.sa
+  - family-names: Nielson
+    given-names: Dylan
+    affiliation:
+      Machine Learning Team at the National Institute of Mental Health
+    website: https://github.com/Shotgunosine
 
   - family-names: Niso
-    given-names: Guiomar 
+    given-names: Guiomar
     website: http://guiomarniso.com
     orcid: https://orcid.org/0000-0001-5872-8924
     affiliation: Instituto Cajal, CSIC, Spain
     email: guiomar.niso@ctb.upm.es
 
+  - family-names: Ombao
+    given-names: Hernando
+    affiliation: KAUST, Saudi Arabia
+    website: https://cemse.kaust.edu.sa/biostats
+    email: hernando.ombao@kaust.edu.sa
+    orcid: https://orcid.org/0000-0001-7020-8091
+
   - family-names: Poldrack
-    given-names: Russell A. 
+    given-names: Russell A.
     website: http://www.poldracklab.org
     orcid: https://orcid.org/0000-0001-6755-0259
     affiliation: Stanford University, Stanford, CA 94305 USA
