@@ -136,11 +136,11 @@ authors:
     family-names: Ombao
     email: hernando.ombao@kaust.edu.sa
 
-  - family-names: Guiomar Niso Galán
-    given-names: Julia
+  - family-names: Niso
+    given-names: Guiomar 
     website: http://guiomarniso.com
     orcid: https://orcid.org/0000-0001-5872-8924
-    affiliation: Indiana University
+    affiliation: Instituto Cajal, CSIC, Spain
     email: guiomar.niso@ctb.upm.es
 
   - family-names: Poldrack
