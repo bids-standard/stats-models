@@ -80,11 +80,15 @@ Filter = Dict[StrictStr, List[Any]]
 VariableList = List[Union[Literal[1], StrictStr]]
 Weights = List[Union[StrictInt, StrictFloat, StrictStr]]
 
+# Python 3.10 at least weirdly annotates "X: Optional[X] = None" as NoneType
+OptionalFilter = Optional[Filter]
+OptionalAggregate = Optional[Aggregate]
+
 
 class _BSMBase(BaseModel):
     # Docstring missing to avoid polluting every object description with this field
     # This permits users to write comments on objects.
-    Description: Optional[str]
+    Description: Optional[str] = None
 
     class Config:
         extra = Extra.forbid
@@ -123,7 +127,7 @@ class Edge(_BSMBase):
 
     If :py:attr:`Filter` is defined,
     The outputs of the Source node are the inputs of the Destination node, after filtering (if any)."""
-    Filter: Optional[Filter]
+    Filter: OptionalFilter = None
     """Maps a grouping variable to a list of values to pass to Destination.
     If multiple grouping variables are passed, the result is the conjunction of filters."""
 
@@ -164,6 +168,10 @@ class Transformations(_BSMBase):
     Instructions: List[Any]
     """Sequence of instructions to pass to an implementation of :py:attr:`Transformer`.
     The format of these instructions is determined by the :py:attr:`Transformer`."""
+
+
+# Python annotation hack
+OptionalTransformations = Optional[Transformations]
 
 
 class HRF(_BSMBase):
@@ -212,7 +220,7 @@ class HRF(_BSMBase):
     The list of supported models is expandable and limited by the estimator, not the specification.
     Note that ``"glover"`` is the default "Gamma" HRF in FSL.
     """
-    Parameters: Optional[Dict[str, Any]]
+    Parameters: Optional[Dict[str, Any]] = None
     """Parameters to the hemodynamic model.
 
     Options will be software specific and are not controlled.
@@ -220,13 +228,18 @@ class HRF(_BSMBase):
     """
 
 
+# Python annotation hack
+OptionalHRF = Optional[HRF]
+
+
 class Options(_BSMBase):
     """Estimation options that are common to multiple estimation packages."""
-    HighPassFilterCutoffHz: Optional[float]
+
+    HighPassFilterCutoffHz: Optional[float] = None
     """The cutoff frequency, in Hz, for a high-pass filter."""
-    LowPassFilterCutoffHz: Optional[float]
+    LowPassFilterCutoffHz: Optional[float] = None
     """The cutoff frequency, in Hz, for a low-pass filter."""
-    ReplaceVariables: Optional[Dict[StrictStr, Any]]
+    ReplaceVariables: Optional[Dict[StrictStr, Any]] = None
     """Allows a specification of design matrix columns that are to be replaced by the estimating software.
     Keys are the names of columns to replace; values are unconstrained,
     and can be anything that helps the receiving software understand what is intended.
@@ -234,16 +247,20 @@ class Options(_BSMBase):
     In this case, the expectation is that the user will have constructed a dummy column as a placeholder
     (e.g., by adding a constant column to events.tsv files), and then indicate (via ReplaceVariables)
     how the receiving software should inject new values."""
-    Mask: Optional[Filter]
+    Mask: Optional[Filter] = None
     """BIDS entities specifying a mask file from the input dataset.
     For example, {"desc": "brain", "suffix": "mask"}."""
-    Aggregate: Optional[Aggregate]
+    Aggregate: OptionalAggregate = None
     """Method of combining time series within each value in the Mask.
     The following values are valid: "none", "mean", "pca".
     "none" (the default) indicates no dimensionality reduction; a separate timecourse is returned for each voxel
     that contains at least one non-zero value in its timecourse.
     "mean" returns the average of all voxels within each discrete non-zero value found in the image.
     "pca" returns the first principal component of all voxels within each discrete non-zero value found in the image."""
+
+
+# Python annotation hack
+OptionalOptions = Optional[Options]
 
 
 class Contrast(_BSMBase):
@@ -334,7 +351,7 @@ class DummyContrasts(_BSMBase):
     While ``"t"`` and ``"pass"`` contrasts are passed as inputs to the next node, ``"F"``
     contrasts are terminal and are not passed as inputs to following :py:class:`Node`\s.
     """
-    Contrasts: Optional[VariableList]
+    Contrasts: Optional[VariableList] = None
     """A list of variables to construct DummyContrasts for.
     Must be a strict subset of ``Model.X``.
     If absent, then dummy contrasts for all variables are constructed."""
@@ -345,6 +362,10 @@ class DummyContrasts(_BSMBase):
 
     Note that ``"F"`` contrasts are terminal and not passed as inputs to following
     :py:class:`Node`\s."""
+
+
+# Python annotation hack
+OptionalDummyContrasts = Optional[DummyContrasts]
 
 
 class Model(_BSMBase):
@@ -372,11 +393,11 @@ class Model(_BSMBase):
     "*" is interpreted to match 0 or more alphanumeric characters, and
     "?" is interpreted to match exactly one alphanumeric character.
     """
-    Formula: Optional[StrictStr]
+    Formula: Optional[StrictStr] = None
     """Wilkinson notation specification of a transformation of the design matrix X.
     A 1 or 0 term MUST be present to explicitly include or exclude, respectively, an intercept variable,
     to ensure consistent handling across formula interpreters."""
-    HRF: Optional[HRF]
+    HRF: OptionalHRF = None
     """A specification of the hemodynamic response function (HRF) that should be applied
     to variables by implementing software."""
     ## These are very likely getting pulled out.
@@ -384,9 +405,9 @@ class Model(_BSMBase):
     # """A specification of the variance components to include in the model."""
     # ErrorDistribution: Optional[Dict[str, Any]]
     # """Specifies how to model the error."""
-    Options: Optional[Options]
+    Options: OptionalOptions = None
     """Estimation options that are common to multiple estimation packages."""
-    Software: Optional[Dict[StrictStr, Dict[StrictStr, Any]]]
+    Software: Optional[Dict[StrictStr, Dict[StrictStr, Any]]] = None
     """This section allows one to specify any software-specific estimation parameters.
     Each key in the object is the name of the software package (FSL, SPM, etc.),
     and the value is an object containing software-specific parameters.
@@ -413,14 +434,14 @@ class Node(_BSMBase):
     If empty, all inputs are passed to a single model to fit.
     Reserved strings include: "run", "session", "subject", and "contrast".
     Any metadata field may be used as a grouping variable."""
-    Transformations: Optional[Transformations]
+    Transformations: OptionalTransformations = None
     """Specification of transformations to be applied to variables before the construction of the model."""
     Model: Model
     """What model parameters should be included, and how the errors are specified."""
-    Contrasts: Optional[List[Contrast]]
+    Contrasts: Optional[List[Contrast]] = None
     """How to linearly weight/combine design matrix columns
     to generate contrast maps and (optionally) run statistical tests."""
-    DummyContrasts: Optional[DummyContrasts]
+    DummyContrasts: OptionalDummyContrasts = None
     """A convenient shortcut for specifying contrasts;
     allows automatic creation of indicator contrasts
     for either all variables in the design matrix, or all named variables."""
@@ -447,16 +468,16 @@ class BIDSStatsModel(_BSMBase):
     """A string identifying the version of the specification adhered to.
     Note this is different from BIDSVersion"""
 
-    Description: Optional[StrictStr]
+    Description: Optional[StrictStr] = None
     """A concise verbal description of the model."""
 
-    Input: Optional[Filter]
+    Input: Optional[Filter] = None
     """Dictionary specification of input images"""
 
     Nodes: List[Node]
     """A list of analysis nodes. The ordering of this list is significant if Edges is absent."""
 
-    Edges: Optional[List[Edge]]
+    Edges: Optional[List[Edge]] = None
     """A list of edges between analysis nodes. If absent, the nodes are connected in the sequence presented in Nodes."""
 
 
@@ -578,7 +599,7 @@ class ExplainerModel(BaseModel):
 
         {"UnionField": 2.0}
     """
-    OptionalField: Optional[str]
+    OptionalField: Optional[str] = None
     """``OptionalField`` could be present or absent.
 
     Up to now, all fields have been required. If a field is optional, its type will be
