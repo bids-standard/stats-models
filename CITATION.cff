@@ -1,0 +1,186 @@
+# schema: https://github.com/citation-file-format/citation-file-format/blob/main/schema-guide.md
+
+cff-version: 1.2.0
+
+title: "BIDS Stats Models Specification"
+
+version: 1.0.0-rc2
+
+abstract: BIDS Stats Models Specification.
+
+message: "If you are using the BIDS stats model, please cite it as below."
+
+repository-code: "https://github.com/bids-standard/stats-models.git"
+
+# identifiers:
+#   - description: This is the collection of archived snapshots of all releases of BIDSpm
+#     type: doi
+#     value: "10.5281/zenodo.3554331"
+
+contact:
+  - family-names: Markiewicz
+    given-names: Christopher J.
+    website: https://github.com/effigies
+    email: effigies@gmail.com
+  - family-names: de la Vega
+    given-names: Alejandro
+    website: https://github.com/adelavega
+    email: aleph4@gmail.com
+    orcid: https://orcid.org/0000-0001-9062-3778
+authors:
+  # TEMPLATE
+  # - family-names: XXX
+  #   given-names: XXX
+  #   affiliation: XXX
+  #   website: XXX
+  #   email: XXX@XXX.XXX
+  #   orcid: "https://orcid.org/XXXX-XXXX-XXXX-XXXX"
+
+  #  Sorted alphabetically except for the 1rst and last authors
+
+  - family-names: Markiewicz
+    given-names: Christopher J.
+    website: https://github.com/effigies
+    email: markiewicz@stanford.edu
+    orcid: https://orcid.org/0000-0002-6533-164X
+    affiliation: Stanford University
+
+  - family-names: Bansal
+    given-names: Shashank
+    website: https://shashankbansal6.github.io/
+    email: shashankbansal56@gmail.com
+    orcid: https://orcid.org/0000-0002-1252-8772
+    affiliation: UCSD Bioengineering
+
+  - family-names: Blair
+    given-names: Ross W.
+    website: https://github.com/rwblair
+
+  - family-names: Bottenhorn
+    given-names: Katherine
+    website: https://github.com/62442katieb
+    orcid: https://orcid.org/0000-0002-7796-8795
+    affiliation: Department of Population and Public Health Sciences, Keck School of Medicine of USC, Los Angeles, CA USA
+    email: bottenho@usc.edu
+
+  - family-names: Chen
+    given-names: Gang
+    website: https://github.com/afni-gangc
+    orcid: https://orcid.org/0000-0002-2960-089X
+    affiliation:
+      National Institutes of Health, Scientific and Statistical Computing Core,
+      NIMH, Bethesda, MD 20892, USA
+    email: gangchen@mail.nih.gov
+
+  - family-names: Dafflon
+    given-names: Jessica
+    website: https://jessicadafflon.github.io/
+
+  - family-names: Esteban
+    given-names: Oscar
+    website: http://www.axonlab.org
+    orcid: https://orcid.org/0000-0001-8435-6191
+    affiliation:
+      Department of Radiology, Lausanne University Hospital and University of Lausanne,
+      Lausanne, Switzerland
+    email: phd@oscaresteban.es
+
+  - family-names: Gau
+    given-names: Rémi
+    affiliation: Université catholique de Louvain
+    email: remi.gau@uclouvain.be
+    orcid: "https://orcid.org/0000-0002-1535-9767"
+
+  - family-names: Halchenko
+    given-names: Yaroslav
+    affiliation: Dartmouth College
+    website: https://centerforopenneuroscience.org/whoweare#yaroslav_o_halchenko_
+    orcid: "https://orcid.org/0000-0003-3456-2493"
+
+  - family-names: Johnson
+    given-names: Timothy
+    affiliation: University of Michigan, Biostatistics
+    email: tdjtdj@umich.edu
+    website: https://sph.umich.edu/faculty-profiles/johnson-timothy.html
+
+  - family-names: Kent
+    given-names: James
+    affiliation:
+      Psychoinformatics Laboratory at the University of Texas at Austin
+    website: https://jdkent.github.io/
+    email: jamesdkent21@gmail.com
+
+  - family-names: Maumet
+    given-names: Camille
+    website: https://camillemaumet.com/
+    orcid: https://orcid.org/0000-0002-6290-553X
+    affiliation: Inria, Univ Rennes, CNRS, Inserm, Rennes, 35042, France
+
+  - family-names: Mumford
+    given-names: Jeanette
+    website: https://github.com/jmumford
+    email: jeanette.mumford@gmail.com
+
+  - family-names: Narayan
+    given-names: Manjari
+    email: manjari@alumni.rice.edu
+
+  - family-names: Nichols
+    given-names: Thomas E.
+    website: http://nisox.org
+    orcid: https://orcid.org/0000-0002-4516-5103
+    affiliation: University of Oxford, Big Data Institute, Oxford, OX3 7LF, UK
+    email: thomas.nichols@BDI.OX.AC.UK
+
+  - family-names: Nielson
+    given-names: Dylan
+    affiliation:
+      Machine Learning Team at the National Institute of Mental Health
+    website: https://github.com/Shotgunosine
+
+  - family-names: Niso
+    given-names: Guiomar
+    website: http://guiomarniso.com
+    orcid: https://orcid.org/0000-0001-5872-8924
+    affiliation: Instituto Cajal, CSIC, Spain
+    email: guiomar.niso@ctb.upm.es
+
+  - family-names: Ombao
+    given-names: Hernando
+    affiliation: KAUST, Saudi Arabia
+    website: https://cemse.kaust.edu.sa/biostats
+    email: hernando.ombao@kaust.edu.sa
+    orcid: https://orcid.org/0000-0001-7020-8091
+
+  - family-names: Poldrack
+    given-names: Russell A.
+    website: http://www.poldracklab.org
+    orcid: https://orcid.org/0000-0001-6755-0259
+    affiliation: Stanford University, Stanford, CA 94305 USA
+    email: russpold@stanford.edu
+
+  - family-names: Poline
+    given-names: Jean-Baptiste
+    website: https://github.com/jbpoline
+    orcid: https://orcid.org/0000-0002-9794-749X
+
+  - family-names: Thirion
+    given-names: Bertrand
+    website: https://github.com/bthirion
+    orcid: https://orcid.org/0000-0001-5018-7895
+
+  - family-names: de la Vega
+    given-names: Alejandro
+    website: https://github.com/adelavega
+
+  - family-names: Yarkoni
+    given-names: Tal
+    email: tyarkoni@gmail.com
+
+license: CC-BY-4.0
+
+keywords:
+  - BIDS
+  - brain imaging data structure
+  - statistical modeling
+  - general linear model
