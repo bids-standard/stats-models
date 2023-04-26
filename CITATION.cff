@@ -91,6 +91,11 @@ authors:
     email: remi.gau@uclouvain.be
     orcid: "https://orcid.org/0000-0002-1535-9767"
 
+  - family-names: Gorgolewski
+    given-names: Krzysztof Jacek
+    website: https://chrisgorgolewski.org
+    orcid: https://orcid.org/0000-0003-3321-7583
+    
   - family-names: Halchenko
     given-names: Yaroslav
     affiliation: Dartmouth College
