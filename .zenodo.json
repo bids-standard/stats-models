@@ -32,7 +32,8 @@
       "name": "Gau, Remi",
       "orcid": "0000-0002-1535-9767"
     },
-      "affiliation: "National Institutes of Health",
+    {
+      "affiliation": "National Institutes of Health",
       "name": "Nielson, Dylan M.",
       "orcid": "0000-0003-4613-6643"
     },
@@ -45,8 +46,6 @@
       "affiliation": "Stanford University",
       "name": "Mumford, Jeanette",
       "orcid": "0000-0002-0926-3531"
-    },
-      "orcid": "0000-0001-6781-5341"
     },
     {
       "affiliation": "INRIA",
@@ -69,7 +68,7 @@
       "orcid": "0000-0001-5348-270X"
     },
    {
-      "affiliation": "National Institutes of Health"
+      "affiliation": "National Institutes of Health",
       "name": "Gang Chen",
       "orcid": "0000-0002-2960-089X"
     },
@@ -79,10 +78,10 @@
       "orcid": "0000-0002-6290-553X"
     },
    {
-      "affiliation": "Teleco"
-      "name": "Niso, Guimar"
+      "affiliation": "Teleco",
+      "name": "Niso, Guimar",
       "orcid": "0000-0001-5872-8924"
-    },
+    }
   ],
   "keywords": [
     "BIDS",
