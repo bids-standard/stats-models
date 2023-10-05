@@ -1,0 +1,98 @@
+{
+  "title": "BIDS Stats Models Specification",
+  "description" : "A specification for neuroimaging statistical models.",
+  "creators": [
+    {
+      "affiliation": "University of Texas at Austin",
+      "name": "Yarkoni, Tal",
+      "orcid": "0000-0002-6558-5113"
+    },
+    {
+      "affiliation": "Stanford University",
+      "name": "Markiewicz, Christopher J.",
+      "orcid": "0000-0002-6533-164X"
+    },
+    {
+      "affiliation": "University of Texas at Austin",
+      "name": "de la Vega, Alejandro",
+      "orcid": "0000-0001-9062-3778"
+    },
+    {
+      "affiliation": "University of Oxford",
+      "name": "Thomas E. Nichols",
+      "orcid": "0000-0002-4516-5103"
+    },
+    {
+      "affiliation": "Department of Psychology, Stanford University",
+      "name": "Esteban, Oscar",
+      "orcid": "0000-0001-8435-6191"
+    },
+    {
+      "affiliation": "Université catholique de Louvain",
+      "name": "Gau, Remi",
+      "orcid": "0000-0002-1535-9767"
+    },
+      "affiliation: "National Institutes of Health",
+      "name": "Nielson, Dylan M.",
+      "orcid": "0000-0003-4613-6643"
+    },
+    {
+      "affiliation": "Stanford University",
+      "name": "Poldrack, Russell",
+      "orcid": "0000-0001-6755-0259"
+    },
+    {
+      "affiliation": "Stanford University",
+      "name": "Mumford, Jeanette",
+      "orcid": "0000-0002-0926-3531"
+    },
+      "orcid": "0000-0001-6781-5341"
+    },
+    {
+      "affiliation": "INRIA",
+      "name": "Thirion, Bertrand",
+      "orcid": "0000-0001-5018-7895"
+    },
+    {
+      "affiliation": "Stanford University",
+      "name": "Blair, Ross",
+      "orcid": "0000-0003-3007-1056"
+    },
+    {
+      "affiliation": "Stanford University",
+      "name": "Bansal, Shashank",
+      "orcid": "0000-0002-1252-8772"
+    },
+    {
+      "affiliation": "Stanford University",
+      "name": "Narayan, Manjari",
+      "orcid": "0000-0001-5348-270X"
+    },
+   {
+      "affiliation": "National Institutes of Health"
+      "name": "Gang Chen",
+      "orcid": "0000-0002-2960-089X"
+    },
+   {
+      "affiliation": "INRA",
+      "name": "Maument, Camille",
+      "orcid": "0000-0002-6290-553X"
+    },
+   {
+      "affiliation": "Teleco"
+      "name": "Niso, Guimar"
+      "orcid": "0000-0001-5872-8924"
+    },
+  ],
+  "keywords": [
+    "BIDS",
+    "brain imaging data structure",
+    "neuroscience",
+    "neuroimaging",
+    "neuroinformatics",
+    "standards",
+    "python"
+  ],
+  "license": "mit-license",
+  "upload_type": "software"
+}
