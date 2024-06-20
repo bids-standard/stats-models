@@ -8,7 +8,7 @@ This guide is aimed at those new to *BIDS Stats Models*
 but familiar with neuroimaging analysis experience.
 
 If you want more detail on any topics covered here, 
-head over to the **[specification](reference.rst)** for reference.
+head over to the **[specification](reference.md)** for reference.
 
 ```{tableofcontents}
 ```

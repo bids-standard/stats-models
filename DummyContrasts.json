@@ -1,41 +1,58 @@
 {
-  "title": "DummyContrasts",
+  "additionalProperties": false,
   "description": "Dummy contrasts are contrasts with one condition, a weight of one,\nand the same name as the condition. That is,\n\n::\n\n    \"DummyContrasts\": {\"Contrasts\": [\"A\", \"B\"], \"Test\": \"t\"}\n\nis equivalent to the following list of :py:class:`Contrast`\\s::\n\n    \"Contrasts\": [\n        {\"Name\": \"A\", \"ConditionList\": [\"A\"], \"Weights\": [1], \"Test\": \"t\"}\n        {\"Name\": \"B\", \"ConditionList\": [\"B\"], \"Weights\": [1], \"Test\": \"t\"}\n    ]\n\nWhile ``\"t\"`` and ``\"pass\"`` contrasts are passed as inputs to the next node, ``\"F\"``\ncontrasts are terminal and are not passed as inputs to following :py:class:`Node`\\s.",
-  "type": "object",
   "properties": {
     "Description": {
-      "title": "Description",
-      "type": "string"
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Description"
     },
     "Contrasts": {
-      "title": "Contrasts",
-      "type": "array",
-      "items": {
-        "anyOf": [
-          {
-            "enum": [
-              1
-            ],
-            "type": "integer"
+      "anyOf": [
+        {
+          "items": {
+            "anyOf": [
+              {
+                "const": 1,
+                "enum": [
+                  1
+                ],
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
-          {
-            "type": "string"
-          }
-        ]
-      }
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Contrasts"
     },
     "Test": {
-      "title": "Test",
       "enum": [
         "pass",
         "t",
         "F"
       ],
+      "title": "Test",
       "type": "string"
     }
   },
   "required": [
     "Test"
   ],
-  "additionalProperties": false
+  "title": "DummyContrasts",
+  "type": "object"
 }

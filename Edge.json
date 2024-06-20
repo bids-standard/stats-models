@@ -1,11 +1,18 @@
 {
-  "title": "Edge",
+  "additionalProperties": false,
   "description": "An Edge connects two :py:class:`Node`\\s, indicating the outputs (contrasts) of\nthe :py:attr:`Source` Node are to be made available as inputs to the\n:py:attr:`Destination` Node.\n\nContrasts may be filtered by any metadata field, including entities.\nEach contrast has an additional entity ``\"contrast\"`` that may be used to filter contrasts by name.\n\nExamples\n--------\n\n.. code-block:: json\n\n   {\n     \"Source\": \"subject\",\n     \"Destination\": \"dataset\"\n   }\n\n.. code-block:: json\n\n   {\n     \"Source\": \"subject\",\n     \"Destination\": \"dataset\",\n     \"Filter\": {\"contrast\": [\"contrast1\", \"contrast2\"]}\n   }",
-  "type": "object",
   "properties": {
     "Description": {
-      "title": "Description",
-      "type": "string"
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Description"
     },
     "Source": {
       "title": "Source",
@@ -16,17 +23,26 @@
       "type": "string"
     },
     "Filter": {
-      "title": "Filter",
-      "type": "object",
-      "additionalProperties": {
-        "type": "array",
-        "items": {}
-      }
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "items": {},
+            "type": "array"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Filter"
     }
   },
   "required": [
     "Source",
     "Destination"
   ],
-  "additionalProperties": false
+  "title": "Edge",
+  "type": "object"
 }

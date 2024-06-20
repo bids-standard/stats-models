@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-theme="light">
+<html lang="en" data-content_root="./" data-theme="light">
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>JSON 101 &#8212; BIDS Stats Models Specification</title>
   
@@ -19,54 +18,51 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/autodoc_pydantic.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=b90f6cf3" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=ad5861b1"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/documentation_options.js"></script>
-    <script src="_static/js/jsoneditor.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'json_101';</script>
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <script src="_static/documentation_options.js?v=ad5861b1"></script>
+    <script src="_static/js/jsoneditor.js?v=b2913772"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="BIDS Stats Models Specification" href="spec.html" />
@@ -80,19 +76,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -114,12 +114,31 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content"><div>
+  </style>
+    <h2><b>THIS SITE IS BEING MERGED</b></h2>
+    <h3>
+      The BIDS group is currently finalizing a NEW main website that will merge our existing websites into one central, easy to navigate resource. The <b><a href="https://bids-website.readthedocs.io" target="_blank">New BIDS Website</a> (https://bids-website.readthedocs.io)</b> is still being finalized, but we encourage feedback via the giscus form on the bottom of the main page.
+    </h3>
+    Please feel free to submit suggestions or comments as we improve and consolidate our existing BIDS resources.
+</div>
+</div>
+</aside>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -134,6 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="index.html">
@@ -141,24 +161,36 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     
     
     
-    <img src="_static/bids_black.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/bids_black.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/bids_black.png" class="logo__image only-light" alt="BIDS Stats Models Specification - Home"/>
+    <script>document.write(`<img src="_static/bids_black.png" class="logo__image only-dark" alt="BIDS Stats Models Specification - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="motivation.html">Motivation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="walkthrough-intro.html">Walkthrough</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="walkthrough-intro.html">Walkthrough</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="walkthrough-1.html">Representing multi-stage neuroimaging models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="walkthrough-2.html">Advanced usage</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="integration.html">Integration with other standards</a></li>
 <li class="toctree-l1"><a class="reference internal" href="legacy.html">Legacy specification</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">JSON 101</a></li>
@@ -166,7 +198,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Specification</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="spec.html">BIDS Stats Models Specification</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="reference.html">BIDS Stats Models Object Reference</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="reference.html">BIDS Stats Models Object Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="_autosummary/bsmschema.models.BIDSStatsModel.html">bsmschema.models.BIDSStatsModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_autosummary/bsmschema.models.Node.html">bsmschema.models.Node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_autosummary/bsmschema.models.Transformations.html">bsmschema.models.Transformations</a></li>
@@ -177,7 +209,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="_autosummary/bsmschema.models.DummyContrasts.html">bsmschema.models.DummyContrasts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_autosummary/bsmschema.models.Edge.html">bsmschema.models.Edge</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="validator.html">BIDS Stats Model Validator</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples and resources</span></p>
@@ -199,7 +231,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -208,14 +240,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -337,26 +369,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -400,10 +434,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="json-101">
-<h1>JSON 101<a class="headerlink" href="#json-101" title="Permalink to this heading">#</a></h1>
+<h1>JSON 101<a class="headerlink" href="#json-101" title="Link to this heading">#</a></h1>
 <p>The BIDS statistical models are written in JSON files.</p>
 <p>If you have never heard of JSON, this section is for you.</p>
 <p>Here we will quickly:</p>
@@ -413,12 +447,12 @@ document.write(`
 with JSON.</p></li>
 </ul>
 <section id="json-terms">
-<h2>JSON terms<a class="headerlink" href="#json-terms" title="Permalink to this heading">#</a></h2>
+<h2>JSON terms<a class="headerlink" href="#json-terms" title="Link to this heading">#</a></h2>
 <p>JSON stands for JavaScript Object Notation
 and as its name indicates takes its syntax from the JavaScript language.</p>
 <p>The main “building blocks” of JSON you must be familiar with are <code class="docutils literal notranslate"><span class="pre">Objects</span></code> and <code class="docutils literal notranslate"><span class="pre">Arrays</span></code>.</p>
 <section id="objects">
-<h3>Objects<a class="headerlink" href="#objects" title="Permalink to this heading">#</a></h3>
+<h3>Objects<a class="headerlink" href="#objects" title="Link to this heading">#</a></h3>
 <p>In JSON, objects</p>
 <ul class="simple">
 <li><p>are opened and closes by curly brackets <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code></p></li>
@@ -437,7 +471,7 @@ and as its name indicates takes its syntax from the JavaScript language.</p>
 Also note the comma between the key-value pairs but not after the last key-value pair.</p>
 </section>
 <section id="arrays">
-<h3>Arrays<a class="headerlink" href="#arrays" title="Permalink to this heading">#</a></h3>
+<h3>Arrays<a class="headerlink" href="#arrays" title="Link to this heading">#</a></h3>
 <p>In JSON, arrays are:</p>
 <ul class="simple">
 <li><p>are opened and closes by square brackets <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code></p></li>
@@ -449,7 +483,7 @@ Also note the comma between the key-value pairs but not after the last key-value
 </div>
 </section>
 <section id="a-note-on-booleans">
-<h3>A note on Booleans<a class="headerlink" href="#a-note-on-booleans" title="Permalink to this heading">#</a></h3>
+<h3>A note on Booleans<a class="headerlink" href="#a-note-on-booleans" title="Link to this heading">#</a></h3>
 <p>In JSON boolean values must be typed as lowercase with no quotes:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></li>
@@ -457,7 +491,7 @@ Also note the comma between the key-value pairs but not after the last key-value
 </ul>
 </section>
 <section id="json-styling">
-<h3>JSON “styling”<a class="headerlink" href="#json-styling" title="Permalink to this heading">#</a></h3>
+<h3>JSON “styling”<a class="headerlink" href="#json-styling" title="Link to this heading">#</a></h3>
 <p>In JavaScript it is custom to use CamelCase to write code,
 this is why most of keys you will see in JSON are also in CamelCase.</p>
 <!-- Add link to camelcase wikipedia -->
@@ -477,7 +511,7 @@ but the BIDS stats model allows you to add a <code class="docutils literal notra
 to most objects to give explanations to the reader.</p>
 </section>
 <section id="nesting">
-<h3>Nesting<a class="headerlink" href="#nesting" title="Permalink to this heading">#</a></h3>
+<h3>Nesting<a class="headerlink" href="#nesting" title="Link to this heading">#</a></h3>
 <p>JSON allows to “nest” objects within objects, to create arrays of objects
 and combine all those elements however deep you want or need.</p>
 <p>Just remember to place commas:</p>
@@ -504,7 +538,7 @@ and combine all those elements however deep you want or need.</p>
 </div>
 </section>
 <section id="json-schema">
-<h3>JSON schema<a class="headerlink" href="#json-schema" title="Permalink to this heading">#</a></h3>
+<h3>JSON schema<a class="headerlink" href="#json-schema" title="Link to this heading">#</a></h3>
 <p>If the content of your JSON must follow certain rules, like</p>
 <blockquote>
 <div><p>your JSON file must contain a key-value pair</p>
@@ -517,9 +551,9 @@ and combine all those elements however deep you want or need.</p>
 </section>
 </section>
 <section id="working-with-json">
-<h2>Working with JSON<a class="headerlink" href="#working-with-json" title="Permalink to this heading">#</a></h2>
+<h2>Working with JSON<a class="headerlink" href="#working-with-json" title="Link to this heading">#</a></h2>
 <section id="in-the-browser">
-<h3>In the browser<a class="headerlink" href="#in-the-browser" title="Permalink to this heading">#</a></h3>
+<h3>In the browser<a class="headerlink" href="#in-the-browser" title="Link to this heading">#</a></h3>
 <p>Working with JSON can be a headache if you do not have the proper tools.</p>
 <p>To get started we suggest playing around with JSON in an online editor,
 to get a feeling for how JSON works.</p>
@@ -536,7 +570,7 @@ and give it this URL:</p>
 <img alt="_images/schema_in_browser.png" class="light-border" src="_images/schema_in_browser.png" />
 </section>
 <section id="on-your-computer">
-<h3>On your computer<a class="headerlink" href="#on-your-computer" title="Permalink to this heading">#</a></h3>
+<h3>On your computer<a class="headerlink" href="#on-your-computer" title="Link to this heading">#</a></h3>
 <p>If you need to edit JSON files on your computer, it will make your life easier
 if you use a modern code editor like:</p>
 <ul class="simple">
@@ -599,11 +633,10 @@ that can automatically indent your JSON like
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="legacy.html"
@@ -623,10 +656,7 @@ that can automatically indent your JSON like
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -634,6 +664,7 @@ that can automatically indent your JSON like
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -676,6 +707,7 @@ By The BIDS Community
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -702,8 +734,8 @@ By The BIDS Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

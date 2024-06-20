@@ -1,26 +1,170 @@
 {
-  "title": "Model",
+  "$defs": {
+    "HRF": {
+      "additionalProperties": false,
+      "description": "Specification of a hemodynamic response function (HRF) model.\n\nMost design matrix constructors permit sparse events of the form\n(onset, duration, amplitude) to be convolved by a named HRF,\npossibly with some parameters.\nSome may permit dense time series to be convolved as well.\n\nThis specification makes no attempt to constrain the names and parameters,\nor require consistency of accepted model names across implementations.\nImplementations SHOULD fail if the model is unknown.\n\nExamples\n--------\n\nThe \"canonical\" HRF defined in SPM:\n\n.. code-block:: json\n\n    {\n      \"Variables\": [\"condition1\", \"condition2\"],\n      \"Model\": \"spm\"\n    }",
+      "properties": {
+        "Description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "Variables": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Variables",
+          "type": "array"
+        },
+        "Model": {
+          "title": "Model",
+          "type": "string"
+        },
+        "Parameters": {
+          "anyOf": [
+            {
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parameters"
+        }
+      },
+      "required": [
+        "Variables",
+        "Model"
+      ],
+      "title": "HRF",
+      "type": "object"
+    },
+    "Options": {
+      "additionalProperties": false,
+      "description": "Estimation options that are common to multiple estimation packages.",
+      "properties": {
+        "Description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "HighPassFilterCutoffHz": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Highpassfiltercutoffhz"
+        },
+        "LowPassFilterCutoffHz": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lowpassfiltercutoffhz"
+        },
+        "ReplaceVariables": {
+          "anyOf": [
+            {
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Replacevariables"
+        },
+        "Mask": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "items": {},
+                "type": "array"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mask"
+        },
+        "Aggregate": {
+          "anyOf": [
+            {
+              "enum": [
+                "none",
+                "mean",
+                "pca"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Aggregate"
+        }
+      },
+      "title": "Options",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
   "description": "The model to fit to the collection of input images.\n\nThis section defines the design matrix construction, estimator type,\nand additional options needed to estimate the model parameters.",
-  "type": "object",
   "properties": {
     "Description": {
-      "title": "Description",
-      "type": "string"
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Description"
     },
     "Type": {
-      "title": "Type",
       "enum": [
         "glm",
         "meta"
       ],
+      "title": "Type",
       "type": "string"
     },
     "X": {
-      "title": "X",
-      "type": "array",
       "items": {
         "anyOf": [
           {
+            "const": 1,
             "enum": [
               1
             ],
@@ -30,103 +174,64 @@
             "type": "string"
           }
         ]
-      }
+      },
+      "title": "X",
+      "type": "array"
     },
     "Formula": {
-      "title": "Formula",
-      "type": "string"
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Formula"
     },
     "HRF": {
-      "$ref": "#/definitions/HRF"
+      "anyOf": [
+        {
+          "$ref": "#/$defs/HRF"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
     },
     "Options": {
-      "$ref": "#/definitions/Options"
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Options"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
     },
     "Software": {
-      "title": "Software",
-      "type": "object",
-      "additionalProperties": {
-        "type": "object"
-      }
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Software"
     }
   },
   "required": [
     "Type",
     "X"
   ],
-  "additionalProperties": false,
-  "definitions": {
-    "HRF": {
-      "title": "HRF",
-      "description": "Specification of a hemodynamic response function (HRF) model.\n\nMost design matrix constructors permit sparse events of the form\n(onset, duration, amplitude) to be convolved by a named HRF,\npossibly with some parameters.\nSome may permit dense time series to be convolved as well.\n\nThis specification makes no attempt to constrain the names and parameters,\nor require consistency of accepted model names across implementations.\nImplementations SHOULD fail if the model is unknown.\n\nExamples\n--------\n\nThe \"canonical\" HRF defined in SPM:\n\n.. code-block:: json\n\n    {\n      \"Variables\": [\"condition1\", \"condition2\"],\n      \"Model\": \"spm\"\n    }",
-      "type": "object",
-      "properties": {
-        "Description": {
-          "title": "Description",
-          "type": "string"
-        },
-        "Variables": {
-          "title": "Variables",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "Model": {
-          "title": "Model",
-          "type": "string"
-        },
-        "Parameters": {
-          "title": "Parameters",
-          "type": "object"
-        }
-      },
-      "required": [
-        "Variables",
-        "Model"
-      ],
-      "additionalProperties": false
-    },
-    "Options": {
-      "title": "Options",
-      "description": "Estimation options that are common to multiple estimation packages.",
-      "type": "object",
-      "properties": {
-        "Description": {
-          "title": "Description",
-          "type": "string"
-        },
-        "HighPassFilterCutoffHz": {
-          "title": "Highpassfiltercutoffhz",
-          "type": "number"
-        },
-        "LowPassFilterCutoffHz": {
-          "title": "Lowpassfiltercutoffhz",
-          "type": "number"
-        },
-        "ReplaceVariables": {
-          "title": "Replacevariables",
-          "type": "object"
-        },
-        "Mask": {
-          "title": "Mask",
-          "type": "object",
-          "additionalProperties": {
-            "type": "array",
-            "items": {}
-          }
-        },
-        "Aggregate": {
-          "title": "Aggregate",
-          "enum": [
-            "none",
-            "mean",
-            "pca"
-          ],
-          "type": "string"
-        }
-      },
-      "additionalProperties": false
-    }
-  }
+  "title": "Model",
+  "type": "object"
 }

@@ -1,235 +1,30 @@
 {
-  "title": "Node",
-  "description": "A node represents an estimator that applies to a given level of analysis.\nIt contains sufficient information to construct a design matrix, estimate\nparameter weights (betas) and construct contrasts.",
-  "type": "object",
-  "properties": {
-    "Description": {
-      "title": "Description",
-      "type": "string"
-    },
-    "Level": {
-      "title": "Level",
-      "enum": [
-        "Run",
-        "Session",
-        "Subject",
-        "Dataset"
-      ],
-      "type": "string"
-    },
-    "Name": {
-      "title": "Name",
-      "type": "string"
-    },
-    "GroupBy": {
-      "title": "Groupby",
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "Transformations": {
-      "$ref": "#/definitions/Transformations"
-    },
-    "Model": {
-      "$ref": "#/definitions/Model"
-    },
-    "Contrasts": {
-      "title": "Contrasts",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/Contrast"
-      }
-    },
-    "DummyContrasts": {
-      "$ref": "#/definitions/DummyContrasts"
-    }
-  },
-  "required": [
-    "Level",
-    "Name",
-    "GroupBy",
-    "Model"
-  ],
-  "additionalProperties": false,
-  "definitions": {
-    "Transformations": {
-      "title": "Transformations",
-      "description": "Transformations describe modifications of variables to prepare a design matrix.\n\nThis field is indirect, with a :py:attr:`Transformer` name identifying an instruction\nset, and a sequence of :py:attr:`Instructions`.\n\nA Transformer accepts data frames of sparse (onset, duration, amplitude) and\ndense (onset, sampling rate, values) variables along with the list of Instructions,\nand then return a new set of sparse and/or dense variables.\n\nExamples\n--------\n\n.. code-block:: json\n\n   {\n     \"Transformer\": \"pybids-transforms-v1\",\n     \"Instructions\": [\n       {\n         \"Name\": \"Factor\",\n         \"Input\": [\"trial_type\"]\n       },\n       {\n         \"Name\": \"Convolve\",\n         \"Model\": \"spm\",\n         \"Input\": [\"trial_type.cond1\", \"trial_type.cond2\"]\n       }\n     ]\n   }",
-      "type": "object",
-      "properties": {
-        "Description": {
-          "title": "Description",
-          "type": "string"
-        },
-        "Transformer": {
-          "title": "Transformer",
-          "enum": [
-            "pybids-transforms-v1"
-          ],
-          "type": "string"
-        },
-        "Instructions": {
-          "title": "Instructions",
-          "type": "array",
-          "items": {}
-        }
-      },
-      "required": [
-        "Transformer",
-        "Instructions"
-      ],
-      "additionalProperties": false
-    },
-    "HRF": {
-      "title": "HRF",
-      "description": "Specification of a hemodynamic response function (HRF) model.\n\nMost design matrix constructors permit sparse events of the form\n(onset, duration, amplitude) to be convolved by a named HRF,\npossibly with some parameters.\nSome may permit dense time series to be convolved as well.\n\nThis specification makes no attempt to constrain the names and parameters,\nor require consistency of accepted model names across implementations.\nImplementations SHOULD fail if the model is unknown.\n\nExamples\n--------\n\nThe \"canonical\" HRF defined in SPM:\n\n.. code-block:: json\n\n    {\n      \"Variables\": [\"condition1\", \"condition2\"],\n      \"Model\": \"spm\"\n    }",
-      "type": "object",
-      "properties": {
-        "Description": {
-          "title": "Description",
-          "type": "string"
-        },
-        "Variables": {
-          "title": "Variables",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "Model": {
-          "title": "Model",
-          "type": "string"
-        },
-        "Parameters": {
-          "title": "Parameters",
-          "type": "object"
-        }
-      },
-      "required": [
-        "Variables",
-        "Model"
-      ],
-      "additionalProperties": false
-    },
-    "Options": {
-      "title": "Options",
-      "description": "Estimation options that are common to multiple estimation packages.",
-      "type": "object",
-      "properties": {
-        "Description": {
-          "title": "Description",
-          "type": "string"
-        },
-        "HighPassFilterCutoffHz": {
-          "title": "Highpassfiltercutoffhz",
-          "type": "number"
-        },
-        "LowPassFilterCutoffHz": {
-          "title": "Lowpassfiltercutoffhz",
-          "type": "number"
-        },
-        "ReplaceVariables": {
-          "title": "Replacevariables",
-          "type": "object"
-        },
-        "Mask": {
-          "title": "Mask",
-          "type": "object",
-          "additionalProperties": {
-            "type": "array",
-            "items": {}
-          }
-        },
-        "Aggregate": {
-          "title": "Aggregate",
-          "enum": [
-            "none",
-            "mean",
-            "pca"
-          ],
-          "type": "string"
-        }
-      },
-      "additionalProperties": false
-    },
-    "Model": {
-      "title": "Model",
-      "description": "The model to fit to the collection of input images.\n\nThis section defines the design matrix construction, estimator type,\nand additional options needed to estimate the model parameters.",
-      "type": "object",
-      "properties": {
-        "Description": {
-          "title": "Description",
-          "type": "string"
-        },
-        "Type": {
-          "title": "Type",
-          "enum": [
-            "glm",
-            "meta"
-          ],
-          "type": "string"
-        },
-        "X": {
-          "title": "X",
-          "type": "array",
-          "items": {
-            "anyOf": [
-              {
-                "enum": [
-                  1
-                ],
-                "type": "integer"
-              },
-              {
-                "type": "string"
-              }
-            ]
-          }
-        },
-        "Formula": {
-          "title": "Formula",
-          "type": "string"
-        },
-        "HRF": {
-          "$ref": "#/definitions/HRF"
-        },
-        "Options": {
-          "$ref": "#/definitions/Options"
-        },
-        "Software": {
-          "title": "Software",
-          "type": "object",
-          "additionalProperties": {
-            "type": "object"
-          }
-        }
-      },
-      "required": [
-        "Type",
-        "X"
-      ],
-      "additionalProperties": false
-    },
+  "$defs": {
     "Contrast": {
-      "title": "Contrast",
+      "additionalProperties": false,
       "description": "Contrasts are weighted sums of parameter estimates (betas) generated by a model fit.\n\n``Contrast`` defines the structure of the elements of the :py:attr:`Node.Contrasts` list.\n\nAlong with :py:class:`DummyContrasts`, Contrasts define the outputs of a :py:class:`Node`.\n\nWhile ``\"t\"`` and ``\"pass\"`` contrasts are passed as inputs to the next node, ``\"F\"``\ncontrasts are terminal and are not passed as inputs to following :py:class:`Node`\\s.\n\nExamples\n--------\n\nSubtract two conditions:\n\n.. code-block:: json\n\n    {\n      \"Name\": \"a_vs_b\",\n      \"ConditionList\": [\"A\", \"B\"],\n      \"Weights\": [1, -1],\n      \"Test\": \"t\"\n    }\n\nContrast one condition to the average of two others:\n\n.. code-block:: json\n\n    {\n      \"Name\": \"a_vs_other\",\n      \"ConditionList\": [\"A\", \"B\", \"C\"],\n      \"Weights\": [1, -0.5, -0.5],\n      \"Test\": \"t\"\n    }\n\nTo pass an individual parameter estimate without changing its name to following nodes:\n\n.. code-block:: json\n\n    {\"Name\": \"A\", \"ConditionList\": [\"A\"], \"Weights\": [1], \"Test\": \"t\"}",
-      "type": "object",
       "properties": {
         "Description": {
-          "title": "Description",
-          "type": "string"
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
         },
         "Name": {
           "title": "Name",
           "type": "string"
         },
         "ConditionList": {
-          "title": "Conditionlist",
-          "type": "array",
           "items": {
             "anyOf": [
               {
+                "const": 1,
                 "enum": [
                   1
                 ],
@@ -239,13 +34,13 @@
                 "type": "string"
               }
             ]
-          }
+          },
+          "title": "Conditionlist",
+          "type": "array"
         },
         "Weights": {
-          "title": "Weights",
           "anyOf": [
             {
-              "type": "array",
               "items": {
                 "anyOf": [
                   {
@@ -258,12 +53,11 @@
                     "type": "string"
                   }
                 ]
-              }
+              },
+              "type": "array"
             },
             {
-              "type": "array",
               "items": {
-                "type": "array",
                 "items": {
                   "anyOf": [
                     {
@@ -276,18 +70,21 @@
                       "type": "string"
                     }
                   ]
-                }
-              }
+                },
+                "type": "array"
+              },
+              "type": "array"
             }
-          ]
+          ],
+          "title": "Weights"
         },
         "Test": {
-          "title": "Test",
           "enum": [
             "pass",
             "t",
             "F"
           ],
+          "title": "Test",
           "type": "string"
         }
       },
@@ -297,23 +94,143 @@
         "Weights",
         "Test"
       ],
-      "additionalProperties": false
+      "title": "Contrast",
+      "type": "object"
     },
     "DummyContrasts": {
-      "title": "DummyContrasts",
+      "additionalProperties": false,
       "description": "Dummy contrasts are contrasts with one condition, a weight of one,\nand the same name as the condition. That is,\n\n::\n\n    \"DummyContrasts\": {\"Contrasts\": [\"A\", \"B\"], \"Test\": \"t\"}\n\nis equivalent to the following list of :py:class:`Contrast`\\s::\n\n    \"Contrasts\": [\n        {\"Name\": \"A\", \"ConditionList\": [\"A\"], \"Weights\": [1], \"Test\": \"t\"}\n        {\"Name\": \"B\", \"ConditionList\": [\"B\"], \"Weights\": [1], \"Test\": \"t\"}\n    ]\n\nWhile ``\"t\"`` and ``\"pass\"`` contrasts are passed as inputs to the next node, ``\"F\"``\ncontrasts are terminal and are not passed as inputs to following :py:class:`Node`\\s.",
-      "type": "object",
       "properties": {
         "Description": {
-          "title": "Description",
-          "type": "string"
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
         },
         "Contrasts": {
-          "title": "Contrasts",
-          "type": "array",
+          "anyOf": [
+            {
+              "items": {
+                "anyOf": [
+                  {
+                    "const": 1,
+                    "enum": [
+                      1
+                    ],
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Contrasts"
+        },
+        "Test": {
+          "enum": [
+            "pass",
+            "t",
+            "F"
+          ],
+          "title": "Test",
+          "type": "string"
+        }
+      },
+      "required": [
+        "Test"
+      ],
+      "title": "DummyContrasts",
+      "type": "object"
+    },
+    "HRF": {
+      "additionalProperties": false,
+      "description": "Specification of a hemodynamic response function (HRF) model.\n\nMost design matrix constructors permit sparse events of the form\n(onset, duration, amplitude) to be convolved by a named HRF,\npossibly with some parameters.\nSome may permit dense time series to be convolved as well.\n\nThis specification makes no attempt to constrain the names and parameters,\nor require consistency of accepted model names across implementations.\nImplementations SHOULD fail if the model is unknown.\n\nExamples\n--------\n\nThe \"canonical\" HRF defined in SPM:\n\n.. code-block:: json\n\n    {\n      \"Variables\": [\"condition1\", \"condition2\"],\n      \"Model\": \"spm\"\n    }",
+      "properties": {
+        "Description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "Variables": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Variables",
+          "type": "array"
+        },
+        "Model": {
+          "title": "Model",
+          "type": "string"
+        },
+        "Parameters": {
+          "anyOf": [
+            {
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parameters"
+        }
+      },
+      "required": [
+        "Variables",
+        "Model"
+      ],
+      "title": "HRF",
+      "type": "object"
+    },
+    "Model": {
+      "additionalProperties": false,
+      "description": "The model to fit to the collection of input images.\n\nThis section defines the design matrix construction, estimator type,\nand additional options needed to estimate the model parameters.",
+      "properties": {
+        "Description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "Type": {
+          "enum": [
+            "glm",
+            "meta"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "X": {
           "items": {
             "anyOf": [
               {
+                "const": 1,
                 "enum": [
                   1
                 ],
@@ -323,22 +240,277 @@
                 "type": "string"
               }
             ]
-          }
+          },
+          "title": "X",
+          "type": "array"
         },
-        "Test": {
-          "title": "Test",
-          "enum": [
-            "pass",
-            "t",
-            "F"
+        "Formula": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
           ],
-          "type": "string"
+          "default": null,
+          "title": "Formula"
+        },
+        "HRF": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/HRF"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "Options": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Options"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "Software": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "object"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Software"
         }
       },
       "required": [
-        "Test"
+        "Type",
+        "X"
       ],
-      "additionalProperties": false
+      "title": "Model",
+      "type": "object"
+    },
+    "Options": {
+      "additionalProperties": false,
+      "description": "Estimation options that are common to multiple estimation packages.",
+      "properties": {
+        "Description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "HighPassFilterCutoffHz": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Highpassfiltercutoffhz"
+        },
+        "LowPassFilterCutoffHz": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lowpassfiltercutoffhz"
+        },
+        "ReplaceVariables": {
+          "anyOf": [
+            {
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Replacevariables"
+        },
+        "Mask": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "items": {},
+                "type": "array"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mask"
+        },
+        "Aggregate": {
+          "anyOf": [
+            {
+              "enum": [
+                "none",
+                "mean",
+                "pca"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Aggregate"
+        }
+      },
+      "title": "Options",
+      "type": "object"
+    },
+    "Transformations": {
+      "additionalProperties": false,
+      "description": "Transformations describe modifications of variables to prepare a design matrix.\n\nThis field is indirect, with a :py:attr:`Transformer` name identifying an instruction\nset, and a sequence of :py:attr:`Instructions`.\n\nA Transformer accepts data frames of sparse (onset, duration, amplitude) and\ndense (onset, sampling rate, values) variables along with the list of Instructions,\nand then return a new set of sparse and/or dense variables.\n\nExamples\n--------\n\n.. code-block:: json\n\n   {\n     \"Transformer\": \"pybids-transforms-v1\",\n     \"Instructions\": [\n       {\n         \"Name\": \"Factor\",\n         \"Input\": [\"trial_type\"]\n       },\n       {\n         \"Name\": \"Convolve\",\n         \"Model\": \"spm\",\n         \"Input\": [\"trial_type.cond1\", \"trial_type.cond2\"]\n       }\n     ]\n   }",
+      "properties": {
+        "Description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "Transformer": {
+          "const": "pybids-transforms-v1",
+          "enum": [
+            "pybids-transforms-v1"
+          ],
+          "title": "Transformer",
+          "type": "string"
+        },
+        "Instructions": {
+          "items": {},
+          "title": "Instructions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "Transformer",
+        "Instructions"
+      ],
+      "title": "Transformations",
+      "type": "object"
     }
-  }
+  },
+  "additionalProperties": false,
+  "description": "A node represents an estimator that applies to a given level of analysis.\nIt contains sufficient information to construct a design matrix, estimate\nparameter weights (betas) and construct contrasts.",
+  "properties": {
+    "Description": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Description"
+    },
+    "Level": {
+      "enum": [
+        "Run",
+        "Session",
+        "Subject",
+        "Dataset"
+      ],
+      "title": "Level",
+      "type": "string"
+    },
+    "Name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "GroupBy": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Groupby",
+      "type": "array"
+    },
+    "Transformations": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Transformations"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "Model": {
+      "$ref": "#/$defs/Model"
+    },
+    "Contrasts": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/Contrast"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Contrasts"
+    },
+    "DummyContrasts": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/DummyContrasts"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "Level",
+    "Name",
+    "GroupBy",
+    "Model"
+  ],
+  "title": "Node",
+  "type": "object"
 }

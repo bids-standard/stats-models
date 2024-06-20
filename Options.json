@@ -1,41 +1,89 @@
 {
-  "title": "Options",
+  "additionalProperties": false,
   "description": "Estimation options that are common to multiple estimation packages.",
-  "type": "object",
   "properties": {
     "Description": {
-      "title": "Description",
-      "type": "string"
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Description"
     },
     "HighPassFilterCutoffHz": {
-      "title": "Highpassfiltercutoffhz",
-      "type": "number"
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Highpassfiltercutoffhz"
     },
     "LowPassFilterCutoffHz": {
-      "title": "Lowpassfiltercutoffhz",
-      "type": "number"
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Lowpassfiltercutoffhz"
     },
     "ReplaceVariables": {
-      "title": "Replacevariables",
-      "type": "object"
+      "anyOf": [
+        {
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Replacevariables"
     },
     "Mask": {
-      "title": "Mask",
-      "type": "object",
-      "additionalProperties": {
-        "type": "array",
-        "items": {}
-      }
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "items": {},
+            "type": "array"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Mask"
     },
     "Aggregate": {
-      "title": "Aggregate",
-      "enum": [
-        "none",
-        "mean",
-        "pca"
+      "anyOf": [
+        {
+          "enum": [
+            "none",
+            "mean",
+            "pca"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
       ],
-      "type": "string"
+      "default": null,
+      "title": "Aggregate"
     }
   },
-  "additionalProperties": false
+  "title": "Options",
+  "type": "object"
 }
