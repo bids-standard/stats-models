@@ -23,7 +23,7 @@ validate_cff: CITATION.cff ## Makes sure the CITATION.cff file is valid. (pip in
 test: ## Build the book, checks for dead link and fail on warning
 	jupyter-book build specification --warningiserror --builder linkcheck
 
-html: ## Build html version of the book
+html: specification/schema ## Build html version of the book
 	jupyter-book build specification
 
 serve: html ## Serve the built website
@@ -35,3 +35,5 @@ pdfhtml: ## Build pdf version of the book from html (requires pyppeteer)
 pdflatex: ## Build pdf version of the book from latex
 	jb build specification --builder pdflatex 
 
+specification/schema:
+	python -m bsmschema specification/schema/
