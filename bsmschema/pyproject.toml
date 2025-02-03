@@ -10,7 +10,7 @@ authors = [
     {name = "BIDS Contributors", email = "bids.maintenance@gmail.com" },
 ]
 license = {file = "LICENSE"}
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 dependencies = [
     "pydantic !=2.0a1",
 ]
