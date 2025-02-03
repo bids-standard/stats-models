@@ -16,7 +16,7 @@ Note that these are the structured and validatable objects.
 """
 
 import sys
-from typing import List, Optional, Dict, Literal, Any, Union, TYPE_CHECKING
+from typing import Optional, Literal, Any, Union, TYPE_CHECKING
 from pydantic import BaseModel, Extra
 
 __all__ = [
@@ -75,9 +75,9 @@ StatisticalTest = Literal[
 ]
 
 # Aliases
-Filter = Dict[StrictStr, List[Any]]
-VariableList = List[Union[Literal[1], StrictStr]]
-Weights = List[Union[StrictInt, StrictFloat, StrictStr]]
+Filter = dict[StrictStr, list[Any]]
+VariableList = list[Union[Literal[1], StrictStr]]
+Weights = list[Union[StrictInt, StrictFloat, StrictStr]]
 
 # Python 3.10 at least weirdly annotates "X: Optional[X] = None" as NoneType
 OptionalFilter = Optional[Filter]
@@ -166,7 +166,7 @@ class Transformations(_BSMBase):
 
     Transformer: TransformerID
     """Name of the specification of an instruction set."""
-    Instructions: List[Any]
+    Instructions: list[Any]
     """Sequence of instructions to pass to an implementation of :py:attr:`Transformer`.
     The format of these instructions is determined by the :py:attr:`Transformer`."""
 
@@ -200,7 +200,7 @@ class HRF(_BSMBase):
         }
     """
 
-    Variables: List[StrictStr]
+    Variables: list[StrictStr]
     """Name of the variables to be convolved.
 
     These must appear in :py:attr:`Model.X`.
@@ -222,7 +222,7 @@ class HRF(_BSMBase):
     The list of supported models is expandable and limited by the estimator, not the specification.
     Note that ``"glover"`` is the default "Gamma" HRF in FSL.
     """
-    Parameters: Optional[Dict[str, Any]] = None
+    Parameters: Optional[dict[str, Any]] = None
     """Parameters to the hemodynamic model.
 
     Options will be software specific and are not controlled.
@@ -241,7 +241,7 @@ class Options(_BSMBase):
     """The cutoff frequency, in Hz, for a high-pass filter."""
     LowPassFilterCutoffHz: Optional[float] = None
     """The cutoff frequency, in Hz, for a low-pass filter."""
-    ReplaceVariables: Optional[Dict[StrictStr, Any]] = None
+    ReplaceVariables: Optional[dict[StrictStr, Any]] = None
     """Allows a specification of design matrix columns that are to be replaced by the estimating software.
     Keys are the names of columns to replace; values are unconstrained,
     and can be anything that helps the receiving software understand what is intended.
@@ -320,7 +320,7 @@ class Contrast(_BSMBase):
 
     The special intercept value ``1`` is permitted.
     """
-    Weights: Union[Weights, List[Weights]]
+    Weights: Union[Weights, list[Weights]]
     """A 1D or 2D array of weights.
     The array must have exactly the same number of total elements as in :py:attr:`ConditionList`.
     For t-tests, a 1D array must be passed. For F-tests, either a 1D or a 2D array may be passed.
@@ -412,7 +412,7 @@ class Model(_BSMBase):
     # """Specifies how to model the error."""
     Options: OptionalOptions = None
     """Estimation options that are common to multiple estimation packages."""
-    Software: Optional[Dict[StrictStr, Dict[StrictStr, Any]]] = None
+    Software: Optional[dict[StrictStr, dict[StrictStr, Any]]] = None
     """This section allows one to specify any software-specific estimation parameters.
     Each key in the object is the name of the software package (FSL, SPM, etc.),
     and the value is an object containing software-specific parameters.
@@ -434,7 +434,7 @@ class Node(_BSMBase):
 
     This name is used by :py:class:`Edge`\s to connect two :py:class:`Node`\s.
     """
-    GroupBy: List[StrictStr]
+    GroupBy: list[StrictStr]
     """The output statistical maps received from the input node are split along
     unique combinations of the grouping variables and passed to the model as subsets.
     If empty, all inputs are passed to a single model to fit.
@@ -444,7 +444,7 @@ class Node(_BSMBase):
     """Specification of transformations to be applied to variables before the construction of the model."""
     Model: Model
     """What model parameters should be included, and how the errors are specified."""
-    Contrasts: Optional[List[Contrast]] = None
+    Contrasts: Optional[list[Contrast]] = None
     """How to linearly weight/combine design matrix columns
     to generate contrast maps and (optionally) run statistical tests."""
     DummyContrasts: OptionalDummyContrasts = None
@@ -481,10 +481,10 @@ class BIDSStatsModel(_BSMBase):
     Input: Optional[Filter] = None
     """Dictionary specification of input images"""
 
-    Nodes: List[Node]
+    Nodes: list[Node]
     """A list of analysis nodes. The ordering of this list is significant if Edges is absent."""
 
-    Edges: Optional[List[Edge]] = None
+    Edges: Optional[list[Edge]] = None
     """A list of edges between analysis nodes. If absent, the nodes are connected in the sequence presented in Nodes."""
 
 
@@ -544,7 +544,7 @@ class ExplainerModel(BaseModel):
         {"SomeOptions": "differentstringval"}
         {"SomeOptions": 2.0}
     """
-    ArrayOfInts: List[str]
+    ArrayOfInts: list[str]
     """JSON arrays appear as ``List`` types, and ``List[str]`` means
     the values must be integers.
 
@@ -552,7 +552,7 @@ class ExplainerModel(BaseModel):
 
         {"ArrayOfInts": [1, 2]}
     """
-    Object: Dict[str, Any]
+    Object: dict[str, Any]
     """JSON objects appear as ``Dict`` types.
 
     The general form is ``Dict[str, <value-type>]``, because the field name
@@ -567,7 +567,7 @@ class ExplainerModel(BaseModel):
     We use these when objects with arbitrary names can be used. If the full list
     of valid names is known, we define a new schema model.
     """
-    ObjectOfObjects: Dict[str, Dict[str, Any]]
+    ObjectOfObjects: dict[str, dict[str, Any]]
     """ Nested objects can start to have hairy type signatures.
 
     Because ``Dict[str, <value-type>]`` is the general form for objects,
@@ -613,7 +613,7 @@ class ExplainerModel(BaseModel):
     Up to now, all fields have been required. If a field is optional, its type will be
     wrapped in ``Optional[]`` and will not have ``[Required]`` in its signature.
     """
-    ListOrListOfLists: Union[List[int], List[List[int]]]
+    ListOrListOfLists: Union[list[int], list[list[int]]]
     """A 1- or 2D array of integers.
 
     To allow this form, we need to use the ``Union`` type with ``List[]`` and
