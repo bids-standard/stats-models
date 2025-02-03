@@ -35,3 +35,12 @@ packages = ["bsmschema"]
 [tool.hatch.version]
 source = "vcs"
 raw-options = { root = ".." }
+
+[tool.ruff]
+line-length = 99
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
+
+[tool.ruff.format]
+quote-style = "single"
