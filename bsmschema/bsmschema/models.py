@@ -14,6 +14,7 @@ The objects defined here are nested as follows:
 Note that these are the structured and validatable objects.
 
 """
+
 import sys
 from typing import List, Optional, Dict, Literal, Any, Union, TYPE_CHECKING
 from pydantic import BaseModel, Extra
@@ -33,8 +34,8 @@ __all__ = [
 # Hack to avoid unnecessary verbosity when generating documentation
 # Has no impact on emitted JSON, only on whether Python will attempt to cast instead of error
 if not TYPE_CHECKING and 'sphinxcontrib.autodoc_pydantic' in sys.modules:
-    StrictStr = str      # noqa: F811
-    StrictInt = int      # noqa: F811
+    StrictStr = str  # noqa: F811
+    StrictInt = int  # noqa: F811
     StrictFloat = float  # noqa: F811
 else:
     from pydantic import StrictStr, StrictInt, StrictFloat
@@ -48,31 +49,29 @@ else:
 # Controlled vocabularies
 
 NodeLevel = Literal[
-    "Run",
-    "Session",
-    "Subject",
-    "Dataset",
+    'Run',
+    'Session',
+    'Subject',
+    'Dataset',
 ]
 
 ModelType = Literal[
-    "glm",
-    "meta",
+    'glm',
+    'meta',
 ]
 
-TransformerID = Literal[
-    "pybids-transforms-v1",
-]
+TransformerID = Literal['pybids-transforms-v1',]
 
 Aggregate = Literal[
-    "none",
-    "mean",
-    "pca",
+    'none',
+    'mean',
+    'pca',
 ]
 
 StatisticalTest = Literal[
-    "pass",
-    "t",
-    "F",
+    'pass',
+    't',
+    'F',
 ]
 
 # Aliases
@@ -120,6 +119,7 @@ class Edge(_BSMBase):
          "Filter": {"contrast": ["contrast1", "contrast2"]}
        }
     """
+
     Source: StrictStr
     """Name of :py:class:`Node`. The outputs of this node are passed to :py:attr:`Destination`."""
     Destination: StrictStr
@@ -163,6 +163,7 @@ class Transformations(_BSMBase):
        }
 
     """
+
     Transformer: TransformerID
     """Name of the specification of an instruction set."""
     Instructions: List[Any]
@@ -198,6 +199,7 @@ class HRF(_BSMBase):
           "Model": "spm"
         }
     """
+
     Variables: List[StrictStr]
     """Name of the variables to be convolved.
 
@@ -304,6 +306,7 @@ class Contrast(_BSMBase):
 
         {"Name": "A", "ConditionList": ["A"], "Weights": [1], "Test": "t"}
     """
+
     Name: StrictStr
     r"""The name of the contrast.
     Must be unique in :py:attr:`Node.Contrasts` and must not appear in
@@ -351,6 +354,7 @@ class DummyContrasts(_BSMBase):
     While ``"t"`` and ``"pass"`` contrasts are passed as inputs to the next node, ``"F"``
     contrasts are terminal and are not passed as inputs to following :py:class:`Node`\s.
     """
+
     Contrasts: Optional[VariableList] = None
     """A list of variables to construct DummyContrasts for.
     Must be a strict subset of ``Model.X``.
@@ -374,6 +378,7 @@ class Model(_BSMBase):
     This section defines the design matrix construction, estimator type,
     and additional options needed to estimate the model parameters.
     """
+
     Type: ModelType
     """The type of analysis to run.
     The following values are currently defined:
@@ -421,6 +426,7 @@ class Node(_BSMBase):
     It contains sufficient information to construct a design matrix, estimate
     parameter weights (betas) and construct contrasts.
     """
+
     Level: NodeLevel
     """Level of analysis being described."""
     Name: StrictStr
@@ -457,6 +463,7 @@ class BIDSStatsModel(_BSMBase):
     incoming edges. Each path from the root to a leaf may be thought of as a single
     hierarchical model.
     """
+
     Name: StrictStr
     """A name identifying the model, ideally short.
     While no hard constraints are imposed on the specific format of the name,
@@ -495,6 +502,7 @@ class ExplainerModel(BaseModel):
     These types can be mixed and matched somewhat.
     Probably the most complex-looking field is :py:attr:`Contrast.Weights`.
     """
+
     StringField: str
     """This field is called ``StringField`` and has type ``str``.
 
@@ -522,7 +530,7 @@ class ExplainerModel(BaseModel):
         {"IntField": 1.0}
         {"IntField": "2"}
     """
-    SomeOptions: Literal[1, "stringval"]
+    SomeOptions: Literal[1, 'stringval']
     """The ``Literal`` type allows a specific value or set of values.
 
     Valid examples::
