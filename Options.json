@@ -1,5 +1,4 @@
 {
-  "additionalProperties": false,
   "description": "Estimation options that are common to multiple estimation packages.",
   "properties": {
     "Description": {
