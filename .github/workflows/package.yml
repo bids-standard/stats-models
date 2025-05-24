@@ -86,11 +86,22 @@ jobs:
           ls -lR
       - name: Set up uv
         uses: astral-sh/setup-uv@v6
-      - name: Install tox
+      - name: Install tox and coverage
         run: |
           uv tool install tox --with=tox-uv
+          uv tool install coverage[toml]
       - name: Run tox
         run: tox run-parallel -c bsmschema/tox.ini --exit-and-dump-after 60
+      - name: Combine coverage
+        run: |
+          coverage combine
+          coverage xml
+        working-directory: bsmschema
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          working-directory: bsmschema
 
   publish:
     name: Publish package to PyPI
