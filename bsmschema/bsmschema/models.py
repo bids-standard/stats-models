@@ -17,7 +17,7 @@ Note that these are the structured and validatable objects.
 
 import sys
 from typing import Optional, Literal, Any, Union, TYPE_CHECKING
-from pydantic import BaseModel, Extra
+from pydantic import BaseModel
 
 __all__ = [
     'BIDSStatsModel',
@@ -89,8 +89,9 @@ class _BSMBase(BaseModel):
     # This permits users to write comments on objects.
     Description: Optional[str] = None
 
-    class Config:
-        extra = Extra.forbid
+    model_config: dict[str, Any] = {
+        'extras': 'forbid',
+    }
 
 
 class Edge(_BSMBase):
@@ -406,9 +407,9 @@ class Model(_BSMBase):
     """A specification of the hemodynamic response function (HRF) that should be applied
     to variables by implementing software."""
     ## These are very likely getting pulled out.
-    # VarianceComponents: Optional[List[Dict[str, Any]]]
+    # VarianceComponents: Optional[list[dict[str, Any]]]
     # """A specification of the variance components to include in the model."""
-    # ErrorDistribution: Optional[Dict[str, Any]]
+    # ErrorDistribution: Optional[dict[str, Any]]
     # """Specifies how to model the error."""
     Options: OptionalOptions = None
     """Estimation options that are common to multiple estimation packages."""
@@ -545,7 +546,7 @@ class ExplainerModel(BaseModel):
         {"SomeOptions": 2.0}
     """
     ArrayOfInts: list[str]
-    """JSON arrays appear as ``List`` types, and ``List[str]`` means
+    """JSON arrays appear as ``list`` types, and ``list[str]`` means
     the values must be integers.
 
     Valid example::
@@ -553,9 +554,9 @@ class ExplainerModel(BaseModel):
         {"ArrayOfInts": [1, 2]}
     """
     Object: dict[str, Any]
-    """JSON objects appear as ``Dict`` types.
+    """JSON objects appear as ``dict`` types.
 
-    The general form is ``Dict[str, <value-type>]``, because the field name
+    The general form is ``dict[str, <value-type>]``, because the field name
     in a JSON object is always a string.
     To allow for any values, including integers, strings or nested types, we
     use ``Any``.
@@ -570,9 +571,9 @@ class ExplainerModel(BaseModel):
     ObjectOfObjects: dict[str, dict[str, Any]]
     """ Nested objects can start to have hairy type signatures.
 
-    Because ``Dict[str, <value-type>]`` is the general form for objects,
+    Because ``dict[str, <value-type>]`` is the general form for objects,
     the general form for objects of objects is
-    ``Dict[str, Dict[str, <value-type>]]``.
+    ``dict[str, dict[str, <value-type>]]``.
 
     The actual result is fairly straightforward, though::
 
@@ -616,8 +617,8 @@ class ExplainerModel(BaseModel):
     ListOrListOfLists: Union[list[int], list[list[int]]]
     """A 1- or 2D array of integers.
 
-    To allow this form, we need to use the ``Union`` type with ``List[]`` and
-    ``List[List[]]``. At the "bottom" of the type is an integer.
+    To allow this form, we need to use the ``Union`` type with ``list[]`` and
+    ``list[list[]]``. At the "bottom" of the type is an integer.
 
     :py:attr:`Contrast.Weights` has this form, but instead of ``int``, it
     permits integers, floats or strings because it is intended to allow values

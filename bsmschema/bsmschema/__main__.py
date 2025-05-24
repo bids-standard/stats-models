@@ -1,3 +1,4 @@
+import json
 import sys
 from pathlib import Path
 from bsmschema import models
@@ -11,4 +12,7 @@ if __name__ == '__main__':
     schemadir.mkdir(parents=True, exist_ok=True)
     for mname in models.__all__:
         model = getattr(models, mname)
-        Path.write_text(schemadir / f'{mname}.json', model.schema_json(indent=2))
+        Path.write_text(
+            schemadir / f'{mname}.json',
+            json.dumps(model.model_json_schema(), indent=2),
+        )
