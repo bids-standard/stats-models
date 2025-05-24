@@ -40,6 +40,13 @@ jobs:
         with:
           path: bsmschema
           attest-build-provenance-github: ${{ github.event_name != 'pull_request' }}
+      - name: Upload uv.lock
+        uses: actions/upload-artifact@v4
+        with:
+          name: Lockfile
+          path: |
+            uv.lock
+            pyproject.toml
 
   test:
     runs-on: ${{ matrix.os }}
@@ -65,11 +72,18 @@ jobs:
         with:
           name: Packages
           path: dist
+      - name: Download lockfile
+        if: matrix.source == 'sdist'
+        uses: actions/download-artifact@v4
+        with:
+          name: Lockfile
       - name: Extract sdist
         if: matrix.source == 'sdist'
         run: |
-          mkdir bsmschema
+          ls -lR
+          mkdir -p bsmschema
           tar --strip-components=1 -C bsmschema -xzf dist/*.tar.gz
+          ls -lR
       - name: Set up uv
         uses: astral-sh/setup-uv@v6
       - name: Install tox
