@@ -1,0 +1,18 @@
+[project]
+name = "stats-models"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+  "bsmschema",
+  "jupyter-book>=0.13",
+  "autodoc_pydantic",
+  "sphinxcontrib-matlabdomain",
+  "pandas",
+  "black>=25.1.0",
+]
+
+[tool.uv.sources]
+bsmschema = { workspace = true }
+
+[tool.uv.workspace]
+members = ["bsmschema"]
