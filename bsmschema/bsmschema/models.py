@@ -17,7 +17,7 @@ Note that these are the structured and validatable objects.
 
 import sys
 from typing import Optional, Literal, Any, Union, TYPE_CHECKING
-from pydantic import BaseModel, Extra
+from pydantic import BaseModel
 
 __all__ = [
     'BIDSStatsModel',
@@ -89,8 +89,9 @@ class _BSMBase(BaseModel):
     # This permits users to write comments on objects.
     Description: Optional[str] = None
 
-    class Config:
-        extra = Extra.forbid
+    model_config: dict[str, Any] = {
+        'extras': 'forbid',
+    }
 
 
 class Edge(_BSMBase):
