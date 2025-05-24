@@ -16,11 +16,12 @@ dependencies = [
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
-    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Development Status :: 4 - Beta",
     "License :: OSI Approved :: Apache Software License",
 ]
 dynamic = ["version"]
@@ -28,6 +29,18 @@ dynamic = ["version"]
 [project.urls]
 Homepage = "https://bids-standard.github.io/stats-models/"
 "Source code" = "https://github.com/bids-standard/stats-models"
+
+[dependency-groups]
+test = [
+  "pytest >=8",
+  "acres >=0.2",
+  "coverage[toml] >=7",
+  "pytest-cov >=6",
+]
+types = [
+  "mypy",
+  "pyright",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["bsmschema"]
@@ -47,3 +60,7 @@ quote-style = "single"
 
 [tool.mypy]
 strict = true
+
+[tool.coverage.run]
+parallel = true
+branch = true

@@ -1,7 +1,7 @@
 [project]
 name = "stats-models"
 version = "0.1.0"
-requires-python = ">=3.13"
+requires-python = ">=3.9"
 dependencies = [
   "bsmschema",
   "jupyter-book>=0.13",
