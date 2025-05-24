@@ -25,9 +25,6 @@
             "anyOf": [
               {
                 "const": 1,
-                "enum": [
-                  1
-                ],
                 "type": "integer"
               },
               {
@@ -120,9 +117,6 @@
                 "anyOf": [
                   {
                     "const": 1,
-                    "enum": [
-                      1
-                    ],
                     "type": "integer"
                   },
                   {
@@ -185,6 +179,7 @@
         "Parameters": {
           "anyOf": [
             {
+              "additionalProperties": true,
               "type": "object"
             },
             {
@@ -231,9 +226,6 @@
             "anyOf": [
               {
                 "const": 1,
-                "enum": [
-                  1
-                ],
                 "type": "integer"
               },
               {
@@ -282,6 +274,7 @@
           "anyOf": [
             {
               "additionalProperties": {
+                "additionalProperties": true,
                 "type": "object"
               },
               "type": "object"
@@ -344,6 +337,7 @@
         "ReplaceVariables": {
           "anyOf": [
             {
+              "additionalProperties": true,
               "type": "object"
             },
             {
@@ -408,9 +402,6 @@
         },
         "Transformer": {
           "const": "pybids-transforms-v1",
-          "enum": [
-            "pybids-transforms-v1"
-          ],
           "title": "Transformer",
           "type": "string"
         },

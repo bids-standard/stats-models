@@ -28,6 +28,7 @@
     "Parameters": {
       "anyOf": [
         {
+          "additionalProperties": true,
           "type": "object"
         },
         {

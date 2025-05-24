@@ -30,6 +30,7 @@
         "Parameters": {
           "anyOf": [
             {
+              "additionalProperties": true,
               "type": "object"
             },
             {
@@ -90,6 +91,7 @@
         "ReplaceVariables": {
           "anyOf": [
             {
+              "additionalProperties": true,
               "type": "object"
             },
             {
@@ -165,9 +167,6 @@
         "anyOf": [
           {
             "const": 1,
-            "enum": [
-              1
-            ],
             "type": "integer"
           },
           {
@@ -216,6 +215,7 @@
       "anyOf": [
         {
           "additionalProperties": {
+            "additionalProperties": true,
             "type": "object"
           },
           "type": "object"

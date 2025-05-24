@@ -23,9 +23,6 @@
         "anyOf": [
           {
             "const": 1,
-            "enum": [
-              1
-            ],
             "type": "integer"
           },
           {

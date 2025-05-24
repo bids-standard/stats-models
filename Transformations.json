@@ -16,9 +16,6 @@
     },
     "Transformer": {
       "const": "pybids-transforms-v1",
-      "enum": [
-        "pybids-transforms-v1"
-      ],
       "title": "Transformer",
       "type": "string"
     },
