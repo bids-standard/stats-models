@@ -10,7 +10,7 @@ authors = [
     {name = "BIDS Contributors", email = "bids.maintenance@gmail.com" },
 ]
 license = {file = "LICENSE"}
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 dependencies = [
     "pydantic !=2.0a1",
 ]
@@ -35,3 +35,15 @@ packages = ["bsmschema"]
 [tool.hatch.version]
 source = "vcs"
 raw-options = { root = ".." }
+
+[tool.ruff]
+line-length = 99
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.mypy]
+strict = true

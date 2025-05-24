@@ -468,7 +468,7 @@ the BIDS Stats Model spec also supports an optional {py:attr}`~bsmschema.models.
 field that one can include as a field at the top level of each node.
 
 Note that each contrast generated via `DummyContrasts` will have the same name as the variable it is based on.
-However, in cases where the same name is re-used in the `Contrasts` list, the latter will take precedence over any contrast generated via `DummyContrasts`.
+However, in cases where the same name is reused in the `Contrasts` list, the latter will take precedence over any contrast generated via `DummyContrasts`.
 For example, if the design matrix contains a variable named `"face"`, `DummyContrasts` is `true`, and a contrast with the name` "face"` is also included in `Contrasts`, only the latter will be retained, and the `DummyContrasts`-generated contrast will be ignored.
 
 Note that tests of "Type: "F" will be computed but their parameters estimates will not be passed forward through an "Edge" to subsequent "Nodes" in the model.

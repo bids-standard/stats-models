@@ -21,17 +21,19 @@ validate_cff: CITATION.cff ## Makes sure the CITATION.cff file is valid. (pip in
 	cffconvert --validate
 
 test: ## Build the book, checks for dead link and fail on warning
-	jupyter-book build specification --warningiserror --builder linkcheck
+	uv run jupyter-book build specification --warningiserror --builder linkcheck
 
-html: ## Build html version of the book
-	jupyter-book build specification
+html: specification/schema ## Build html version of the book
+	uv run jupyter-book build specification
 
 serve: html ## Serve the built website
 	python -m http.server -d specification/_build/html/
 
 pdfhtml: ## Build pdf version of the book from html (requires pyppeteer)
-	jupyter-book build specification --builder pdfhtml
+	uv run jupyter-book build specification --builder pdfhtml
 
 pdflatex: ## Build pdf version of the book from latex
-	jb build specification --builder pdflatex 
+	uv run jb build specification --builder pdflatex
 
+specification/schema:
+	uv run -m bsmschema specification/schema/

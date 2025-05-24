@@ -41,30 +41,29 @@ BIDSStatsModel.parse_file('stats-models/specification/examples/model-example_smd
 
 ## Building the documentation locally
 
-1) Install the requirements, including the local copy of `bsmschema`:
-
-   ```
-   pip install -r requirements.txt
-   ```
+We recommend using the [uv] tool to ensure reproducible builds.
 
 1) Build the schema files to ensure the local validator will work:
 
    ```
-   python -m bsmschema specification/schema
+   uv run -m bsmschema specification/schema
    ```
 
 
 1) Build the JupyterBook:
 
    ```
-   jb build specification
+   uv run jb build specification
    ```
 
 1) Serve the built website:
 
    ```
-   python -m http.server -d specification/_build/html/
+   uv run -m http.server -d specification/_build/html/
    ```
 
 Note that this will start a long-running web-server that will occupy your terminal. 
 `Ctrl-C` quits.
+
+
+[uv]: https://docs.astral.sh/uv/
