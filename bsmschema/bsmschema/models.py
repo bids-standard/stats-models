@@ -33,7 +33,7 @@ __all__ = [
 
 # Hack to avoid unnecessary verbosity when generating documentation
 # Has no impact on emitted JSON, only on whether Python will attempt to cast instead of error
-if not TYPE_CHECKING and 'sphinxcontrib.autodoc_pydantic' in sys.modules:
+if not TYPE_CHECKING and 'sphinxcontrib.autodoc_pydantic' in sys.modules:  # pragma: no cover
     StrictStr = str  # noqa: F811
     StrictInt = int  # noqa: F811
     StrictFloat = float  # noqa: F811
@@ -126,7 +126,6 @@ class Edge(_BSMBase):
     Destination: StrictStr
     """Name of :py:class:`Node`. The outputs of :py:attr:`Source` are passed to this node.
 
-    If :py:attr:`Filter` is defined,
     The outputs of the Source node are the inputs of the Destination node, after filtering (if any)."""
     Filter: OptionalFilter = None
     """Maps a grouping variable to a list of values to pass to Destination.
