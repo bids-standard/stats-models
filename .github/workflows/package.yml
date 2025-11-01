@@ -41,7 +41,7 @@ jobs:
           path: bsmschema
           attest-build-provenance-github: ${{ github.event_name != 'pull_request' }}
       - name: Upload uv.lock
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: Lockfile
           path: |
@@ -68,13 +68,13 @@ jobs:
           fetch-depth: 0
       - name: Download packages built by build-and-inspect-python-package
         if: matrix.source == 'sdist'
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           name: Packages
           path: dist
       - name: Download lockfile
         if: matrix.source == 'sdist'
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           name: Lockfile
       - name: Extract sdist
@@ -114,7 +114,7 @@ jobs:
 
     steps:
       - name: Download packages built by build-and-inspect-python-package
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           name: Packages
           path: dist
