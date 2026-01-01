@@ -33,7 +33,7 @@ jobs:
       attestations: write
       id-token: write
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - uses: hynek/build-and-inspect-python-package@v2
@@ -41,7 +41,7 @@ jobs:
           path: bsmschema
           attest-build-provenance-github: ${{ github.event_name != 'pull_request' }}
       - name: Upload uv.lock
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: Lockfile
           path: |
@@ -61,20 +61,20 @@ jobs:
       DEPENDS: ${{ matrix.dependencies }}
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         if: matrix.source == 'repo'
         with:
           submodules: recursive
           fetch-depth: 0
       - name: Download packages built by build-and-inspect-python-package
         if: matrix.source == 'sdist'
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: Packages
           path: dist
       - name: Download lockfile
         if: matrix.source == 'sdist'
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: Lockfile
       - name: Extract sdist
@@ -114,7 +114,7 @@ jobs:
 
     steps:
       - name: Download packages built by build-and-inspect-python-package
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: Packages
           path: dist
