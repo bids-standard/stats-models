@@ -28,14 +28,14 @@ wheels = [
 
 [[package]]
 name = "acres"
-version = "0.3.0"
+version = "0.5.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "importlib-resources", marker = "python_full_version < '3.11'" },
+    { name = "importlib-resources", marker = "python_full_version < '3.10'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/1a/95/50b14b2997d49c4f602adcdc5afb9b0610d1e205d012ad5d0b50f5e8e68b/acres-0.3.0.tar.gz", hash = "sha256:b8aa5d46bd4716f914355c633a5181f63c00cbb42bca90826a77b8acf5a07862", size = 10640, upload-time = "2025-02-22T14:59:24.225Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ec/ba/94b63a9af588fbf7bde25ce44d55456199654a92fb7b2337767198a824b0/acres-0.5.0.tar.gz", hash = "sha256:128b6447bf5df3b6210264feccbfa018b4ac5bd337358319aec6563f99db8f3a", size = 57750, upload-time = "2025-06-04T12:40:30.329Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/26/35/a7c7a135a02c88b484b9f1b91c9c9c913d88cb0eec5337685c905d4d7d99/acres-0.3.0-py3-none-any.whl", hash = "sha256:9a3138f27c5237edbdf1ea97bf20f48beb4ebfb71de8150a0bc2448012b4e280", size = 10323, upload-time = "2025-02-22T14:59:22.328Z" },
+    { url = "https://files.pythonhosted.org/packages/39/e8/806475fe4cdfd8635535d3fa11bd61d19b7cc94b61b9147ebdd2ab4cbbee/acres-0.5.0-py3-none-any.whl", hash = "sha256:fcc32b974b510897de0f041609b4234f9ff03e2e960aea088f63973fb106c772", size = 12703, upload-time = "2025-06-04T12:40:28.745Z" },
 ]
 
 [[package]]
@@ -181,7 +181,7 @@ requires-dist = [{ name = "pydantic", specifier = ">=2.13.4" }]
 
 [package.metadata.requires-dev]
 test = [
-    { name = "acres", specifier = ">=0.2" },
+    { name = "acres", specifier = ">=0.5.0" },
     { name = "coverage", extras = ["toml"], specifier = ">=7" },
     { name = "pytest", specifier = ">=8.4.2" },
     { name = "pytest-cov", specifier = ">=6" },
