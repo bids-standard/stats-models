@@ -4,7 +4,7 @@ version = "0.1.0"
 requires-python = ">=3.9"
 dependencies = [
   "bsmschema",
-  "jupyter-book>=0.13",
+  "jupyter-book>=2.1.6",
   "autodoc_pydantic",
   "sphinxcontrib-matlabdomain",
   "pandas",
