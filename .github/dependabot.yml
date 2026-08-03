@@ -3,7 +3,7 @@ updates:
 - package-ecosystem: github-actions
   directory: /
   schedule:
-    interval: monthly
+    interval: quarterly
   groups:
     actions-infrastructure:
       patterns:
@@ -11,7 +11,7 @@ updates:
 - package-ecosystem: uv
   directory: /
   schedule:
-    interval: weekly
+    interval: quarterly
   groups:
     build-dependencies:
       patterns:
