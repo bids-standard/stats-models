@@ -4,12 +4,19 @@ version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = [
   "bsmschema",
+]
+
+[dependency-groups]
+docs = [
   "jupyter-book>=1.0,<2",
   "autodoc_pydantic",
   "sphinxcontrib-matlabdomain",
   "pandas",
   "black>=26.10.1",
 ]
+
+[tool.uv]
+default-groups = ["docs"]
 
 [tool.uv.sources]
 bsmschema = { workspace = true }

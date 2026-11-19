@@ -3,10 +3,10 @@ revision = 5
 requires-python = ">=3.11"
 resolution-markers = [
     "python_full_version >= '3.15' and sys_platform == 'win32'",
-    "python_full_version == '3.14.*' and sys_platform == 'win32'",
     "python_full_version >= '3.15' and sys_platform == 'emscripten'",
-    "python_full_version == '3.14.*' and sys_platform == 'emscripten'",
     "python_full_version >= '3.15' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version == '3.14.*' and sys_platform == 'win32'",
+    "python_full_version == '3.14.*' and sys_platform == 'emscripten'",
     "python_full_version == '3.14.*' and sys_platform != 'emscripten' and sys_platform != 'win32'",
     "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'win32'",
     "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'emscripten'",
@@ -1246,10 +1246,10 @@ version = "2.5.5"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.15' and sys_platform == 'win32'",
-    "python_full_version == '3.14.*' and sys_platform == 'win32'",
     "python_full_version >= '3.15' and sys_platform == 'emscripten'",
-    "python_full_version == '3.14.*' and sys_platform == 'emscripten'",
     "python_full_version >= '3.15' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version == '3.14.*' and sys_platform == 'win32'",
+    "python_full_version == '3.14.*' and sys_platform == 'emscripten'",
     "python_full_version == '3.14.*' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/4e/3a/8770c288c47f0b5c2a786d3c20e79f66fd245f2d42cd232d7cd5e00e83e5/numpy-2.5.5.tar.gz", hash = "sha256:5cddc243c75114ba845f01b1f87aca1572dbf7b6c2d88636ed3e1d2bccd7f1bf", size = 20873892, upload-time = "2026-11-15T21:32:28.607Z" }
@@ -2391,20 +2391,27 @@ wheels = [
 name = "stats-models"
 version = "0.1.0"
 source = { virtual = "." }
+default-groups = ["docs"]
 dependencies = [
+    { name = "bsmschema" },
+]
+
+[package.dev-dependencies]
+docs = [
     { name = "autodoc-pydantic" },
     { name = "black" },
-    { name = "bsmschema" },
     { name = "jupyter-book" },
     { name = "pandas" },
     { name = "sphinxcontrib-matlabdomain" },
 ]
 
 [package.metadata]
-requires-dist = [
+requires-dist = [{ name = "bsmschema", editable = "bsmschema" }]
+
+[package.metadata.requires-dev]
+docs = [
     { name = "autodoc-pydantic" },
     { name = "black", specifier = ">=26.10.1" },
-    { name = "bsmschema", editable = "bsmschema" },
     { name = "jupyter-book", specifier = ">=1.0,<2" },
     { name = "pandas" },
     { name = "sphinxcontrib-matlabdomain" },
