@@ -16,3 +16,7 @@ updates:
     build-dependencies:
       patterns:
       - '*'
+  ignore:
+  # Jupyter Book 2 is a MyST rewrite without Sphinx support; migration needed first
+  - dependency-name: jupyter-book
+    update-types: [version-update:semver-major]

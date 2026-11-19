@@ -16,32 +16,38 @@ The **mission** of *BIDS Stats Models* is to promote scientific best practice
 by making neuroimaging models *transparent and reproducible*, 
 as well as encouraging the development of *standardized and automated* statistical analysis pipelines.
 
-::::{grid} 1 1 1 2
+`````{grid} 1 1 1 2
 :gutter: 3 3 3 3
 
-:::{grid-item-card}
+````{grid-item-card}
 :shadow: md
 :class-header: bg-light
+
+```{card-header}
 **📖 Learn more**
-^^^
+```
+
 **[](motivation.md)**: Why do we need *BIDS Stats Models*?
 
 **[](walkthrough-1.md)**: Step-by-step introduction
 
 **[Specification](reference.md)**: Dive into the technical reference
-:::
+````
 
-:::{grid-item-card}
+````{grid-item-card}
 :shadow: md
 :class-header: bg-light
+
+```{card-header}
 **🚀 Get started**
-^^^
+```
+
 **[](model-zoo.md)**: View example models on public datasets, and modify them to your own data
 
 **[Default model](default_model.md)**: How to create a simple model
-:::
+````
 
-::::
+`````
 
 ## Acknowledments
 

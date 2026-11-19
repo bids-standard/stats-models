@@ -1,10 +1,10 @@
 [project]
 name = "stats-models"
 version = "0.1.0"
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 dependencies = [
   "bsmschema",
-  "jupyter-book>=2.1.7",
+  "jupyter-book>=1.0,<2",
   "autodoc_pydantic",
   "sphinxcontrib-matlabdomain",
   "pandas",
